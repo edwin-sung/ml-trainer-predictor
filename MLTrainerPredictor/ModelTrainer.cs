@@ -100,7 +100,7 @@ namespace MLTrainerPredictor
                 }
                 else
                 {
-                    pipeline.Append(estimator);
+                    pipeline = pipeline.Append(estimator);
                 }
             }
             
@@ -119,11 +119,11 @@ namespace MLTrainerPredictor
                 AppendAction(mlContext.Transforms.ReplaceMissingValues(missingValuesColumnPairs.ToArray()));
             }
 
-            AppendAction(mlContext.Transforms.Concatenate(@"Features", features)
-                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(@labelledInput, @labelledInput))
-                                    .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))
-                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization: 1F, l2Regularization: 1F, labelColumnName: @labelledInput, featureColumnName: @"Features"), @labelledInput))
-                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput)));
+            AppendAction(mlContext.Transforms.Concatenate(@"Features", features));
+            AppendAction(mlContext.Transforms.Conversion.MapValueToKey(@labelledInput, @labelledInput));
+            AppendAction(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"));
+            AppendAction(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization: 1F, l2Regularization: 1F, labelColumnName: @labelledInput, featureColumnName: @"Features"), @labelledInput));
+            AppendAction(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput));
             return pipeline;
         }
 
