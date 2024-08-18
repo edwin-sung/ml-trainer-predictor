@@ -1,4 +1,5 @@
 ﻿using Microsoft.ML;
+using Microsoft.ML.Data;
 using System.Reflection;
 
 namespace MLTrainerPredictor
@@ -88,27 +89,41 @@ namespace MLTrainerPredictor
             }
 
             string[] features = nonLabelInputs.Select(c => @c).ToArray();
+
+            IEstimator<ITransformer>? pipeline = null;
+
+            void AppendAction(IEstimator<ITransformer> estimator)
+            {
+                if (pipeline == null)
+                {
+                    pipeline = estimator;
+                }
+                else
+                {
+                    pipeline.Append(estimator);
+                }
+            }
+            
             List<InputOutputColumnPair> hotEncodingColumnPairs = new List<InputOutputColumnPair>();
             if (TryGetColumnNamesFor<ModelInput>(att => att.ColumnType == typeof(string) && !att.IsLabel, out List<string> stringColumns))
             {
                 stringColumns.ForEach(c => hotEncodingColumnPairs.Add(new InputOutputColumnPair(@c, @c)));
+                AppendAction(mlContext.Transforms.Categorical.OneHotEncoding(hotEncodingColumnPairs.ToArray()));
             }
 
             List<InputOutputColumnPair> missingValuesColumnPairs = new List<InputOutputColumnPair>();
             if (TryGetColumnNamesFor<ModelInput>(att => att.ColumnType == typeof(float) && !att.IsLabel, out List<string> floatColumns))
             {
                 floatColumns.ForEach(c => hotEncodingColumnPairs.Add(new InputOutputColumnPair(@c, @c)));
+
+                AppendAction(mlContext.Transforms.ReplaceMissingValues(missingValuesColumnPairs.ToArray()));
             }
 
-            // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Transforms.Categorical.OneHotEncoding(hotEncodingColumnPairs.ToArray())
-                                    .Append(mlContext.Transforms.ReplaceMissingValues(missingValuesColumnPairs.ToArray()))
-                                    .Append(mlContext.Transforms.Concatenate(@"Features", features))
+            AppendAction(mlContext.Transforms.Concatenate(@"Features", features)
                                     .Append(mlContext.Transforms.Conversion.MapValueToKey(@labelledInput, @labelledInput))
                                     .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))
                                     .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization: 1F, l2Regularization: 1F, labelColumnName: @labelledInput, featureColumnName: @"Features"), @labelledInput))
-                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput));
-
+                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput)));
             return pipeline;
         }
 

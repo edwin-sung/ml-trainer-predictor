@@ -12,7 +12,7 @@ namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
         public void Initialise()
         {
             setupItem = new ElectricalEnergySetupItem();
-            setupItem.AddDataInputsByCSVFilePath(".\\example.csv");
+            setupItem.AddDataInputsByCSVFilePath(Environment.CurrentDirectory + "\\MicroGasTurbineElectricalEnergyPrediction\\example.csv");
         }
 
         [TearDown]
@@ -24,6 +24,7 @@ namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
         [Test]
         public void Test_Training_And_Predicting()
         {
+            bool tryCreateTrainedModel = setupItem.TryCreateTrainedModelForTesting();
             bool trainedModelApplied = setupItem.ApplyTrainedModel();
 
             ElectricalEnergyPredictor predictor = new ElectricalEnergyPredictor();
@@ -33,7 +34,9 @@ namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
             predictor.TryGetPredictedOutput(input, out ElectricalOutput output);
 
             float? predictedValue = output.Prediction;
-            Assert.IsTrue(trainedModelApplied);
+
+            
+            Assert.IsTrue(tryCreateTrainedModel && trainedModelApplied);
             Assert.IsNotNull(predictedValue);
 
         }

@@ -6,11 +6,12 @@ namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
     {
         public ElectricalEnergySetupItem() : base("ElectricalEnergyTrainingModel")
         {
+
         }
 
         public override string Name => "Electrical Energy Setup";
 
-        public override string TrainingModelDirectory { get; set; } = "C:\\Temp\\MLTrainerPredictorTest";
+        public override string TrainingModelDirectory { get; set; } = "C:\\Temp";
 
         public override string TrainingModelName { get; set; } = string.Empty;
 
@@ -26,7 +27,7 @@ namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
         {
             validModelInput = new ElectricalInput();
             string[] items = csvRow.Split(new[] { SEPARATOR }, StringSplitOptions.None);
-            if (items.Length != 5)
+            if (items.Length != 3)
             {
                 return false;
             }
