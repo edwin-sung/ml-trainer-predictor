@@ -1,4 +1,7 @@
-﻿namespace MLTrainerPredictor.DataSetup
+﻿using MLTrainerPredictor.TrainingAlgorithms;
+using MLTrainerPredictor.TrainingAlgorithms.CustomisableOption;
+
+namespace MLTrainerPredictor.DataSetup
 {
     /// <summary>
     /// Functionality-specific machine learning set-up item interface
@@ -21,6 +24,25 @@
         /// both CSV and trained ZIP files to be saved in.
         /// </summary>
         string TrainingModelName { get; set; }
+
+        /// <summary>
+        /// Gets all available training algorithms for end-user to select
+        /// </summary>
+        /// <returns>All available training algorithms to choose from </returns>
+        IEnumerable<MLTrainingAlgorithmType> GetAllTrainingAlgorithms();
+
+        /// <summary>
+        /// Sets the training algorithm
+        /// </summary>
+        /// <param name="algorithmType">Training algroithm type</param>
+        void SetTrainingAlgorithm(MLTrainingAlgorithmType algorithmType);
+
+        /// <summary>
+        /// Gets the collection of training algorithm options that are customisable
+        /// This is useful for forms to output customisable fields for user input
+        /// </summary>
+        /// <returns>Collection of training algorithm options</returns>
+        List<ITrainingAlgorithmOption> GetTrainingAlgorithmOptions();
 
         /// <summary>
         /// Add data inputs by importing a CSV file path

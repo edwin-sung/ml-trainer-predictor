@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using MLTrainerPredictor.TrainingAlgorithms;
+using MLTrainerPredictor.TrainingAlgorithms.CustomisableOption;
+using System.Reflection;
 using System.Text;
 
 namespace MLTrainerPredictor.DataSetup
@@ -41,6 +43,7 @@ namespace MLTrainerPredictor.DataSetup
 
 
         private List<ModelInput> modelInputs = new List<ModelInput>();
+        private IMLTrainingAlgorithm? trainingAlgorithm;
 
         /// <summary>
         /// Constructor for the machine learning set-up item
@@ -54,6 +57,25 @@ namespace MLTrainerPredictor.DataSetup
             {
                 AddDataInputsByCSVFilePath(TrainingModelFilePath);
             }
+
+            SetTrainingAlgorithm(GetAllTrainingAlgorithms().FirstOrDefault());
+        }
+
+        public IEnumerable<MLTrainingAlgorithmType> GetAllTrainingAlgorithms()
+        {
+            return Enum.GetValues<MLTrainingAlgorithmType>();
+        }
+
+        /// <inheritdoc />
+        public void SetTrainingAlgorithm(MLTrainingAlgorithmType algorithmType)
+        {
+            trainingAlgorithm = MLTrainingAlgorithmFactory.CreateInstance(algorithmType);
+        }
+
+        /// <inheritdoc />
+        public List<ITrainingAlgorithmOption> GetTrainingAlgorithmOptions()
+        {
+            return trainingAlgorithm?.GetCustomisableOptions().ToList() ?? new List<ITrainingAlgorithmOption>();
         }
 
         /// <inheritdoc />
@@ -210,7 +232,7 @@ namespace MLTrainerPredictor.DataSetup
                 File.Copy(TrainedModelFilePath, TempTrainedModelFilePath);
             }
 
-            ModelTrainer<ModelInput, ModelOutput> trainer = new ModelTrainer<ModelInput, ModelOutput>();
+            ModelTrainer<ModelInput, ModelOutput> trainer = new ModelTrainer<ModelInput, ModelOutput>(trainingAlgorithm);
             return trainer.TryTrainModel(modelInputs, TrainedModelFilePath);
         }
 
@@ -246,7 +268,5 @@ namespace MLTrainerPredictor.DataSetup
                 File.Delete(TrainedModelFilePath);
             }
         }
-
-
     }
 }

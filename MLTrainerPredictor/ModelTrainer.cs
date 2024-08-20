@@ -1,5 +1,5 @@
 ﻿using Microsoft.ML;
-using Microsoft.ML.Data;
+using MLTrainerPredictor.TrainingAlgorithms;
 using System.Reflection;
 
 namespace MLTrainerPredictor
@@ -11,6 +11,12 @@ namespace MLTrainerPredictor
     /// <typeparam name="ModelOutput">Model output type</typeparam>
     internal class ModelTrainer<ModelInput, ModelOutput> where ModelInput : class where ModelOutput : class, new()
     {
+        private IMLTrainingAlgorithm trainingAlgorithm;
+
+        internal ModelTrainer(IMLTrainingAlgorithm trainingAlgorithm)
+        {
+            this.trainingAlgorithm = trainingAlgorithm;
+        }
 
         #region Model training
         
@@ -122,7 +128,7 @@ namespace MLTrainerPredictor
             AppendAction(mlContext.Transforms.Concatenate(@"Features", features));
             AppendAction(mlContext.Transforms.Conversion.MapValueToKey(@labelledInput, @labelledInput));
             AppendAction(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"));
-            AppendAction(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization: 1F, l2Regularization: 1F, labelColumnName: @labelledInput, featureColumnName: @"Features"), @labelledInput));
+            AppendAction(trainingAlgorithm.GetTrainingAlgorithm(mlContext, labelledInput, @"Features"));
             AppendAction(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput));
             return pipeline;
         }
