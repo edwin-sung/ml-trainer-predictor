@@ -178,7 +178,7 @@
             this.algorithmParametersListView.Name = "algorithmParametersListView";
             this.algorithmParametersListView.Size = new System.Drawing.Size(346, 107);
             this.algorithmParametersListView.TabIndex = 2;
-            this.algorithmParametersListView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.algorithmParametersListView_CellValueChanged);
+            this.algorithmParametersListView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.algorithmParametersListView_CellEndEdit);
             // 
             // algorithmComboBox
             // 

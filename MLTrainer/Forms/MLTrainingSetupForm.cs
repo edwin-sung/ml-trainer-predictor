@@ -184,10 +184,11 @@ namespace MLTrainer.Forms
 
         }
 
-        private void algorithmParametersListView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void algorithmParametersListView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+                
                 string newValue = (string)algorithmParametersListView[e.ColumnIndex, e.RowIndex].Value;
                 foreach (DataGridViewCell cell in algorithmParametersListView.SelectedCells)
                 {
@@ -196,7 +197,12 @@ namespace MLTrainer.Forms
                         continue;
                     }
 
-                    validOption.TrySetValue(newValue);
+                    if (!validOption.TrySetValue(newValue))
+                    {
+                        // Revert to the original value.
+                        validOption.TryGetValueAsString(out string oldValue);
+                        algorithmParametersListView[e.ColumnIndex, e.RowIndex].Value = oldValue;
+                    }
                 }
             } catch
             {
