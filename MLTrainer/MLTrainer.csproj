@@ -121,12 +121,6 @@
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalEnergySetupItem.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalInput.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalOutput.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MLTrainingSetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +139,9 @@
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\L1RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\L2RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\OneVersusAll.cs" />
+    <EmbeddedResource Include="Forms\MLTrainingSetupForm.resx">
+      <DependentUpon>MLTrainingSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -154,6 +151,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Demo\MicroGasTurbineElectricalEnergyPrediction\example.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

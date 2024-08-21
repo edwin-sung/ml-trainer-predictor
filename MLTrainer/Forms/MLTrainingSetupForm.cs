@@ -1,12 +1,11 @@
 ﻿using MLTrainer.DataSetup;
+using MLTrainer.TrainingAlgorithms;
+using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MLTrainer.Forms
@@ -22,11 +21,12 @@ namespace MLTrainer.Forms
             InitializeComponent();
             setupItems.AddRange(setupFactory.GetAvailableSetupItems());
 
-            //SetupFunctionalityList();
+            SetupFunctionalityList();
+            SetupAlgorithmList();
         }
 
 
-        /*private void SetupFunctionalityList()
+        private void SetupFunctionalityList()
         {
             functionalityComboBox.BeginUpdate();
             functionalityComboBox.Items.Clear();
@@ -39,6 +39,39 @@ namespace MLTrainer.Forms
             functionalityComboBox.SelectedIndex = 0;
 
             functionalityComboBox.EndUpdate();
+        }
+
+        private void SetupAlgorithmList()
+        {
+            algorithmComboBox.DisplayMember = "Description";
+            algorithmComboBox.ValueMember = "Value";
+            algorithmComboBox.DataSource = Enum.GetValues(typeof(MLTrainingAlgorithmType)).Cast<Enum>().Select(
+                value => (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), 
+                typeof(DescriptionAttribute)) as DescriptionAttribute).Description).ToList();
+            algorithmComboBox.Update();
+
+            algorithmComboBox.SelectedIndex = 0;
+        }
+
+        private void SetupAlgorithmParametersDataGridView()
+        {
+            algorithmParametersListView.Rows.Clear();
+            foreach (ITrainingAlgorithmOption option in selectedSetup.GetTrainingAlgorithmOptions())
+            {
+                DataGridViewRow newRow = new DataGridViewRow();
+                DataGridViewCell cell = new DataGridViewTextBoxCell();
+                cell.Value = option.Name;
+                newRow.Cells.Add(cell);
+
+                DataGridViewCell valueCell = new DataGridViewTextBoxCell();
+                valueCell.Tag = option;
+                valueCell.Value = option.TryGetValueAsString(out string valueAsString) ? valueAsString : string.Empty;
+                newRow.Cells.Add(valueCell);
+
+                algorithmParametersListView.Rows.Add(newRow);
+            }
+
+            algorithmParametersListView.Update();
         }
 
         private void RefreshRows()
@@ -67,19 +100,14 @@ namespace MLTrainer.Forms
             modelDataPreviewComboBox.EndUpdate();
         }
 
-        private void FunctionalityComboBoxOnSelectedIndexChanged(object sender, EventArgs e)
+        private void clearAllButton_Click_1(object sender, EventArgs e)
         {
-            selectedSetup = setupItems[functionalityComboBox.SelectedIndex];
-            RefreshRows();
+            modelDataPreviewComboBox.Items.Clear();
+            selectedSetup.ClearAllDataInput();
+            modelDataPreviewComboBox.Update();
         }
 
-        private void addCEButton_Click_1(object sender, EventArgs e)
-        {
-            selectedSetup.AddDataInputsByCurrentElement(CurrentElement.Element);
-            RefreshRows();
-        }
-
-        private void importFromCSV_Click(object sender, EventArgs e)
+        private void importCSVButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileOpener = new OpenFileDialog();
             fileOpener.ValidateNames = true;
@@ -99,7 +127,27 @@ namespace MLTrainer.Forms
             }
         }
 
-        private void clearSelectedButton_Click(object sender, EventArgs e)
+        private void trainModelButton_Click(object sender, EventArgs e)
+        {
+            trainingResultsLabel.Text = selectedSetup.TryCreateTrainedModelForTesting()
+                ? "Trained model now created for testing purposes"
+                : "Trained model cannot be created.";
+        }
+
+        private void applyTrainedModelButton_Click(object sender, EventArgs e)
+        {
+            trainingResultsLabel.Text = selectedSetup.ApplyTrainedModel()
+                ? "Trained model applied successfully"
+                : "Trained model application unsuccessful.";
+        }
+
+        private void saveCSVButton_Click(object sender, EventArgs e)
+        {
+            selectedSetup.SaveModelInputAsCSV();
+            trainingResultsLabel.Text = "CSV successfully saved.";
+        }
+
+        private void removeSelectedButton_Click(object sender, EventArgs e)
         {
             List<int> indices = new List<int>();
             foreach (int index in modelDataPreviewComboBox.SelectedIndices)
@@ -114,35 +162,54 @@ namespace MLTrainer.Forms
             }
 
             RefreshRows();
+        }
+
+        private void modelDataPreviewComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedSetup = setupItems[functionalityComboBox.SelectedIndex];
+            RefreshRows();
+        }
+
+        private void algorithmComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                selectedSetup.SetTrainingAlgorithm((MLTrainingAlgorithmType)algorithmComboBox.SelectedIndex);
+                SetupAlgorithmParametersDataGridView();
+            } 
+            catch
+            {
+
+            }
 
         }
 
-        private void clearAllButton_Click(object sender, EventArgs e)
+        private void algorithmParametersListView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            modelDataPreviewComboBox.Items.Clear();
-            selectedSetup.ClearAllDataInput();
-            modelDataPreviewComboBox.Update();
+            try
+            {
+                string newValue = (string)algorithmParametersListView[e.ColumnIndex, e.RowIndex].Value;
+                foreach (DataGridViewCell cell in algorithmParametersListView.SelectedCells)
+                {
+                    if (!(cell.Tag is ITrainingAlgorithmOption validOption))
+                    {
+                        continue;
+                    }
+
+                    validOption.TrySetValue(newValue);
+                }
+            } catch
+            {
+
+            }
+
+            
         }
 
-        private void trainModelDataButton_Click(object sender, EventArgs e)
+        private void functionalityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            trainingResultsLabel.Text = selectedSetup.TryCreateTrainedModelForTesting()
-                ? "Trained model now created for testing purposes"
-                : "Trained model cannot be created.";
+            selectedSetup = setupItems.SingleOrDefault(item => item.Name == functionalityComboBox.SelectedItem.ToString());
+            SetupAlgorithmParametersDataGridView();
         }
-
-        private void saveCSVButton_Click(object sender, EventArgs e)
-        {
-            selectedSetup.SaveModelInputAsCSV();
-            trainingResultsLabel.Text = "CSV successfully saved.";
-        }
-
-        private void apply_Click(object sender, EventArgs e)
-        {
-            trainingResultsLabel.Text = selectedSetup.ApplyTrainedModel()
-                ? "Trained model applied successfully"
-                : "Trained model application unsuccessful.";
-        }*/
-
     }
 }
