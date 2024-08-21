@@ -8,6 +8,7 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <OutputType>Library</OutputType>
+    <Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
