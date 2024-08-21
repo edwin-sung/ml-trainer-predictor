@@ -1,4 +1,5 @@
 ﻿using MLTrainer.DataSetup;
+using MLTrainer.PredictionTesterUI;
 using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System;
@@ -23,6 +24,7 @@ namespace MLTrainer.Forms
 
             SetupFunctionalityList();
             SetupAlgorithmList();
+            SetupPredictionTestDataInputGridView();
         }
 
 
@@ -72,6 +74,27 @@ namespace MLTrainer.Forms
             }
 
             algorithmParametersListView.Update();
+        }
+
+        private void SetupPredictionTestDataInputGridView()
+        {
+            testPredictionDataGridView.Rows.Clear();
+            foreach(IPredictionTesterDataInputItem dataInputItem in selectedSetup.GetAllPredictionTesterDataInputItems())
+            {
+                DataGridViewRow newRow = new DataGridViewRow();
+                DataGridViewCell cell = new DataGridViewTextBoxCell();
+                cell.Value = dataInputItem.Name;
+                newRow.Cells.Add(cell);
+
+                DataGridViewCell valueCell = new DataGridViewTextBoxCell();
+                valueCell.Tag = dataInputItem;
+                valueCell.Value = dataInputItem.GetValueAsString();
+                newRow.Cells.Add(valueCell);
+
+                testPredictionDataGridView.Rows.Add(newRow);
+            }
+
+            testPredictionDataGridView.Update();
         }
 
         private void RefreshRows()
@@ -129,15 +152,17 @@ namespace MLTrainer.Forms
 
         private void trainModelButton_Click(object sender, EventArgs e)
         {
-            trainingResultsLabel.Text = selectedSetup.TryCreateTrainedModelForTesting()
-                ? "Trained model now created for testing purposes"
+            trainingResultsLabel.Text = selectedSetup.TryCreateTrainedModelForTesting(out string filePath)
+                ? $"Trained model now created ({filePath}) for testing purposes"
                 : "Trained model cannot be created.";
+
+            SetupPredictionTestDataInputGridView();
         }
 
         private void applyTrainedModelButton_Click(object sender, EventArgs e)
         {
-            trainingResultsLabel.Text = selectedSetup.ApplyTrainedModel()
-                ? "Trained model applied successfully"
+            trainingResultsLabel.Text = selectedSetup.ApplyTrainedModel(out string filePath)
+                ? $"Trained model applied successfully to {filePath}"
                 : "Trained model application unsuccessful.";
         }
 
@@ -188,7 +213,6 @@ namespace MLTrainer.Forms
         {
             try
             {
-                
                 string newValue = (string)algorithmParametersListView[e.ColumnIndex, e.RowIndex].Value;
                 foreach (DataGridViewCell cell in algorithmParametersListView.SelectedCells)
                 {
@@ -208,14 +232,45 @@ namespace MLTrainer.Forms
             {
 
             }
+        }
 
-            
+        private void testPredictionDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string newValue = (string)testPredictionDataGridView[e.ColumnIndex, e.RowIndex].Value;
+                foreach (DataGridViewCell cell in testPredictionDataGridView.SelectedCells)
+                {
+                    if (!(cell.Tag is IPredictionTesterDataInputItem validTestInputItem))
+                    {
+                        continue;
+                    }
+
+                    if (!validTestInputItem.TrySetValue(newValue))
+                    {
+                        // Revert to the original value.
+                        testPredictionDataGridView[e.ColumnIndex, e.RowIndex].Value = validTestInputItem.GetValueAsString();
+                    }
+                }
+            } 
+            catch
+            {
+
+            }
         }
 
         private void functionalityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedSetup = setupItems.SingleOrDefault(item => item.Name == functionalityComboBox.SelectedItem.ToString());
             SetupAlgorithmParametersDataGridView();
+        }
+
+        private void runTestPredictionButton_Click(object sender, EventArgs e)
+        {
+            selectedSetup.RunTestPrediction(out string predictedValueAsString);
+            testPredictionResultsLabel.Text = string.IsNullOrEmpty(predictedValueAsString)
+                ? "Predicted result cannot be calculated, please review the data input"
+                : $"The predicted output is {predictedValueAsString}";
         }
     }
 }

@@ -117,7 +117,6 @@
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupFactory.cs" />
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupItem.cs" />
     <Compile Include="Demo\DemoMLSetupFactory.cs" />
-    <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalEnergyPredictor.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalEnergySetupItem.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalInput.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalOutput.cs" />
@@ -129,6 +128,11 @@
     </Compile>
     <Compile Include="ModelPredictor.cs" />
     <Compile Include="ModelTrainer.cs" />
+    <Compile Include="PredictionTesterUI\DataInputItemType\PredictionTesterDataInputFloat.cs" />
+    <Compile Include="PredictionTesterUI\DataInputItemType\PredictionTesterDataInputString.cs" />
+    <Compile Include="PredictionTesterUI\IPredictionTesterDataInputItem.cs" />
+    <Compile Include="PredictionTesterUI\PredictionTester.cs" />
+    <Compile Include="PredictionTesterUI\PredictionTesterDataInputItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrainingAlgorithms\CustomisableOption\ITrainingAlgorithmOption.cs" />
@@ -167,6 +171,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

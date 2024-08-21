@@ -1,4 +1,5 @@
-﻿using MLTrainer.TrainingAlgorithms;
+﻿using MLTrainer.PredictionTesterUI;
+using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System.Collections.Generic;
 
@@ -83,14 +84,28 @@ namespace MLTrainer.DataSetup
         /// Create a temporary trained model based on the set of model inputs added
         /// to this instance
         /// </summary>
+        /// <param name="testingTrainedModelFilePath">[Output] Testing trained model file path</param>
         /// <returns>True if the training is successful</returns>
-        bool TryCreateTrainedModelForTesting();
+        bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath);
+
+        /// <summary>
+        /// Gets all test prediction data input items for the form
+        /// </summary>
+        /// <returns>Collection of prediction tester data input items</returns>
+        IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems();
+
+        /// <summary>
+        /// Runs the test prediction
+        /// </summary>
+        /// <param name="predictedValueAsString">[Output] Predicted value as string</param>
+        void RunTestPrediction(out string predictedValueAsString);
 
         /// <summary>
         /// Apply / commit the trained model
         /// </summary>
+        /// <param name="trainedModelFilePath">[Output] Trained model file path</param>"
         /// <returns>True if the trained model is applied, and temporary files are deleted</returns>
-        bool ApplyTrainedModel();
+        bool ApplyTrainedModel(out string trainedModelFilePath);
 
         /// <summary>
         /// Cancel action that reset the file contents

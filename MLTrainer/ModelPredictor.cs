@@ -8,27 +8,26 @@ namespace MLTrainer
     /// </summary>
     /// <typeparam name="ModelInput">Model input type</typeparam>
     /// <typeparam name="ModelOutput">Model output type</typeparam>
-    public abstract class ModelPredictor<ModelInput, ModelOutput> where ModelInput : class where ModelOutput : class, new()
+    public class ModelPredictor<ModelInput, ModelOutput> where ModelInput : class where ModelOutput : class, new()
     {
-        /// <summary>
-        /// Trained model file path
-        /// </summary>
-        protected abstract string TrainedModelFilePath { get; }
+        private readonly string trainedModelFilePath = string.Empty;
 
         private Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictionEngine;
 
         /// <summary>
         /// Model predictor constructor
         /// </summary>
-        protected ModelPredictor()
+        /// <param name="trainedModelFilePath">Trained model file path</param>
+        public ModelPredictor(string trainedModelFilePath)
         {
             PredictionEngine = new Lazy<PredictionEngine<ModelInput, ModelOutput>>(CreatePredictionEngine);
+            this.trainedModelFilePath = trainedModelFilePath;
         }
 
         private PredictionEngine<ModelInput, ModelOutput> CreatePredictionEngine()
         {
             MLContext mlContextInstance = new MLContext();
-            ITransformer mlModel = mlContextInstance.Model.Load(TrainedModelFilePath, out DataViewSchema _);
+            ITransformer mlModel = mlContextInstance.Model.Load(trainedModelFilePath, out DataViewSchema _);
             return mlContextInstance.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
         }
 
@@ -41,6 +40,7 @@ namespace MLTrainer
         public bool TryGetPredictedOutput(ModelInput input, out ModelOutput output)
         {
             output = PredictionEngine.Value.Predict(input);
+            PredictionEngine.Value.Dispose();
             return output != null;
         }
     }

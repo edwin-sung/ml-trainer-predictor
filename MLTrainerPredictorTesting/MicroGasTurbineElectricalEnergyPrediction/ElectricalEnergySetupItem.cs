@@ -60,7 +60,5 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
                 return false;
             }
         }
-
-        internal string GetTrainedModelFilePath() => TrainedModelFilePath;
     }
 }

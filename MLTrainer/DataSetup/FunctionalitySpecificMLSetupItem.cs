@@ -1,4 +1,5 @@
-﻿using MLTrainer.TrainingAlgorithms;
+﻿using MLTrainer.PredictionTesterUI;
+using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace MLTrainer.DataSetup
         /// <summary>
         /// Trained model file path
         /// </summary>
-        protected string TrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + ".zip";
+        private string TrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + ".zip";
 
         // Temporary training model file path for ML testing area
         private string TempTrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + "-temp.zip";
@@ -48,6 +49,7 @@ namespace MLTrainer.DataSetup
 
         private List<ModelInput> modelInputs = new List<ModelInput>();
         private IMLTrainingAlgorithm trainingAlgorithm = null;
+        private PredictionTester<ModelInput, ModelOutput> predictionTester = null;
 
         /// <summary>
         /// Constructor for the machine learning set-up item
@@ -227,22 +229,50 @@ namespace MLTrainer.DataSetup
         }
 
         /// <inheritdoc />
-        public bool TryCreateTrainedModelForTesting()
+        public bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath)
         {
             // Create a copy of the original trained model ZIP and save it as a temp
             // This way we can change the state of the original one for testing.
             if (File.Exists(TrainedModelFilePath))
             {
+                // Remove any temporary files already in place.
+                if (File.Exists(TempTrainedModelFilePath))
+                {
+                    File.Delete(TempTrainedModelFilePath);
+                }
                 File.Copy(TrainedModelFilePath, TempTrainedModelFilePath);
             }
 
+            testingTrainedModelFilePath = string.Empty;
+
             ModelTrainer<ModelInput, ModelOutput> trainer = new ModelTrainer<ModelInput, ModelOutput>(trainingAlgorithm);
-            return trainer.TryTrainModel(modelInputs, TrainedModelFilePath);
+
+            if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath))
+            {
+                testingTrainedModelFilePath = TrainedModelFilePath;
+                predictionTester = new PredictionTester<ModelInput, ModelOutput>();
+                return true;
+            }
+            return false;
+        }
+
+        /// <inhertidoc />
+        public IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems()
+        {
+            return predictionTester?.DataInputItems ?? new List<IPredictionTesterDataInputItem>();
         }
 
         /// <inheritdoc />
-        public bool ApplyTrainedModel()
+        public void RunTestPrediction(out string predictedValueAsString)
         {
+            predictedValueAsString = string.Empty;
+            predictionTester?.RunPrediction(new ModelPredictor<ModelInput, ModelOutput>(TrainedModelFilePath), out predictedValueAsString);
+        }
+
+        /// <inheritdoc />
+        public bool ApplyTrainedModel(out string trainedModelFilePath)
+        {
+            trainedModelFilePath = TrainedModelFilePath;
             try
             {
                 // Replace the file path of the trained model with the temp one, and delete the temp.

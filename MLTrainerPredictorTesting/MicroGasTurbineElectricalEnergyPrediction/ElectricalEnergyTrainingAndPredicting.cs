@@ -24,10 +24,9 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
         [Test]
         public void Test_Training_And_Predicting()
         {
-            bool tryCreateTrainedModel = setupItem.TryCreateTrainedModelForTesting();
-            bool trainedModelApplied = setupItem.ApplyTrainedModel();
+            bool tryCreateTrainedModel = setupItem.TryCreateTrainedModelForTesting(out string filePath);
 
-            ElectricalEnergyPredictor predictor = new ElectricalEnergyPredictor();
+            ModelPredictor<ElectricalInput, ElectricalOutput> predictor = new ModelPredictor<ElectricalInput, ElectricalOutput>(filePath);
 
             ElectricalInput input = new ElectricalInput { Time = 5213, InputVoltage = 3 };
 
@@ -36,7 +35,7 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
             float? predictedValue = output.Prediction;
 
             
-            Assert.IsTrue(tryCreateTrainedModel && trainedModelApplied);
+            Assert.IsTrue(tryCreateTrainedModel);
             Assert.IsNotNull(predictedValue);
 
         }

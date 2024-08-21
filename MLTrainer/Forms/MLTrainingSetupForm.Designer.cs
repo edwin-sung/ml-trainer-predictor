@@ -39,12 +39,19 @@
             this.applyTrainedModelButton = new System.Windows.Forms.Button();
             this.removeSelectedButton = new System.Windows.Forms.Button();
             this.testPredictionGroupBox = new System.Windows.Forms.GroupBox();
+            this.testPredictionResultsLabel = new System.Windows.Forms.Label();
+            this.testPredictionDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trainingAlgorithmGroupBox = new System.Windows.Forms.GroupBox();
             this.algorithmParametersListView = new System.Windows.Forms.DataGridView();
-            this.algorithmComboBox = new System.Windows.Forms.ComboBox();
-            this.selectAlgorithmLabel = new System.Windows.Forms.Label();
             this.Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.algorithmComboBox = new System.Windows.Forms.ComboBox();
+            this.selectAlgorithmLabel = new System.Windows.Forms.Label();
+            this.runTestPredictionButton = new System.Windows.Forms.Button();
+            this.testPredictionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testPredictionDataGridView)).BeginInit();
             this.trainingAlgorithmGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.algorithmParametersListView)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +107,7 @@
             // 
             // trainModelButton
             // 
-            this.trainModelButton.Location = new System.Drawing.Point(16, 352);
+            this.trainModelButton.Location = new System.Drawing.Point(10, 162);
             this.trainModelButton.Name = "trainModelButton";
             this.trainModelButton.Size = new System.Drawing.Size(75, 23);
             this.trainModelButton.TabIndex = 5;
@@ -111,7 +118,7 @@
             // trainingResultsLabel
             // 
             this.trainingResultsLabel.AutoSize = true;
-            this.trainingResultsLabel.Location = new System.Drawing.Point(20, 380);
+            this.trainingResultsLabel.Location = new System.Drawing.Point(19, 388);
             this.trainingResultsLabel.Name = "trainingResultsLabel";
             this.trainingResultsLabel.Size = new System.Drawing.Size(0, 13);
             this.trainingResultsLabel.TabIndex = 6;
@@ -148,6 +155,9 @@
             // 
             // testPredictionGroupBox
             // 
+            this.testPredictionGroupBox.Controls.Add(this.runTestPredictionButton);
+            this.testPredictionGroupBox.Controls.Add(this.testPredictionResultsLabel);
+            this.testPredictionGroupBox.Controls.Add(this.testPredictionDataGridView);
             this.testPredictionGroupBox.Location = new System.Drawing.Point(416, 75);
             this.testPredictionGroupBox.Name = "testPredictionGroupBox";
             this.testPredictionGroupBox.Size = new System.Drawing.Size(372, 300);
@@ -155,14 +165,49 @@
             this.testPredictionGroupBox.TabStop = false;
             this.testPredictionGroupBox.Text = "Prediction Test";
             // 
+            // testPredictionResultsLabel
+            // 
+            this.testPredictionResultsLabel.AutoSize = true;
+            this.testPredictionResultsLabel.Location = new System.Drawing.Point(88, 269);
+            this.testPredictionResultsLabel.Name = "testPredictionResultsLabel";
+            this.testPredictionResultsLabel.Size = new System.Drawing.Size(0, 13);
+            this.testPredictionResultsLabel.TabIndex = 4;
+            // 
+            // testPredictionDataGridView
+            // 
+            this.testPredictionDataGridView.AllowUserToAddRows = false;
+            this.testPredictionDataGridView.AllowUserToDeleteRows = false;
+            this.testPredictionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.testPredictionDataGridView.Location = new System.Drawing.Point(6, 28);
+            this.testPredictionDataGridView.Name = "testPredictionDataGridView";
+            this.testPredictionDataGridView.Size = new System.Drawing.Size(346, 225);
+            this.testPredictionDataGridView.TabIndex = 3;
+            this.testPredictionDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.testPredictionDataGridView_CellEndEdit);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Input Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Input Value";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
             // trainingAlgorithmGroupBox
             // 
             this.trainingAlgorithmGroupBox.Controls.Add(this.algorithmParametersListView);
             this.trainingAlgorithmGroupBox.Controls.Add(this.algorithmComboBox);
             this.trainingAlgorithmGroupBox.Controls.Add(this.selectAlgorithmLabel);
+            this.trainingAlgorithmGroupBox.Controls.Add(this.trainModelButton);
             this.trainingAlgorithmGroupBox.Location = new System.Drawing.Point(15, 172);
             this.trainingAlgorithmGroupBox.Name = "trainingAlgorithmGroupBox";
-            this.trainingAlgorithmGroupBox.Size = new System.Drawing.Size(376, 173);
+            this.trainingAlgorithmGroupBox.Size = new System.Drawing.Size(376, 202);
             this.trainingAlgorithmGroupBox.TabIndex = 11;
             this.trainingAlgorithmGroupBox.TabStop = false;
             this.trainingAlgorithmGroupBox.Text = "Training Algorithm";
@@ -179,6 +224,17 @@
             this.algorithmParametersListView.Size = new System.Drawing.Size(346, 107);
             this.algorithmParametersListView.TabIndex = 2;
             this.algorithmParametersListView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.algorithmParametersListView_CellEndEdit);
+            // 
+            // Parameter
+            // 
+            this.Parameter.HeaderText = "Parameter";
+            this.Parameter.Name = "Parameter";
+            this.Parameter.ReadOnly = true;
+            // 
+            // Value
+            // 
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
             // 
             // algorithmComboBox
             // 
@@ -198,16 +254,15 @@
             this.selectAlgorithmLabel.TabIndex = 0;
             this.selectAlgorithmLabel.Text = "Select Algorithm";
             // 
-            // Parameter
+            // runTestPredictionButton
             // 
-            this.Parameter.HeaderText = "Parameter";
-            this.Parameter.Name = "Parameter";
-            this.Parameter.ReadOnly = true;
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
+            this.runTestPredictionButton.Location = new System.Drawing.Point(6, 264);
+            this.runTestPredictionButton.Name = "runTestPredictionButton";
+            this.runTestPredictionButton.Size = new System.Drawing.Size(54, 23);
+            this.runTestPredictionButton.TabIndex = 6;
+            this.runTestPredictionButton.Text = "Run";
+            this.runTestPredictionButton.UseVisualStyleBackColor = true;
+            this.runTestPredictionButton.Click += new System.EventHandler(this.runTestPredictionButton_Click);
             // 
             // MLTrainingSetupForm
             // 
@@ -220,7 +275,6 @@
             this.Controls.Add(this.applyTrainedModelButton);
             this.Controls.Add(this.saveCSVButton);
             this.Controls.Add(this.trainingResultsLabel);
-            this.Controls.Add(this.trainModelButton);
             this.Controls.Add(this.modelDataPreviewComboBox);
             this.Controls.Add(this.clearAllButton);
             this.Controls.Add(this.importCSVButton);
@@ -228,6 +282,9 @@
             this.Controls.Add(this.selectFunctionalityLabel);
             this.Name = "MLTrainingSetupForm";
             this.Text = "Machine Learning Training";
+            this.testPredictionGroupBox.ResumeLayout(false);
+            this.testPredictionGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testPredictionDataGridView)).EndInit();
             this.trainingAlgorithmGroupBox.ResumeLayout(false);
             this.trainingAlgorithmGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.algorithmParametersListView)).EndInit();
@@ -255,5 +312,10 @@
         private System.Windows.Forms.DataGridView algorithmParametersListView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Parameter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private System.Windows.Forms.DataGridView testPredictionDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Label testPredictionResultsLabel;
+        private System.Windows.Forms.Button runTestPredictionButton;
     }
 }
