@@ -1,6 +1,6 @@
-﻿using MLTrainer.DataSetup;
+﻿using MLTrainerPredictor.DataSetup;
 
-namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
+namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
 {
     internal class ElectricalEnergySetupItem : FunctionalitySpecificMLSetupItem<ElectricalInput, ElectricalOutput>
     {

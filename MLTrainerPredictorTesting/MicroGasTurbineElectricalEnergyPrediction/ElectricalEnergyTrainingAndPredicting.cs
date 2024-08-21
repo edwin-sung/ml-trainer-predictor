@@ -1,7 +1,7 @@
-using MLTrainerPredictor;
-using MLTrainerPredictor.DataSetup;
+using MLTrainer;
+using MLTrainer.DataSetup;
 
-namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
+namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
     [TestFixture]
     public class ElectricalEnergyTrainingAndPredicting

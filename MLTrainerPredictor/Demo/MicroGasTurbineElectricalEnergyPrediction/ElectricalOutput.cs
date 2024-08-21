@@ -1,7 +1,7 @@
 ﻿using Microsoft.ML.Data;
-using MLTrainer;
+using MLTrainerPredictor;
 
-namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
+namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
 {
     public class ElectricalOutput
     {

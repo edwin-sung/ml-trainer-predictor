@@ -1,6 +1,6 @@
-﻿using MLTrainer;
+﻿using MLTrainerPredictor;
 
-namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
+namespace MLTrainerPredictorTests.MicroGasTurbineElectricalEnergyPrediction
 {
     internal class ElectricalEnergyPredictor : ModelPredictor<ElectricalInput, ElectricalOutput>
     {
