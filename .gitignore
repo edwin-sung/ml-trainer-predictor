@@ -9,3 +9,7 @@
 /MLTrainer/bin
 /MLTrainer/obj
 /MLTrainerPredictor/packages
+/MLTrainer/packages
+/MLTrainer/.vs
+/.vs
+/MLTrainer/MigrationBackup
