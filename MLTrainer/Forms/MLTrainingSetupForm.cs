@@ -261,6 +261,8 @@ namespace MLTrainer.Forms
 
         private void functionalityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Do the temp file clean up before moving on to the other selected setup.
+            selectedSetup.CleanupTemporaryFiles();
             selectedSetup = setupItems.SingleOrDefault(item => item.Name == functionalityComboBox.SelectedItem.ToString());
             SetupAlgorithmParametersDataGridView();
         }
@@ -271,6 +273,11 @@ namespace MLTrainer.Forms
             testPredictionResultsLabel.Text = string.IsNullOrEmpty(predictedValueAsString)
                 ? "Predicted result cannot be calculated, please review the data input"
                 : $"The predicted output is {predictedValueAsString}";
+        }
+
+        private void MLTrainingSetupForm_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        {
+            selectedSetup.CleanupTemporaryFiles();
         }
     }
 }

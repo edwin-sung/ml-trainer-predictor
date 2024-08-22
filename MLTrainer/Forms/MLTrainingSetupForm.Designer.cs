@@ -291,6 +291,8 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+            this.FormClosed += MLTrainingSetupForm_FormClosed;
+
         }
 
         #endregion
