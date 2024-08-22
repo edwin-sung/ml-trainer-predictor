@@ -111,7 +111,7 @@ namespace MLTrainer.Forms
                 {
                     continue;
                 }
-                ListViewItem newRow = new ListViewItem(string.Join(",", row));
+                ListViewItem newRow = new ListViewItem(row[0]);
                 foreach (string column in row.Skip(1))
                 {
                     newRow.SubItems.Add(column);
