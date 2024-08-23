@@ -4,7 +4,7 @@ namespace MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm
 {
     internal class L1RegularisationOption : TrainingAlgorithmOption<float>
     {
-        public override string Name => "L1 Regularisation option";
+        public override string Name => "L1 Regularisation";
 
         internal L1RegularisationOption(float initialValue) => value = initialValue;
 

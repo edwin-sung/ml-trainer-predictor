@@ -1,22 +1,22 @@
 ﻿using MLTrainer.TrainingAlgorithms.CustomisableOption;
 
-namespace MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm
+namespace MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm
 {
-    internal class L2RegularisationOption : TrainingAlgorithmOption<float>
+    internal class HistorySizeOption : TrainingAlgorithmOption<int>
     {
-        public override string Name => "L2 Regularisation";
+        public override string Name => "History size";
 
-        internal L2RegularisationOption(float initialValue) => value = initialValue;
+        internal HistorySizeOption(int initialValue) => value = initialValue;
 
         public override bool TryGetValueAsString(out string valueAsString)
         {
-            valueAsString = value.ToString("R");
+            valueAsString = value.ToString();
             return true;
         }
 
         public override bool TrySetValue(string newValue)
         {
-            if (float.TryParse(newValue, out float validResult))
+            if (int.TryParse(newValue, out int validResult))
             {
                 value = validResult;
                 return true;

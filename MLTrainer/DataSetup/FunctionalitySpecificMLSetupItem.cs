@@ -292,15 +292,23 @@ namespace MLTrainer.DataSetup
         /// <inheritdoc />
         public void CleanupTemporaryFiles()
         {
-            if (File.Exists(TempTrainedModelFilePath))
+
+            try
             {
-                File.Replace(TrainedModelFilePath, TempTrainedModelFilePath, BackupTrainedModelFilePath);
-                File.Delete(TempTrainedModelFilePath);
-            }
-            else if (File.Exists(TrainedModelFilePath))
+                if (File.Exists(TempTrainedModelFilePath))
+                {
+                    File.Replace(TrainedModelFilePath, TempTrainedModelFilePath, BackupTrainedModelFilePath);
+                    File.Delete(TempTrainedModelFilePath);
+                }
+                else if (File.Exists(TrainedModelFilePath))
+                {
+                    File.Delete(TrainedModelFilePath);
+                }
+            } 
+            catch
             {
-                File.Delete(TrainedModelFilePath);
             }
+
         }
     }
 }

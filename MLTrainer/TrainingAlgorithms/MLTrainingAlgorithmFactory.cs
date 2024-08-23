@@ -1,4 +1,5 @@
-﻿using MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm;
+﻿using MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm;
+using MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm;
 
 namespace MLTrainer.TrainingAlgorithms
 {
@@ -10,6 +11,7 @@ namespace MLTrainer.TrainingAlgorithms
             switch(algorithmType)
             {
                 case MLTrainingAlgorithmType.ONE_VERSUS_ALL: return new OneVersusAll();
+                case MLTrainingAlgorithmType.LBFGS_MAX_ENTROPY: return new LbfgsMaxEntropy();
                 default: return null;
             }
         }

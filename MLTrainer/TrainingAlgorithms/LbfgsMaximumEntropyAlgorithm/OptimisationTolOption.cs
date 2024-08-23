@@ -1,12 +1,12 @@
 ﻿using MLTrainer.TrainingAlgorithms.CustomisableOption;
 
-namespace MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm
+namespace MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm
 {
-    internal class L2RegularisationOption : TrainingAlgorithmOption<float>
+    internal class OptimisationTolOption : TrainingAlgorithmOption<float>
     {
-        public override string Name => "L2 Regularisation";
+        public override string Name => "Optimisation tolerance";
 
-        internal L2RegularisationOption(float initialValue) => value = initialValue;
+        internal OptimisationTolOption(float initialValue) => value = initialValue;
 
         public override bool TryGetValueAsString(out string valueAsString)
         {

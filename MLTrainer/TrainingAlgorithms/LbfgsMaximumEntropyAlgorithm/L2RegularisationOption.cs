@@ -1,6 +1,6 @@
 ﻿using MLTrainer.TrainingAlgorithms.CustomisableOption;
 
-namespace MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm
+namespace MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm
 {
     internal class L2RegularisationOption : TrainingAlgorithmOption<float>
     {
