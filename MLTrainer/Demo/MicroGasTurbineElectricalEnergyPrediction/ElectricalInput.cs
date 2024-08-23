@@ -14,8 +14,8 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
         [ColumnNameStorage("input_voltage", typeof(float))]
         public float InputVoltage { get; set; }
 
-        [ColumnName("Label")]
-        [ColumnNameStorage("Label", typeof(float), true)]
+        [ColumnName("el_power")]
+        [ColumnNameStorage("el_power", typeof(float), true)]
         public float ElectricalPower { get; set; }
 
     }
