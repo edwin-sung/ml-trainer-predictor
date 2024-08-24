@@ -5,7 +5,6 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
     public class ElectricalInput
     {
-
         [ColumnName("time")]
         [ColumnNameStorage("time", typeof(float))]
         public float Time { get; set; }
