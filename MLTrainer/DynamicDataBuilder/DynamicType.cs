@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Loader;
 using System.Text;
+using Microsoft.ML.Data;
+using System.Runtime.InteropServices;
 
 namespace MLTrainer.DynamicDataBuilder
 {
@@ -64,13 +65,15 @@ namespace MLTrainer.DynamicDataBuilder
 
             // Generate the class code
             classCode.AppendLine("using System;");
+            classCode.AppendLine("using Microsoft.ML.Data;");
+            classCode.AppendLine("using MLTrainer;");
             classCode.AppendLine("namespace MLTrainerPredictor.Dynamic {");
             classCode.AppendLine("public class DynamicClass {");
 
             foreach (var property in properties)
             {
-                classCode.AppendLine($"[ColumnName({property.ColumnName})]");
-                classCode.AppendLine($"[ColumnNameStorage{property.ColumnName},typeof({property.Type}), {property.IsLabel}]");
+                //classCode.AppendLine($"[ColumnName(\"{property.ColumnName}\")]");
+                classCode.AppendLine($"[ColumnNameStorage(\"{property.ColumnName}\",typeof({property.Type.Name}), {property.IsLabel.ToString().ToLower()})]");
                 classCode.AppendLine($"public {property.Type.Name} {property.Name} {{get; set; }}");
             }
             classCode.AppendLine("}");
@@ -80,6 +83,8 @@ namespace MLTrainer.DynamicDataBuilder
 
             var references = new MetadataReference[]
             {
+                MetadataReference.CreateFromFile(typeof(ColumnNameAttribute).GetTypeInfo().Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(ColumnNameStorageAttribute).GetTypeInfo().Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(DictionaryBase).GetTypeInfo().Assembly.Location)
             };
@@ -112,7 +117,8 @@ namespace MLTrainer.DynamicDataBuilder
                 {
 
                     ms.Seek(0, SeekOrigin.Begin);
-                    var assembly = AssemblyLoadContext.Default.LoadFromStream(ms);
+                    var assembly = Assembly.Load(ms.GetBuffer());
+                    //var assembly = System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromStream(ms);
                     var dynamicType = assembly.GetType("MLTrainerPredictor.Dynamic.DynamicClass");
                     return dynamicType;
                 }

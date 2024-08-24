@@ -30,7 +30,7 @@ namespace MLTrainer
             var addAction = DynamicType.GetAddAction(dynamicList);
 
             // Call the action, with an object[] containing parameters
-            addAction.Invoke(new object[] { 1.1, "testString"});
+            addAction.Invoke(new object[] { 1.1f, "testString"});
 
 
 
