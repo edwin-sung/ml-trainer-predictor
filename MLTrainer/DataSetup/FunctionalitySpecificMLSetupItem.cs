@@ -16,9 +16,7 @@ namespace MLTrainer.DataSetup
     /// </summary>
     /// <typeparam name="ModelInput">Model input generic type</typeparam>
     /// <typeparam name="ModelOutput">Model output generic type</typeparam>
-    public abstract class FunctionalitySpecificMLSetupItem<ModelInput, ModelOutput> : IFunctionalitySpecificMLSetupItem
-        where ModelInput : class 
-        where ModelOutput: class, new()
+    public abstract class FunctionalitySpecificMLSetupItem: IFunctionalitySpecificMLSetupItem
     {
         /// <summary>
         /// Separator character
@@ -34,22 +32,20 @@ namespace MLTrainer.DataSetup
         /// <inheritdoc />
         public abstract string TrainingModelName { get; set; }
 
-        private string TrainingModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + ".csv";
+        protected string TrainingModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + ".csv";
 
         /// <summary>
         /// Trained model file path
         /// </summary>
-        private string TrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + ".zip";
+        protected string TrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + ".zip";
 
         // Temporary training model file path for ML testing area
-        private string TempTrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + "-temp.zip";
+        protected string TempTrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + "-temp.zip";
 
-        private string BackupTrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + $"-backup{DateTime.Now}.zip";
+        protected string BackupTrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + $"-backup{DateTime.Now}.zip";
 
 
-        private List<ModelInput> modelInputs = new List<ModelInput>();
-        private IMLTrainingAlgorithm trainingAlgorithm = null;
-        private PredictionTester<ModelInput, ModelOutput> predictionTester = null;
+        protected IMLTrainingAlgorithm trainingAlgorithm = null;
 
         /// <summary>
         /// Constructor for the machine learning set-up item
@@ -84,152 +80,32 @@ namespace MLTrainer.DataSetup
             return trainingAlgorithm?.GetCustomisableOptions().ToList() ?? new List<ITrainingAlgorithmOption>();
         }
 
-        /// <inheritdoc />
-        public void AddDataInputsByCSVFilePath(string csvFilePath)
-        {
-            if (!File.Exists(csvFilePath))
-            {
-                return;
-            }
 
-            using (StreamReader sr = new StreamReader(csvFilePath))
-            {
-                string currentLine;
-                while ((currentLine = sr.ReadLine()) != null)
-                {
-                    if (TryParse(currentLine, out ModelInput validModelInput))
-                    {
-                        modelInputs.Add(validModelInput);
-                    }
-                }
-            }
-        }
+        /// <inheritdoc />
+        public abstract void AddDataInputsByCSVFilePath(string csvFilePath);
+
+        /// <inheritdoc />
+        public abstract List<string> GetAllDataInputColumns();
+
+        /// <inheritdoc />
+        public abstract List<List<string>> GetAllDataInputsAsStrings();
+
+        /// <inheritdoc />
+        public abstract void RemoveDataInputByIndex(int index);
+
+        /// <inheritdoc />
+        public abstract void ClearAllDataInput();
+
+        /// <inheritdoc />
+        public abstract void SaveModelInputAsCSV();
+
+        /// <inheritdoc />
+        public abstract bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath);
 
         /// <summary>
-        /// Parses the CSV row as string, and outputs a valid ModelInput instance if successful
+        /// Save the original trained file path as temporary, so that the test prediction can hijack the original file path
         /// </summary>
-        /// <param name="csvRow">CSV row as string</param>
-        /// <param name="validModelInput">[Output] ModelInput instance, if valid</param>
-        /// <returns></returns>
-        protected abstract bool TryParse(string csvRow, out ModelInput validModelInput);
-
-        /// <summary>
-        /// Converts the given model input to a CSV-writable and CSV-readable string
-        /// </summary>
-        /// <param name="input">ModelInput instance</param>
-        /// <param name="csvRow">[Output] CSV row as string</param>
-        /// <returns></returns>
-        protected abstract bool TryConvertToCSVString(ModelInput input, out string csvRow);
-
-        /// <inheritdoc />
-        public List<string> GetAllDataInputColumns()
-        {
-            return TryGetColumnNamesFor<ModelInput>(label => true, out List<string> results) ? results : new List<string>();
-        }
-
-        /// <inheritdoc />
-        public List<List<string>> GetAllDataInputsAsStrings()
-        {
-            List<List<string>> allInputs = new List<List<string>>();
-            foreach (ModelInput singleInput in modelInputs)
-            {
-                List<string> fieldValues = new List<string>();
-
-                // Using the Type.getProperties() method to find all the values 
-                foreach (var property in typeof(ModelInput).GetProperties())
-                {
-                    try
-                    {
-                        if (property.GetCustomAttribute<ColumnNameStorageAttribute>() != null)
-                        {
-                            if (property.GetValue(singleInput) is string stringVal)
-                            {
-                                fieldValues.Add(stringVal);
-                            }
-                            else if (property.GetValue(singleInput) is float floatVal)
-                            {
-                                fieldValues.Add(floatVal.ToString());
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        continue;
-                    }
-                }
-
-                allInputs.Add(fieldValues);
-            }
-
-            return allInputs;
-        }
-
-        /// <summary>
-        /// Adds a new ModelInput instance to the collection
-        /// </summary>
-        /// <param name="newDataInput">New ModelInput instance</param>
-        protected void Add(ModelInput newDataInput) => modelInputs.Add(newDataInput);
-
-        /// <inheritdoc />
-        public void RemoveDataInputByIndex(int index) => modelInputs.RemoveAt(index);
-
-        /// <inheritdoc />
-        public void ClearAllDataInput() => modelInputs.Clear();
-
-        /// <inheritdoc />
-        public void SaveModelInputAsCSV()
-        {
-            // Save the modelInputs to a CSV file
-            StringBuilder csvRowBuilder = new StringBuilder();
-            if (TryGetColumnNamesFor<ModelInput>(label => true, out List<string> columnNames))
-            {
-                csvRowBuilder.AppendLine(string.Join(SEPARATOR.ToString(), columnNames));
-            }
-
-            foreach (ModelInput item in modelInputs)
-            {
-                if (TryConvertToCSVString(item, out string csvLine))
-                {
-                    csvRowBuilder.AppendLine(csvLine);
-                }
-            }
-
-            // Write CSV to a temp file
-            File.WriteAllText(TrainingModelFilePath, csvRowBuilder.ToString());
-        }
-
-        /// <summary>
-        /// Gets all column names for a given generic type, based on the predicate for label
-        /// </summary>
-        /// <typeparam name="T">Generic type</typeparam>
-        /// <param name="labelPredicate">Predicate on whether one wants the labels, non-labels, or both</param>
-        /// <param name="columnNames">[Output] Column names</param>
-        /// <returns>True if any items are found</returns>
-        private bool TryGetColumnNamesFor<T>(Predicate<bool> labelPredicate, out List<string> columnNames)
-        {
-            columnNames = new List<string>();
-            foreach (var property in typeof(T).GetProperties())
-            {
-                try
-                {
-                    ColumnNameStorageAttribute att = property.GetCustomAttribute<ColumnNameStorageAttribute>();
-                    if (!string.IsNullOrEmpty(att.Name) && labelPredicate(att.IsLabel))
-                    {
-                        columnNames.Add(att.Name);
-                    }
-                }
-                catch
-                {
-                    continue;
-                }
-            }
-
-            // If we are looking for label, make sure there is only one column, otherwise simply check whether there are any.
-            return columnNames.Any();
-        }
-
-        /// <inheritdoc />
-        public bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath)
+        protected void SaveOriginalTrainedFilePathAsTemp()
         {
             // Create a copy of the original trained model ZIP and save it as a temp
             // This way we can change the state of the original one for testing.
@@ -242,32 +118,13 @@ namespace MLTrainer.DataSetup
                 }
                 File.Copy(TrainedModelFilePath, TempTrainedModelFilePath);
             }
-
-            testingTrainedModelFilePath = string.Empty;
-
-            ModelTrainer<ModelInput, ModelOutput> trainer = new ModelTrainer<ModelInput, ModelOutput>(trainingAlgorithm);
-
-            if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath))
-            {
-                testingTrainedModelFilePath = TrainedModelFilePath;
-                predictionTester = new PredictionTester<ModelInput, ModelOutput>();
-                return true;
-            }
-            return false;
         }
 
         /// <inhertidoc />
-        public IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems()
-        {
-            return predictionTester?.DataInputItems ?? new List<IPredictionTesterDataInputItem>();
-        }
+        public abstract IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems();
 
         /// <inheritdoc />
-        public void RunTestPrediction(out string predictedValueAsString)
-        {
-            predictedValueAsString = string.Empty;
-            predictionTester?.RunPrediction(new ModelPredictor<ModelInput, ModelOutput>(TrainedModelFilePath), out predictedValueAsString);
-        }
+        public abstract void RunTestPrediction(out string predictedValueAsString);
 
         /// <inheritdoc />
         public bool ApplyTrainedModel(out string trainedModelFilePath)

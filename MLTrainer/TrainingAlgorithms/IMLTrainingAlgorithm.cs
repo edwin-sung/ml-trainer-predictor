@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MLTrainer.TrainingAlgorithms
 {
-    internal interface IMLTrainingAlgorithm
+    public interface IMLTrainingAlgorithm
     {
 
         IEnumerable<ITrainingAlgorithmOption> GetCustomisableOptions();

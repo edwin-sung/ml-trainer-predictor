@@ -2,7 +2,7 @@
 
 namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
-    internal class ElectricalEnergySetupItem : FunctionalitySpecificMLSetupItem<ElectricalInput, ElectricalOutput>
+    internal class ElectricalEnergySetupItem : ConcreteObjectMLSetupItem<ElectricalInput, ElectricalOutput>
     {
         public ElectricalEnergySetupItem() : base("ElectricalEnergyTrainingModel")
         {

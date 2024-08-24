@@ -213,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColumnNameStorageAttribute.cs" />
+    <Compile Include="DataSetup\ConcreteObjectMLSetupItem.cs" />
     <Compile Include="DataSetup\FunctionalitySpecificMLSetupItem.cs" />
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupFactory.cs" />
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupItem.cs" />
@@ -220,8 +221,6 @@
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalEnergySetupItem.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalInput.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalOutput.cs" />
-    <Compile Include="DynamicDataBuilder\DynamicType.cs" />
-    <Compile Include="DynamicDataBuilder\DynamicTypeProperty.cs" />
     <Compile Include="Forms\MLTrainingSetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
