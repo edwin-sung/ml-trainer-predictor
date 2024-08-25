@@ -14,6 +14,7 @@ namespace MLTrainer.Forms
     public partial class MLTrainingSetupForm : Form
     {
         private List<IFunctionalitySpecificMLSetupItem> setupItems = new List<IFunctionalitySpecificMLSetupItem>();
+        private List<Lazy<IFunctionalitySpecificMLSetupItem>> lazySetupItems = new List<Lazy<IFunctionalitySpecificMLSetupItem>>();
 
         private IFunctionalitySpecificMLSetupItem selectedSetup;
 
@@ -264,6 +265,7 @@ namespace MLTrainer.Forms
             // Do the temp file clean up before moving on to the other selected setup.
             selectedSetup.CleanupTemporaryFiles();
             selectedSetup = setupItems.SingleOrDefault(item => item.Name == functionalityComboBox.SelectedItem.ToString());
+            selectedSetup.InitialiseInstance();
             SetupAlgorithmParametersDataGridView();
         }
 

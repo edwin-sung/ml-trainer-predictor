@@ -1,5 +1,6 @@
-using MLTrainer;
 using MLTrainer.DataSetup;
+using MLTrainer.Predictor;
+using MLTrainer.Predictor.ConcreteObjectPredictor;
 
 namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
@@ -26,11 +27,11 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
         {
             bool tryCreateTrainedModel = setupItem.TryCreateTrainedModelForTesting(out string filePath);
 
-            ModelPredictor<ElectricalInput, ElectricalOutput> predictor = new ModelPredictor<ElectricalInput, ElectricalOutput>(filePath);
+            ConcreteObjectModelPredictor<ElectricalTestInput, ElectricalTestOutput> predictor = new ConcreteObjectModelPredictor<ElectricalTestInput, ElectricalTestOutput>(filePath);
 
-            ElectricalInput input = new ElectricalInput { Time = 5213, InputVoltage = 3 };
+            ElectricalTestInput input = new ElectricalTestInput { Time = 5213, InputVoltage = 3 };
 
-            predictor.TryGetPredictedOutput(input, out ElectricalOutput output);
+            predictor.TryGetPredictedOutput(input, out ElectricalTestOutput output);
 
             float? predictedValue = output.Prediction;
 

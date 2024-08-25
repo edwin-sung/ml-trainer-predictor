@@ -1,18 +1,18 @@
-﻿using MLTrainer.PredictionTesterUI;
-using MLTrainer.PredictionTesterUI.DataInputItemType;
+﻿using MLTrainer.PredictionTesterUI.DataInputItemType;
+using MLTrainer.Predictor.ConcreteObjectPredictor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace MLTrainer
+namespace MLTrainer.PredictionTesterUI.ConcreteObjectPredictionTest
 {
-    internal class PredictionTester<ModelInput, ModelOutput> where ModelInput : class where ModelOutput : class, new()
+    internal class ConcreteObjectPredictionTester<ModelInput, ModelOutput> where ModelInput : class where ModelOutput : class, new()
     {
 
         internal List<IPredictionTesterDataInputItem> DataInputItems { get; } = new List<IPredictionTesterDataInputItem>();
 
-        internal PredictionTester()
+        internal ConcreteObjectPredictionTester()
         {
             SetupInputInterface();
         }
@@ -39,7 +39,7 @@ namespace MLTrainer
         private void ForEachPropertyInfoWithColumnName<T>(
             Action<PropertyInfo, ColumnNameStorageAttribute> action)
         {
-            foreach(var property in typeof(T).GetProperties())
+            foreach (var property in typeof(T).GetProperties())
             {
                 try
                 {
@@ -75,10 +75,10 @@ namespace MLTrainer
         /// <summary>
         /// Construct a ModelInput instance based on the input, and run the prediction engine for the result
         /// </summary>
-        internal bool RunPrediction(ModelPredictor<ModelInput, ModelOutput> predictorEngine, out string predictedValueAsString)
+        internal bool RunPrediction(ConcreteObjectModelPredictor<ModelInput, ModelOutput> predictorEngine, out string predictedValueAsString)
         {
             ModelInput input = Activator.CreateInstance<ModelInput>();
-            foreach(var property in typeof(ModelInput).GetProperties())
+            foreach (var property in typeof(ModelInput).GetProperties())
             {
                 if (DataInputItems.SingleOrDefault(d => d.Name == property.Name) is IPredictionTesterDataInputItem validInputItem)
                 {
@@ -108,7 +108,7 @@ namespace MLTrainer
             predictedValueAsString = predictedString;
 
             return true;
-            
+
         }
     }
 }

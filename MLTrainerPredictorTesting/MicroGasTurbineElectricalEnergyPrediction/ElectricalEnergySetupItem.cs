@@ -1,8 +1,8 @@
-﻿using MLTrainer.DataSetup;
+﻿using MLTrainer.DataSetup.ConcreteObjectSetup;
 
 namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
-    internal class ElectricalEnergySetupItem : ConcreteObjectMLSetupItem<ElectricalInput, ElectricalOutput>
+    internal class ElectricalEnergySetupItem : ConcreteObjectMLSetupItem<ElectricalTestInput, ElectricalTestOutput>
     {
         public ElectricalEnergySetupItem() : base("ElectricalEnergyTrainingModel")
         {
@@ -15,7 +15,7 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 
         public override string TrainingModelName { get; set; } = string.Empty;
 
-        protected override bool TryConvertToCSVString(ElectricalInput input, out string csvRow)
+        protected override bool TryConvertToCSVString(ElectricalTestInput input, out string csvRow)
         {
             csvRow = input.Time.ToString() + SEPARATOR +
                    input.InputVoltage.ToString() + SEPARATOR +
@@ -23,9 +23,9 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
             return !string.IsNullOrEmpty(csvRow);
         }
 
-        protected override bool TryParse(string csvRow, out ElectricalInput validModelInput)
+        protected override bool TryParse(string csvRow, out ElectricalTestInput validModelInput)
         {
-            validModelInput = new ElectricalInput();
+            validModelInput = new ElectricalTestInput();
             string[] items = csvRow.Split(new[] { SEPARATOR }, StringSplitOptions.None);
             if (items.Length != 3)
             {

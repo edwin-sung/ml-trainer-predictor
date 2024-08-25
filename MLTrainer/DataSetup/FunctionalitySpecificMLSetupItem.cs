@@ -63,6 +63,11 @@ namespace MLTrainer.DataSetup
             SetTrainingAlgorithm(GetAllTrainingAlgorithms().FirstOrDefault());
         }
 
+        /// <inheritdoc />
+        public virtual void InitialiseInstance()
+        {
+        }
+
         public IEnumerable<MLTrainingAlgorithmType> GetAllTrainingAlgorithms()
         {
             return Enum.GetValues(typeof(MLTrainingAlgorithmType)).OfType<MLTrainingAlgorithmType>();

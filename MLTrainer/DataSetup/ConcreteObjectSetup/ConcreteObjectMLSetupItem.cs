@@ -1,4 +1,8 @@
 ﻿using MLTrainer.PredictionTesterUI;
+using MLTrainer.PredictionTesterUI.ConcreteObjectPredictionTest;
+using MLTrainer.Predictor.ConcreteObjectPredictor;
+using MLTrainer.Trainer;
+using MLTrainer.Trainer.ConcreteObjectTrainer;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,10 +10,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace MLTrainer.DataSetup
+namespace MLTrainer.DataSetup.ConcreteObjectSetup
 {
     /// <summary>
-    /// Abstract class for functionality-specific machine learning set-up item, twhich has concrete objects defined
+    /// Abstract class for functionality-specific machine learning set-up item, which has concrete objects defined
     /// </summary>
     /// <typeparam name="ModelInput">Model input generic type</typeparam>
     /// <typeparam name="ModelOutput">Model output generic type</typeparam>
@@ -18,7 +22,7 @@ namespace MLTrainer.DataSetup
         where ModelOutput : class, new()
     {
         private List<ModelInput> modelInputs = new List<ModelInput>();
-        private PredictionTester<ModelInput, ModelOutput> predictionTester = null;
+        private ConcreteObjectPredictionTester<ModelInput, ModelOutput> predictionTester = null;
 
         protected ConcreteObjectMLSetupItem(string functionalityName) : base(functionalityName)
         {
@@ -145,12 +149,12 @@ namespace MLTrainer.DataSetup
 
             testingTrainedModelFilePath = string.Empty;
 
-            ModelTrainer<ModelInput, ModelOutput> trainer = new ModelTrainer<ModelInput, ModelOutput>(trainingAlgorithm);
+            ConcreteObjectModelTrainer<ModelInput, ModelOutput> trainer = new ConcreteObjectModelTrainer<ModelInput, ModelOutput>(trainingAlgorithm);
 
             if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath))
             {
                 testingTrainedModelFilePath = TrainedModelFilePath;
-                predictionTester = new PredictionTester<ModelInput, ModelOutput>();
+                predictionTester = new ConcreteObjectPredictionTester<ModelInput, ModelOutput>();
                 return true;
             }
             return false;
@@ -167,12 +171,8 @@ namespace MLTrainer.DataSetup
         public override void RunTestPrediction(out string predictedValueAsString)
         {
             predictedValueAsString = string.Empty;
-            predictionTester?.RunPrediction(new ModelPredictor<ModelInput, ModelOutput>(TrainedModelFilePath), out predictedValueAsString);
+            predictionTester?.RunPrediction(new ConcreteObjectModelPredictor<ModelInput, ModelOutput>(TrainedModelFilePath), out predictedValueAsString);
         }
-
-
-
-
 
 
         /// <inheritdoc />

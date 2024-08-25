@@ -3,7 +3,7 @@ using MLTrainer;
 
 namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
-    public class ElectricalInput
+    public class ElectricalTestInput
     {
 
         [ColumnName("time")]

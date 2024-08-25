@@ -28,6 +28,12 @@ namespace MLTrainer.DataSetup
         string TrainingModelName { get; set; }
 
         /// <summary>
+        /// Initialisation of the current instance
+        /// This is more applicable for dynamic object setup items to populate the data schema
+        /// </summary>
+        void InitialiseInstance();
+
+        /// <summary>
         /// Gets all available training algorithms for end-user to select
         /// </summary>
         /// <returns>All available training algorithms to choose from </returns>

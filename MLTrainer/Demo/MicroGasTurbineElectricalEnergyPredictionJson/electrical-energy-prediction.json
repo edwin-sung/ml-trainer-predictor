@@ -1,0 +1,5827 @@
+[
+	{
+		"time": 810,
+		"input_voltage": 3,
+		"el_power": 1102.94969345076
+	},
+	{
+		"time": 811.04,
+		"input_voltage": 3,
+		"el_power": 1199.40378597924
+	},
+	{
+		"time": 812.08,
+		"input_voltage": 3,
+		"el_power": 1113.1998165742
+	},
+	{
+		"time": 813.18,
+		"input_voltage": 3,
+		"el_power": 1200.37793931592
+	},
+	{
+		"time": 814.18,
+		"input_voltage": 3,
+		"el_power": 1105.46534909181
+	},
+	{
+		"time": 815.2,
+		"input_voltage": 3,
+		"el_power": 1184.36130721322
+	},
+	{
+		"time": 816.24,
+		"input_voltage": 3,
+		"el_power": 1107.24332915618
+	},
+	{
+		"time": 817.26,
+		"input_voltage": 3,
+		"el_power": 1195.77355045805
+	},
+	{
+		"time": 818.3,
+		"input_voltage": 3,
+		"el_power": 1123.20298270483
+	},
+	{
+		"time": 819.3,
+		"input_voltage": 3,
+		"el_power": 1205.91384535781
+	},
+	{
+		"time": 820.3,
+		"input_voltage": 3,
+		"el_power": 1135.8091561984
+	},
+	{
+		"time": 821.3,
+		"input_voltage": 3,
+		"el_power": 1206.36832940252
+	},
+	{
+		"time": 822.3,
+		"input_voltage": 3,
+		"el_power": 1134.15794377397
+	},
+	{
+		"time": 823.3,
+		"input_voltage": 3,
+		"el_power": 1212.71152943067
+	},
+	{
+		"time": 824.32,
+		"input_voltage": 3,
+		"el_power": 1128.93092852121
+	},
+	{
+		"time": 825.34,
+		"input_voltage": 3,
+		"el_power": 1206.50255781502
+	},
+	{
+		"time": 826.36,
+		"input_voltage": 3,
+		"el_power": 1138.01823643605
+	},
+	{
+		"time": 827.4,
+		"input_voltage": 3,
+		"el_power": 1215.83654573593
+	},
+	{
+		"time": 828.4,
+		"input_voltage": 3,
+		"el_power": 1122.92655161193
+	},
+	{
+		"time": 829.44,
+		"input_voltage": 3,
+		"el_power": 1218.28433154566
+	},
+	{
+		"time": 830.46,
+		"input_voltage": 3,
+		"el_power": 1120.52608771423
+	},
+	{
+		"time": 831.5,
+		"input_voltage": 3,
+		"el_power": 1214.91193599697
+	},
+	{
+		"time": 832.56,
+		"input_voltage": 3,
+		"el_power": 1124.52408769533
+	},
+	{
+		"time": 833.56,
+		"input_voltage": 3,
+		"el_power": 1208.01385312952
+	},
+	{
+		"time": 834.56,
+		"input_voltage": 3,
+		"el_power": 1128.61440917902
+	},
+	{
+		"time": 835.56,
+		"input_voltage": 3,
+		"el_power": 1200.59894014323
+	},
+	{
+		"time": 836.56,
+		"input_voltage": 3,
+		"el_power": 1124.87032359448
+	},
+	{
+		"time": 837.56,
+		"input_voltage": 3,
+		"el_power": 1203.96925785111
+	},
+	{
+		"time": 838.56,
+		"input_voltage": 3,
+		"el_power": 1134.78137080549
+	},
+	{
+		"time": 839.6,
+		"input_voltage": 3,
+		"el_power": 1208.84187235983
+	},
+	{
+		"time": 840.62,
+		"input_voltage": 3,
+		"el_power": 1114.75836045137
+	},
+	{
+		"time": 841.7,
+		"input_voltage": 3,
+		"el_power": 1199.79753776112
+	},
+	{
+		"time": 842.76,
+		"input_voltage": 3,
+		"el_power": 1118.92053840945
+	},
+	{
+		"time": 843.76,
+		"input_voltage": 3,
+		"el_power": 1203.61170560061
+	},
+	{
+		"time": 844.8,
+		"input_voltage": 3,
+		"el_power": 1121.87552066769
+	},
+	{
+		"time": 845.82,
+		"input_voltage": 3,
+		"el_power": 1197.02346218472
+	},
+	{
+		"time": 846.82,
+		"input_voltage": 3,
+		"el_power": 1123.10133935043
+	},
+	{
+		"time": 847.82,
+		"input_voltage": 3,
+		"el_power": 1191.10760576448
+	},
+	{
+		"time": 848.82,
+		"input_voltage": 3,
+		"el_power": 1117.06510329181
+	},
+	{
+		"time": 849.82,
+		"input_voltage": 3,
+		"el_power": 1188.21652673213
+	},
+	{
+		"time": 850.82,
+		"input_voltage": 3,
+		"el_power": 1121.01224301979
+	},
+	{
+		"time": 851.82,
+		"input_voltage": 3,
+		"el_power": 1196.06700557909
+	},
+	{
+		"time": 852.82,
+		"input_voltage": 3,
+		"el_power": 1114.64773078946
+	},
+	{
+		"time": 853.82,
+		"input_voltage": 3,
+		"el_power": 1195.58767415168
+	},
+	{
+		"time": 854.86,
+		"input_voltage": 3,
+		"el_power": 1119.24117788876
+	},
+	{
+		"time": 855.88,
+		"input_voltage": 3,
+		"el_power": 1198.34894042232
+	},
+	{
+		"time": 856.88,
+		"input_voltage": 3,
+		"el_power": 1113.80890862374
+	},
+	{
+		"time": 857.88,
+		"input_voltage": 3,
+		"el_power": 1198.39662308163
+	},
+	{
+		"time": 858.94,
+		"input_voltage": 3,
+		"el_power": 1111.45469784812
+	},
+	{
+		"time": 859.98,
+		"input_voltage": 3,
+		"el_power": 1201.31463069922
+	},
+	{
+		"time": 861,
+		"input_voltage": 3,
+		"el_power": 1123.50254779343
+	},
+	{
+		"time": 862.02,
+		"input_voltage": 3,
+		"el_power": 1206.45015168577
+	},
+	{
+		"time": 863.02,
+		"input_voltage": 3,
+		"el_power": 1120.4747521426
+	},
+	{
+		"time": 864.02,
+		"input_voltage": 3,
+		"el_power": 1199.84378370737
+	},
+	{
+		"time": 865.04,
+		"input_voltage": 3,
+		"el_power": 1131.34288821045
+	},
+	{
+		"time": 866.04,
+		"input_voltage": 3,
+		"el_power": 1210.25817911128
+	},
+	{
+		"time": 867.04,
+		"input_voltage": 3,
+		"el_power": 1124.22348837358
+	},
+	{
+		"time": 868.08,
+		"input_voltage": 3,
+		"el_power": 1206.02596504002
+	},
+	{
+		"time": 869.1,
+		"input_voltage": 3,
+		"el_power": 1127.8425687813
+	},
+	{
+		"time": 870.12,
+		"input_voltage": 3,
+		"el_power": 1214.98584270648
+	},
+	{
+		"time": 871.14,
+		"input_voltage": 3,
+		"el_power": 1128.18993638827
+	},
+	{
+		"time": 872.16,
+		"input_voltage": 3,
+		"el_power": 1224.77984157355
+	},
+	{
+		"time": 873.16,
+		"input_voltage": 3,
+		"el_power": 1127.20207812109
+	},
+	{
+		"time": 874.2,
+		"input_voltage": 3,
+		"el_power": 1223.64515827809
+	},
+	{
+		"time": 875.22,
+		"input_voltage": 3,
+		"el_power": 1126.82340701745
+	},
+	{
+		"time": 876.24,
+		"input_voltage": 3,
+		"el_power": 1216.02309682248
+	},
+	{
+		"time": 877.24,
+		"input_voltage": 3,
+		"el_power": 1136.38386928822
+	},
+	{
+		"time": 878.24,
+		"input_voltage": 3,
+		"el_power": 1213.7909723388
+	},
+	{
+		"time": 879.26,
+		"input_voltage": 3,
+		"el_power": 1134.91020179569
+	},
+	{
+		"time": 880.26,
+		"input_voltage": 3,
+		"el_power": 1214.05467126278
+	},
+	{
+		"time": 881.26,
+		"input_voltage": 3,
+		"el_power": 1133.67691370481
+	},
+	{
+		"time": 882.26,
+		"input_voltage": 3,
+		"el_power": 1217.99262402074
+	},
+	{
+		"time": 883.26,
+		"input_voltage": 3,
+		"el_power": 1130.16756408831
+	},
+	{
+		"time": 884.28,
+		"input_voltage": 3,
+		"el_power": 1207.75998687706
+	},
+	{
+		"time": 885.34,
+		"input_voltage": 3,
+		"el_power": 1119.62400878769
+	},
+	{
+		"time": 886.34,
+		"input_voltage": 3,
+		"el_power": 1204.68261454671
+	},
+	{
+		"time": 887.36,
+		"input_voltage": 3,
+		"el_power": 1117.163325326
+	},
+	{
+		"time": 888.42,
+		"input_voltage": 3,
+		"el_power": 1192.94027945829
+	},
+	{
+		"time": 889.46,
+		"input_voltage": 3,
+		"el_power": 1113.20437396009
+	},
+	{
+		"time": 890.46,
+		"input_voltage": 3,
+		"el_power": 1196.34701684973
+	},
+	{
+		"time": 891.48,
+		"input_voltage": 3,
+		"el_power": 1113.34997732094
+	},
+	{
+		"time": 892.48,
+		"input_voltage": 3,
+		"el_power": 1181.43290691086
+	},
+	{
+		"time": 893.48,
+		"input_voltage": 3,
+		"el_power": 1110.29092310461
+	},
+	{
+		"time": 894.48,
+		"input_voltage": 3,
+		"el_power": 1193.05227542426
+	},
+	{
+		"time": 895.48,
+		"input_voltage": 3,
+		"el_power": 1114.78399926745
+	},
+	{
+		"time": 896.5,
+		"input_voltage": 3,
+		"el_power": 1190.2352728805
+	},
+	{
+		"time": 897.5,
+		"input_voltage": 3,
+		"el_power": 1104.15830056208
+	},
+	{
+		"time": 898.52,
+		"input_voltage": 3,
+		"el_power": 1199.79334180409
+	},
+	{
+		"time": 899.54,
+		"input_voltage": 3,
+		"el_power": 1115.13379661082
+	},
+	{
+		"time": 900.58,
+		"input_voltage": 3,
+		"el_power": 1204.72707790053
+	},
+	{
+		"time": 901.64,
+		"input_voltage": 3,
+		"el_power": 1120.40322076955
+	},
+	{
+		"time": 902.66,
+		"input_voltage": 3,
+		"el_power": 1203.98256319414
+	},
+	{
+		"time": 903.7,
+		"input_voltage": 3,
+		"el_power": 1112.38605034129
+	},
+	{
+		"time": 904.7,
+		"input_voltage": 3,
+		"el_power": 1203.12000155287
+	},
+	{
+		"time": 905.74,
+		"input_voltage": 3,
+		"el_power": 1114.34072288993
+	},
+	{
+		"time": 906.74,
+		"input_voltage": 3,
+		"el_power": 1195.83907598684
+	},
+	{
+		"time": 907.74,
+		"input_voltage": 3,
+		"el_power": 1126.21117381792
+	},
+	{
+		"time": 908.74,
+		"input_voltage": 3,
+		"el_power": 1213.12983255378
+	},
+	{
+		"time": 909.76,
+		"input_voltage": 3,
+		"el_power": 1126.95149787997
+	},
+	{
+		"time": 910.76,
+		"input_voltage": 3,
+		"el_power": 1217.45934027781
+	},
+	{
+		"time": 911.82,
+		"input_voltage": 3,
+		"el_power": 1126.32595828564
+	},
+	{
+		"time": 912.84,
+		"input_voltage": 3,
+		"el_power": 1209.86485643246
+	},
+	{
+		"time": 913.88,
+		"input_voltage": 3,
+		"el_power": 1123.97502050339
+	},
+	{
+		"time": 914.9,
+		"input_voltage": 3,
+		"el_power": 1215.36442836053
+	},
+	{
+		"time": 915.9,
+		"input_voltage": 3,
+		"el_power": 1124.13973963653
+	},
+	{
+		"time": 916.92,
+		"input_voltage": 3,
+		"el_power": 1222.9730743803
+	},
+	{
+		"time": 918,
+		"input_voltage": 3,
+		"el_power": 1132.74059371121
+	},
+	{
+		"time": 919.04,
+		"input_voltage": 3,
+		"el_power": 1222.71700323648
+	},
+	{
+		"time": 920.04,
+		"input_voltage": 3,
+		"el_power": 1143.10363037419
+	},
+	{
+		"time": 921.04,
+		"input_voltage": 3,
+		"el_power": 1215.41326326678
+	},
+	{
+		"time": 922.06,
+		"input_voltage": 3,
+		"el_power": 1152.64276864899
+	},
+	{
+		"time": 923.06,
+		"input_voltage": 3,
+		"el_power": 1225.64066951046
+	},
+	{
+		"time": 924.06,
+		"input_voltage": 3,
+		"el_power": 1134.37422968846
+	},
+	{
+		"time": 925.1,
+		"input_voltage": 3,
+		"el_power": 1224.31345730172
+	},
+	{
+		"time": 926.16,
+		"input_voltage": 3,
+		"el_power": 1123.8167562514
+	},
+	{
+		"time": 927.18,
+		"input_voltage": 3,
+		"el_power": 1221.49340762451
+	},
+	{
+		"time": 928.22,
+		"input_voltage": 3,
+		"el_power": 1121.89277858363
+	},
+	{
+		"time": 929.28,
+		"input_voltage": 3,
+		"el_power": 1216.39119011244
+	},
+	{
+		"time": 930.3,
+		"input_voltage": 3,
+		"el_power": 1134.77466581193
+	},
+	{
+		"time": 931.4,
+		"input_voltage": 3,
+		"el_power": 1202.64914674219
+	},
+	{
+		"time": 932.5,
+		"input_voltage": 3,
+		"el_power": 1104.78545203364
+	},
+	{
+		"time": 933.52,
+		"input_voltage": 3,
+		"el_power": 1191.92863199876
+	},
+	{
+		"time": 934.52,
+		"input_voltage": 3,
+		"el_power": 1114.10159121965
+	},
+	{
+		"time": 935.52,
+		"input_voltage": 3,
+		"el_power": 1196.43396186394
+	},
+	{
+		"time": 936.52,
+		"input_voltage": 3,
+		"el_power": 1124.65938761775
+	},
+	{
+		"time": 937.52,
+		"input_voltage": 3,
+		"el_power": 1190.26560021411
+	},
+	{
+		"time": 938.54,
+		"input_voltage": 3,
+		"el_power": 1114.15950722244
+	},
+	{
+		"time": 939.56,
+		"input_voltage": 3,
+		"el_power": 1193.42695882869
+	},
+	{
+		"time": 940.62,
+		"input_voltage": 3,
+		"el_power": 1111.96937224502
+	},
+	{
+		"time": 941.64,
+		"input_voltage": 3,
+		"el_power": 1199.67107820928
+	},
+	{
+		"time": 942.68,
+		"input_voltage": 3,
+		"el_power": 1107.72218623395
+	},
+	{
+		"time": 943.7,
+		"input_voltage": 3,
+		"el_power": 1202.41504791921
+	},
+	{
+		"time": 944.72,
+		"input_voltage": 3,
+		"el_power": 1110.06075798042
+	},
+	{
+		"time": 945.72,
+		"input_voltage": 3,
+		"el_power": 1194.50934113508
+	},
+	{
+		"time": 946.78,
+		"input_voltage": 3,
+		"el_power": 1119.82727439654
+	},
+	{
+		"time": 947.78,
+		"input_voltage": 3,
+		"el_power": 1191.93723171852
+	},
+	{
+		"time": 948.78,
+		"input_voltage": 3,
+		"el_power": 1122.49727944374
+	},
+	{
+		"time": 949.78,
+		"input_voltage": 3,
+		"el_power": 1203.98321195302
+	},
+	{
+		"time": 950.78,
+		"input_voltage": 3,
+		"el_power": 1131.62844108733
+	},
+	{
+		"time": 951.78,
+		"input_voltage": 3,
+		"el_power": 1199.38647000232
+	},
+	{
+		"time": 952.78,
+		"input_voltage": 3,
+		"el_power": 1122.55594125267
+	},
+	{
+		"time": 953.82,
+		"input_voltage": 3,
+		"el_power": 1201.37144089369
+	},
+	{
+		"time": 954.88,
+		"input_voltage": 3,
+		"el_power": 1116.00953186547
+	},
+	{
+		"time": 955.96,
+		"input_voltage": 3,
+		"el_power": 1199.01603170129
+	},
+	{
+		"time": 957.02,
+		"input_voltage": 3,
+		"el_power": 1118.59856706516
+	},
+	{
+		"time": 958.02,
+		"input_voltage": 3,
+		"el_power": 1208.50592382756
+	},
+	{
+		"time": 959.04,
+		"input_voltage": 3,
+		"el_power": 1126.21685972082
+	},
+	{
+		"time": 960.06,
+		"input_voltage": 3,
+		"el_power": 1213.59744688604
+	},
+	{
+		"time": 961.08,
+		"input_voltage": 3,
+		"el_power": 1123.76074564526
+	},
+	{
+		"time": 962.08,
+		"input_voltage": 3,
+		"el_power": 1205.82096240301
+	},
+	{
+		"time": 963.08,
+		"input_voltage": 3,
+		"el_power": 1127.59454978987
+	},
+	{
+		"time": 964.08,
+		"input_voltage": 3,
+		"el_power": 1200.21940972382
+	},
+	{
+		"time": 965.08,
+		"input_voltage": 3,
+		"el_power": 1124.19397991727
+	},
+	{
+		"time": 966.08,
+		"input_voltage": 3,
+		"el_power": 1208.51531327397
+	},
+	{
+		"time": 967.08,
+		"input_voltage": 3,
+		"el_power": 1126.20897690113
+	},
+	{
+		"time": 968.12,
+		"input_voltage": 3,
+		"el_power": 1208.34886457246
+	},
+	{
+		"time": 969.14,
+		"input_voltage": 3,
+		"el_power": 1112.77732873051
+	},
+	{
+		"time": 970.16,
+		"input_voltage": 3,
+		"el_power": 1208.80331847205
+	},
+	{
+		"time": 971.22,
+		"input_voltage": 3,
+		"el_power": 1120.58771290043
+	},
+	{
+		"time": 972.26,
+		"input_voltage": 3,
+		"el_power": 1209.19500821246
+	},
+	{
+		"time": 973.32,
+		"input_voltage": 3,
+		"el_power": 1132.09026345162
+	},
+	{
+		"time": 974.34,
+		"input_voltage": 3,
+		"el_power": 1204.1875790183
+	},
+	{
+		"time": 975.4,
+		"input_voltage": 3,
+		"el_power": 1118.00582718987
+	},
+	{
+		"time": 976.42,
+		"input_voltage": 3,
+		"el_power": 1203.31254214338
+	},
+	{
+		"time": 977.42,
+		"input_voltage": 3,
+		"el_power": 1120.98741290161
+	},
+	{
+		"time": 978.42,
+		"input_voltage": 3,
+		"el_power": 1199.52461701961
+	},
+	{
+		"time": 979.42,
+		"input_voltage": 3,
+		"el_power": 1119.08340671551
+	},
+	{
+		"time": 980.42,
+		"input_voltage": 3,
+		"el_power": 1200.47104288446
+	},
+	{
+		"time": 981.46,
+		"input_voltage": 3,
+		"el_power": 1122.72801962254
+	},
+	{
+		"time": 982.58,
+		"input_voltage": 3,
+		"el_power": 1198.20347226689
+	},
+	{
+		"time": 983.68,
+		"input_voltage": 3,
+		"el_power": 1125.46602392445
+	},
+	{
+		"time": 984.7,
+		"input_voltage": 3,
+		"el_power": 1212.95040782089
+	},
+	{
+		"time": 985.7,
+		"input_voltage": 3,
+		"el_power": 1124.96824985943
+	},
+	{
+		"time": 986.7,
+		"input_voltage": 3,
+		"el_power": 1207.70222573359
+	},
+	{
+		"time": 987.8,
+		"input_voltage": 3,
+		"el_power": 1134.42777030222
+	},
+	{
+		"time": 988.86,
+		"input_voltage": 3,
+		"el_power": 1221.0099883408
+	},
+	{
+		"time": 989.86,
+		"input_voltage": 3,
+		"el_power": 1142.08457883473
+	},
+	{
+		"time": 990.86,
+		"input_voltage": 3,
+		"el_power": 1221.52593881148
+	},
+	{
+		"time": 991.86,
+		"input_voltage": 3,
+		"el_power": 1139.3246999252
+	},
+	{
+		"time": 992.86,
+		"input_voltage": 3,
+		"el_power": 1218.33542224136
+	},
+	{
+		"time": 993.86,
+		"input_voltage": 3,
+		"el_power": 1134.78775651373
+	},
+	{
+		"time": 994.86,
+		"input_voltage": 3,
+		"el_power": 1226.38540965018
+	},
+	{
+		"time": 995.9,
+		"input_voltage": 3,
+		"el_power": 1141.55085796711
+	},
+	{
+		"time": 996.94,
+		"input_voltage": 3,
+		"el_power": 1224.82166891187
+	},
+	{
+		"time": 997.94,
+		"input_voltage": 3,
+		"el_power": 1131.96301867477
+	},
+	{
+		"time": 998.96,
+		"input_voltage": 3,
+		"el_power": 1222.95477366985
+	},
+	{
+		"time": 1000,
+		"input_voltage": 3,
+		"el_power": 1129.68251017702
+	},
+	{
+		"time": 1001,
+		"input_voltage": 3,
+		"el_power": 1220.72286886204
+	},
+	{
+		"time": 1002.02,
+		"input_voltage": 3,
+		"el_power": 1129.32109878231
+	},
+	{
+		"time": 1003.02,
+		"input_voltage": 3,
+		"el_power": 1225.76523573508
+	},
+	{
+		"time": 1004.04,
+		"input_voltage": 3,
+		"el_power": 1140.86475811561
+	},
+	{
+		"time": 1005.04,
+		"input_voltage": 3,
+		"el_power": 1217.59110352316
+	},
+	{
+		"time": 1006.06,
+		"input_voltage": 3,
+		"el_power": 1140.60385334097
+	},
+	{
+		"time": 1007.06,
+		"input_voltage": 3,
+		"el_power": 1217.87548119886
+	},
+	{
+		"time": 1008.06,
+		"input_voltage": 3,
+		"el_power": 1133.9432882819
+	},
+	{
+		"time": 1009.06,
+		"input_voltage": 3,
+		"el_power": 1214.3142856498
+	},
+	{
+		"time": 1010.06,
+		"input_voltage": 3,
+		"el_power": 1125.26687680813
+	},
+	{
+		"time": 1011.06,
+		"input_voltage": 3,
+		"el_power": 1218.7173069315
+	},
+	{
+		"time": 1012.08,
+		"input_voltage": 3,
+		"el_power": 1131.16786149353
+	},
+	{
+		"time": 1013.14,
+		"input_voltage": 3,
+		"el_power": 1197.54027737144
+	},
+	{
+		"time": 1014.14,
+		"input_voltage": 3,
+		"el_power": 1124.83220523792
+	},
+	{
+		"time": 1015.18,
+		"input_voltage": 3,
+		"el_power": 1209.38224759457
+	},
+	{
+		"time": 1016.24,
+		"input_voltage": 3,
+		"el_power": 1119.09400054466
+	},
+	{
+		"time": 1017.26,
+		"input_voltage": 3,
+		"el_power": 1210.67345589141
+	},
+	{
+		"time": 1018.26,
+		"input_voltage": 3,
+		"el_power": 1125.85495045028
+	},
+	{
+		"time": 1019.26,
+		"input_voltage": 3,
+		"el_power": 1208.87458262821
+	},
+	{
+		"time": 1020.26,
+		"input_voltage": 3,
+		"el_power": 1119.3973620231
+	},
+	{
+		"time": 1021.26,
+		"input_voltage": 3,
+		"el_power": 1201.25894405537
+	},
+	{
+		"time": 1022.26,
+		"input_voltage": 3,
+		"el_power": 1121.4171627848
+	},
+	{
+		"time": 1023.28,
+		"input_voltage": 3,
+		"el_power": 1203.03196874368
+	},
+	{
+		"time": 1024.3,
+		"input_voltage": 3,
+		"el_power": 1126.3622103109
+	},
+	{
+		"time": 1025.32,
+		"input_voltage": 3,
+		"el_power": 1212.03094271381
+	},
+	{
+		"time": 1026.36,
+		"input_voltage": 3,
+		"el_power": 1132.4856130415
+	},
+	{
+		"time": 1027.44,
+		"input_voltage": 3,
+		"el_power": 1212.34569206407
+	},
+	{
+		"time": 1028.52,
+		"input_voltage": 3,
+		"el_power": 1129.89375695223
+	},
+	{
+		"time": 1029.52,
+		"input_voltage": 3,
+		"el_power": 1201.36188903341
+	},
+	{
+		"time": 1030.56,
+		"input_voltage": 3,
+		"el_power": 1117.26010163527
+	},
+	{
+		"time": 1031.62,
+		"input_voltage": 3,
+		"el_power": 1197.51062128894
+	},
+	{
+		"time": 1032.64,
+		"input_voltage": 3,
+		"el_power": 1118.02614483578
+	},
+	{
+		"time": 1033.66,
+		"input_voltage": 3,
+		"el_power": 1202.35935607207
+	},
+	{
+		"time": 1034.66,
+		"input_voltage": 3,
+		"el_power": 1129.26958965528
+	},
+	{
+		"time": 1035.66,
+		"input_voltage": 3,
+		"el_power": 1215.1681922448
+	},
+	{
+		"time": 1036.66,
+		"input_voltage": 3,
+		"el_power": 1132.93402460721
+	},
+	{
+		"time": 1037.66,
+		"input_voltage": 3,
+		"el_power": 1211.3297002205
+	},
+	{
+		"time": 1038.72,
+		"input_voltage": 3,
+		"el_power": 1124.48987338785
+	},
+	{
+		"time": 1039.78,
+		"input_voltage": 3,
+		"el_power": 1215.3625607165
+	},
+	{
+		"time": 1040.86,
+		"input_voltage": 3,
+		"el_power": 1123.31130262033
+	},
+	{
+		"time": 1041.94,
+		"input_voltage": 3,
+		"el_power": 1211.8896897772
+	},
+	{
+		"time": 1042.98,
+		"input_voltage": 3,
+		"el_power": 1119.88539051519
+	},
+	{
+		"time": 1043.98,
+		"input_voltage": 3,
+		"el_power": 1209.35509188443
+	},
+	{
+		"time": 1045,
+		"input_voltage": 3,
+		"el_power": 1119.92800033419
+	},
+	{
+		"time": 1046.06,
+		"input_voltage": 3,
+		"el_power": 1213.84488799556
+	},
+	{
+		"time": 1047.1,
+		"input_voltage": 3,
+		"el_power": 1123.37205573919
+	},
+	{
+		"time": 1048.1,
+		"input_voltage": 3,
+		"el_power": 1208.15704074612
+	},
+	{
+		"time": 1049.1,
+		"input_voltage": 3,
+		"el_power": 1125.11431104852
+	},
+	{
+		"time": 1050.1,
+		"input_voltage": 3,
+		"el_power": 1210.13696546845
+	},
+	{
+		"time": 1051.1,
+		"input_voltage": 3,
+		"el_power": 1125.37651516988
+	},
+	{
+		"time": 1052.16,
+		"input_voltage": 3,
+		"el_power": 1211.18584592792
+	},
+	{
+		"time": 1053.22,
+		"input_voltage": 3,
+		"el_power": 1119.52452985773
+	},
+	{
+		"time": 1054.24,
+		"input_voltage": 3,
+		"el_power": 1210.65343804187
+	},
+	{
+		"time": 1055.28,
+		"input_voltage": 3,
+		"el_power": 1117.65765421288
+	},
+	{
+		"time": 1056.34,
+		"input_voltage": 3,
+		"el_power": 1205.13677801666
+	},
+	{
+		"time": 1057.38,
+		"input_voltage": 3,
+		"el_power": 1108.91149018717
+	},
+	{
+		"time": 1058.4,
+		"input_voltage": 3,
+		"el_power": 1201.73524510758
+	},
+	{
+		"time": 1059.44,
+		"input_voltage": 3,
+		"el_power": 1109.91172531745
+	},
+	{
+		"time": 1060.46,
+		"input_voltage": 3,
+		"el_power": 1207.97140622517
+	},
+	{
+		"time": 1061.46,
+		"input_voltage": 3,
+		"el_power": 1119.16763089476
+	},
+	{
+		"time": 1062.46,
+		"input_voltage": 3,
+		"el_power": 1209.72626578068
+	},
+	{
+		"time": 1063.46,
+		"input_voltage": 3,
+		"el_power": 1114.31819522472
+	},
+	{
+		"time": 1064.46,
+		"input_voltage": 3,
+		"el_power": 1200.17957391818
+	},
+	{
+		"time": 1065.46,
+		"input_voltage": 3,
+		"el_power": 1121.22786643214
+	},
+	{
+		"time": 1066.46,
+		"input_voltage": 3,
+		"el_power": 1208.96060096535
+	},
+	{
+		"time": 1067.48,
+		"input_voltage": 3,
+		"el_power": 1122.79428267516
+	},
+	{
+		"time": 1068.54,
+		"input_voltage": 3,
+		"el_power": 1203.61938242417
+	},
+	{
+		"time": 1069.56,
+		"input_voltage": 3,
+		"el_power": 1119.62336851491
+	},
+	{
+		"time": 1070.6,
+		"input_voltage": 3,
+		"el_power": 1214.26079673641
+	},
+	{
+		"time": 1071.64,
+		"input_voltage": 3,
+		"el_power": 1118.70863868683
+	},
+	{
+		"time": 1072.64,
+		"input_voltage": 3,
+		"el_power": 1210.57939938649
+	},
+	{
+		"time": 1073.68,
+		"input_voltage": 3,
+		"el_power": 1130.73972478139
+	},
+	{
+		"time": 1074.7,
+		"input_voltage": 3,
+		"el_power": 1221.82077329036
+	},
+	{
+		"time": 1075.7,
+		"input_voltage": 3,
+		"el_power": 1133.58278408519
+	},
+	{
+		"time": 1076.7,
+		"input_voltage": 3,
+		"el_power": 1210.54817470967
+	},
+	{
+		"time": 1077.7,
+		"input_voltage": 3,
+		"el_power": 1134.88087381644
+	},
+	{
+		"time": 1078.7,
+		"input_voltage": 3,
+		"el_power": 1219.70168085067
+	},
+	{
+		"time": 1079.7,
+		"input_voltage": 3,
+		"el_power": 1140.64642903228
+	},
+	{
+		"time": 1080.78,
+		"input_voltage": 3,
+		"el_power": 1223.62852760689
+	},
+	{
+		"time": 1081.82,
+		"input_voltage": 3,
+		"el_power": 1136.4703918597
+	},
+	{
+		"time": 1082.88,
+		"input_voltage": 3,
+		"el_power": 1229.39805947637
+	},
+	{
+		"time": 1083.94,
+		"input_voltage": 3,
+		"el_power": 1135.30836376605
+	},
+	{
+		"time": 1084.96,
+		"input_voltage": 3,
+		"el_power": 1217.79086225398
+	},
+	{
+		"time": 1086.04,
+		"input_voltage": 3,
+		"el_power": 1128.96397789396
+	},
+	{
+		"time": 1087.08,
+		"input_voltage": 3,
+		"el_power": 1213.05851698036
+	},
+	{
+		"time": 1088.14,
+		"input_voltage": 3,
+		"el_power": 1133.31710234702
+	},
+	{
+		"time": 1089.16,
+		"input_voltage": 3,
+		"el_power": 1216.53124074355
+	},
+	{
+		"time": 1090.16,
+		"input_voltage": 3,
+		"el_power": 1128.06138325687
+	},
+	{
+		"time": 1091.16,
+		"input_voltage": 3,
+		"el_power": 1214.18102432039
+	},
+	{
+		"time": 1092.16,
+		"input_voltage": 3,
+		"el_power": 1134.54989513881
+	},
+	{
+		"time": 1093.16,
+		"input_voltage": 3,
+		"el_power": 1217.53715054297
+	},
+	{
+		"time": 1094.2,
+		"input_voltage": 3,
+		"el_power": 1120.32267401933
+	},
+	{
+		"time": 1095.26,
+		"input_voltage": 3,
+		"el_power": 1201.31560023787
+	},
+	{
+		"time": 1096.28,
+		"input_voltage": 3,
+		"el_power": 1109.52132259199
+	},
+	{
+		"time": 1097.32,
+		"input_voltage": 3,
+		"el_power": 1189.99781624201
+	},
+	{
+		"time": 1098.34,
+		"input_voltage": 3,
+		"el_power": 1119.515953256
+	},
+	{
+		"time": 1099.44,
+		"input_voltage": 3,
+		"el_power": 1196.67252870264
+	},
+	{
+		"time": 1100.44,
+		"input_voltage": 3,
+		"el_power": 1119.73770323972
+	},
+	{
+		"time": 1101.48,
+		"input_voltage": 3,
+		"el_power": 1197.66868670751
+	},
+	{
+		"time": 1102.5,
+		"input_voltage": 3,
+		"el_power": 1112.66056145053
+	},
+	{
+		"time": 1103.5,
+		"input_voltage": 3,
+		"el_power": 1204.30495415558
+	},
+	{
+		"time": 1104.5,
+		"input_voltage": 3,
+		"el_power": 1126.75084863414
+	},
+	{
+		"time": 1105.5,
+		"input_voltage": 3,
+		"el_power": 1200.34515215377
+	},
+	{
+		"time": 1106.5,
+		"input_voltage": 3,
+		"el_power": 1114.91583396922
+	},
+	{
+		"time": 1107.52,
+		"input_voltage": 3,
+		"el_power": 1209.2273972446
+	},
+	{
+		"time": 1108.52,
+		"input_voltage": 3,
+		"el_power": 1121.32040337219
+	},
+	{
+		"time": 1109.6,
+		"input_voltage": 3,
+		"el_power": 1214.64969750745
+	},
+	{
+		"time": 1110.64,
+		"input_voltage": 3,
+		"el_power": 1119.71224440114
+	},
+	{
+		"time": 1111.68,
+		"input_voltage": 3,
+		"el_power": 1216.95180121823
+	},
+	{
+		"time": 1112.74,
+		"input_voltage": 3,
+		"el_power": 1125.29744902736
+	},
+	{
+		"time": 1113.84,
+		"input_voltage": 3,
+		"el_power": 1213.12017169646
+	},
+	{
+		"time": 1114.88,
+		"input_voltage": 3,
+		"el_power": 1129.6600411076
+	},
+	{
+		"time": 1115.92,
+		"input_voltage": 3,
+		"el_power": 1208.95626280833
+	},
+	{
+		"time": 1116.98,
+		"input_voltage": 3,
+		"el_power": 1129.73310514496
+	},
+	{
+		"time": 1118,
+		"input_voltage": 3,
+		"el_power": 1213.8377460392
+	},
+	{
+		"time": 1119,
+		"input_voltage": 3,
+		"el_power": 1138.74124257747
+	},
+	{
+		"time": 1120.02,
+		"input_voltage": 3,
+		"el_power": 1221.11135429322
+	},
+	{
+		"time": 1121.02,
+		"input_voltage": 3,
+		"el_power": 1138.34028244715
+	},
+	{
+		"time": 1122.04,
+		"input_voltage": 3,
+		"el_power": 1220.20107490914
+	},
+	{
+		"time": 1123.08,
+		"input_voltage": 3,
+		"el_power": 1133.71623736807
+	},
+	{
+		"time": 1124.14,
+		"input_voltage": 3,
+		"el_power": 1222.58015699062
+	},
+	{
+		"time": 1125.22,
+		"input_voltage": 3,
+		"el_power": 1142.618635839
+	},
+	{
+		"time": 1126.28,
+		"input_voltage": 3,
+		"el_power": 1221.52639795091
+	},
+	{
+		"time": 1127.34,
+		"input_voltage": 3,
+		"el_power": 1133.165005235
+	},
+	{
+		"time": 1128.38,
+		"input_voltage": 3,
+		"el_power": 1219.63169202502
+	},
+	{
+		"time": 1129.48,
+		"input_voltage": 3,
+		"el_power": 1136.39338745576
+	},
+	{
+		"time": 1130.56,
+		"input_voltage": 3,
+		"el_power": 1220.26484305998
+	},
+	{
+		"time": 1131.64,
+		"input_voltage": 3,
+		"el_power": 1119.90874878034
+	},
+	{
+		"time": 1132.64,
+		"input_voltage": 3,
+		"el_power": 1205.22068493533
+	},
+	{
+		"time": 1133.64,
+		"input_voltage": 3,
+		"el_power": 1123.01172260787
+	},
+	{
+		"time": 1134.64,
+		"input_voltage": 3,
+		"el_power": 1208.67248406644
+	},
+	{
+		"time": 1135.64,
+		"input_voltage": 3,
+		"el_power": 1128.33016777172
+	},
+	{
+		"time": 1136.64,
+		"input_voltage": 3,
+		"el_power": 1204.04921222381
+	},
+	{
+		"time": 1137.64,
+		"input_voltage": 3,
+		"el_power": 1120.48510168452
+	},
+	{
+		"time": 1138.68,
+		"input_voltage": 3,
+		"el_power": 1196.29821200382
+	},
+	{
+		"time": 1139.76,
+		"input_voltage": 3,
+		"el_power": 1115.74612512809
+	},
+	{
+		"time": 1140.8,
+		"input_voltage": 3,
+		"el_power": 1205.84433459296
+	},
+	{
+		"time": 1141.84,
+		"input_voltage": 3,
+		"el_power": 1113.86523969456
+	},
+	{
+		"time": 1142.88,
+		"input_voltage": 3,
+		"el_power": 1197.46467931737
+	},
+	{
+		"time": 1143.98,
+		"input_voltage": 3,
+		"el_power": 1124.66448358014
+	},
+	{
+		"time": 1145.02,
+		"input_voltage": 3,
+		"el_power": 1202.90006000375
+	},
+	{
+		"time": 1146.04,
+		"input_voltage": 3,
+		"el_power": 1123.32214505837
+	},
+	{
+		"time": 1147.08,
+		"input_voltage": 3,
+		"el_power": 1208.23767082161
+	},
+	{
+		"time": 1148.08,
+		"input_voltage": 3,
+		"el_power": 1125.42505507221
+	},
+	{
+		"time": 1149.08,
+		"input_voltage": 3,
+		"el_power": 1209.94881492882
+	},
+	{
+		"time": 1150.08,
+		"input_voltage": 3,
+		"el_power": 1126.56245621937
+	},
+	{
+		"time": 1151.08,
+		"input_voltage": 3,
+		"el_power": 1208.92348960202
+	},
+	{
+		"time": 1152.14,
+		"input_voltage": 3,
+		"el_power": 1123.36108735637
+	},
+	{
+		"time": 1153.18,
+		"input_voltage": 3,
+		"el_power": 1207.31133597868
+	},
+	{
+		"time": 1154.22,
+		"input_voltage": 3,
+		"el_power": 1125.95387178848
+	},
+	{
+		"time": 1155.28,
+		"input_voltage": 3,
+		"el_power": 1218.45419048432
+	},
+	{
+		"time": 1156.32,
+		"input_voltage": 3,
+		"el_power": 1134.22595821599
+	},
+	{
+		"time": 1157.38,
+		"input_voltage": 3,
+		"el_power": 1211.88804463017
+	},
+	{
+		"time": 1158.44,
+		"input_voltage": 3,
+		"el_power": 1136.84245892832
+	},
+	{
+		"time": 1159.46,
+		"input_voltage": 3,
+		"el_power": 1223.5000438917
+	},
+	{
+		"time": 1160.48,
+		"input_voltage": 3,
+		"el_power": 1136.30679688879
+	},
+	{
+		"time": 1161.52,
+		"input_voltage": 3,
+		"el_power": 1221.4042262101
+	},
+	{
+		"time": 1162.52,
+		"input_voltage": 3,
+		"el_power": 1143.65750928484
+	},
+	{
+		"time": 1163.54,
+		"input_voltage": 3,
+		"el_power": 1224.33711878915
+	},
+	{
+		"time": 1164.56,
+		"input_voltage": 3,
+		"el_power": 1135.33821465587
+	},
+	{
+		"time": 1165.56,
+		"input_voltage": 3,
+		"el_power": 1223.79187715896
+	},
+	{
+		"time": 1166.56,
+		"input_voltage": 3,
+		"el_power": 1132.61546429701
+	},
+	{
+		"time": 1167.6,
+		"input_voltage": 3,
+		"el_power": 1215.32301867782
+	},
+	{
+		"time": 1168.64,
+		"input_voltage": 3,
+		"el_power": 1130.44598023058
+	},
+	{
+		"time": 1169.68,
+		"input_voltage": 3,
+		"el_power": 1229.85158349734
+	},
+	{
+		"time": 1170.72,
+		"input_voltage": 3,
+		"el_power": 1131.47504092994
+	},
+	{
+		"time": 1171.74,
+		"input_voltage": 3,
+		"el_power": 1213.07258353901
+	},
+	{
+		"time": 1172.78,
+		"input_voltage": 3,
+		"el_power": 1132.54385314284
+	},
+	{
+		"time": 1173.88,
+		"input_voltage": 3,
+		"el_power": 1213.17071695974
+	},
+	{
+		"time": 1174.9,
+		"input_voltage": 3,
+		"el_power": 1127.65091658338
+	},
+	{
+		"time": 1175.94,
+		"input_voltage": 3,
+		"el_power": 1221.85487623871
+	},
+	{
+		"time": 1176.96,
+		"input_voltage": 3,
+		"el_power": 1127.81220037234
+	},
+	{
+		"time": 1177.96,
+		"input_voltage": 3,
+		"el_power": 1210.20701663541
+	},
+	{
+		"time": 1178.96,
+		"input_voltage": 3,
+		"el_power": 1116.08526391714
+	},
+	{
+		"time": 1179.96,
+		"input_voltage": 3,
+		"el_power": 1203.80694456178
+	},
+	{
+		"time": 1180.96,
+		"input_voltage": 3,
+		"el_power": 1115.71374413644
+	},
+	{
+		"time": 1181.96,
+		"input_voltage": 3,
+		"el_power": 1201.06093795855
+	},
+	{
+		"time": 1182.96,
+		"input_voltage": 3,
+		"el_power": 1119.7462161654
+	},
+	{
+		"time": 1184.08,
+		"input_voltage": 3,
+		"el_power": 1207.48605534487
+	},
+	{
+		"time": 1185.1,
+		"input_voltage": 3,
+		"el_power": 1111.46247198138
+	},
+	{
+		"time": 1186.16,
+		"input_voltage": 3,
+		"el_power": 1209.30937338743
+	},
+	{
+		"time": 1187.18,
+		"input_voltage": 3,
+		"el_power": 1116.96425989142
+	},
+	{
+		"time": 1188.18,
+		"input_voltage": 3,
+		"el_power": 1201.88959258548
+	},
+	{
+		"time": 1189.26,
+		"input_voltage": 3,
+		"el_power": 1121.7514439326
+	},
+	{
+		"time": 1190.32,
+		"input_voltage": 3,
+		"el_power": 1199.82844862186
+	},
+	{
+		"time": 1191.34,
+		"input_voltage": 3,
+		"el_power": 1121.33512583605
+	},
+	{
+		"time": 1192.34,
+		"input_voltage": 3,
+		"el_power": 1208.09565688468
+	},
+	{
+		"time": 1193.34,
+		"input_voltage": 3,
+		"el_power": 1124.22055657328
+	},
+	{
+		"time": 1194.36,
+		"input_voltage": 3,
+		"el_power": 1211.24310116419
+	},
+	{
+		"time": 1195.36,
+		"input_voltage": 3,
+		"el_power": 1134.73757487185
+	},
+	{
+		"time": 1196.38,
+		"input_voltage": 3,
+		"el_power": 1210.66989864637
+	},
+	{
+		"time": 1197.4,
+		"input_voltage": 3,
+		"el_power": 1123.12608750274
+	},
+	{
+		"time": 1198.4,
+		"input_voltage": 3,
+		"el_power": 1225.788988708
+	},
+	{
+		"time": 1199.46,
+		"input_voltage": 3,
+		"el_power": 1127.71038232969
+	},
+	{
+		"time": 1200.5,
+		"input_voltage": 3,
+		"el_power": 1225.32662690162
+	},
+	{
+		"time": 1201.58,
+		"input_voltage": 3,
+		"el_power": 1141.52504148507
+	},
+	{
+		"time": 1202.72,
+		"input_voltage": 3,
+		"el_power": 1228.04542999132
+	},
+	{
+		"time": 1203.74,
+		"input_voltage": 3,
+		"el_power": 1137.54240291098
+	},
+	{
+		"time": 1204.8,
+		"input_voltage": 3,
+		"el_power": 1227.2648440656
+	},
+	{
+		"time": 1205.8,
+		"input_voltage": 3,
+		"el_power": 1143.310389737
+	},
+	{
+		"time": 1206.8,
+		"input_voltage": 3,
+		"el_power": 1226.05527374098
+	},
+	{
+		"time": 1207.82,
+		"input_voltage": 3,
+		"el_power": 1142.64163628297
+	},
+	{
+		"time": 1208.82,
+		"input_voltage": 3,
+		"el_power": 1222.96037990644
+	},
+	{
+		"time": 1209.82,
+		"input_voltage": 3,
+		"el_power": 1140.38813425324
+	},
+	{
+		"time": 1210.82,
+		"input_voltage": 3,
+		"el_power": 1229.50161584767
+	},
+	{
+		"time": 1211.84,
+		"input_voltage": 3,
+		"el_power": 1136.58051143573
+	},
+	{
+		"time": 1212.88,
+		"input_voltage": 3,
+		"el_power": 1222.22751286699
+	},
+	{
+		"time": 1213.9,
+		"input_voltage": 3,
+		"el_power": 1136.38220486366
+	},
+	{
+		"time": 1215,
+		"input_voltage": 3,
+		"el_power": 1221.61966101398
+	},
+	{
+		"time": 1216.02,
+		"input_voltage": 3,
+		"el_power": 1123.3739060086
+	},
+	{
+		"time": 1217.08,
+		"input_voltage": 3,
+		"el_power": 1216.43995490994
+	},
+	{
+		"time": 1218.08,
+		"input_voltage": 3,
+		"el_power": 1126.11258872036
+	},
+	{
+		"time": 1219.1,
+		"input_voltage": 3,
+		"el_power": 1215.48066234904
+	},
+	{
+		"time": 1220.16,
+		"input_voltage": 3,
+		"el_power": 1122.30383449363
+	},
+	{
+		"time": 1221.18,
+		"input_voltage": 3,
+		"el_power": 1209.2173080854
+	},
+	{
+		"time": 1222.2,
+		"input_voltage": 3,
+		"el_power": 1124.08317766134
+	},
+	{
+		"time": 1223.22,
+		"input_voltage": 3,
+		"el_power": 1206.89450465561
+	},
+	{
+		"time": 1224.22,
+		"input_voltage": 3,
+		"el_power": 1112.60267270366
+	},
+	{
+		"time": 1225.24,
+		"input_voltage": 3,
+		"el_power": 1200.05862672667
+	},
+	{
+		"time": 1226.24,
+		"input_voltage": 3,
+		"el_power": 1116.42383696553
+	},
+	{
+		"time": 1227.26,
+		"input_voltage": 3,
+		"el_power": 1200.69259329214
+	},
+	{
+		"time": 1228.28,
+		"input_voltage": 3,
+		"el_power": 1120.18424868595
+	},
+	{
+		"time": 1229.3,
+		"input_voltage": 3,
+		"el_power": 1209.68453196875
+	},
+	{
+		"time": 1230.34,
+		"input_voltage": 3,
+		"el_power": 1114.21233916673
+	},
+	{
+		"time": 1231.38,
+		"input_voltage": 3,
+		"el_power": 1195.7951424109
+	},
+	{
+		"time": 1232.48,
+		"input_voltage": 3,
+		"el_power": 1116.74176125601
+	},
+	{
+		"time": 1233.56,
+		"input_voltage": 3,
+		"el_power": 1201.02501499347
+	},
+	{
+		"time": 1234.6,
+		"input_voltage": 3,
+		"el_power": 1125.56622054266
+	},
+	{
+		"time": 1235.6,
+		"input_voltage": 3,
+		"el_power": 1208.28822340557
+	},
+	{
+		"time": 1236.6,
+		"input_voltage": 3,
+		"el_power": 1115.29656207455
+	},
+	{
+		"time": 1237.6,
+		"input_voltage": 3,
+		"el_power": 1214.61701036574
+	},
+	{
+		"time": 1238.62,
+		"input_voltage": 3,
+		"el_power": 1128.57674463846
+	},
+	{
+		"time": 1239.66,
+		"input_voltage": 3,
+		"el_power": 1213.36613970586
+	},
+	{
+		"time": 1240.68,
+		"input_voltage": 3,
+		"el_power": 1121.13697313454
+	},
+	{
+		"time": 1241.72,
+		"input_voltage": 3,
+		"el_power": 1205.8153097334
+	},
+	{
+		"time": 1242.78,
+		"input_voltage": 3,
+		"el_power": 1126.41678668429
+	},
+	{
+		"time": 1243.8,
+		"input_voltage": 3,
+		"el_power": 1216.10530996433
+	},
+	{
+		"time": 1244.84,
+		"input_voltage": 3,
+		"el_power": 1133.4539226022
+	},
+	{
+		"time": 1245.96,
+		"input_voltage": 3,
+		"el_power": 1224.16649038754
+	},
+	{
+		"time": 1246.96,
+		"input_voltage": 3,
+		"el_power": 1135.17066673041
+	},
+	{
+		"time": 1248,
+		"input_voltage": 3,
+		"el_power": 1216.55583417047
+	},
+	{
+		"time": 1249.02,
+		"input_voltage": 3,
+		"el_power": 1126.8590485813
+	},
+	{
+		"time": 1250.02,
+		"input_voltage": 3,
+		"el_power": 1220.08904758678
+	},
+	{
+		"time": 1251.02,
+		"input_voltage": 3,
+		"el_power": 1136.5093926107
+	},
+	{
+		"time": 1252.02,
+		"input_voltage": 3,
+		"el_power": 1215.43183137848
+	},
+	{
+		"time": 1253.02,
+		"input_voltage": 3,
+		"el_power": 1133.03828352801
+	},
+	{
+		"time": 1254.02,
+		"input_voltage": 3,
+		"el_power": 1216.77800753707
+	},
+	{
+		"time": 1255.04,
+		"input_voltage": 3,
+		"el_power": 1135.39816888867
+	},
+	{
+		"time": 1256.1,
+		"input_voltage": 3,
+		"el_power": 1219.98276966982
+	},
+	{
+		"time": 1257.12,
+		"input_voltage": 3,
+		"el_power": 1123.68770304526
+	},
+	{
+		"time": 1258.18,
+		"input_voltage": 3,
+		"el_power": 1209.5666344204
+	},
+	{
+		"time": 1259.3,
+		"input_voltage": 3,
+		"el_power": 1124.9529406164
+	},
+	{
+		"time": 1260.3,
+		"input_voltage": 3,
+		"el_power": 1223.71678151422
+	},
+	{
+		"time": 1261.34,
+		"input_voltage": 3,
+		"el_power": 1127.0220245496
+	},
+	{
+		"time": 1262.38,
+		"input_voltage": 3,
+		"el_power": 1217.55591284915
+	},
+	{
+		"time": 1263.48,
+		"input_voltage": 3,
+		"el_power": 1124.1239320909
+	},
+	{
+		"time": 1264.5,
+		"input_voltage": 3,
+		"el_power": 1220.64466420817
+	},
+	{
+		"time": 1265.52,
+		"input_voltage": 3,
+		"el_power": 1129.78864993174
+	},
+	{
+		"time": 1266.54,
+		"input_voltage": 3,
+		"el_power": 1212.20440737256
+	},
+	{
+		"time": 1267.56,
+		"input_voltage": 3,
+		"el_power": 1124.9372976725
+	},
+	{
+		"time": 1268.56,
+		"input_voltage": 3,
+		"el_power": 1205.93422806967
+	},
+	{
+		"time": 1269.62,
+		"input_voltage": 3,
+		"el_power": 1132.92538040755
+	},
+	{
+		"time": 1270.68,
+		"input_voltage": 3,
+		"el_power": 1225.77838517081
+	},
+	{
+		"time": 1271.74,
+		"input_voltage": 3,
+		"el_power": 1127.14220042782
+	},
+	{
+		"time": 1272.82,
+		"input_voltage": 3,
+		"el_power": 1224.52068511208
+	},
+	{
+		"time": 1273.92,
+		"input_voltage": 3,
+		"el_power": 1134.93761535824
+	},
+	{
+		"time": 1274.94,
+		"input_voltage": 3,
+		"el_power": 1212.42104230885
+	},
+	{
+		"time": 1276.02,
+		"input_voltage": 3,
+		"el_power": 1127.13143393448
+	},
+	{
+		"time": 1277.06,
+		"input_voltage": 3,
+		"el_power": 1215.22408439012
+	},
+	{
+		"time": 1278.1,
+		"input_voltage": 3,
+		"el_power": 1128.58404293123
+	},
+	{
+		"time": 1279.1,
+		"input_voltage": 3,
+		"el_power": 1220.4654104263
+	},
+	{
+		"time": 1280.1,
+		"input_voltage": 3,
+		"el_power": 1131.49236993777
+	},
+	{
+		"time": 1281.1,
+		"input_voltage": 3,
+		"el_power": 1219.99662723627
+	},
+	{
+		"time": 1282.1,
+		"input_voltage": 3,
+		"el_power": 1133.8002686873
+	},
+	{
+		"time": 1283.12,
+		"input_voltage": 3,
+		"el_power": 1223.05914197037
+	},
+	{
+		"time": 1284.18,
+		"input_voltage": 3,
+		"el_power": 1126.50467256056
+	},
+	{
+		"time": 1285.22,
+		"input_voltage": 3,
+		"el_power": 1219.86380667716
+	},
+	{
+		"time": 1286.32,
+		"input_voltage": 3,
+		"el_power": 1133.81476042737
+	},
+	{
+		"time": 1287.36,
+		"input_voltage": 3,
+		"el_power": 1225.00640489118
+	},
+	{
+		"time": 1288.44,
+		"input_voltage": 3,
+		"el_power": 1132.14985041819
+	},
+	{
+		"time": 1289.52,
+		"input_voltage": 3,
+		"el_power": 1222.90042026896
+	},
+	{
+		"time": 1290.6,
+		"input_voltage": 3,
+		"el_power": 1135.16969054456
+	},
+	{
+		"time": 1291.64,
+		"input_voltage": 3,
+		"el_power": 1213.98879001518
+	},
+	{
+		"time": 1292.64,
+		"input_voltage": 3,
+		"el_power": 1128.19181264038
+	},
+	{
+		"time": 1293.64,
+		"input_voltage": 3,
+		"el_power": 1217.09686055913
+	},
+	{
+		"time": 1294.64,
+		"input_voltage": 3,
+		"el_power": 1132.92972771703
+	},
+	{
+		"time": 1295.64,
+		"input_voltage": 3,
+		"el_power": 1223.07623891615
+	},
+	{
+		"time": 1296.64,
+		"input_voltage": 3,
+		"el_power": 1133.64045162924
+	},
+	{
+		"time": 1297.68,
+		"input_voltage": 3,
+		"el_power": 1223.03761842292
+	},
+	{
+		"time": 1298.74,
+		"input_voltage": 3,
+		"el_power": 1129.35091863324
+	},
+	{
+		"time": 1299.76,
+		"input_voltage": 3,
+		"el_power": 1210.07407958839
+	},
+	{
+		"time": 1300.78,
+		"input_voltage": 3,
+		"el_power": 1123.43977958699
+	},
+	{
+		"time": 1301.78,
+		"input_voltage": 3,
+		"el_power": 1222.66123831969
+	},
+	{
+		"time": 1302.82,
+		"input_voltage": 3,
+		"el_power": 1136.72830167383
+	},
+	{
+		"time": 1303.94,
+		"input_voltage": 3,
+		"el_power": 1217.70916332692
+	},
+	{
+		"time": 1304.98,
+		"input_voltage": 3,
+		"el_power": 1126.97139729987
+	},
+	{
+		"time": 1306.02,
+		"input_voltage": 3,
+		"el_power": 1222.06100603373
+	},
+	{
+		"time": 1307.02,
+		"input_voltage": 3,
+		"el_power": 1131.48827275254
+	},
+	{
+		"time": 1308.02,
+		"input_voltage": 3,
+		"el_power": 1221.16176131167
+	},
+	{
+		"time": 1309.02,
+		"input_voltage": 3,
+		"el_power": 1138.29356314314
+	},
+	{
+		"time": 1310.02,
+		"input_voltage": 3,
+		"el_power": 1225.38469726577
+	},
+	{
+		"time": 1311.02,
+		"input_voltage": 3,
+		"el_power": 1126.18213276245
+	},
+	{
+		"time": 1312.08,
+		"input_voltage": 3,
+		"el_power": 1214.48539029893
+	},
+	{
+		"time": 1313.14,
+		"input_voltage": 3,
+		"el_power": 1133.25648018734
+	},
+	{
+		"time": 1314.22,
+		"input_voltage": 3,
+		"el_power": 1214.82322770344
+	},
+	{
+		"time": 1315.28,
+		"input_voltage": 3,
+		"el_power": 1121.23914153119
+	},
+	{
+		"time": 1316.38,
+		"input_voltage": 3,
+		"el_power": 1210.65552795422
+	},
+	{
+		"time": 1317.4,
+		"input_voltage": 3,
+		"el_power": 1116.42935509663
+	},
+	{
+		"time": 1318.5,
+		"input_voltage": 3,
+		"el_power": 1215.7489624525
+	},
+	{
+		"time": 1319.56,
+		"input_voltage": 3,
+		"el_power": 1137.97576795783
+	},
+	{
+		"time": 1320.6,
+		"input_voltage": 3,
+		"el_power": 1215.03327713772
+	},
+	{
+		"time": 1321.6,
+		"input_voltage": 3,
+		"el_power": 1136.30923506744
+	},
+	{
+		"time": 1322.6,
+		"input_voltage": 3,
+		"el_power": 1215.67656298565
+	},
+	{
+		"time": 1323.6,
+		"input_voltage": 3,
+		"el_power": 1138.89278140149
+	},
+	{
+		"time": 1324.6,
+		"input_voltage": 3,
+		"el_power": 1220.1398355242
+	},
+	{
+		"time": 1325.64,
+		"input_voltage": 3,
+		"el_power": 1137.67616211158
+	},
+	{
+		"time": 1326.7,
+		"input_voltage": 3,
+		"el_power": 1217.62201425014
+	},
+	{
+		"time": 1327.74,
+		"input_voltage": 3,
+		"el_power": 1134.78045933267
+	},
+	{
+		"time": 1328.8,
+		"input_voltage": 3,
+		"el_power": 1221.58032614549
+	},
+	{
+		"time": 1329.82,
+		"input_voltage": 3,
+		"el_power": 1129.3124908564
+	},
+	{
+		"time": 1330.88,
+		"input_voltage": 3,
+		"el_power": 1216.04754218231
+	},
+	{
+		"time": 1331.96,
+		"input_voltage": 3,
+		"el_power": 1125.56246970639
+	},
+	{
+		"time": 1333.08,
+		"input_voltage": 3,
+		"el_power": 1211.13463475288
+	},
+	{
+		"time": 1334.1,
+		"input_voltage": 3,
+		"el_power": 1124.36930606355
+	},
+	{
+		"time": 1335.1,
+		"input_voltage": 3,
+		"el_power": 1212.9864284754
+	},
+	{
+		"time": 1336.1,
+		"input_voltage": 3,
+		"el_power": 1123.56575586994
+	},
+	{
+		"time": 1337.1,
+		"input_voltage": 3,
+		"el_power": 1208.84491368088
+	},
+	{
+		"time": 1338.1,
+		"input_voltage": 3,
+		"el_power": 1120.8613419268
+	},
+	{
+		"time": 1339.14,
+		"input_voltage": 3,
+		"el_power": 1205.38376539801
+	},
+	{
+		"time": 1340.14,
+		"input_voltage": 3,
+		"el_power": 1110.53212624369
+	},
+	{
+		"time": 1341.22,
+		"input_voltage": 3,
+		"el_power": 1202.27830243132
+	},
+	{
+		"time": 1342.34,
+		"input_voltage": 3,
+		"el_power": 1112.67986025287
+	},
+	{
+		"time": 1343.4,
+		"input_voltage": 3,
+		"el_power": 1200.76074520891
+	},
+	{
+		"time": 1344.48,
+		"input_voltage": 3,
+		"el_power": 1114.88824739651
+	},
+	{
+		"time": 1345.54,
+		"input_voltage": 3,
+		"el_power": 1188.29346445854
+	},
+	{
+		"time": 1346.56,
+		"input_voltage": 3,
+		"el_power": 1107.69885331142
+	},
+	{
+		"time": 1347.58,
+		"input_voltage": 3,
+		"el_power": 1204.06586293392
+	},
+	{
+		"time": 1348.62,
+		"input_voltage": 3,
+		"el_power": 1118.90490796156
+	},
+	{
+		"time": 1349.66,
+		"input_voltage": 3,
+		"el_power": 1204.92064334704
+	},
+	{
+		"time": 1350.68,
+		"input_voltage": 3,
+		"el_power": 1126.39396887825
+	},
+	{
+		"time": 1351.7,
+		"input_voltage": 3,
+		"el_power": 1209.14000094603
+	},
+	{
+		"time": 1352.72,
+		"input_voltage": 3,
+		"el_power": 1130.41734422083
+	},
+	{
+		"time": 1353.72,
+		"input_voltage": 3,
+		"el_power": 1213.01988364902
+	},
+	{
+		"time": 1354.74,
+		"input_voltage": 3,
+		"el_power": 1119.98747127777
+	},
+	{
+		"time": 1355.76,
+		"input_voltage": 3,
+		"el_power": 1210.7920775956
+	},
+	{
+		"time": 1356.8,
+		"input_voltage": 3,
+		"el_power": 1118.62474592599
+	},
+	{
+		"time": 1357.82,
+		"input_voltage": 3,
+		"el_power": 1200.39756599357
+	},
+	{
+		"time": 1358.9,
+		"input_voltage": 3,
+		"el_power": 1121.70338474259
+	},
+	{
+		"time": 1359.92,
+		"input_voltage": 3,
+		"el_power": 1214.14607974151
+	},
+	{
+		"time": 1360.96,
+		"input_voltage": 3,
+		"el_power": 1122.82567766014
+	},
+	{
+		"time": 1362.04,
+		"input_voltage": 3,
+		"el_power": 1220.14634910478
+	},
+	{
+		"time": 1363.06,
+		"input_voltage": 3,
+		"el_power": 1139.26411748163
+	},
+	{
+		"time": 1364.06,
+		"input_voltage": 3,
+		"el_power": 1223.36612058201
+	},
+	{
+		"time": 1365.06,
+		"input_voltage": 3,
+		"el_power": 1132.56909267914
+	},
+	{
+		"time": 1366.06,
+		"input_voltage": 3,
+		"el_power": 1216.7500971243
+	},
+	{
+		"time": 1367.08,
+		"input_voltage": 3,
+		"el_power": 1135.07916992928
+	},
+	{
+		"time": 1368.08,
+		"input_voltage": 3,
+		"el_power": 1225.07753800564
+	},
+	{
+		"time": 1369.1,
+		"input_voltage": 3,
+		"el_power": 1143.17587899066
+	},
+	{
+		"time": 1370.14,
+		"input_voltage": 3,
+		"el_power": 1217.04028115543
+	},
+	{
+		"time": 1371.16,
+		"input_voltage": 3,
+		"el_power": 1125.81851509338
+	},
+	{
+		"time": 1372.24,
+		"input_voltage": 3,
+		"el_power": 1223.22608126957
+	},
+	{
+		"time": 1373.28,
+		"input_voltage": 3,
+		"el_power": 1128.1992440645
+	},
+	{
+		"time": 1374.4,
+		"input_voltage": 3,
+		"el_power": 1205.87077978545
+	},
+	{
+		"time": 1375.5,
+		"input_voltage": 3,
+		"el_power": 1121.50113577141
+	},
+	{
+		"time": 1376.58,
+		"input_voltage": 3,
+		"el_power": 1221.4313720522
+	},
+	{
+		"time": 1377.6,
+		"input_voltage": 3,
+		"el_power": 1134.81973523245
+	},
+	{
+		"time": 1378.64,
+		"input_voltage": 3,
+		"el_power": 1209.48240452421
+	},
+	{
+		"time": 1379.64,
+		"input_voltage": 3,
+		"el_power": 1131.79925520904
+	},
+	{
+		"time": 1380.64,
+		"input_voltage": 3,
+		"el_power": 1215.89931293506
+	},
+	{
+		"time": 1381.68,
+		"input_voltage": 3,
+		"el_power": 1130.0000485488
+	},
+	{
+		"time": 1382.72,
+		"input_voltage": 3,
+		"el_power": 1220.69408147333
+	},
+	{
+		"time": 1383.76,
+		"input_voltage": 3,
+		"el_power": 1135.68880718703
+	},
+	{
+		"time": 1384.78,
+		"input_voltage": 3,
+		"el_power": 1221.6261629187
+	},
+	{
+		"time": 1385.82,
+		"input_voltage": 3,
+		"el_power": 1128.19881684802
+	},
+	{
+		"time": 1386.9,
+		"input_voltage": 3,
+		"el_power": 1220.68206127889
+	},
+	{
+		"time": 1387.94,
+		"input_voltage": 3,
+		"el_power": 1125.51924610067
+	},
+	{
+		"time": 1388.98,
+		"input_voltage": 3,
+		"el_power": 1208.56679829636
+	},
+	{
+		"time": 1390.12,
+		"input_voltage": 3,
+		"el_power": 1135.26451118762
+	},
+	{
+		"time": 1391.14,
+		"input_voltage": 3,
+		"el_power": 1223.25141044542
+	},
+	{
+		"time": 1392.14,
+		"input_voltage": 3,
+		"el_power": 1128.98292698291
+	},
+	{
+		"time": 1393.16,
+		"input_voltage": 3,
+		"el_power": 1222.87777580497
+	},
+	{
+		"time": 1394.16,
+		"input_voltage": 3,
+		"el_power": 1135.91443366285
+	},
+	{
+		"time": 1395.2,
+		"input_voltage": 3,
+		"el_power": 1218.65094705275
+	},
+	{
+		"time": 1396.22,
+		"input_voltage": 3,
+		"el_power": 1132.19066590632
+	},
+	{
+		"time": 1397.22,
+		"input_voltage": 3,
+		"el_power": 1226.51746892885
+	},
+	{
+		"time": 1398.28,
+		"input_voltage": 3,
+		"el_power": 1145.22975301046
+	},
+	{
+		"time": 1399.36,
+		"input_voltage": 3,
+		"el_power": 1223.14783108732
+	},
+	{
+		"time": 1400.4,
+		"input_voltage": 3,
+		"el_power": 1129.89976944988
+	},
+	{
+		"time": 1401.46,
+		"input_voltage": 3,
+		"el_power": 1226.95615460456
+	},
+	{
+		"time": 1402.52,
+		"input_voltage": 3,
+		"el_power": 1131.44669130283
+	},
+	{
+		"time": 1403.54,
+		"input_voltage": 3,
+		"el_power": 1223.25629488593
+	},
+	{
+		"time": 1404.56,
+		"input_voltage": 3,
+		"el_power": 1128.50593953041
+	},
+	{
+		"time": 1405.56,
+		"input_voltage": 3,
+		"el_power": 1224.77322125873
+	},
+	{
+		"time": 1406.58,
+		"input_voltage": 3,
+		"el_power": 1129.15421776756
+	},
+	{
+		"time": 1407.58,
+		"input_voltage": 3,
+		"el_power": 1222.4578716498
+	},
+	{
+		"time": 1408.58,
+		"input_voltage": 3,
+		"el_power": 1137.51185141613
+	},
+	{
+		"time": 1409.58,
+		"input_voltage": 3,
+		"el_power": 1220.64664958236
+	},
+	{
+		"time": 1410.58,
+		"input_voltage": 3,
+		"el_power": 1132.09806434471
+	},
+	{
+		"time": 1411.58,
+		"input_voltage": 3,
+		"el_power": 1211.54081379968
+	},
+	{
+		"time": 1412.62,
+		"input_voltage": 3,
+		"el_power": 1126.59186959805
+	},
+	{
+		"time": 1413.74,
+		"input_voltage": 3,
+		"el_power": 1211.93280352221
+	},
+	{
+		"time": 1414.82,
+		"input_voltage": 3,
+		"el_power": 1122.43470479324
+	},
+	{
+		"time": 1415.84,
+		"input_voltage": 3,
+		"el_power": 1214.99968790519
+	},
+	{
+		"time": 1416.88,
+		"input_voltage": 3,
+		"el_power": 1121.71835534445
+	},
+	{
+		"time": 1417.98,
+		"input_voltage": 3,
+		"el_power": 1211.50298194267
+	},
+	{
+		"time": 1419.02,
+		"input_voltage": 3,
+		"el_power": 1122.76633184777
+	},
+	{
+		"time": 1420.08,
+		"input_voltage": 3,
+		"el_power": 1215.90327045273
+	},
+	{
+		"time": 1421.1,
+		"input_voltage": 3,
+		"el_power": 1118.76295970488
+	},
+	{
+		"time": 1422.1,
+		"input_voltage": 3,
+		"el_power": 1211.607137337
+	},
+	{
+		"time": 1423.12,
+		"input_voltage": 3,
+		"el_power": 1123.47101452456
+	},
+	{
+		"time": 1424.12,
+		"input_voltage": 3,
+		"el_power": 1210.12864048176
+	},
+	{
+		"time": 1425.14,
+		"input_voltage": 3,
+		"el_power": 1119.74991403722
+	},
+	{
+		"time": 1426.2,
+		"input_voltage": 3,
+		"el_power": 1213.15475412844
+	},
+	{
+		"time": 1427.22,
+		"input_voltage": 3,
+		"el_power": 1114.61225682898
+	},
+	{
+		"time": 1428.28,
+		"input_voltage": 3,
+		"el_power": 1209.91256208559
+	},
+	{
+		"time": 1429.3,
+		"input_voltage": 3,
+		"el_power": 1124.98660248545
+	},
+	{
+		"time": 1430.4,
+		"input_voltage": 3,
+		"el_power": 1207.57423622469
+	},
+	{
+		"time": 1431.44,
+		"input_voltage": 3,
+		"el_power": 1124.74266686183
+	},
+	{
+		"time": 1432.5,
+		"input_voltage": 3,
+		"el_power": 1202.03836852486
+	},
+	{
+		"time": 1433.54,
+		"input_voltage": 3,
+		"el_power": 1126.83981039712
+	},
+	{
+		"time": 1434.6,
+		"input_voltage": 3,
+		"el_power": 1210.34246286283
+	},
+	{
+		"time": 1435.6,
+		"input_voltage": 3,
+		"el_power": 1121.39185010155
+	},
+	{
+		"time": 1436.62,
+		"input_voltage": 3,
+		"el_power": 1209.26472885463
+	},
+	{
+		"time": 1437.62,
+		"input_voltage": 3,
+		"el_power": 1120.41335703555
+	},
+	{
+		"time": 1438.62,
+		"input_voltage": 3,
+		"el_power": 1208.36780891979
+	},
+	{
+		"time": 1439.64,
+		"input_voltage": 3,
+		"el_power": 1119.057068227
+	},
+	{
+		"time": 1440.64,
+		"input_voltage": 3,
+		"el_power": 1201.9452420748
+	},
+	{
+		"time": 1441.72,
+		"input_voltage": 3,
+		"el_power": 1113.47115698994
+	},
+	{
+		"time": 1442.74,
+		"input_voltage": 3,
+		"el_power": 1210.17358096834
+	},
+	{
+		"time": 1443.76,
+		"input_voltage": 3,
+		"el_power": 1116.20912305631
+	},
+	{
+		"time": 1444.82,
+		"input_voltage": 3,
+		"el_power": 1212.20794596354
+	},
+	{
+		"time": 1445.84,
+		"input_voltage": 3,
+		"el_power": 1119.13256870741
+	},
+	{
+		"time": 1446.86,
+		"input_voltage": 3,
+		"el_power": 1212.7380606899
+	},
+	{
+		"time": 1447.88,
+		"input_voltage": 3,
+		"el_power": 1117.71194323475
+	},
+	{
+		"time": 1448.88,
+		"input_voltage": 3,
+		"el_power": 1197.27158170801
+	},
+	{
+		"time": 1449.92,
+		"input_voltage": 3,
+		"el_power": 1111.69980998961
+	},
+	{
+		"time": 1450.94,
+		"input_voltage": 3,
+		"el_power": 1202.76858698663
+	},
+	{
+		"time": 1451.94,
+		"input_voltage": 3,
+		"el_power": 1115.65910062855
+	},
+	{
+		"time": 1452.94,
+		"input_voltage": 3,
+		"el_power": 1201.2595487161
+	},
+	{
+		"time": 1453.94,
+		"input_voltage": 3,
+		"el_power": 1114.26305837485
+	},
+	{
+		"time": 1454.94,
+		"input_voltage": 3,
+		"el_power": 1198.82263418288
+	},
+	{
+		"time": 1455.98,
+		"input_voltage": 3,
+		"el_power": 1109.53407724073
+	},
+	{
+		"time": 1457.04,
+		"input_voltage": 3,
+		"el_power": 1193.67366928669
+	},
+	{
+		"time": 1458.08,
+		"input_voltage": 3,
+		"el_power": 1101.49366811317
+	},
+	{
+		"time": 1459.14,
+		"input_voltage": 3,
+		"el_power": 1191.63873046065
+	},
+	{
+		"time": 1460.22,
+		"input_voltage": 3,
+		"el_power": 1113.6313819143
+	},
+	{
+		"time": 1461.24,
+		"input_voltage": 3,
+		"el_power": 1198.29079418799
+	},
+	{
+		"time": 1462.3,
+		"input_voltage": 3,
+		"el_power": 1104.40556890044
+	},
+	{
+		"time": 1463.38,
+		"input_voltage": 3,
+		"el_power": 1188.04787927077
+	},
+	{
+		"time": 1464.42,
+		"input_voltage": 3,
+		"el_power": 1106.34945320034
+	},
+	{
+		"time": 1465.42,
+		"input_voltage": 3,
+		"el_power": 1201.38454846104
+	},
+	{
+		"time": 1466.42,
+		"input_voltage": 3,
+		"el_power": 1110.71248581818
+	},
+	{
+		"time": 1467.42,
+		"input_voltage": 3,
+		"el_power": 1192.91007260705
+	},
+	{
+		"time": 1468.42,
+		"input_voltage": 3,
+		"el_power": 1105.70237510304
+	},
+	{
+		"time": 1469.42,
+		"input_voltage": 3,
+		"el_power": 1204.93232988998
+	},
+	{
+		"time": 1470.42,
+		"input_voltage": 3,
+		"el_power": 1120.80504242357
+	},
+	{
+		"time": 1471.5,
+		"input_voltage": 3,
+		"el_power": 1202.84595994096
+	},
+	{
+		"time": 1472.56,
+		"input_voltage": 3,
+		"el_power": 1112.09184739895
+	},
+	{
+		"time": 1473.58,
+		"input_voltage": 3,
+		"el_power": 1206.01045523807
+	},
+	{
+		"time": 1474.66,
+		"input_voltage": 3,
+		"el_power": 1112.74422999162
+	},
+	{
+		"time": 1475.74,
+		"input_voltage": 3,
+		"el_power": 1210.30769721905
+	},
+	{
+		"time": 1476.8,
+		"input_voltage": 3,
+		"el_power": 1125.03030784596
+	},
+	{
+		"time": 1477.82,
+		"input_voltage": 3,
+		"el_power": 1214.89722128768
+	},
+	{
+		"time": 1478.84,
+		"input_voltage": 3,
+		"el_power": 1126.42551694133
+	},
+	{
+		"time": 1479.88,
+		"input_voltage": 3,
+		"el_power": 1215.16624181332
+	},
+	{
+		"time": 1480.88,
+		"input_voltage": 3,
+		"el_power": 1136.54415615441
+	},
+	{
+		"time": 1481.88,
+		"input_voltage": 3,
+		"el_power": 1222.70696520599
+	},
+	{
+		"time": 1482.9,
+		"input_voltage": 3,
+		"el_power": 1133.6950182059
+	},
+	{
+		"time": 1483.9,
+		"input_voltage": 3,
+		"el_power": 1224.23918599595
+	},
+	{
+		"time": 1484.9,
+		"input_voltage": 3,
+		"el_power": 1125.52409965812
+	},
+	{
+		"time": 1485.96,
+		"input_voltage": 3,
+		"el_power": 1223.72113024278
+	},
+	{
+		"time": 1487.02,
+		"input_voltage": 3,
+		"el_power": 1126.13877582811
+	},
+	{
+		"time": 1488.08,
+		"input_voltage": 3,
+		"el_power": 1218.50753207322
+	},
+	{
+		"time": 1489.12,
+		"input_voltage": 3,
+		"el_power": 1131.86901402073
+	},
+	{
+		"time": 1490.16,
+		"input_voltage": 3,
+		"el_power": 1219.09187017541
+	},
+	{
+		"time": 1491.2,
+		"input_voltage": 3,
+		"el_power": 1127.26540887796
+	},
+	{
+		"time": 1492.32,
+		"input_voltage": 3,
+		"el_power": 1211.75099173057
+	},
+	{
+		"time": 1493.34,
+		"input_voltage": 3,
+		"el_power": 1114.79212836027
+	},
+	{
+		"time": 1494.44,
+		"input_voltage": 3,
+		"el_power": 1212.67702122809
+	},
+	{
+		"time": 1495.44,
+		"input_voltage": 3,
+		"el_power": 1116.40726760708
+	},
+	{
+		"time": 1496.44,
+		"input_voltage": 3,
+		"el_power": 1205.25241142435
+	},
+	{
+		"time": 1497.46,
+		"input_voltage": 3,
+		"el_power": 1112.14481954341
+	},
+	{
+		"time": 1498.46,
+		"input_voltage": 3,
+		"el_power": 1192.13991235804
+	},
+	{
+		"time": 1499.52,
+		"input_voltage": 3,
+		"el_power": 1104.88329596703
+	},
+	{
+		"time": 1500.58,
+		"input_voltage": 3,
+		"el_power": 1200.16126169088
+	},
+	{
+		"time": 1501.68,
+		"input_voltage": 3,
+		"el_power": 1103.46900444371
+	},
+	{
+		"time": 1502.74,
+		"input_voltage": 3,
+		"el_power": 1204.30083792208
+	},
+	{
+		"time": 1503.82,
+		"input_voltage": 3,
+		"el_power": 1110.54290746922
+	},
+	{
+		"time": 1504.86,
+		"input_voltage": 3,
+		"el_power": 1200.95209333797
+	},
+	{
+		"time": 1505.94,
+		"input_voltage": 3,
+		"el_power": 1110.26577928301
+	},
+	{
+		"time": 1506.98,
+		"input_voltage": 3,
+		"el_power": 1197.81476003188
+	},
+	{
+		"time": 1508.02,
+		"input_voltage": 3,
+		"el_power": 1106.40403458196
+	},
+	{
+		"time": 1509.02,
+		"input_voltage": 3,
+		"el_power": 1196.76302520142
+	},
+	{
+		"time": 1510.02,
+		"input_voltage": 3,
+		"el_power": 1115.84401006934
+	},
+	{
+		"time": 1511.02,
+		"input_voltage": 3,
+		"el_power": 1205.21957401288
+	},
+	{
+		"time": 1512.02,
+		"input_voltage": 3,
+		"el_power": 1116.29564536651
+	},
+	{
+		"time": 1513.04,
+		"input_voltage": 3,
+		"el_power": 1204.74381789179
+	},
+	{
+		"time": 1514.06,
+		"input_voltage": 3,
+		"el_power": 1120.49918413558
+	},
+	{
+		"time": 1515.2,
+		"input_voltage": 3,
+		"el_power": 1208.62327999554
+	},
+	{
+		"time": 1516.2,
+		"input_voltage": 3,
+		"el_power": 1123.05074094399
+	},
+	{
+		"time": 1517.34,
+		"input_voltage": 3,
+		"el_power": 1211.85508514598
+	},
+	{
+		"time": 1518.38,
+		"input_voltage": 3,
+		"el_power": 1123.12166868269
+	},
+	{
+		"time": 1519.44,
+		"input_voltage": 3,
+		"el_power": 1208.56167924878
+	},
+	{
+		"time": 1520.5,
+		"input_voltage": 3,
+		"el_power": 1127.74193703917
+	},
+	{
+		"time": 1521.6,
+		"input_voltage": 3,
+		"el_power": 1214.41849518274
+	},
+	{
+		"time": 1522.66,
+		"input_voltage": 3,
+		"el_power": 1125.1443946379
+	},
+	{
+		"time": 1523.66,
+		"input_voltage": 3,
+		"el_power": 1216.02207241698
+	},
+	{
+		"time": 1524.66,
+		"input_voltage": 3,
+		"el_power": 1128.55048853403
+	},
+	{
+		"time": 1525.66,
+		"input_voltage": 3,
+		"el_power": 1214.20216831681
+	},
+	{
+		"time": 1526.66,
+		"input_voltage": 3,
+		"el_power": 1123.96447457151
+	},
+	{
+		"time": 1527.68,
+		"input_voltage": 3,
+		"el_power": 1218.58275843481
+	},
+	{
+		"time": 1528.74,
+		"input_voltage": 3,
+		"el_power": 1126.08867087169
+	},
+	{
+		"time": 1529.78,
+		"input_voltage": 3,
+		"el_power": 1211.87771747056
+	},
+	{
+		"time": 1530.8,
+		"input_voltage": 3,
+		"el_power": 1121.19299326274
+	},
+	{
+		"time": 1531.82,
+		"input_voltage": 3,
+		"el_power": 1218.43392578326
+	},
+	{
+		"time": 1532.88,
+		"input_voltage": 3,
+		"el_power": 1125.69938898323
+	},
+	{
+		"time": 1533.9,
+		"input_voltage": 3,
+		"el_power": 1212.25117880735
+	},
+	{
+		"time": 1534.94,
+		"input_voltage": 3,
+		"el_power": 1120.4392880797
+	},
+	{
+		"time": 1535.96,
+		"input_voltage": 3,
+		"el_power": 1213.40724775977
+	},
+	{
+		"time": 1536.98,
+		"input_voltage": 3,
+		"el_power": 1127.69616391731
+	},
+	{
+		"time": 1537.98,
+		"input_voltage": 3,
+		"el_power": 1206.35207128106
+	},
+	{
+		"time": 1538.98,
+		"input_voltage": 3,
+		"el_power": 1125.76100649996
+	},
+	{
+		"time": 1539.98,
+		"input_voltage": 3,
+		"el_power": 1214.04017116484
+	},
+	{
+		"time": 1541.02,
+		"input_voltage": 3,
+		"el_power": 1126.82102465093
+	},
+	{
+		"time": 1542.04,
+		"input_voltage": 3,
+		"el_power": 1209.82454049729
+	},
+	{
+		"time": 1543.12,
+		"input_voltage": 3,
+		"el_power": 1117.00892619514
+	},
+	{
+		"time": 1544.18,
+		"input_voltage": 3,
+		"el_power": 1206.69410727773
+	},
+	{
+		"time": 1545.24,
+		"input_voltage": 3,
+		"el_power": 1127.45609012293
+	},
+	{
+		"time": 1546.34,
+		"input_voltage": 3,
+		"el_power": 1210.51772236494
+	},
+	{
+		"time": 1547.42,
+		"input_voltage": 3,
+		"el_power": 1120.28953019636
+	},
+	{
+		"time": 1548.46,
+		"input_voltage": 3,
+		"el_power": 1211.53665381428
+	},
+	{
+		"time": 1549.54,
+		"input_voltage": 3,
+		"el_power": 1117.93451008932
+	},
+	{
+		"time": 1550.6,
+		"input_voltage": 3,
+		"el_power": 1213.16503270595
+	},
+	{
+		"time": 1551.7,
+		"input_voltage": 3,
+		"el_power": 1117.44127936901
+	},
+	{
+		"time": 1552.7,
+		"input_voltage": 3,
+		"el_power": 1211.14948598499
+	},
+	{
+		"time": 1553.72,
+		"input_voltage": 3,
+		"el_power": 1117.70081222186
+	},
+	{
+		"time": 1554.72,
+		"input_voltage": 3,
+		"el_power": 1210.18519366624
+	},
+	{
+		"time": 1555.72,
+		"input_voltage": 3,
+		"el_power": 1122.79234813906
+	},
+	{
+		"time": 1556.76,
+		"input_voltage": 3,
+		"el_power": 1210.87057120826
+	},
+	{
+		"time": 1557.8,
+		"input_voltage": 3,
+		"el_power": 1123.10183844212
+	},
+	{
+		"time": 1558.88,
+		"input_voltage": 3,
+		"el_power": 1213.59539597351
+	},
+	{
+		"time": 1559.92,
+		"input_voltage": 3,
+		"el_power": 1122.17352316205
+	},
+	{
+		"time": 1560.98,
+		"input_voltage": 3,
+		"el_power": 1207.58316647756
+	},
+	{
+		"time": 1562.04,
+		"input_voltage": 3,
+		"el_power": 1116.14441893504
+	},
+	{
+		"time": 1563.06,
+		"input_voltage": 3,
+		"el_power": 1203.05142455424
+	},
+	{
+		"time": 1564.1,
+		"input_voltage": 3,
+		"el_power": 1107.81195920509
+	},
+	{
+		"time": 1565.2,
+		"input_voltage": 3,
+		"el_power": 1206.2913451747
+	},
+	{
+		"time": 1566.22,
+		"input_voltage": 3,
+		"el_power": 1118.90218366527
+	},
+	{
+		"time": 1567.22,
+		"input_voltage": 3,
+		"el_power": 1203.03749764086
+	},
+	{
+		"time": 1568.22,
+		"input_voltage": 3,
+		"el_power": 1118.08683931451
+	},
+	{
+		"time": 1569.24,
+		"input_voltage": 3,
+		"el_power": 1193.96862302344
+	},
+	{
+		"time": 1570.24,
+		"input_voltage": 3,
+		"el_power": 1107.55729848965
+	},
+	{
+		"time": 1571.24,
+		"input_voltage": 3,
+		"el_power": 1205.58394636143
+	},
+	{
+		"time": 1572.28,
+		"input_voltage": 3,
+		"el_power": 1107.88731908514
+	},
+	{
+		"time": 1573.34,
+		"input_voltage": 3,
+		"el_power": 1199.39456801242
+	},
+	{
+		"time": 1574.4,
+		"input_voltage": 3,
+		"el_power": 1113.38076615105
+	},
+	{
+		"time": 1575.46,
+		"input_voltage": 3,
+		"el_power": 1207.52175456177
+	},
+	{
+		"time": 1576.48,
+		"input_voltage": 3,
+		"el_power": 1110.56700278687
+	},
+	{
+		"time": 1577.54,
+		"input_voltage": 3,
+		"el_power": 1207.70062629732
+	},
+	{
+		"time": 1578.64,
+		"input_voltage": 3,
+		"el_power": 1118.92155989017
+	},
+	{
+		"time": 1579.7,
+		"input_voltage": 3,
+		"el_power": 1210.68812600393
+	},
+	{
+		"time": 1580.72,
+		"input_voltage": 3,
+		"el_power": 1112.61898901978
+	},
+	{
+		"time": 1581.72,
+		"input_voltage": 3,
+		"el_power": 1211.42679526783
+	},
+	{
+		"time": 1582.72,
+		"input_voltage": 3,
+		"el_power": 1117.06574007515
+	},
+	{
+		"time": 1583.72,
+		"input_voltage": 3,
+		"el_power": 1206.23108578123
+	},
+	{
+		"time": 1584.72,
+		"input_voltage": 3,
+		"el_power": 1124.26239797956
+	},
+	{
+		"time": 1585.72,
+		"input_voltage": 3,
+		"el_power": 1214.43338859717
+	},
+	{
+		"time": 1586.78,
+		"input_voltage": 3,
+		"el_power": 1131.71351903548
+	},
+	{
+		"time": 1587.84,
+		"input_voltage": 3,
+		"el_power": 1215.38135442554
+	},
+	{
+		"time": 1588.88,
+		"input_voltage": 3,
+		"el_power": 1121.53262677891
+	},
+	{
+		"time": 1589.9,
+		"input_voltage": 3,
+		"el_power": 1215.99313365472
+	},
+	{
+		"time": 1591,
+		"input_voltage": 3,
+		"el_power": 1113.04177902566
+	},
+	{
+		"time": 1592.06,
+		"input_voltage": 3,
+		"el_power": 1203.1422835913
+	},
+	{
+		"time": 1593.12,
+		"input_voltage": 3,
+		"el_power": 1107.9016866378
+	},
+	{
+		"time": 1594.18,
+		"input_voltage": 3,
+		"el_power": 1195.46103215681
+	},
+	{
+		"time": 1595.24,
+		"input_voltage": 3,
+		"el_power": 1124.93382787464
+	},
+	{
+		"time": 1596.24,
+		"input_voltage": 3,
+		"el_power": 1209.36625421801
+	},
+	{
+		"time": 1597.24,
+		"input_voltage": 3,
+		"el_power": 1128.98538749545
+	},
+	{
+		"time": 1598.24,
+		"input_voltage": 3,
+		"el_power": 1214.73692403127
+	},
+	{
+		"time": 1599.26,
+		"input_voltage": 3,
+		"el_power": 1125.84959462748
+	},
+	{
+		"time": 1600.3,
+		"input_voltage": 3,
+		"el_power": 1221.98489064007
+	},
+	{
+		"time": 1601.34,
+		"input_voltage": 3,
+		"el_power": 1129.88176728222
+	},
+	{
+		"time": 1602.38,
+		"input_voltage": 3,
+		"el_power": 1215.13399844589
+	},
+	{
+		"time": 1603.4,
+		"input_voltage": 3,
+		"el_power": 1132.02772580768
+	},
+	{
+		"time": 1604.5,
+		"input_voltage": 3,
+		"el_power": 1215.59452017156
+	},
+	{
+		"time": 1605.56,
+		"input_voltage": 3,
+		"el_power": 1121.27960660447
+	},
+	{
+		"time": 1606.58,
+		"input_voltage": 3,
+		"el_power": 1211.39524316488
+	},
+	{
+		"time": 1607.66,
+		"input_voltage": 3,
+		"el_power": 1132.28037233341
+	},
+	{
+		"time": 1608.68,
+		"input_voltage": 3,
+		"el_power": 1205.50044686076
+	},
+	{
+		"time": 1609.72,
+		"input_voltage": 3,
+		"el_power": 1112.62273209872
+	},
+	{
+		"time": 1610.76,
+		"input_voltage": 3,
+		"el_power": 1204.79413532551
+	},
+	{
+		"time": 1611.78,
+		"input_voltage": 3,
+		"el_power": 1118.20255835203
+	},
+	{
+		"time": 1612.78,
+		"input_voltage": 3,
+		"el_power": 1203.28205908484
+	},
+	{
+		"time": 1613.8,
+		"input_voltage": 3,
+		"el_power": 1104.79527652635
+	},
+	{
+		"time": 1614.8,
+		"input_voltage": 3,
+		"el_power": 1197.50029571008
+	},
+	{
+		"time": 1615.8,
+		"input_voltage": 3,
+		"el_power": 1105.14992160366
+	},
+	{
+		"time": 1616.86,
+		"input_voltage": 3,
+		"el_power": 1194.44335157319
+	},
+	{
+		"time": 1617.92,
+		"input_voltage": 3,
+		"el_power": 1107.45313861489
+	},
+	{
+		"time": 1618.94,
+		"input_voltage": 3,
+		"el_power": 1192.92517544528
+	},
+	{
+		"time": 1620.02,
+		"input_voltage": 3,
+		"el_power": 1103.13271423163
+	},
+	{
+		"time": 1621.12,
+		"input_voltage": 3,
+		"el_power": 1198.93622346093
+	},
+	{
+		"time": 1622.16,
+		"input_voltage": 3,
+		"el_power": 1103.97326705533
+	},
+	{
+		"time": 1623.26,
+		"input_voltage": 3,
+		"el_power": 1201.47686148642
+	},
+	{
+		"time": 1624.3,
+		"input_voltage": 3,
+		"el_power": 1103.45452459882
+	},
+	{
+		"time": 1625.34,
+		"input_voltage": 3,
+		"el_power": 1204.60303396586
+	},
+	{
+		"time": 1626.36,
+		"input_voltage": 3,
+		"el_power": 1116.03917588334
+	},
+	{
+		"time": 1627.36,
+		"input_voltage": 3,
+		"el_power": 1204.31152301497
+	},
+	{
+		"time": 1628.36,
+		"input_voltage": 3,
+		"el_power": 1113.83826009325
+	},
+	{
+		"time": 1629.36,
+		"input_voltage": 3,
+		"el_power": 1210.02329214689
+	},
+	{
+		"time": 1630.38,
+		"input_voltage": 3,
+		"el_power": 1109.43717809816
+	},
+	{
+		"time": 1631.38,
+		"input_voltage": 3,
+		"el_power": 1205.97137531642
+	},
+	{
+		"time": 1632.4,
+		"input_voltage": 3,
+		"el_power": 1117.10514289293
+	},
+	{
+		"time": 1633.48,
+		"input_voltage": 3,
+		"el_power": 1205.45863086722
+	},
+	{
+		"time": 1634.56,
+		"input_voltage": 3,
+		"el_power": 1123.85300378733
+	},
+	{
+		"time": 1635.64,
+		"input_voltage": 3,
+		"el_power": 1217.27773273311
+	},
+	{
+		"time": 1636.7,
+		"input_voltage": 3,
+		"el_power": 1122.91015641613
+	},
+	{
+		"time": 1637.8,
+		"input_voltage": 3,
+		"el_power": 1214.07703627521
+	},
+	{
+		"time": 1638.84,
+		"input_voltage": 3,
+		"el_power": 1127.17124191616
+	},
+	{
+		"time": 1639.84,
+		"input_voltage": 3,
+		"el_power": 1217.88825899528
+	},
+	{
+		"time": 1640.86,
+		"input_voltage": 3,
+		"el_power": 1125.68485449091
+	},
+	{
+		"time": 1641.86,
+		"input_voltage": 3,
+		"el_power": 1216.63447512215
+	},
+	{
+		"time": 1642.88,
+		"input_voltage": 3,
+		"el_power": 1121.00698088842
+	},
+	{
+		"time": 1643.88,
+		"input_voltage": 3,
+		"el_power": 1208.82201351323
+	},
+	{
+		"time": 1644.92,
+		"input_voltage": 3,
+		"el_power": 1115.93066996943
+	},
+	{
+		"time": 1646,
+		"input_voltage": 3,
+		"el_power": 1214.62211728266
+	},
+	{
+		"time": 1647.04,
+		"input_voltage": 3,
+		"el_power": 1118.47104003064
+	},
+	{
+		"time": 1648.1,
+		"input_voltage": 3,
+		"el_power": 1214.47139387695
+	},
+	{
+		"time": 1649.2,
+		"input_voltage": 3,
+		"el_power": 1116.76649622402
+	},
+	{
+		"time": 1650.28,
+		"input_voltage": 3,
+		"el_power": 1207.11734947049
+	},
+	{
+		"time": 1651.42,
+		"input_voltage": 3,
+		"el_power": 1114.01637610134
+	},
+	{
+		"time": 1652.48,
+		"input_voltage": 3,
+		"el_power": 1213.16135177462
+	},
+	{
+		"time": 1653.52,
+		"input_voltage": 3,
+		"el_power": 1116.90199581941
+	},
+	{
+		"time": 1654.54,
+		"input_voltage": 3,
+		"el_power": 1202.36625920403
+	},
+	{
+		"time": 1655.56,
+		"input_voltage": 3,
+		"el_power": 1119.70910941744
+	},
+	{
+		"time": 1656.58,
+		"input_voltage": 3,
+		"el_power": 1207.98754082813
+	},
+	{
+		"time": 1657.58,
+		"input_voltage": 3,
+		"el_power": 1116.1662463421
+	},
+	{
+		"time": 1658.62,
+		"input_voltage": 3,
+		"el_power": 1210.00976683126
+	},
+	{
+		"time": 1659.7,
+		"input_voltage": 3,
+		"el_power": 1116.81562166893
+	},
+	{
+		"time": 1660.76,
+		"input_voltage": 3,
+		"el_power": 1196.21293083126
+	},
+	{
+		"time": 1661.94,
+		"input_voltage": 3,
+		"el_power": 1125.18926422493
+	},
+	{
+		"time": 1663.04,
+		"input_voltage": 3,
+		"el_power": 1215.26922932352
+	},
+	{
+		"time": 1664.1,
+		"input_voltage": 3,
+		"el_power": 1131.3134402321
+	},
+	{
+		"time": 1665.12,
+		"input_voltage": 3,
+		"el_power": 1213.69641647552
+	},
+	{
+		"time": 1666.28,
+		"input_voltage": 3,
+		"el_power": 1119.89781958994
+	},
+	{
+		"time": 1667.32,
+		"input_voltage": 3,
+		"el_power": 1212.61951609004
+	},
+	{
+		"time": 1668.32,
+		"input_voltage": 3,
+		"el_power": 1119.58890012618
+	},
+	{
+		"time": 1669.32,
+		"input_voltage": 3,
+		"el_power": 1211.24397479857
+	},
+	{
+		"time": 1670.34,
+		"input_voltage": 3,
+		"el_power": 1119.0739986467
+	},
+	{
+		"time": 1671.38,
+		"input_voltage": 3,
+		"el_power": 1213.59372360016
+	},
+	{
+		"time": 1672.42,
+		"input_voltage": 3,
+		"el_power": 1118.05634927785
+	},
+	{
+		"time": 1673.42,
+		"input_voltage": 3,
+		"el_power": 1204.05208197718
+	},
+	{
+		"time": 1674.48,
+		"input_voltage": 3,
+		"el_power": 1124.49262917686
+	},
+	{
+		"time": 1675.5,
+		"input_voltage": 3,
+		"el_power": 1211.58939879386
+	},
+	{
+		"time": 1676.52,
+		"input_voltage": 3,
+		"el_power": 1110.60036289502
+	},
+	{
+		"time": 1677.54,
+		"input_voltage": 3,
+		"el_power": 1201.54057288276
+	},
+	{
+		"time": 1678.6,
+		"input_voltage": 3,
+		"el_power": 1113.02103522851
+	},
+	{
+		"time": 1679.66,
+		"input_voltage": 3,
+		"el_power": 1207.37598885547
+	},
+	{
+		"time": 1680.66,
+		"input_voltage": 3,
+		"el_power": 1112.20605971694
+	},
+	{
+		"time": 1681.66,
+		"input_voltage": 3,
+		"el_power": 1189.59961177714
+	},
+	{
+		"time": 1682.72,
+		"input_voltage": 3,
+		"el_power": 1111.14467284043
+	},
+	{
+		"time": 1683.72,
+		"input_voltage": 3,
+		"el_power": 1192.84145514471
+	},
+	{
+		"time": 1684.74,
+		"input_voltage": 3,
+		"el_power": 1115.00597780716
+	},
+	{
+		"time": 1685.74,
+		"input_voltage": 3,
+		"el_power": 1207.1457178016
+	},
+	{
+		"time": 1686.78,
+		"input_voltage": 3,
+		"el_power": 1120.980318243
+	},
+	{
+		"time": 1687.8,
+		"input_voltage": 3,
+		"el_power": 1204.53843159066
+	},
+	{
+		"time": 1688.94,
+		"input_voltage": 3,
+		"el_power": 1116.65843490348
+	},
+	{
+		"time": 1690,
+		"input_voltage": 3,
+		"el_power": 1204.8908825513
+	},
+	{
+		"time": 1691.06,
+		"input_voltage": 3,
+		"el_power": 1109.0667517907
+	},
+	{
+		"time": 1692.08,
+		"input_voltage": 3,
+		"el_power": 1204.55543734256
+	},
+	{
+		"time": 1693.1,
+		"input_voltage": 3,
+		"el_power": 1119.90008006748
+	},
+	{
+		"time": 1694.18,
+		"input_voltage": 3,
+		"el_power": 1211.5645181799
+	},
+	{
+		"time": 1695.22,
+		"input_voltage": 3,
+		"el_power": 1114.41395542091
+	},
+	{
+		"time": 1696.22,
+		"input_voltage": 3,
+		"el_power": 1209.02440950619
+	},
+	{
+		"time": 1697.22,
+		"input_voltage": 3,
+		"el_power": 1124.70541106207
+	},
+	{
+		"time": 1698.22,
+		"input_voltage": 3,
+		"el_power": 1217.42008758051
+	},
+	{
+		"time": 1699.22,
+		"input_voltage": 3,
+		"el_power": 1120.29096683932
+	},
+	{
+		"time": 1700.24,
+		"input_voltage": 3,
+		"el_power": 1213.90065918946
+	},
+	{
+		"time": 1701.32,
+		"input_voltage": 3,
+		"el_power": 1118.87371038046
+	},
+	{
+		"time": 1702.36,
+		"input_voltage": 3,
+		"el_power": 1194.5472919593
+	},
+	{
+		"time": 1703.4,
+		"input_voltage": 3,
+		"el_power": 1127.51478679901
+	},
+	{
+		"time": 1704.48,
+		"input_voltage": 3,
+		"el_power": 1220.06228710187
+	},
+	{
+		"time": 1705.52,
+		"input_voltage": 3,
+		"el_power": 1134.54390990941
+	},
+	{
+		"time": 1706.66,
+		"input_voltage": 3,
+		"el_power": 1214.54379000281
+	},
+	{
+		"time": 1707.7,
+		"input_voltage": 3,
+		"el_power": 1127.75761226479
+	},
+	{
+		"time": 1708.74,
+		"input_voltage": 3,
+		"el_power": 1222.75835095902
+	},
+	{
+		"time": 1709.74,
+		"input_voltage": 3,
+		"el_power": 1126.23381545498
+	},
+	{
+		"time": 1710.74,
+		"input_voltage": 3,
+		"el_power": 1221.73865607236
+	},
+	{
+		"time": 1711.74,
+		"input_voltage": 3,
+		"el_power": 1132.66093650988
+	},
+	{
+		"time": 1712.76,
+		"input_voltage": 3,
+		"el_power": 1216.83874289431
+	},
+	{
+		"time": 1713.8,
+		"input_voltage": 3,
+		"el_power": 1139.52376602445
+	},
+	{
+		"time": 1714.86,
+		"input_voltage": 3,
+		"el_power": 1225.96291770565
+	},
+	{
+		"time": 1715.86,
+		"input_voltage": 3,
+		"el_power": 1128.48315763784
+	},
+	{
+		"time": 1716.94,
+		"input_voltage": 3,
+		"el_power": 1223.90375440211
+	},
+	{
+		"time": 1718.04,
+		"input_voltage": 3,
+		"el_power": 1131.69721540211
+	},
+	{
+		"time": 1719.08,
+		"input_voltage": 3,
+		"el_power": 1223.26172146326
+	},
+	{
+		"time": 1720.1,
+		"input_voltage": 3,
+		"el_power": 1122.50514163182
+	},
+	{
+		"time": 1721.16,
+		"input_voltage": 3,
+		"el_power": 1216.68979900729
+	},
+	{
+		"time": 1722.26,
+		"input_voltage": 3,
+		"el_power": 1126.94487502934
+	},
+	{
+		"time": 1723.36,
+		"input_voltage": 3,
+		"el_power": 1209.08482995326
+	},
+	{
+		"time": 1724.38,
+		"input_voltage": 3,
+		"el_power": 1124.20887391029
+	},
+	{
+		"time": 1725.4,
+		"input_voltage": 3,
+		"el_power": 1209.40666639698
+	},
+	{
+		"time": 1726.4,
+		"input_voltage": 3,
+		"el_power": 1122.27543389633
+	},
+	{
+		"time": 1727.44,
+		"input_voltage": 3,
+		"el_power": 1208.7499321402
+	},
+	{
+		"time": 1728.48,
+		"input_voltage": 3,
+		"el_power": 1112.54678107748
+	},
+	{
+		"time": 1729.48,
+		"input_voltage": 3,
+		"el_power": 1212.53086650001
+	},
+	{
+		"time": 1730.58,
+		"input_voltage": 3,
+		"el_power": 1121.55002877715
+	},
+	{
+		"time": 1731.72,
+		"input_voltage": 3,
+		"el_power": 1201.15873842889
+	},
+	{
+		"time": 1732.76,
+		"input_voltage": 3,
+		"el_power": 1109.50566736794
+	},
+	{
+		"time": 1733.82,
+		"input_voltage": 3,
+		"el_power": 1204.50605406173
+	},
+	{
+		"time": 1734.88,
+		"input_voltage": 3,
+		"el_power": 1111.03146778844
+	},
+	{
+		"time": 1735.96,
+		"input_voltage": 3,
+		"el_power": 1208.9772880339
+	},
+	{
+		"time": 1736.96,
+		"input_voltage": 3,
+		"el_power": 1117.08825741037
+	},
+	{
+		"time": 1738.04,
+		"input_voltage": 3,
+		"el_power": 1194.32470691585
+	},
+	{
+		"time": 1739.04,
+		"input_voltage": 3,
+		"el_power": 1112.71799608548
+	},
+	{
+		"time": 1740.04,
+		"input_voltage": 3,
+		"el_power": 1201.6562922583
+	},
+	{
+		"time": 1741.06,
+		"input_voltage": 3,
+		"el_power": 1117.07842034177
+	},
+	{
+		"time": 1742.08,
+		"input_voltage": 3,
+		"el_power": 1208.5299869388
+	},
+	{
+		"time": 1743.1,
+		"input_voltage": 3,
+		"el_power": 1119.49040441906
+	},
+	{
+		"time": 1744.18,
+		"input_voltage": 3,
+		"el_power": 1199.44224607502
+	},
+	{
+		"time": 1745.22,
+		"input_voltage": 3,
+		"el_power": 1117.76812022803
+	},
+	{
+		"time": 1746.22,
+		"input_voltage": 3,
+		"el_power": 1208.6432637062
+	},
+	{
+		"time": 1747.3,
+		"input_voltage": 3,
+		"el_power": 1115.54479658709
+	},
+	{
+		"time": 1748.36,
+		"input_voltage": 3,
+		"el_power": 1202.64050617318
+	},
+	{
+		"time": 1749.42,
+		"input_voltage": 3,
+		"el_power": 1116.40785792909
+	},
+	{
+		"time": 1750.48,
+		"input_voltage": 3,
+		"el_power": 1203.67144892384
+	},
+	{
+		"time": 1751.54,
+		"input_voltage": 3,
+		"el_power": 1121.87739000058
+	},
+	{
+		"time": 1752.6,
+		"input_voltage": 3,
+		"el_power": 1202.26230021101
+	},
+	{
+		"time": 1753.62,
+		"input_voltage": 3,
+		"el_power": 1114.96000226897
+	},
+	{
+		"time": 1754.64,
+		"input_voltage": 3,
+		"el_power": 1208.5253281266
+	},
+	{
+		"time": 1755.68,
+		"input_voltage": 3,
+		"el_power": 1112.8287857715
+	},
+	{
+		"time": 1756.68,
+		"input_voltage": 3,
+		"el_power": 1200.34933392654
+	},
+	{
+		"time": 1757.68,
+		"input_voltage": 3,
+		"el_power": 1106.11421306945
+	},
+	{
+		"time": 1758.74,
+		"input_voltage": 3,
+		"el_power": 1202.5969164284
+	},
+	{
+		"time": 1759.8,
+		"input_voltage": 3,
+		"el_power": 1111.09736611209
+	},
+	{
+		"time": 1760.84,
+		"input_voltage": 3,
+		"el_power": 1200.25447888765
+	},
+	{
+		"time": 1761.94,
+		"input_voltage": 3,
+		"el_power": 1111.78086889712
+	},
+	{
+		"time": 1762.98,
+		"input_voltage": 3,
+		"el_power": 1203.51216534873
+	},
+	{
+		"time": 1764.1,
+		"input_voltage": 3,
+		"el_power": 1105.05549599239
+	},
+	{
+		"time": 1765.14,
+		"input_voltage": 3,
+		"el_power": 1191.91004467106
+	},
+	{
+		"time": 1766.18,
+		"input_voltage": 3,
+		"el_power": 1106.90152115371
+	},
+	{
+		"time": 1767.18,
+		"input_voltage": 3,
+		"el_power": 1191.66942264635
+	},
+	{
+		"time": 1768.2,
+		"input_voltage": 3,
+		"el_power": 1112.70396645751
+	},
+	{
+		"time": 1769.2,
+		"input_voltage": 3,
+		"el_power": 1195.02590155432
+	},
+	{
+		"time": 1770.26,
+		"input_voltage": 3,
+		"el_power": 1104.21997544701
+	},
+	{
+		"time": 1771.32,
+		"input_voltage": 3,
+		"el_power": 1200.01931202854
+	},
+	{
+		"time": 1772.42,
+		"input_voltage": 3,
+		"el_power": 1115.52609248113
+	},
+	{
+		"time": 1773.5,
+		"input_voltage": 3,
+		"el_power": 1200.61939224742
+	},
+	{
+		"time": 1774.54,
+		"input_voltage": 3,
+		"el_power": 1119.65852737076
+	},
+	{
+		"time": 1775.58,
+		"input_voltage": 3,
+		"el_power": 1201.82062506145
+	},
+	{
+		"time": 1776.62,
+		"input_voltage": 3,
+		"el_power": 1109.80750781996
+	},
+	{
+		"time": 1777.74,
+		"input_voltage": 3,
+		"el_power": 1200.83610700111
+	},
+	{
+		"time": 1778.78,
+		"input_voltage": 3,
+		"el_power": 1125.63663672773
+	},
+	{
+		"time": 1779.84,
+		"input_voltage": 3,
+		"el_power": 1207.31538715781
+	},
+	{
+		"time": 1780.86,
+		"input_voltage": 3,
+		"el_power": 1131.22232245118
+	},
+	{
+		"time": 1781.88,
+		"input_voltage": 3,
+		"el_power": 1211.47023384805
+	},
+	{
+		"time": 1782.9,
+		"input_voltage": 3,
+		"el_power": 1124.8035457055
+	},
+	{
+		"time": 1783.9,
+		"input_voltage": 3,
+		"el_power": 1215.73769715754
+	},
+	{
+		"time": 1784.92,
+		"input_voltage": 3,
+		"el_power": 1121.21339314482
+	},
+	{
+		"time": 1785.94,
+		"input_voltage": 3,
+		"el_power": 1220.75590528239
+	},
+	{
+		"time": 1786.96,
+		"input_voltage": 3,
+		"el_power": 1129.28547960865
+	},
+	{
+		"time": 1788.04,
+		"input_voltage": 3,
+		"el_power": 1223.00735696525
+	},
+	{
+		"time": 1789.06,
+		"input_voltage": 3,
+		"el_power": 1138.06971418605
+	},
+	{
+		"time": 1790.16,
+		"input_voltage": 3,
+		"el_power": 1221.68596109448
+	},
+	{
+		"time": 1791.22,
+		"input_voltage": 3,
+		"el_power": 1129.42539279662
+	},
+	{
+		"time": 1792.26,
+		"input_voltage": 3,
+		"el_power": 1217.42960388535
+	},
+	{
+		"time": 1793.34,
+		"input_voltage": 3,
+		"el_power": 1122.60362114688
+	},
+	{
+		"time": 1794.42,
+		"input_voltage": 3,
+		"el_power": 1212.58743461893
+	},
+	{
+		"time": 1795.42,
+		"input_voltage": 3,
+		"el_power": 1123.1409964922
+	},
+	{
+		"time": 1796.42,
+		"input_voltage": 3,
+		"el_power": 1219.80299526251
+	},
+	{
+		"time": 1797.44,
+		"input_voltage": 3,
+		"el_power": 1129.13838739584
+	},
+	{
+		"time": 1798.46,
+		"input_voltage": 3,
+		"el_power": 1210.57361559306
+	},
+	{
+		"time": 1799.46,
+		"input_voltage": 3,
+		"el_power": 1133.6210586504
+	},
+	{
+		"time": 1800.46,
+		"input_voltage": 3,
+		"el_power": 1214.28271057122
+	},
+	{
+		"time": 1801.54,
+		"input_voltage": 3,
+		"el_power": 1120.80111206054
+	},
+	{
+		"time": 1802.56,
+		"input_voltage": 3,
+		"el_power": 1211.49630922745
+	},
+	{
+		"time": 1803.58,
+		"input_voltage": 3,
+		"el_power": 1118.20892014202
+	},
+	{
+		"time": 1804.68,
+		"input_voltage": 3,
+		"el_power": 1209.97201172167
+	},
+	{
+		"time": 1805.68,
+		"input_voltage": 3,
+		"el_power": 1118.69720006553
+	},
+	{
+		"time": 1806.72,
+		"input_voltage": 3,
+		"el_power": 1208.07563672096
+	},
+	{
+		"time": 1807.84,
+		"input_voltage": 3,
+		"el_power": 1118.01360646441
+	},
+	{
+		"time": 1808.94,
+		"input_voltage": 3,
+		"el_power": 1214.43841241883
+	},
+	{
+		"time": 1809.96,
+		"input_voltage": 3,
+		"el_power": 1114.55405622665
+	},
+	{
+		"time": 1810.98,
+		"input_voltage": 3,
+		"el_power": 1208.95333691133
+	},
+	{
+		"time": 1811.98,
+		"input_voltage": 3,
+		"el_power": 1117.91381480182
+	},
+	{
+		"time": 1812.98,
+		"input_voltage": 3,
+		"el_power": 1207.49929700692
+	},
+	{
+		"time": 1813.98,
+		"input_voltage": 3,
+		"el_power": 1117.33820127246
+	},
+	{
+		"time": 1815.06,
+		"input_voltage": 3,
+		"el_power": 1213.71285398066
+	},
+	{
+		"time": 1816.16,
+		"input_voltage": 3,
+		"el_power": 1116.67549424075
+	},
+	{
+		"time": 1817.22,
+		"input_voltage": 3,
+		"el_power": 1209.26978733816
+	},
+	{
+		"time": 1818.28,
+		"input_voltage": 3,
+		"el_power": 1119.7617645695
+	},
+	{
+		"time": 1819.34,
+		"input_voltage": 3,
+		"el_power": 1209.15026463993
+	},
+	{
+		"time": 1820.44,
+		"input_voltage": 3,
+		"el_power": 1113.18320021467
+	},
+	{
+		"time": 1821.5,
+		"input_voltage": 3,
+		"el_power": 1194.85837230076
+	},
+	{
+		"time": 1822.62,
+		"input_voltage": 3,
+		"el_power": 1123.13341258891
+	},
+	{
+		"time": 1823.64,
+		"input_voltage": 3,
+		"el_power": 1202.57765167914
+	},
+	{
+		"time": 1824.64,
+		"input_voltage": 3,
+		"el_power": 1116.11635404724
+	},
+	{
+		"time": 1825.64,
+		"input_voltage": 3,
+		"el_power": 1209.81027576252
+	},
+	{
+		"time": 1826.66,
+		"input_voltage": 3,
+		"el_power": 1113.17470596766
+	},
+	{
+		"time": 1827.7,
+		"input_voltage": 3,
+		"el_power": 1208.30481373168
+	},
+	{
+		"time": 1828.7,
+		"input_voltage": 3,
+		"el_power": 1119.97893803654
+	},
+	{
+		"time": 1829.78,
+		"input_voltage": 3,
+		"el_power": 1199.25728641937
+	},
+	{
+		"time": 1830.82,
+		"input_voltage": 3,
+		"el_power": 1108.04751463545
+	},
+	{
+		"time": 1831.92,
+		"input_voltage": 3,
+		"el_power": 1209.36043314362
+	},
+	{
+		"time": 1832.98,
+		"input_voltage": 3,
+		"el_power": 1115.74348864079
+	},
+	{
+		"time": 1834.04,
+		"input_voltage": 3,
+		"el_power": 1199.20495202897
+	},
+	{
+		"time": 1835.16,
+		"input_voltage": 3,
+		"el_power": 1115.81197356572
+	},
+	{
+		"time": 1836.2,
+		"input_voltage": 3,
+		"el_power": 1206.16006529984
+	},
+	{
+		"time": 1837.22,
+		"input_voltage": 3,
+		"el_power": 1121.44338162306
+	},
+	{
+		"time": 1838.24,
+		"input_voltage": 3,
+		"el_power": 1201.34722541754
+	},
+	{
+		"time": 1839.24,
+		"input_voltage": 3,
+		"el_power": 1114.24409645951
+	},
+	{
+		"time": 1840.24,
+		"input_voltage": 3,
+		"el_power": 1209.86384735579
+	},
+	{
+		"time": 1841.24,
+		"input_voltage": 3,
+		"el_power": 1121.6801891046
+	},
+	{
+		"time": 1842.26,
+		"input_voltage": 3,
+		"el_power": 1212.46369463258
+	},
+	{
+		"time": 1843.26,
+		"input_voltage": 3,
+		"el_power": 1113.59722693025
+	},
+	{
+		"time": 1844.34,
+		"input_voltage": 3,
+		"el_power": 1205.42380043662
+	},
+	{
+		"time": 1845.38,
+		"input_voltage": 3,
+		"el_power": 1113.23000927143
+	},
+	{
+		"time": 1846.4,
+		"input_voltage": 3,
+		"el_power": 1214.03833210163
+	},
+	{
+		"time": 1847.48,
+		"input_voltage": 3,
+		"el_power": 1137.40115286468
+	},
+	{
+		"time": 1848.5,
+		"input_voltage": 3,
+		"el_power": 1213.48559509679
+	},
+	{
+		"time": 1849.54,
+		"input_voltage": 3,
+		"el_power": 1118.49569085838
+	},
+	{
+		"time": 1850.64,
+		"input_voltage": 3,
+		"el_power": 1214.69974730223
+	},
+	{
+		"time": 1851.66,
+		"input_voltage": 3,
+		"el_power": 1122.96004080666
+	},
+	{
+		"time": 1852.66,
+		"input_voltage": 3,
+		"el_power": 1205.61682591538
+	},
+	{
+		"time": 1853.66,
+		"input_voltage": 3,
+		"el_power": 1135.84108021699
+	},
+	{
+		"time": 1854.66,
+		"input_voltage": 3,
+		"el_power": 1215.70709645407
+	},
+	{
+		"time": 1855.7,
+		"input_voltage": 3,
+		"el_power": 1128.89077816299
+	},
+	{
+		"time": 1856.7,
+		"input_voltage": 3,
+		"el_power": 1215.89927526008
+	},
+	{
+		"time": 1857.76,
+		"input_voltage": 3,
+		"el_power": 1128.69690749266
+	},
+	{
+		"time": 1858.88,
+		"input_voltage": 3,
+		"el_power": 1213.69614900964
+	},
+	{
+		"time": 1859.9,
+		"input_voltage": 3,
+		"el_power": 1127.22579241597
+	},
+	{
+		"time": 1860.98,
+		"input_voltage": 3,
+		"el_power": 1202.54951433678
+	},
+	{
+		"time": 1862.06,
+		"input_voltage": 3,
+		"el_power": 1121.5911503527
+	},
+	{
+		"time": 1863.14,
+		"input_voltage": 3,
+		"el_power": 1207.64653008786
+	},
+	{
+		"time": 1864.22,
+		"input_voltage": 3,
+		"el_power": 1121.44989573325
+	},
+	{
+		"time": 1865.22,
+		"input_voltage": 3,
+		"el_power": 1218.98577885267
+	},
+	{
+		"time": 1866.26,
+		"input_voltage": 3,
+		"el_power": 1120.89423910973
+	},
+	{
+		"time": 1867.26,
+		"input_voltage": 3,
+		"el_power": 1216.59703695063
+	},
+	{
+		"time": 1868.26,
+		"input_voltage": 3,
+		"el_power": 1134.78616709568
+	},
+	{
+		"time": 1869.3,
+		"input_voltage": 3,
+		"el_power": 1210.43165101403
+	},
+	{
+		"time": 1870.32,
+		"input_voltage": 3,
+		"el_power": 1126.02358816041
+	},
+	{
+		"time": 1871.34,
+		"input_voltage": 3,
+		"el_power": 1201.35375146563
+	},
+	{
+		"time": 1872.42,
+		"input_voltage": 3,
+		"el_power": 1113.6991769605
+	},
+	{
+		"time": 1873.46,
+		"input_voltage": 3,
+		"el_power": 1210.6897411514
+	},
+	{
+		"time": 1874.5,
+		"input_voltage": 3,
+		"el_power": 1111.15512872944
+	},
+	{
+		"time": 1875.58,
+		"input_voltage": 3,
+		"el_power": 1203.69253413208
+	},
+	{
+		"time": 1876.68,
+		"input_voltage": 3,
+		"el_power": 1107.36532833662
+	},
+	{
+		"time": 1877.72,
+		"input_voltage": 3,
+		"el_power": 1200.66139335822
+	},
+	{
+		"time": 1878.78,
+		"input_voltage": 3,
+		"el_power": 1106.05494787278
+	},
+	{
+		"time": 1879.82,
+		"input_voltage": 3,
+		"el_power": 1192.16926239417
+	},
+	{
+		"time": 1880.82,
+		"input_voltage": 3,
+		"el_power": 1111.72148166931
+	},
+	{
+		"time": 1881.82,
+		"input_voltage": 3,
+		"el_power": 1199.54519328532
+	},
+	{
+		"time": 1882.82,
+		"input_voltage": 3,
+		"el_power": 1105.69695345984
+	},
+	{
+		"time": 1883.84,
+		"input_voltage": 3,
+		"el_power": 1197.30378346245
+	},
+	{
+		"time": 1884.84,
+		"input_voltage": 3,
+		"el_power": 1104.16883608517
+	},
+	{
+		"time": 1885.9,
+		"input_voltage": 3,
+		"el_power": 1199.32949967689
+	},
+	{
+		"time": 1886.92,
+		"input_voltage": 3,
+		"el_power": 1102.5505869049
+	},
+	{
+		"time": 1887.96,
+		"input_voltage": 3,
+		"el_power": 1199.89793566998
+	},
+	{
+		"time": 1889,
+		"input_voltage": 3,
+		"el_power": 1102.40923535377
+	},
+	{
+		"time": 1890.06,
+		"input_voltage": 3,
+		"el_power": 1195.62739079702
+	},
+	{
+		"time": 1891.14,
+		"input_voltage": 3,
+		"el_power": 1103.60455587416
+	},
+	{
+		"time": 1892.2,
+		"input_voltage": 3,
+		"el_power": 1199.0958402212
+	},
+	{
+		"time": 1893.28,
+		"input_voltage": 3,
+		"el_power": 1117.7804990097
+	},
+	{
+		"time": 1894.3,
+		"input_voltage": 3,
+		"el_power": 1198.49284163408
+	},
+	{
+		"time": 1895.34,
+		"input_voltage": 3,
+		"el_power": 1113.92583793071
+	},
+	{
+		"time": 1896.34,
+		"input_voltage": 3,
+		"el_power": 1210.6968750339
+	},
+	{
+		"time": 1897.36,
+		"input_voltage": 3,
+		"el_power": 1120.59344659594
+	},
+	{
+		"time": 1898.38,
+		"input_voltage": 3,
+		"el_power": 1210.32011332968
+	},
+	{
+		"time": 1899.42,
+		"input_voltage": 3,
+		"el_power": 1114.38517889825
+	},
+	{
+		"time": 1900.48,
+		"input_voltage": 3,
+		"el_power": 1212.0528340071
+	},
+	{
+		"time": 1901.52,
+		"input_voltage": 3,
+		"el_power": 1120.75115146939
+	},
+	{
+		"time": 1902.52,
+		"input_voltage": 3,
+		"el_power": 1214.7086065448
+	},
+	{
+		"time": 1903.64,
+		"input_voltage": 3,
+		"el_power": 1123.74246506273
+	},
+	{
+		"time": 1904.72,
+		"input_voltage": 3,
+		"el_power": 1215.42534075372
+	},
+	{
+		"time": 1905.84,
+		"input_voltage": 3,
+		"el_power": 1127.63448088147
+	},
+	{
+		"time": 1906.88,
+		"input_voltage": 3,
+		"el_power": 1219.71201309995
+	},
+	{
+		"time": 1907.94,
+		"input_voltage": 3,
+		"el_power": 1128.18257191709
+	},
+	{
+		"time": 1908.96,
+		"input_voltage": 3,
+		"el_power": 1221.43621372818
+	},
+	{
+		"time": 1909.96,
+		"input_voltage": 3,
+		"el_power": 1128.88060211266
+	},
+	{
+		"time": 1910.96,
+		"input_voltage": 3,
+		"el_power": 1206.74324792132
+	},
+	{
+		"time": 1911.98,
+		"input_voltage": 3,
+		"el_power": 1121.34184272031
+	},
+	{
+		"time": 1912.98,
+		"input_voltage": 3,
+		"el_power": 1205.19818312476
+	},
+	{
+		"time": 1914,
+		"input_voltage": 3,
+		"el_power": 1119.52455490541
+	},
+	{
+		"time": 1915.08,
+		"input_voltage": 3,
+		"el_power": 1217.62548867636
+	},
+	{
+		"time": 1916.12,
+		"input_voltage": 3,
+		"el_power": 1126.48544485555
+	},
+	{
+		"time": 1917.2,
+		"input_voltage": 3,
+		"el_power": 1212.67518241098
+	},
+	{
+		"time": 1918.24,
+		"input_voltage": 3,
+		"el_power": 1136.75277060549
+	},
+	{
+		"time": 1919.32,
+		"input_voltage": 3,
+		"el_power": 1209.03440396961
+	},
+	{
+		"time": 1920.34,
+		"input_voltage": 3,
+		"el_power": 1127.0863896015
+	},
+	{
+		"time": 1921.44,
+		"input_voltage": 3,
+		"el_power": 1198.75665512732
+	},
+	{
+		"time": 1922.46,
+		"input_voltage": 3,
+		"el_power": 1121.23285892552
+	},
+	{
+		"time": 1923.48,
+		"input_voltage": 3,
+		"el_power": 1210.14327317637
+	},
+	{
+		"time": 1924.48,
+		"input_voltage": 3,
+		"el_power": 1113.69846022323
+	},
+	{
+		"time": 1925.5,
+		"input_voltage": 3,
+		"el_power": 1202.55639758448
+	},
+	{
+		"time": 1926.54,
+		"input_voltage": 3,
+		"el_power": 1115.94101352354
+	},
+	{
+		"time": 1927.6,
+		"input_voltage": 3,
+		"el_power": 1191.49046768401
+	},
+	{
+		"time": 1928.6,
+		"input_voltage": 3,
+		"el_power": 1100.27984996317
+	},
+	{
+		"time": 1929.66,
+		"input_voltage": 3,
+		"el_power": 1188.85276198573
+	},
+	{
+		"time": 1930.78,
+		"input_voltage": 3,
+		"el_power": 1114.4435601615
+	},
+	{
+		"time": 1931.84,
+		"input_voltage": 3,
+		"el_power": 1203.16704873185
+	},
+	{
+		"time": 1932.96,
+		"input_voltage": 3,
+		"el_power": 1119.61828721007
+	},
+	{
+		"time": 1933.98,
+		"input_voltage": 3,
+		"el_power": 1190.14034010767
+	},
+	{
+		"time": 1935,
+		"input_voltage": 3,
+		"el_power": 1118.0788806273
+	},
+	{
+		"time": 1936.08,
+		"input_voltage": 3,
+		"el_power": 1200.8861072082
+	},
+	{
+		"time": 1937.08,
+		"input_voltage": 3,
+		"el_power": 1112.78613625289
+	},
+	{
+		"time": 1938.1,
+		"input_voltage": 3,
+		"el_power": 1206.37132904514
+	},
+	{
+		"time": 1939.1,
+		"input_voltage": 3,
+		"el_power": 1125.18186527158
+	},
+	{
+		"time": 1940.14,
+		"input_voltage": 3,
+		"el_power": 1208.58548699464
+	},
+	{
+		"time": 1941.14,
+		"input_voltage": 3,
+		"el_power": 1123.59223842096
+	},
+	{
+		"time": 1942.16,
+		"input_voltage": 3,
+		"el_power": 1212.88233810426
+	},
+	{
+		"time": 1943.2,
+		"input_voltage": 3,
+		"el_power": 1113.99827485014
+	},
+	{
+		"time": 1944.3,
+		"input_voltage": 3,
+		"el_power": 1207.53866571835
+	},
+	{
+		"time": 1945.36,
+		"input_voltage": 3,
+		"el_power": 1120.69470564819
+	},
+	{
+		"time": 1946.42,
+		"input_voltage": 3,
+		"el_power": 1208.22620096235
+	},
+	{
+		"time": 1947.52,
+		"input_voltage": 3,
+		"el_power": 1116.24042160087
+	},
+	{
+		"time": 1948.58,
+		"input_voltage": 3,
+		"el_power": 1197.8712817292
+	},
+	{
+		"time": 1949.62,
+		"input_voltage": 3,
+		"el_power": 1113.85642409273
+	},
+	{
+		"time": 1950.72,
+		"input_voltage": 3,
+		"el_power": 1208.1517580524
+	},
+	{
+		"time": 1951.72,
+		"input_voltage": 3,
+		"el_power": 1122.68665516277
+	},
+	{
+		"time": 1952.74,
+		"input_voltage": 3,
+		"el_power": 1208.94648649537
+	},
+	{
+		"time": 1953.76,
+		"input_voltage": 3,
+		"el_power": 1114.30557386433
+	},
+	{
+		"time": 1954.76,
+		"input_voltage": 3,
+		"el_power": 1210.908693323
+	},
+	{
+		"time": 1955.8,
+		"input_voltage": 3,
+		"el_power": 1115.33838841837
+	},
+	{
+		"time": 1956.86,
+		"input_voltage": 3,
+		"el_power": 1195.5537216602
+	},
+	{
+		"time": 1957.94,
+		"input_voltage": 3,
+		"el_power": 1119.28370534856
+	},
+	{
+		"time": 1958.96,
+		"input_voltage": 3,
+		"el_power": 1215.58187898516
+	},
+	{
+		"time": 1960.1,
+		"input_voltage": 3,
+		"el_power": 1115.44120939141
+	},
+	{
+		"time": 1961.16,
+		"input_voltage": 3,
+		"el_power": 1212.39457617219
+	},
+	{
+		"time": 1962.18,
+		"input_voltage": 3,
+		"el_power": 1117.77024310521
+	},
+	{
+		"time": 1963.28,
+		"input_voltage": 3,
+		"el_power": 1212.55418748812
+	},
+	{
+		"time": 1964.34,
+		"input_voltage": 3,
+		"el_power": 1116.01910488625
+	},
+	{
+		"time": 1965.34,
+		"input_voltage": 3,
+		"el_power": 1207.08969524458
+	},
+	{
+		"time": 1966.34,
+		"input_voltage": 3,
+		"el_power": 1116.38263706681
+	},
+	{
+		"time": 1967.38,
+		"input_voltage": 3,
+		"el_power": 1195.83880839026
+	},
+	{
+		"time": 1968.38,
+		"input_voltage": 3,
+		"el_power": 1126.08902760344
+	},
+	{
+		"time": 1969.4,
+		"input_voltage": 3,
+		"el_power": 1215.1076679035
+	},
+	{
+		"time": 1970.46,
+		"input_voltage": 3,
+		"el_power": 1119.97743111766
+	},
+	{
+		"time": 1971.54,
+		"input_voltage": 3,
+		"el_power": 1210.45964905486
+	},
+	{
+		"time": 1972.6,
+		"input_voltage": 3,
+		"el_power": 1129.41203421573
+	},
+	{
+		"time": 1973.64,
+		"input_voltage": 3,
+		"el_power": 1212.4522354783
+	},
+	{
+		"time": 1974.72,
+		"input_voltage": 3,
+		"el_power": 1117.46781939391
+	},
+	{
+		"time": 1975.84,
+		"input_voltage": 3,
+		"el_power": 1212.40780902162
+	},
+	{
+		"time": 1976.9,
+		"input_voltage": 3,
+		"el_power": 1121.81902294647
+	},
+	{
+		"time": 1977.98,
+		"input_voltage": 3,
+		"el_power": 1214.48586552172
+	},
+	{
+		"time": 1979,
+		"input_voltage": 3,
+		"el_power": 1126.78524192714
+	},
+	{
+		"time": 1980,
+		"input_voltage": 3,
+		"el_power": 1211.99090301584
+	},
+	{
+		"time": 1981.02,
+		"input_voltage": 3,
+		"el_power": 1127.13297358799
+	},
+	{
+		"time": 1982.06,
+		"input_voltage": 3,
+		"el_power": 1206.68961604386
+	},
+	{
+		"time": 1983.06,
+		"input_voltage": 3,
+		"el_power": 1113.84342390522
+	},
+	{
+		"time": 1984.06,
+		"input_voltage": 3,
+		"el_power": 1203.97284077697
+	},
+	{
+		"time": 1985.12,
+		"input_voltage": 3,
+		"el_power": 1117.36596706057
+	},
+	{
+		"time": 1986.2,
+		"input_voltage": 3,
+		"el_power": 1206.1161023873
+	},
+	{
+		"time": 1987.28,
+		"input_voltage": 3,
+		"el_power": 1116.25146786116
+	},
+	{
+		"time": 1988.3,
+		"input_voltage": 3,
+		"el_power": 1200.10483109891
+	},
+	{
+		"time": 1989.32,
+		"input_voltage": 3,
+		"el_power": 1107.97242304795
+	},
+	{
+		"time": 1990.44,
+		"input_voltage": 3,
+		"el_power": 1200.56445251729
+	},
+	{
+		"time": 1991.52,
+		"input_voltage": 3,
+		"el_power": 1108.13334568786
+	},
+	{
+		"time": 1992.6,
+		"input_voltage": 3,
+		"el_power": 1196.60414460496
+	},
+	{
+		"time": 1993.64,
+		"input_voltage": 3,
+		"el_power": 1114.40973328264
+	},
+	{
+		"time": 1994.64,
+		"input_voltage": 3,
+		"el_power": 1198.46924762899
+	},
+	{
+		"time": 1995.64,
+		"input_voltage": 3,
+		"el_power": 1110.73987145761
+	},
+	{
+		"time": 1996.66,
+		"input_voltage": 3,
+		"el_power": 1197.99078642405
+	},
+	{
+		"time": 1997.68,
+		"input_voltage": 3,
+		"el_power": 1114.32255217936
+	},
+	{
+		"time": 1998.68,
+		"input_voltage": 3,
+		"el_power": 1198.43011226841
+	},
+	{
+		"time": 1999.76,
+		"input_voltage": 3,
+		"el_power": 1107.53605025832
+	},
+	{
+		"time": 2000.84,
+		"input_voltage": 3,
+		"el_power": 1199.56626572999
+	},
+	{
+		"time": 2001.98,
+		"input_voltage": 3,
+		"el_power": 1109.38212258499
+	},
+	{
+		"time": 2003.06,
+		"input_voltage": 3,
+		"el_power": 1205.88863747654
+	},
+	{
+		"time": 2004.14,
+		"input_voltage": 3,
+		"el_power": 1107.10115404139
+	},
+	{
+		"time": 2005.22,
+		"input_voltage": 3,
+		"el_power": 1200.31864241346
+	},
+	{
+		"time": 2006.28,
+		"input_voltage": 3,
+		"el_power": 1108.60953968955
+	},
+	{
+		"time": 2007.32,
+		"input_voltage": 3,
+		"el_power": 1207.61380661693
+	},
+	{
+		"time": 2008.34,
+		"input_voltage": 3,
+		"el_power": 1108.63770862922
+	},
+	{
+		"time": 2009.34,
+		"input_voltage": 3,
+		"el_power": 1209.67623468357
+	},
+	{
+		"time": 2010.34,
+		"input_voltage": 3,
+		"el_power": 1112.56095381214
+	},
+	{
+		"time": 2011.38,
+		"input_voltage": 3,
+		"el_power": 1202.69045614618
+	},
+	{
+		"time": 2012.38,
+		"input_voltage": 3,
+		"el_power": 1110.779669717
+	},
+	{
+		"time": 2013.42,
+		"input_voltage": 3,
+		"el_power": 1205.4548912657
+	},
+	{
+		"time": 2014.46,
+		"input_voltage": 3,
+		"el_power": 1115.5288032896
+	}
+]

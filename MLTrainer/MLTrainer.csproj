@@ -213,7 +213,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColumnNameStorageAttribute.cs" />
-    <Compile Include="DataSetup\ConcreteObjectMLSetupItem.cs" />
+    <Compile Include="DataSetup\ConcreteObjectSetup\ConcreteObjectMLSetupItem.cs" />
+    <Compile Include="DataSetup\DynamicObjectSetup\DynamicObjectMLSetupItem.cs" />
+    <Compile Include="DataSetup\DynamicObjectSetup\DynamicObjectSchemaSetup.cs" />
+    <Compile Include="DataSetup\DynamicObjectSetup\JsonObjectMLSetupItem.cs" />
     <Compile Include="DataSetup\FunctionalitySpecificMLSetupItem.cs" />
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupFactory.cs" />
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupItem.cs" />
@@ -221,19 +224,28 @@
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalEnergySetupItem.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalInput.cs" />
     <Compile Include="Demo\MicroGasTurbineElectricalEnergyPrediction\ElectricalOutput.cs" />
+    <Compile Include="Forms\DynamicObjectSchemaSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DynamicObjectSchemaSetupForm.Designer.cs">
+      <DependentUpon>DynamicObjectSchemaSetupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MLTrainingSetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MLTrainingSetupForm.Designer.cs">
       <DependentUpon>MLTrainingSetupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DynamicDataBuilder\MLDataSchemaBuilder.cs" />
-    <Compile Include="ModelPredictor.cs" />
-    <Compile Include="ModelTrainer.cs" />
+    <Compile Include="DataSetup\DynamicObjectSetup\MLDataSchemaBuilder.cs" />
+    <Compile Include="Predictor\ConcreteObjectPredictor\ConcreteObjectModelPredictor.cs" />
+    <Compile Include="Predictor\DynamicObjectPredictor\DynamicObjectModelPredictor.cs" />
+    <Compile Include="Trainer\ConcreteObjectTrainer\ConcreteObjectModelTrainer.cs" />
+    <Compile Include="Trainer\DynamicObjectTrainer\DynamicObjectModelTrainer.cs" />
+    <Compile Include="Trainer\ModelTrainer.cs" />
     <Compile Include="PredictionTesterUI\DataInputItemType\PredictionTesterDataInputFloat.cs" />
     <Compile Include="PredictionTesterUI\DataInputItemType\PredictionTesterDataInputString.cs" />
     <Compile Include="PredictionTesterUI\IPredictionTesterDataInputItem.cs" />
-    <Compile Include="PredictionTesterUI\PredictionTester.cs" />
+    <Compile Include="PredictionTesterUI\ConcreteObjectPredictionTest\ConcreteObjectPredictionTester.cs" />
     <Compile Include="PredictionTesterUI\PredictionTesterDataInputItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -267,6 +279,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Demo\MicroGasTurbineElectricalEnergyPredictionJson\electrical-energy-prediction.json" />
     <None Include="Demo\MicroGasTurbineElectricalEnergyPrediction\example.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -293,6 +306,7 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.3.3.4\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.3.3.4\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
