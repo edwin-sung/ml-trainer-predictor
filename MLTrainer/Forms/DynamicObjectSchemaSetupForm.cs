@@ -50,9 +50,87 @@ namespace MLTrainer.Forms
 
         }
 
+        private void schemaDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (schemaDataGridView.CurrentCell.ColumnIndex == 1 && e.Control is ComboBox)
+            {
+                ComboBox comboBox = e.Control as ComboBox;
+                comboBox.SelectedIndexChanged += LastColumnComboSelectionChanged;
+            }
+        }
+
+        private void LastColumnComboSelectionChanged(object sender, EventArgs e)
+        {
+            if (schemaDataGridView.CurrentCell.ColumnIndex == 1)
+            {
+                schemaDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                TypeChangeAction(schemaDataGridView.CurrentCell.RowIndex, schemaDataGridView.CurrentCell.ColumnIndex);
+            }
+            
+        }
+
         private void schemaDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                DataGridViewRow rowView = schemaDataGridView.Rows[e.RowIndex];
+                // Get the schema builder instance from the row
+                if (rowView.Tag is ColumnNameStorageAttribute validProperty)
+                {
+                    switch (e.ColumnIndex)
+                    {
+                        case 2:
+                        {
+                            LabelTickAction(e.RowIndex, e.ColumnIndex);
+                            break;
+                        }
+                        default: break;
+                    }
+                }
+            } 
+            catch
+            {
 
+            }
+
+        }
+
+        private void TypeChangeAction(int row, int column)
+        {
+            DataGridViewComboBoxCell selectedCell = (DataGridViewComboBoxCell)schemaDataGridView.Rows[row].Cells[column];
+            if (schemaDataGridView.Rows[row].Tag is ColumnNameStorageAttribute propertyAttribute)
+            {
+                try
+                {
+                    DataGridViewComboBoxCell typeCell = new DataGridViewComboBoxCell();
+                    typeCell.Items.AddRange(optimalTypesDescreasingPriority.ToArray());
+                    typeCell.Value = Type.GetType(selectedCell.Value.ToString());
+                    selectedCell = typeCell;
+                } 
+                catch
+                {
+                    selectedCell.Value = propertyAttribute.ColumnType;
+                }
+
+            }
+            schemaDataGridView.Update();
+        }
+
+        private void LabelTickAction(int row, int column)
+        {
+            // We are simply ticking the one that is selected, and untick any previous values
+            for(int i = 0; i < schemaDataGridView.Rows.Count; i++)
+            {
+                DataGridViewRow rowView = schemaDataGridView.Rows[i];
+
+                rowView.Cells[column].Value = i == row;
+                if (rowView.Tag is ColumnNameStorageAttribute propertyAttribute)
+                {
+                    propertyAttribute.IsLabel = i == row;
+                }
+            }
+
+            schemaDataGridView.Update();
         }
     }
 }

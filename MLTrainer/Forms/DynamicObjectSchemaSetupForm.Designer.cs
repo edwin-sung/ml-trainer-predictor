@@ -1,4 +1,6 @@
-﻿namespace MLTrainer.Forms
+﻿using System;
+
+namespace MLTrainer.Forms
 {
     partial class DynamicObjectSchemaSetupForm
     {
@@ -49,7 +51,8 @@
             this.schemaDataGridView.Name = "schemaDataGridView";
             this.schemaDataGridView.Size = new System.Drawing.Size(346, 150);
             this.schemaDataGridView.TabIndex = 0;
-            this.schemaDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.schemaDataGridView_CellContentClick);
+            this.schemaDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.schemaDataGridView_CellContentClick);
+            this.schemaDataGridView.EditingControlShowing += schemaDataGridView_EditingControlShowing;
             // 
             // configureSchemaLabel
             // 
