@@ -87,7 +87,7 @@ namespace MLTrainer.Trainer.ConcreteObjectTrainer
             List<InputOutputColumnPair> missingValuesColumnPairs = new List<InputOutputColumnPair>();
             if (TryGetColumnNamesFor<ModelInput>(att => att.ColumnType == typeof(float) && !att.IsLabel, out List<string> floatColumns))
             {
-                floatColumns.ForEach(c => hotEncodingColumnPairs.Add(new InputOutputColumnPair(@c, @c)));
+                floatColumns.ForEach(c => missingValuesColumnPairs.Add(new InputOutputColumnPair(@c, @c)));
 
                 estimatorChainActions.Add(mlContext.Transforms.ReplaceMissingValues(missingValuesColumnPairs.ToArray()));
             }
