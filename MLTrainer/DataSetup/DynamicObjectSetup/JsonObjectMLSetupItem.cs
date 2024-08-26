@@ -1,11 +1,20 @@
-﻿using MLTrainer.PredictionTesterUI;
+﻿using MLTrainer.Forms;
+using MLTrainer.PredictionTesterUI;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MLTrainer.DataSetup.DynamicObjectSetup
 {
     internal class JsonObjectMLSetupItem : DynamicObjectMLSetupItem
     {
+
+        private List<Type> optimalTypesDescreasingPriority = new List<Type> { typeof(bool), typeof(int), typeof(float), typeof(string) };
 
         internal JsonObjectMLSetupItem() : base("JsonObjectTrainingModel")
         {
@@ -31,18 +40,78 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 
             if (result == DialogResult.OK)
             {
-                ParseJsonFile(fileOpener.FileName);
+                MLDataSchemaBuilder dataSchemaBuilder = ParseJsonFile(fileOpener.FileName);
+                DynamicObjectSchemaSetupForm schemaForm = new DynamicObjectSchemaSetupForm(dataSchemaBuilder, optimalTypesDescreasingPriority);
+                schemaForm.Show();
             }
 
         }
 
-        internal void ParseJsonFile(string jsonFilePath)
+        internal MLDataSchemaBuilder ParseJsonFile(string jsonFilePath)
         {
-            // Use data schema builder to build schema for the JSON
             MLDataSchemaBuilder builderInput = new MLDataSchemaBuilder("JsonImportedModelInput");
-            MLDataSchemaBuilder builderOutput = new MLDataSchemaBuilder("JsonImportedModelOutput");
+
+            try
+            {
+                string jsonString = File.ReadAllText(jsonFilePath);
+                List<JObject> data = JsonConvert.DeserializeObject<List<JObject>>(jsonString);
+
+                // Set-up the schema based on the deserialised objects, and populate data
+                InitialiseDataSchemaBuilder(builderInput, data);
+            }
+            catch
+            {
+
+            }
 
 
+            return builderInput;
+        }
+
+        private void InitialiseDataSchemaBuilder(MLDataSchemaBuilder builder, IEnumerable<JObject> data)
+        {
+            Dictionary<string, Type> preferredPropertyTypes = new Dictionary<string, Type>();
+
+            // For now, let us accept four different types: string, float, int, bool
+            Type GetOptimisedType(object unknown)
+            {
+                if (unknown.GetType() == typeof(string)) return typeof(string);
+                if (bool.TryParse(unknown.ToString(), out bool _)) return typeof(bool);
+                if (int.TryParse(unknown.ToString(), out int _)) return typeof(int);
+                if (float.TryParse(unknown.ToString(), out float _)) return typeof(float);
+                return typeof(string);
+            }
+
+            // Storing actions to be called on the data schema builder instace, once properties are in place.
+            List<Action<MLDataSchemaBuilder>> addDataInputActions = new List<Action<MLDataSchemaBuilder>>();
+
+            foreach(Dictionary<string, object> pair in data.Select(d => d.ToObject<Dictionary<string, object>>()))
+            {
+                addDataInputActions.Add(b => b.AddSingularData(pair.Select(kv => (kv.Key, Convert.ChangeType(kv.Value, preferredPropertyTypes[kv.Key])))));
+                foreach(string key in pair.Keys)
+                {
+                    object value = pair[key];
+                    Type optimisedType = GetOptimisedType(value);
+                    if (!preferredPropertyTypes.ContainsKey(key))
+                    {
+                        preferredPropertyTypes[key] = optimisedType;
+                        continue;
+                    }
+                    Type originalType = preferredPropertyTypes[key];
+
+                    preferredPropertyTypes[key] = 
+                        optimalTypesDescreasingPriority[Math.Min(optimalTypesDescreasingPriority.IndexOf(originalType), optimalTypesDescreasingPriority.IndexOf(optimisedType))];
+                }
+            }
+
+            // Go through each key-value pair and add to properties
+            foreach(KeyValuePair<string, Type> pair in preferredPropertyTypes)
+            {
+                builder.AddProperty(pair.Key, pair.Value);
+            }
+
+            // With properties all set, now set the data.
+            addDataInputActions.ForEach(a => a?.Invoke(builder));
         }
 
 

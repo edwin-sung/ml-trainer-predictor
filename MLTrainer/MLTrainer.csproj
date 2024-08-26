@@ -71,6 +71,10 @@
     <Reference Include="Microsoft.ML.Transforms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ML.3.0.1\lib\netstandard2.0\Microsoft.ML.Transforms.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.1.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
@@ -237,6 +241,7 @@
       <DependentUpon>MLTrainingSetupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSetup\DynamicObjectSetup\MLDataSchemaBuilder.cs" />
+    <Compile Include="PredictionTesterUI\DynamicObjectPredictionTest\DynamicObjectPredictionTester.cs" />
     <Compile Include="Predictor\ConcreteObjectPredictor\ConcreteObjectModelPredictor.cs" />
     <Compile Include="Predictor\DynamicObjectPredictor\DynamicObjectModelPredictor.cs" />
     <Compile Include="Trainer\ConcreteObjectTrainer\ConcreteObjectModelTrainer.cs" />
@@ -266,6 +271,9 @@
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\L1RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\L2RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\OneVersusAll.cs" />
+    <EmbeddedResource Include="Forms\DynamicObjectSchemaSetupForm.resx">
+      <DependentUpon>DynamicObjectSchemaSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MLTrainingSetupForm.resx">
       <DependentUpon>MLTrainingSetupForm.cs</DependentUpon>
     </EmbeddedResource>

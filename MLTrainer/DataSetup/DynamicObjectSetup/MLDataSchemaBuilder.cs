@@ -1,7 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis;
-using Microsoft.ML;
-using Microsoft.ML.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,15 +37,21 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 
             internal ColumnNameStorageAttribute ColumnNameAttribute { get; private set; }
 
-            internal static PropertyItem CreateInstance<T>(string name, string columnName = null, bool isLabel = false)
+            internal static PropertyItem CreateInstance(string name, Type type, string columnName = null, bool isLabel = false)
             {
                 return new PropertyItem
                 {
                     Name = name,
-                    ColumnNameAttribute = new ColumnNameStorageAttribute(columnName ?? name, typeof(T), isLabel)
+                    ColumnNameAttribute = new ColumnNameStorageAttribute(columnName ?? name, type, isLabel)
                 };
             }
         }
+
+        /// <summary>
+        /// Gets the schema properties, that allow modification of indications
+        /// </summary>
+        /// <returns></returns>
+        internal IEnumerable<ColumnNameStorageAttribute> GetSchemaProperties() => properties.Select(p => p.ColumnNameAttribute);
 
         /// <summary>
         /// Similar to column names in concrete object version, but with the lack of concrete objects, we make use of the make-shift PropertyItem.
@@ -117,66 +121,26 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
                 // Even though there might be some values that are not populated, return true.
                 return true;
             }
-
-            /*internal bool TryGetAsObjectArray(out IEnumerable<object> validObjectArray)
-            {
-                validObjectArray = null;
-                if (properties.Count != propertyNameValuePair.Count)
-                {
-                    return false;
-                }
-
-                List<object> objectArray = new List<object>();
-
-                foreach (PropertyItem property in properties)
-                {
-                    if (!propertyNameValuePair.TryGetValue(property.Name, out object validValue))
-                    {
-                        return false;
-                    }
-                    objectArray.Add(validValue);
-                }
-
-                // At this stage, we know that the data is consistent, thus returning true
-                validObjectArray = objectArray;
-                return true;
-            }*/
         }
 
         /// <summary>
         /// Adds a property for this data schema (dynamic class)
         /// </summary>
-        /// <typeparam name="T">Generic type that is translatable to ML.NET</typeparam>
         /// <param name="name">Name of the property</param>
+        /// <param name="type">Type of the property</param>
         /// <param name="columnName">[Optional] Column name attribute name, if left empty it will use the value of [name]</param>
         /// <param name="isLabel">True if this property is a label</param>
-        internal void AddProperty<T>(string name, string columnName = null, bool isLabel = false)
+        internal void AddProperty(string name, Type type, string columnName = null, bool isLabel = false)
         {
-            properties.Add(PropertyItem.CreateInstance<T>(name, columnName, isLabel));
+            properties.Add(PropertyItem.CreateInstance(name, type, columnName, isLabel));
         }
 
         internal bool AddSingularData(IEnumerable<(string, object)> dataValues)
         {
             SingularDataItem data = new SingularDataItem { properties = properties };
+            propertyValues.Add(data);
             return data.SetPropertyValues(dataValues);
         }
-
-        /*internal object CreateSingularInstance(IEnumerable<(string, object)> dataValues)
-        {
-            object singularInstance = Activator.CreateInstance(SchemaType);
-            // Go through all the properties of the schema and populate the values
-
-            var item = Activator.CreateInstance(itemType);
-
-            for (var i = 0; i < values.Length; i++)
-            {
-                itemProperties[i].SetValue(item, values[i]);
-            }
-
-            SchemaType.GetProperties()
-            SingularDataItem instance = new SingularDataItem { properties = properties };
-            return instance.SetPropertyValues(dataValues) ? instance : null;
-        }*/
 
 
         /// <summary>
@@ -190,33 +154,6 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             var dynamicListType = listType.MakeGenericType(type);
             return (IEnumerable<object>)Activator.CreateInstance(dynamicListType);
         }
-
-        /*/// <summary>
-        /// creates an action which can be used to add items to the list
-        /// </summary>
-        /// <param name="listType"></param>
-        /// <returns></returns>
-        private Action<object[]> GetAddAction(IEnumerable<object> list)
-        {
-            var listType = list.GetType();
-            var addMethod = listType.GetMethod("Add");
-            var itemType = listType.GenericTypeArguments[0];
-            var itemProperties = itemType.GetProperties();
-
-            var action = new Action<object[]>((values) =>
-            {
-                var item = Activator.CreateInstance(itemType);
-
-                for (var i = 0; i < values.Length; i++)
-                {
-                    itemProperties[i].SetValue(item, values[i]);
-                }
-
-                addMethod.Invoke(list, new[] { item });
-            });
-
-            return action;
-        }*/
 
         /// <summary>
         /// Creates a type based on the property/type values specified in the properties
@@ -310,34 +247,6 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             }
 
             return inputData;
-        }
-
-        internal IDataView MakeData()
-        {
-
-            /*// Get an action that will add to the list
-            Action<object[]> addAction = GetAddAction(dynamicList);
-
-            // Go through each data and call the action.
-            foreach(SingularDataItem data in propertyValues)
-            {
-                if (data.TryGetAsObjectArray(out IEnumerable<object> objectArray))
-                {
-                    addAction?.Invoke(objectArray.ToArray());
-                }
-            }*/
-
-            /*// Use MLContext to create train data.
-            MLContext mlContext = new MLContext();
-            Type dataType = mlContext.Data.GetType();
-            if (dataType.GetMethods().SingleOrDefault(m => m.Name == "LoadFromEnumerable" && m.IsGenericMethod)
-                is MethodInfo loadMethodGeneric)
-            {
-                MethodInfo loadMethod = loadMethodGeneric.MakeGenericMethod(SchemaType);
-                return loadMethod.Invoke(mlContext.Data, new[] { dynamicList, schema }) as IDataView;
-            }*/
-
-            return null;
         }
     }
 }

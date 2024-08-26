@@ -11,17 +11,17 @@ namespace MLTrainer
         /// <summary>
         /// Name of the column
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets the field type of the current column
         /// </summary>
-        public Type ColumnType { get; }
+        public Type ColumnType { get; set; }
 
         /// <summary>
         /// Whether or not this particular column is a label (used for prediction)
         /// </summary>
-        public bool IsLabel { get; }
+        public bool IsLabel { get; set; }
 
         /// <inheritdoc />
         public ColumnNameStorageAttribute(string columnName, Type columnType, bool label = false)
