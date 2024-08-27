@@ -290,7 +290,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="ClassDiagram1.cd" />
-    <None Include="Demo\MicroGasTurbineElectricalEnergyPredictionJson\electrical-energy-prediction.json" />
+    <None Include="Demo\MicroGasTurbineElectricalEnergyPredictionJson\electrical-energy-prediction-json.json" />
     <None Include="Demo\MicroGasTurbineElectricalEnergyPrediction\example.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
