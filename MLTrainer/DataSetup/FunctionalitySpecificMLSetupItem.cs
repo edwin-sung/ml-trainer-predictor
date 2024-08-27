@@ -31,7 +31,10 @@ namespace MLTrainer.DataSetup
         /// <inheritdoc />
         public abstract string TrainingModelName { get; set; }
 
-        protected string TrainingModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + ".csv";
+        /// <inheritdoc />
+        public abstract string DataExtension { get; }
+
+        protected string TrainingModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + "." + DataExtension;
 
         /// <summary>
         /// Trained model file path
@@ -42,7 +45,6 @@ namespace MLTrainer.DataSetup
         protected string TempTrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + "-temp.zip";
 
         protected string BackupTrainedModelFilePath => TrainingModelDirectory + "/" + TrainingModelName + $"-backup{DateTime.Now}.zip";
-
 
         protected IMLTrainingAlgorithm trainingAlgorithm = null;
 
@@ -56,7 +58,7 @@ namespace MLTrainer.DataSetup
             // If the CSV file already exists, import the CSV automatically.
             if (File.Exists(TrainingModelFilePath))
             {
-                AddDataInputsByCSVFilePath(TrainingModelFilePath);
+                AddDataInputsBySourceFilePath(TrainingModelFilePath);
             }
 
             SetTrainingAlgorithm(GetAllTrainingAlgorithms().FirstOrDefault());
@@ -83,9 +85,8 @@ namespace MLTrainer.DataSetup
             return trainingAlgorithm?.GetCustomisableOptions().ToList() ?? new List<ITrainingAlgorithmOption>();
         }
 
-
         /// <inheritdoc />
-        public abstract void AddDataInputsByCSVFilePath(string csvFilePath);
+        public abstract void AddDataInputsBySourceFilePath(string srcFilePath);
 
         /// <inheritdoc />
         public abstract List<string> GetAllDataInputColumns();
@@ -100,7 +101,7 @@ namespace MLTrainer.DataSetup
         public abstract void ClearAllDataInput();
 
         /// <inheritdoc />
-        public abstract void SaveModelInputAsCSV();
+        public abstract void SaveModelInputAsDataExtension();
 
         /// <inheritdoc />
         public abstract bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath);

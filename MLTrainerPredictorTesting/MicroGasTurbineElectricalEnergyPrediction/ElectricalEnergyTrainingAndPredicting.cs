@@ -12,7 +12,7 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
         public void Initialise()
         {
             setupItem = new ElectricalEnergySetupItem();
-            setupItem.AddDataInputsByCSVFilePath(Environment.CurrentDirectory + "\\MicroGasTurbineElectricalEnergyPrediction\\example.csv");
+            setupItem.AddDataInputsBySourceFilePath(Environment.CurrentDirectory + "\\MicroGasTurbineElectricalEnergyPrediction\\example.csv");
         }
 
         [TearDown]

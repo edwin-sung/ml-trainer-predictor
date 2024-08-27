@@ -28,6 +28,11 @@ namespace MLTrainer.DataSetup
         /// </summary>
         string TrainingModelName { get; set; }
 
+        /// <summary>
+        /// Data extension for this particular set-up (.csv, .json etc.)
+        /// </summary>
+        string DataExtension { get; }
+
 
         /// <summary>
         /// Opens up a data schema set up form, passing the action to call upon closure of the form
@@ -55,10 +60,10 @@ namespace MLTrainer.DataSetup
         List<ITrainingAlgorithmOption> GetTrainingAlgorithmOptions();
 
         /// <summary>
-        /// Add data inputs by importing a CSV file path
+        /// Add data inputs by importing a source file path, with the data extension mentioned above
         /// </summary>
-        /// <param name="csvFilePath">CSV file path</param>
-        void AddDataInputsByCSVFilePath(string csvFilePath);
+        /// <param name="srcFilePath">Source file path</param>
+        void AddDataInputsBySourceFilePath(string srcFilePath);
 
         /// <summary>
         /// Gets all data input columns
@@ -84,9 +89,9 @@ namespace MLTrainer.DataSetup
         void ClearAllDataInput();
 
         /// <summary>
-        /// Saves model inputs as CSV file to be refereced in the future
+        /// Saves model inputs as data file to be referenced in the future, matching the extension stated above
         /// </summary>
-        void SaveModelInputAsCSV();
+        void SaveModelInputAsDataExtension();
 
         /// <summary>
         /// Create a temporary trained model based on the set of model inputs added

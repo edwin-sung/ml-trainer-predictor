@@ -24,6 +24,8 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
         private List<ModelInput> modelInputs = new List<ModelInput>();
         private ConcreteObjectPredictionTester<ModelInput, ModelOutput> predictionTester = null;
 
+        public override string DataExtension => "csv";
+
         protected ConcreteObjectMLSetupItem(string functionalityName) : base(functionalityName)
         {
         }
@@ -41,7 +43,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
         public override void ClearAllDataInput() => modelInputs.Clear();
 
         /// <inheritdoc />
-        public override void AddDataInputsByCSVFilePath(string csvFilePath)
+        public override void AddDataInputsBySourceFilePath(string csvFilePath)
         {
             if (!File.Exists(csvFilePath))
             {
@@ -60,6 +62,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
                 }
             }
         }
+
 
         /// <summary>
         /// Parses the CSV row as string, and outputs a valid ModelInput instance if successful
@@ -176,7 +179,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
 
 
         /// <inheritdoc />
-        public override void SaveModelInputAsCSV()
+        public override void SaveModelInputAsDataExtension()
         {
             // Save the modelInputs to a CSV file
             StringBuilder csvRowBuilder = new StringBuilder();

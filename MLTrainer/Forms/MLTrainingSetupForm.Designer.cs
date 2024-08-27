@@ -30,15 +30,16 @@
         {
             this.selectFunctionalityLabel = new System.Windows.Forms.Label();
             this.functionalityComboBox = new System.Windows.Forms.ComboBox();
-            this.importCSVButton = new System.Windows.Forms.Button();
+            this.importFileButton = new System.Windows.Forms.Button();
             this.clearAllButton = new System.Windows.Forms.Button();
             this.modelDataPreviewComboBox = new System.Windows.Forms.ListView();
             this.trainModelButton = new System.Windows.Forms.Button();
             this.trainingResultsLabel = new System.Windows.Forms.Label();
-            this.saveCSVButton = new System.Windows.Forms.Button();
+            this.saveFileButton = new System.Windows.Forms.Button();
             this.applyTrainedModelButton = new System.Windows.Forms.Button();
             this.removeSelectedButton = new System.Windows.Forms.Button();
             this.testPredictionGroupBox = new System.Windows.Forms.GroupBox();
+            this.runTestPredictionButton = new System.Windows.Forms.Button();
             this.testPredictionResultsLabel = new System.Windows.Forms.Label();
             this.testPredictionDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +50,6 @@
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.algorithmComboBox = new System.Windows.Forms.ComboBox();
             this.selectAlgorithmLabel = new System.Windows.Forms.Label();
-            this.runTestPredictionButton = new System.Windows.Forms.Button();
             this.testPredictionGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testPredictionDataGridView)).BeginInit();
             this.trainingAlgorithmGroupBox.SuspendLayout();
@@ -76,13 +76,13 @@
             // 
             // importCSVButton
             // 
-            this.importCSVButton.Location = new System.Drawing.Point(16, 45);
-            this.importCSVButton.Name = "importCSVButton";
-            this.importCSVButton.Size = new System.Drawing.Size(75, 23);
-            this.importCSVButton.TabIndex = 2;
-            this.importCSVButton.Text = "Import";
-            this.importCSVButton.UseVisualStyleBackColor = true;
-            this.importCSVButton.Click += new System.EventHandler(this.importCSVButton_Click);
+            this.importFileButton.Location = new System.Drawing.Point(16, 45);
+            this.importFileButton.Name = "importCSVButton";
+            this.importFileButton.Size = new System.Drawing.Size(75, 23);
+            this.importFileButton.TabIndex = 2;
+            this.importFileButton.Text = "Import";
+            this.importFileButton.UseVisualStyleBackColor = true;
+            this.importFileButton.Click += new System.EventHandler(this.importFileButton_Click);
             // 
             // clearAllButton
             // 
@@ -103,7 +103,6 @@
             this.modelDataPreviewComboBox.TabIndex = 4;
             this.modelDataPreviewComboBox.UseCompatibleStateImageBehavior = false;
             this.modelDataPreviewComboBox.View = System.Windows.Forms.View.Details;
-            this.modelDataPreviewComboBox.SelectedIndexChanged += new System.EventHandler(this.modelDataPreviewComboBox_SelectedIndexChanged);
             // 
             // trainModelButton
             // 
@@ -123,15 +122,15 @@
             this.trainingResultsLabel.Size = new System.Drawing.Size(0, 13);
             this.trainingResultsLabel.TabIndex = 6;
             // 
-            // saveCSVButton
+            // saveFileButton
             // 
-            this.saveCSVButton.Location = new System.Drawing.Point(633, 415);
-            this.saveCSVButton.Name = "saveCSVButton";
-            this.saveCSVButton.Size = new System.Drawing.Size(75, 23);
-            this.saveCSVButton.TabIndex = 7;
-            this.saveCSVButton.Text = "Save CSV";
-            this.saveCSVButton.UseVisualStyleBackColor = true;
-            this.saveCSVButton.Click += new System.EventHandler(this.saveCSVButton_Click);
+            this.saveFileButton.Location = new System.Drawing.Point(633, 415);
+            this.saveFileButton.Name = "saveFileButton";
+            this.saveFileButton.Size = new System.Drawing.Size(75, 23);
+            this.saveFileButton.TabIndex = 7;
+            this.saveFileButton.Text = "Save File";
+            this.saveFileButton.UseVisualStyleBackColor = true;
+            this.saveFileButton.Click += new System.EventHandler(this.saveFileButton_Click);
             // 
             // applyTrainedModelButton
             // 
@@ -164,6 +163,16 @@
             this.testPredictionGroupBox.TabIndex = 10;
             this.testPredictionGroupBox.TabStop = false;
             this.testPredictionGroupBox.Text = "Prediction Test";
+            // 
+            // runTestPredictionButton
+            // 
+            this.runTestPredictionButton.Location = new System.Drawing.Point(6, 264);
+            this.runTestPredictionButton.Name = "runTestPredictionButton";
+            this.runTestPredictionButton.Size = new System.Drawing.Size(54, 23);
+            this.runTestPredictionButton.TabIndex = 6;
+            this.runTestPredictionButton.Text = "Run";
+            this.runTestPredictionButton.UseVisualStyleBackColor = true;
+            this.runTestPredictionButton.Click += new System.EventHandler(this.runTestPredictionButton_Click);
             // 
             // testPredictionResultsLabel
             // 
@@ -254,16 +263,6 @@
             this.selectAlgorithmLabel.TabIndex = 0;
             this.selectAlgorithmLabel.Text = "Select Algorithm";
             // 
-            // runTestPredictionButton
-            // 
-            this.runTestPredictionButton.Location = new System.Drawing.Point(6, 264);
-            this.runTestPredictionButton.Name = "runTestPredictionButton";
-            this.runTestPredictionButton.Size = new System.Drawing.Size(54, 23);
-            this.runTestPredictionButton.TabIndex = 6;
-            this.runTestPredictionButton.Text = "Run";
-            this.runTestPredictionButton.UseVisualStyleBackColor = true;
-            this.runTestPredictionButton.Click += new System.EventHandler(this.runTestPredictionButton_Click);
-            // 
             // MLTrainingSetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,11 +272,11 @@
             this.Controls.Add(this.testPredictionGroupBox);
             this.Controls.Add(this.removeSelectedButton);
             this.Controls.Add(this.applyTrainedModelButton);
-            this.Controls.Add(this.saveCSVButton);
+            this.Controls.Add(this.saveFileButton);
             this.Controls.Add(this.trainingResultsLabel);
             this.Controls.Add(this.modelDataPreviewComboBox);
             this.Controls.Add(this.clearAllButton);
-            this.Controls.Add(this.importCSVButton);
+            this.Controls.Add(this.importFileButton);
             this.Controls.Add(this.functionalityComboBox);
             this.Controls.Add(this.selectFunctionalityLabel);
             this.Name = "MLTrainingSetupForm";
@@ -291,20 +290,18 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-            this.FormClosed += MLTrainingSetupForm_FormClosed;
-
         }
 
         #endregion
 
         private System.Windows.Forms.Label selectFunctionalityLabel;
         private System.Windows.Forms.ComboBox functionalityComboBox;
-        private System.Windows.Forms.Button importCSVButton;
+        private System.Windows.Forms.Button importFileButton;
         private System.Windows.Forms.Button clearAllButton;
         private System.Windows.Forms.ListView modelDataPreviewComboBox;
         private System.Windows.Forms.Button trainModelButton;
         private System.Windows.Forms.Label trainingResultsLabel;
-        private System.Windows.Forms.Button saveCSVButton;
+        private System.Windows.Forms.Button saveFileButton;
         private System.Windows.Forms.Button applyTrainedModelButton;
         private System.Windows.Forms.Button removeSelectedButton;
         private System.Windows.Forms.GroupBox testPredictionGroupBox;

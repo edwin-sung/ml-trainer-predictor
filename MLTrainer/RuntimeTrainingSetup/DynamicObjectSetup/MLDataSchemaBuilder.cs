@@ -142,9 +142,9 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
                 return true;
             }
 
-            internal bool TryGetDataAsStrings(out List<string> validDataAsStrings)
+            internal bool TryGetDataAsPropertyNameValues(out List<(string, object)> nameValuePairs)
             {
-                validDataAsStrings = new List<string>();
+                nameValuePairs = new List<(string, object)>();
                 if (schema == null || properties.Count != propertyNameValuePair.Count)
                 {
                     return false;
@@ -152,9 +152,10 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 
                 foreach (PropertyInfo propertyInfo in schema.GetProperties())
                 {
-                    validDataAsStrings.Add(
-                        propertyNameValuePair.TryGetValue(propertyInfo.Name, out object value) ? value.ToString() : string.Empty);
+                    nameValuePairs.Add((propertyInfo.Name,
+                        propertyNameValuePair.TryGetValue(propertyInfo.Name, out object value) ? value.ToString() : string.Empty));
                 }
+
                 return true;
             }
         }
@@ -286,15 +287,12 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             return inputData;
         }
 
-        internal IEnumerable<List<string>> GetInputDataAsStrings()
+        internal IEnumerable<List<(string,object)>> GetInputDataAsNameValuePairs()
         {
-            foreach (SingularDataItem data in propertyValues)
-            {
-                if (data.TryGetDataAsStrings(out List<string> validDataAsStrings))
-                {
-                    yield return validDataAsStrings;
-                }
-            }
+            List<(string, object)> validDataAsNameValuePairs = new List<(string, object)>();
+            return from SingularDataItem data in propertyValues
+                   where data.TryGetDataAsPropertyNameValues(out validDataAsNameValuePairs)
+                   select validDataAsNameValuePairs;
         }
 
         /// <summary>

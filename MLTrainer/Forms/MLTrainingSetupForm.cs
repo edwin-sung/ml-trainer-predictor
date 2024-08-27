@@ -131,14 +131,15 @@ namespace MLTrainer.Forms
             modelDataPreviewComboBox.Update();
         }
 
-        private void importCSVButton_Click(object sender, EventArgs e)
+        private void importFileButton_Click(object sender, EventArgs e)
         {
+            string extension = selectedSetup.DataExtension;
             OpenFileDialog fileOpener = new OpenFileDialog();
             fileOpener.ValidateNames = true;
             fileOpener.CheckFileExists = true;
             fileOpener.CheckPathExists = true;
-            fileOpener.DefaultExt = "csv";
-            fileOpener.Filter = "CSV file (*.csv)|*.csv";
+            fileOpener.DefaultExt = extension;
+            fileOpener.Filter = $"{extension.ToUpper()} file (*.{extension})|*.{extension}";
             fileOpener.Title = "Select a file to import";
             fileOpener.Multiselect = false;
 
@@ -146,7 +147,7 @@ namespace MLTrainer.Forms
 
             if (result == DialogResult.OK)
             {
-                selectedSetup.AddDataInputsByCSVFilePath(fileOpener.FileName);
+                selectedSetup.AddDataInputsBySourceFilePath(fileOpener.FileName);
                 RefreshRows();
             }
         }
@@ -167,10 +168,10 @@ namespace MLTrainer.Forms
                 : "Trained model application unsuccessful.";
         }
 
-        private void saveCSVButton_Click(object sender, EventArgs e)
+        private void saveFileButton_Click(object sender, EventArgs e)
         {
-            selectedSetup.SaveModelInputAsCSV();
-            trainingResultsLabel.Text = "CSV successfully saved.";
+            selectedSetup.SaveModelInputAsDataExtension();
+            trainingResultsLabel.Text = $"{selectedSetup.DataExtension.ToUpper()} successfully saved.";
         }
 
         private void removeSelectedButton_Click(object sender, EventArgs e)
@@ -193,6 +194,8 @@ namespace MLTrainer.Forms
         private void modelDataPreviewComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedSetup = setupItems[functionalityComboBox.SelectedIndex];
+            saveFileButton.Text = $"Save {selectedSetup.DataExtension.ToUpper()}";
+            saveFileButton.Update();
             RefreshRows();
         }
 
@@ -267,6 +270,7 @@ namespace MLTrainer.Forms
             selectedSetup = setupItems.SingleOrDefault(item => item.Name == functionalityComboBox.SelectedItem.ToString());
             selectedSetup.OpenDataSchemaSetupForm(datachemaSetupFormClosedAction);
             SetupAlgorithmParametersDataGridView();
+            saveFileButton.Text = $"Save {selectedSetup.DataExtension.ToUpper()}";
         }
 
         private void datachemaSetupFormClosedAction(object sender, FormClosedEventArgs e)

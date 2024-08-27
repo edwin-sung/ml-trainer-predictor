@@ -28,6 +28,9 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
         public override string TrainingModelDirectory { get; set; } = "C:\\Temp";
         public override string TrainingModelName { get; set; } = string.Empty;
 
+        /// <inheritdoc />
+        public override string DataExtension => "json";
+
         public override void OpenDataSchemaSetupForm(FormClosedEventHandler schemaSetupFormClosureAction)
         {
             OpenFileDialog fileOpener = new OpenFileDialog();
@@ -53,35 +56,57 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
                     TrainingModelName = fileOpener.SafeFileName;
                 }
 
-                inputDataSchemaBuilder = ParseJsonFile(fileOpener.FileName);
+                inputDataSchemaBuilder = new MLDataSchemaBuilder("JsonImportedModelInput");
+                ParseJsonFile(fileOpener.FileName, d => GetNewDataInputActions(d, true).ForEach(a => a?.Invoke(inputDataSchemaBuilder)));
                 DynamicObjectSchemaSetupForm schemaForm = new DynamicObjectSchemaSetupForm(inputDataSchemaBuilder, optimalTypesDescreasingPriority);
                 schemaForm.FormClosed += schemaSetupFormClosureAction;
                 schemaForm.Show();
             }
         }
 
-        internal MLDataSchemaBuilder ParseJsonFile(string jsonFilePath)
+        internal void ParseJsonFile(string jsonFilePath, Action<IEnumerable<JObject>> parsedDataAction)
         {
-            MLDataSchemaBuilder builderInput = new MLDataSchemaBuilder("JsonImportedModelInput");
-
             try
             {
                 string jsonString = File.ReadAllText(jsonFilePath);
-                List<JObject> data = JsonConvert.DeserializeObject<List<JObject>>(jsonString);
 
                 // Set-up the schema based on the deserialised objects, and populate data
-                InitialiseDataSchemaBuilder(builderInput, data);
+                parsedDataAction?.Invoke(JsonConvert.DeserializeObject<List<JObject>>(jsonString));
             }
+            catch
+            {
+            }
+        }
+
+        internal void SaveJSONFile(string newJsonFilePath)
+        {
+            try
+            {
+                List<JObject> jsonObjects = new List<JObject>();
+                foreach(List<(string, object)> nameValuePairs in inputDataSchemaBuilder.GetInputDataAsNameValuePairs())
+                {
+                    Dictionary<string, object> dict = new Dictionary<string, object>();
+                    nameValuePairs.ForEach(pair => dict[pair.Item1] = pair.Item2);
+                    jsonObjects.Add(JObject.FromObject(dict));
+                }
+
+                string jsonSaveString = JsonConvert.SerializeObject(jsonObjects);
+                File.WriteAllText(newJsonFilePath, jsonSaveString);
+            } 
             catch
             {
 
             }
-
-
-            return builderInput;
         }
 
-        private void InitialiseDataSchemaBuilder(MLDataSchemaBuilder builder, IEnumerable<JObject> data)
+        /// <inheritdoc />
+        public override void AddDataInputsBySourceFilePath(string srcFilePath)
+        {
+            ParseJsonFile(srcFilePath, parsedData =>
+                GetNewDataInputActions(parsedData).ForEach(action => action?.Invoke(inputDataSchemaBuilder)));
+        }
+
+        private List<Action<MLDataSchemaBuilder>> GetNewDataInputActions(IEnumerable<JObject> data, bool addNewProperties = false)
         {
             Dictionary<string, Type> preferredPropertyTypes = new Dictionary<string, Type>();
 
@@ -90,7 +115,6 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             {
                 if (unknown.GetType() == typeof(string)) return typeof(string);
                 if (bool.TryParse(unknown.ToString(), out bool _)) return typeof(bool);
-                //if (int.TryParse(unknown.ToString(), out int _)) return typeof(int);
                 if (float.TryParse(unknown.ToString(), out float _)) return typeof(float);
                 return typeof(string);
             }
@@ -117,22 +141,19 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
                 }
             }
 
-            // Go through each key-value pair and add to properties
-            foreach (KeyValuePair<string, Type> pair in preferredPropertyTypes)
+            if (addNewProperties)
             {
-                builder.AddProperty(pair.Key, pair.Value);
+                // Go through each key-value pair and add to properties first, before adding all the other records.
+                addDataInputActions.Insert(0, dataSchemaBuilder =>
+                {
+                    foreach (KeyValuePair<string, Type> pair in preferredPropertyTypes)
+                    {
+                        dataSchemaBuilder.AddProperty(pair.Key, pair.Value);
+                    }
+                });
             }
 
-            //builder.InitialiseSchemaType();
-
-            // With properties all set, now set the data.
-            addDataInputActions.ForEach(a => a?.Invoke(builder));
-        }
-
-
-        public override void AddDataInputsByCSVFilePath(string csvFilePath)
-        {
-            // For the moment, do not import anything just yet
+            return addDataInputActions;
         }
 
         public override void ClearAllDataInput()
@@ -145,7 +166,8 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 
         public override List<List<string>> GetAllDataInputsAsStrings()
         {
-            return inputDataSchemaBuilder.GetInputDataAsStrings().ToList();
+            return inputDataSchemaBuilder.GetInputDataAsNameValuePairs().Select(
+                pairs => pairs.Select(pair => pair.Item2.ToString()).ToList()).ToList();
         }
 
         public override IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems()
@@ -164,9 +186,9 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             predictionTester?.RunPrediction(new DynamicObjectModelPredictor(TrainedModelFilePath, inputDataSchemaBuilder.SchemaType, outputDataSchemaBuilder.SchemaType), out predictedValueAsString);
         }
 
-        public override void SaveModelInputAsCSV()
+        public override void SaveModelInputAsDataExtension()
         {
-            // This will be done later on
+            SaveJSONFile(TrainingModelFilePath);
         }
 
         public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath)
