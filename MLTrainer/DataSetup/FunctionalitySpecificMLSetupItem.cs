@@ -62,11 +62,6 @@ namespace MLTrainer.DataSetup
             SetTrainingAlgorithm(GetAllTrainingAlgorithms().FirstOrDefault());
         }
 
-        /// <inheritdoc />
-        public virtual void InitialiseInstance()
-        {
-        }
-
         public virtual void OpenDataSchemaSetupForm(FormClosedEventHandler schemaSetupFormClosureAction)
         {
         }
