@@ -265,8 +265,16 @@ namespace MLTrainer.Forms
             // Do the temp file clean up before moving on to the other selected setup.
             selectedSetup.CleanupTemporaryFiles();
             selectedSetup = setupItems.SingleOrDefault(item => item.Name == functionalityComboBox.SelectedItem.ToString());
-            selectedSetup.InitialiseInstance();
+            selectedSetup.OpenDataSchemaSetupForm(datachemaSetupFormClosedAction);
             SetupAlgorithmParametersDataGridView();
+        }
+
+        private void datachemaSetupFormClosedAction(object sender, FormClosedEventArgs e)
+        {
+            // Refresh the rows
+            RefreshRows();
+            SetupAlgorithmList();
+            SetupPredictionTestDataInputGridView();
         }
 
         private void runTestPredictionButton_Click(object sender, EventArgs e)

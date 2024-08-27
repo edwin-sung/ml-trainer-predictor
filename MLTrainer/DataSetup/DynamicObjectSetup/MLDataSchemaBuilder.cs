@@ -19,6 +19,8 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
         private List<PropertyItem> properties = new List<PropertyItem>();
         private List<SingularDataItem> propertyValues = new List<SingularDataItem>();
 
+        private string DataSchemaName = string.Empty;
+
         internal Type SchemaType { get; private set; }
 
         internal MLDataSchemaBuilder(string dataSchemaName)
@@ -26,7 +28,18 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             DataSchemaName = dataSchemaName;
         }
 
-        private string DataSchemaName;
+        internal bool SchemaProperlySetup(out string problemMessage)
+        {
+            problemMessage = string.Empty;
+            // We require one, and only one, label for the attribute.
+            if (properties.SingleOrDefault(p => p.ColumnNameAttribute != null && p.ColumnNameAttribute.IsLabel) == null)
+            {
+                problemMessage = "Exactly one of the properties is required to be a label";
+                return false;
+            }
+
+            return true;
+        }
 
         /// <summary>
         /// Property item for the schema
@@ -35,6 +48,8 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
         {
             internal string Name { get; private set; }
 
+            internal Type Type { get; private set; }
+
             internal ColumnNameStorageAttribute ColumnNameAttribute { get; private set; }
 
             internal static PropertyItem CreateInstance(string name, Type type, string columnName = null, bool isLabel = false)
@@ -42,16 +57,19 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
                 return new PropertyItem
                 {
                     Name = name,
+                    Type = type,
                     ColumnNameAttribute = new ColumnNameStorageAttribute(columnName ?? name, type, isLabel)
                 };
             }
+
+            internal static PropertyItem CreateInstanceWithoutAttributes(string name, Type type) => new PropertyItem { Name = name, Type = type, ColumnNameAttribute = null };
         }
 
         /// <summary>
         /// Gets the schema properties, that allow modification of indications
         /// </summary>
         /// <returns></returns>
-        internal IEnumerable<ColumnNameStorageAttribute> GetSchemaProperties() => properties.Select(p => p.ColumnNameAttribute);
+        internal IEnumerable<ColumnNameStorageAttribute> GetSchemaProperties() => properties.Select(p => p.ColumnNameAttribute).Where(c => c != null);
 
         /// <summary>
         /// Similar to column names in concrete object version, but with the lack of concrete objects, we make use of the make-shift PropertyItem.
@@ -101,6 +119,8 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
                 return true;
             }
 
+            internal void SetSchemaType(Type schemaType) => schema = schemaType;
+
             internal bool TryGetObjectInstance(out object validInstance)
             {
                 validInstance = null;
@@ -121,6 +141,22 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
                 // Even though there might be some values that are not populated, return true.
                 return true;
             }
+
+            internal bool TryGetDataAsStrings(out List<string> validDataAsStrings)
+            {
+                validDataAsStrings = new List<string>();
+                if (schema == null || properties.Count != propertyNameValuePair.Count)
+                {
+                    return false;
+                }
+
+                foreach(PropertyInfo propertyInfo in schema.GetProperties())
+                {
+                    validDataAsStrings.Add(
+                        propertyNameValuePair.TryGetValue(propertyInfo.Name, out object value) ? value.ToString() : string.Empty);
+                }
+                return true;
+            }
         }
 
         /// <summary>
@@ -135,24 +171,16 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             properties.Add(PropertyItem.CreateInstance(name, type, columnName, isLabel));
         }
 
-        internal bool AddSingularData(IEnumerable<(string, object)> dataValues)
+        internal void AddOutputScoreProperty()
         {
-            SingularDataItem data = new SingularDataItem { properties = properties };
-            propertyValues.Add(data);
-            return data.SetPropertyValues(dataValues);
+            properties.Add(PropertyItem.CreateInstance("Score", typeof(float[])));
         }
 
-
-        /// <summary>
-        /// Creates a list of the specified type
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        private IEnumerable<object> CreateDynamicList(Type type)
+        internal bool AddSingularData(IEnumerable<(string, object)> dataValues)
         {
-            var listType = typeof(List<>);
-            var dynamicListType = listType.MakeGenericType(type);
-            return (IEnumerable<object>)Activator.CreateInstance(dynamicListType);
+            SingularDataItem data = new SingularDataItem { properties = properties, schema = SchemaType };
+            propertyValues.Add(data);
+            return data.SetPropertyValues(dataValues);
         }
 
         /// <summary>
@@ -171,15 +199,17 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 
             // Generate the class code
             classCode.AppendLine("using System;");
-            classCode.AppendLine("using Microsoft.ML.Data;");
             classCode.AppendLine("using MLTrainer;");
             classCode.AppendLine("namespace MLTrainerPredictor.Dynamic {");
             classCode.AppendLine($"public class {dynamicClassName} {{");
 
             foreach (var property in properties)
             {
-                classCode.AppendLine($"[ColumnNameStorage(\"{property.ColumnNameAttribute.Name}\",typeof({property.ColumnNameAttribute.ColumnType.Name}), {property.ColumnNameAttribute.IsLabel.ToString().ToLower()})]");
-                classCode.AppendLine($"public {property.ColumnNameAttribute.ColumnType.Name} {property.Name} {{get; set; }}");
+                if (property.ColumnNameAttribute != null)
+                {
+                    classCode.AppendLine($"[ColumnNameStorage(\"{property.ColumnNameAttribute.Name}\",typeof({property.ColumnNameAttribute.ColumnType.Name}), {property.ColumnNameAttribute.IsLabel.ToString().ToLower()})]");
+                }
+                classCode.AppendLine($"public {property.Type.Name} {property.Name} {{get; set; }}");
             }
             classCode.AppendLine("}");
             classCode.AppendLine("}");
@@ -231,22 +261,61 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
         internal void InitialiseSchemaType()
         {
             SchemaType = CreateDynamicType();
+            // Go through all the data and set the schemas for data type conversions later
+            propertyValues.ForEach(p => p.SetSchemaType(SchemaType));
         }
 
-        internal IEnumerable<object> GetInputData()
+        internal object GetInputData()
         {
-            // Create list with required data.
-            List<object> inputData = CreateDynamicList(SchemaType).ToList();
+            Type listType = typeof(List<>);
+            Type dynamicListType = listType.MakeGenericType(SchemaType);
+            object inputData = Activator.CreateInstance(dynamicListType);
 
+            void AddAction(object newObject)
+            {
+                MethodInfo addMethod = dynamicListType.GetMethod("Add");
+                addMethod.Invoke(inputData, new[] { newObject} );
+            }
             foreach (SingularDataItem data in propertyValues)
             {
                 if (data.TryGetObjectInstance(out object objectInstance))
                 {
-                    inputData.Add(objectInstance);
+                    AddAction(objectInstance);
                 }
             }
-
             return inputData;
+        }
+
+        internal IEnumerable<List<string>> GetInputDataAsStrings()
+        {
+            foreach(SingularDataItem data in propertyValues)
+            {
+                if (data.TryGetDataAsStrings(out List<string> validDataAsStrings))
+                {
+                    yield return validDataAsStrings;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Attempts to create an output data schema builder instance based on the current instance
+        /// This should only involve the property which is a label, and a Score property.
+        /// </summary>
+        /// <param name="outputDataSchemaBuilder">[Output] Data schema builder as output</param>
+        /// <returns></returns>
+        internal bool TryCreateOutputDataSchemaBuilder(out MLDataSchemaBuilder outputDataSchemaBuilder)
+        {
+            outputDataSchemaBuilder = new MLDataSchemaBuilder(DataSchemaName + "Output");
+            if (!(properties.SingleOrDefault(p => p.ColumnNameAttribute.IsLabel) is PropertyItem labelProperty))
+            {
+                return false;
+            }
+            outputDataSchemaBuilder.AddProperty("PredictedLabel", labelProperty.ColumnNameAttribute.ColumnType, isLabel: true);
+            outputDataSchemaBuilder.AddOutputScoreProperty();
+
+            outputDataSchemaBuilder.InitialiseSchemaType();
+
+            return true;
         }
     }
 }

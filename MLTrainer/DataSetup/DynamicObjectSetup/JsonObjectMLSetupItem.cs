@@ -1,9 +1,11 @@
 ﻿using MLTrainer.Forms;
 using MLTrainer.PredictionTesterUI;
+using MLTrainer.PredictionTesterUI.DynamicObjectPredictionTest;
+using MLTrainer.Predictor.DynamicObjectPredictor;
+using MLTrainer.Trainer.DynamicObjectTrainer;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,8 +15,9 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 {
     internal class JsonObjectMLSetupItem : DynamicObjectMLSetupItem
     {
-
-        private List<Type> optimalTypesDescreasingPriority = new List<Type> { typeof(bool), typeof(int), typeof(float), typeof(string) };
+        private List<Type> optimalTypesDescreasingPriority = new List<Type> { typeof(bool), typeof(float), typeof(string) };
+        private MLDataSchemaBuilder inputDataSchemaBuilder = null, outputDataSchemaBuilder = null;
+        private DynamicObjectPredictionTester predictionTester = null;
 
         internal JsonObjectMLSetupItem() : base("JsonObjectTrainingModel")
         {
@@ -25,7 +28,7 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
         public override string TrainingModelDirectory { get; set; } = "C:\\Temp";
         public override string TrainingModelName { get; set; } = string.Empty;
 
-        public override void InitialiseInstance()
+        public override void OpenDataSchemaSetupForm(FormClosedEventHandler schemaSetupFormClosureAction)
         {
             OpenFileDialog fileOpener = new OpenFileDialog();
             fileOpener.ValidateNames = true;
@@ -40,11 +43,11 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 
             if (result == DialogResult.OK)
             {
-                MLDataSchemaBuilder dataSchemaBuilder = ParseJsonFile(fileOpener.FileName);
-                DynamicObjectSchemaSetupForm schemaForm = new DynamicObjectSchemaSetupForm(dataSchemaBuilder, optimalTypesDescreasingPriority);
+                inputDataSchemaBuilder = ParseJsonFile(fileOpener.FileName);
+                DynamicObjectSchemaSetupForm schemaForm = new DynamicObjectSchemaSetupForm(inputDataSchemaBuilder, optimalTypesDescreasingPriority);
+                schemaForm.FormClosed += schemaSetupFormClosureAction;
                 schemaForm.Show();
             }
-
         }
 
         internal MLDataSchemaBuilder ParseJsonFile(string jsonFilePath)
@@ -77,7 +80,7 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             {
                 if (unknown.GetType() == typeof(string)) return typeof(string);
                 if (bool.TryParse(unknown.ToString(), out bool _)) return typeof(bool);
-                if (int.TryParse(unknown.ToString(), out int _)) return typeof(int);
+                //if (int.TryParse(unknown.ToString(), out int _)) return typeof(int);
                 if (float.TryParse(unknown.ToString(), out float _)) return typeof(float);
                 return typeof(string);
             }
@@ -110,6 +113,8 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
                 builder.AddProperty(pair.Key, pair.Value);
             }
 
+            //builder.InitialiseSchemaType();
+
             // With properties all set, now set the data.
             addDataInputActions.ForEach(a => a?.Invoke(builder));
         }
@@ -125,20 +130,17 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             // For now, do not do anything until the implementation was complete
         }
 
-        public override List<string> GetAllDataInputColumns()
-        {
-            throw new System.NotImplementedException();
-        }
+        public override List<string> GetAllDataInputColumns() => 
+            inputDataSchemaBuilder.TryGetColumnNames(label => true, out List<string> columnNames) ? columnNames : new List<string>();
 
         public override List<List<string>> GetAllDataInputsAsStrings()
         {
-            throw new System.NotImplementedException();
+            return inputDataSchemaBuilder.GetInputDataAsStrings().ToList();
         }
 
         public override IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems()
         {
-            // TODO: Will be done later on
-            yield break;
+            return predictionTester?.DataInputItems ?? new List<IPredictionTesterDataInputItem>();
         }
 
         public override void RemoveDataInputByIndex(int index)
@@ -149,7 +151,7 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
         public override void RunTestPrediction(out string predictedValueAsString)
         {
             predictedValueAsString = string.Empty;
-            // Will be done later on
+            predictionTester?.RunPrediction(new DynamicObjectModelPredictor(TrainedModelFilePath, inputDataSchemaBuilder.SchemaType, outputDataSchemaBuilder.SchemaType), out predictedValueAsString);
         }
 
         public override void SaveModelInputAsCSV()
@@ -159,7 +161,23 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 
         public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath)
         {
-            throw new System.NotImplementedException();
+            SaveOriginalTrainedFilePathAsTemp();
+            testingTrainedModelFilePath = string.Empty;
+            if (!inputDataSchemaBuilder.TryCreateOutputDataSchemaBuilder(out outputDataSchemaBuilder))
+            {
+                return false;
+            }
+
+            DynamicObjectModelTrainer trainer = new DynamicObjectModelTrainer(inputDataSchemaBuilder.SchemaType, outputDataSchemaBuilder.SchemaType, trainingAlgorithm);
+
+            if (trainer.TryTrainModel(inputDataSchemaBuilder, outputDataSchemaBuilder, TrainedModelFilePath))
+            {
+                testingTrainedModelFilePath = TrainedModelFilePath;
+                predictionTester = new DynamicObjectPredictionTester(inputDataSchemaBuilder);
+                return true;
+            }
+
+            return false;
         }
     }
 }

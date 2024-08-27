@@ -1,6 +1,6 @@
 ﻿using MLTrainer.DataSetup.DynamicObjectSetup;
 using MLTrainer.PredictionTesterUI.DataInputItemType;
-using MLTrainer.Predictor.ConcreteObjectPredictor;
+using MLTrainer.Predictor.DynamicObjectPredictor;
 using System;
 using System.Collections.Generic;
 using System.Linq;

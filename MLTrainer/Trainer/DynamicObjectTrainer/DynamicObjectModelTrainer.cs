@@ -27,7 +27,7 @@ namespace MLTrainer.Trainer.DynamicObjectTrainer
             // Use MLContext to create train data.
             MLContext mlContext = new MLContext();
             Type dataType = mlContext.Data.GetType();
-            if (dataType.GetMethods().SingleOrDefault(m => m.Name == "LoadFromEnumerable" && m.IsGenericMethod)
+            if (dataType.GetMethods().FirstOrDefault(m => m.Name == "LoadFromEnumerable" && m.IsGenericMethod)
                 is MethodInfo loadMethodGeneric)
             {
                 MethodInfo loadMethod = loadMethodGeneric.MakeGenericMethod(inputDataBuilder.SchemaType);

@@ -31,10 +31,11 @@ namespace MLTrainer.Forms
         private void InitializeComponent()
         {
             this.schemaDataGridView = new System.Windows.Forms.DataGridView();
-            this.configureSchemaLabel = new System.Windows.Forms.Label();
             this.SchemaName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SchemaType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.SchemaLabel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.configureSchemaLabel = new System.Windows.Forms.Label();
+            this.applySchemaButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.schemaDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,16 +53,7 @@ namespace MLTrainer.Forms
             this.schemaDataGridView.Size = new System.Drawing.Size(346, 150);
             this.schemaDataGridView.TabIndex = 0;
             this.schemaDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.schemaDataGridView_CellContentClick);
-            this.schemaDataGridView.EditingControlShowing += schemaDataGridView_EditingControlShowing;
-            // 
-            // configureSchemaLabel
-            // 
-            this.configureSchemaLabel.AutoSize = true;
-            this.configureSchemaLabel.Location = new System.Drawing.Point(26, 22);
-            this.configureSchemaLabel.Name = "configureSchemaLabel";
-            this.configureSchemaLabel.Size = new System.Drawing.Size(236, 13);
-            this.configureSchemaLabel.TabIndex = 1;
-            this.configureSchemaLabel.Text = "Please use the table below to define the schema";
+            this.schemaDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.schemaDataGridView_CurrentCellDirtyStateChanged);
             // 
             // Name
             // 
@@ -79,11 +71,31 @@ namespace MLTrainer.Forms
             this.SchemaLabel.HeaderText = "Label";
             this.SchemaLabel.Name = "Label";
             // 
+            // configureSchemaLabel
+            // 
+            this.configureSchemaLabel.AutoSize = true;
+            this.configureSchemaLabel.Location = new System.Drawing.Point(26, 22);
+            this.configureSchemaLabel.Name = "configureSchemaLabel";
+            this.configureSchemaLabel.Size = new System.Drawing.Size(236, 13);
+            this.configureSchemaLabel.TabIndex = 1;
+            this.configureSchemaLabel.Text = "Please use the table below to define the schema";
+            // 
+            // applySchemaButton
+            // 
+            this.applySchemaButton.Location = new System.Drawing.Point(713, 415);
+            this.applySchemaButton.Name = "applySchemaButton";
+            this.applySchemaButton.Size = new System.Drawing.Size(75, 23);
+            this.applySchemaButton.TabIndex = 2;
+            this.applySchemaButton.Text = "Apply";
+            this.applySchemaButton.UseVisualStyleBackColor = true;
+            this.applySchemaButton.Click += new System.EventHandler(this.applySchemaButton_Click);
+            // 
             // DynamicObjectSchemaSetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.applySchemaButton);
             this.Controls.Add(this.configureSchemaLabel);
             this.Controls.Add(this.schemaDataGridView);
             this.Name = "DynamicObjectSchemaSetupForm";
@@ -101,5 +113,6 @@ namespace MLTrainer.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn SchemaName;
         private System.Windows.Forms.DataGridViewComboBoxColumn SchemaType;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SchemaLabel;
+        private System.Windows.Forms.Button applySchemaButton;
     }
 }

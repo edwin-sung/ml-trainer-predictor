@@ -1,5 +1,4 @@
 using MLTrainer.DataSetup;
-using MLTrainer.Predictor;
 using MLTrainer.Predictor.ConcreteObjectPredictor;
 
 namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction

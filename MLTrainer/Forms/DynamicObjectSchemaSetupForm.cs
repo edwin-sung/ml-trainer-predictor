@@ -50,6 +50,17 @@ namespace MLTrainer.Forms
 
         }
 
+        // This event handler manually raises the CellValueChanged event
+        // by calling the CommitEdit method.
+        void schemaDataGridView_CurrentCellDirtyStateChanged(object sender,
+            EventArgs e)
+        {
+            if (schemaDataGridView.IsCurrentCellDirty)
+            {
+                schemaDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
         private void schemaDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             if (schemaDataGridView.CurrentCell.ColumnIndex == 1 && e.Control is ComboBox)
@@ -63,7 +74,6 @@ namespace MLTrainer.Forms
         {
             if (schemaDataGridView.CurrentCell.ColumnIndex == 1)
             {
-                schemaDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
                 TypeChangeAction(schemaDataGridView.CurrentCell.RowIndex, schemaDataGridView.CurrentCell.ColumnIndex);
             }
             
@@ -104,7 +114,7 @@ namespace MLTrainer.Forms
                 {
                     DataGridViewComboBoxCell typeCell = new DataGridViewComboBoxCell();
                     typeCell.Items.AddRange(optimalTypesDescreasingPriority.ToArray());
-                    typeCell.Value = Type.GetType(selectedCell.Value.ToString());
+                    typeCell.Value = System.Type.GetType(selectedCell.Value.ToString());
                     selectedCell = typeCell;
                 } 
                 catch
@@ -131,6 +141,19 @@ namespace MLTrainer.Forms
             }
 
             schemaDataGridView.Update();
+        }
+
+        private void applySchemaButton_Click(object sender, EventArgs e)
+        {
+            if (!dataSchemaBuilder.SchemaProperlySetup(out string errorMessage))
+            {
+                MessageBox.Show(errorMessage);
+                return;
+            }
+
+            dataSchemaBuilder.InitialiseSchemaType();
+
+            Close();
         }
     }
 }

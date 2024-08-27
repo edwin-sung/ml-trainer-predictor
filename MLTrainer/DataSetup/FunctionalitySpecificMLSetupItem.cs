@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Windows.Forms;
 
 namespace MLTrainer.DataSetup
 {
@@ -65,6 +66,10 @@ namespace MLTrainer.DataSetup
 
         /// <inheritdoc />
         public virtual void InitialiseInstance()
+        {
+        }
+
+        public virtual void OpenDataSchemaSetupForm(FormClosedEventHandler schemaSetupFormClosureAction)
         {
         }
 

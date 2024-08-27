@@ -1,7 +1,9 @@
 ﻿using MLTrainer.PredictionTesterUI;
 using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
+using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace MLTrainer.DataSetup
 {
@@ -32,6 +34,13 @@ namespace MLTrainer.DataSetup
         /// This is more applicable for dynamic object setup items to populate the data schema
         /// </summary>
         void InitialiseInstance();
+
+
+        /// <summary>
+        /// Opens up a data schema set up form, passing the action to call upon closure of the form
+        /// </summary>
+        /// <param name="schemaSetupFormClosureAction">Schema set-up form closure action</param>
+        void OpenDataSchemaSetupForm(FormClosedEventHandler schemaSetupFormClosureAction);
 
         /// <summary>
         /// Gets all available training algorithms for end-user to select
