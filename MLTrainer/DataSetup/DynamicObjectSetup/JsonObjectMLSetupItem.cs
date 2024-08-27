@@ -43,6 +43,16 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 
             if (result == DialogResult.OK)
             {
+                int place = fileOpener.SafeFileName.LastIndexOf(".json");
+                if (place >= 0)
+                {
+                    TrainingModelName = fileOpener.SafeFileName.Remove(place, fileOpener.SafeFileName.Length - place).Insert(place, string.Empty);
+                }
+                else
+                {
+                    TrainingModelName = fileOpener.SafeFileName;
+                }
+
                 inputDataSchemaBuilder = ParseJsonFile(fileOpener.FileName);
                 DynamicObjectSchemaSetupForm schemaForm = new DynamicObjectSchemaSetupForm(inputDataSchemaBuilder, optimalTypesDescreasingPriority);
                 schemaForm.FormClosed += schemaSetupFormClosureAction;
