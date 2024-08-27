@@ -1,4 +1,6 @@
-﻿namespace MLTrainer.DataSetup.DynamicObjectSetup
+﻿using MLTrainer.DataSetup;
+
+namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 {
     /// <summary>
     /// Abstract class for functionality-specific machine learning set-up item, which does not have concrete objects defined

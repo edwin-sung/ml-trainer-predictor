@@ -1,7 +1,7 @@
 ﻿using Microsoft.ML;
 using System;
 
-namespace MLTrainer.Predictor.ConcreteObjectPredictor
+namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor
 {
 
     /// <summary>

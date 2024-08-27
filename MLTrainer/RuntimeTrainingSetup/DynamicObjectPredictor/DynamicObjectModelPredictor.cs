@@ -2,7 +2,7 @@
 using System;
 using System.Reflection;
 
-namespace MLTrainer.Predictor.DynamicObjectPredictor
+namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictor
 {
     /// <summary>
     /// ML.NET predictor
@@ -42,14 +42,14 @@ namespace MLTrainer.Predictor.DynamicObjectPredictor
             ITransformer mlModel = mlContext.Model.Load(trainedModelFilePath, out DataViewSchema dataViewSchema);
 
             // Create prediction engine dynamically for prediction to work
-            MethodInfo genericPredictionMethod = 
-                mlContext.Model.GetType().GetMethod("CreatePredictionEngine", new[] { typeof(ITransformer), typeof(DataViewSchema)});
+            MethodInfo genericPredictionMethod =
+                mlContext.Model.GetType().GetMethod("CreatePredictionEngine", new[] { typeof(ITransformer), typeof(DataViewSchema) });
             MethodInfo predictionMethod = genericPredictionMethod.MakeGenericMethod(inputType, outputType);
             dynamic dynamicPredictionEngine = predictionMethod.Invoke(mlContext.Model, new object[] { mlModel, dataViewSchema });
 
             // Now use the dynamic prediction to predict the result.
             MethodInfo predictMethod = dynamicPredictionEngine.GetType().GetMethod("Predict", new[] { inputType });
-            predictedResult = predictMethod.Invoke(dynamicPredictionEngine, new[] {inputObjectInstance});
+            predictedResult = predictMethod.Invoke(dynamicPredictionEngine, new[] { inputObjectInstance });
 
             // Ensure that the output matches the type of the output schema
             return predictedResult != null && predictedResult.GetType() == outputType;

@@ -1,11 +1,12 @@
-﻿using MLTrainer.PredictionTesterUI.DataInputItemType;
-using MLTrainer.Predictor.ConcreteObjectPredictor;
+﻿using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor;
+using MLTrainer.PredictionTesterUI;
+using MLTrainer.PredictionTesterUI.DataInputItemType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace MLTrainer.PredictionTesterUI.ConcreteObjectPredictionTest
+namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictionTest
 {
     internal class ConcreteObjectPredictionTester<ModelInput, ModelOutput> where ModelInput : class where ModelOutput : class, new()
     {

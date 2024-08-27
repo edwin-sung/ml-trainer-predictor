@@ -1,5 +1,5 @@
 ﻿using MLTrainer.DataSetup;
-using MLTrainer.DataSetup.DynamicObjectSetup;
+using MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup;
 using MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction;
 using System.Collections.Generic;
 

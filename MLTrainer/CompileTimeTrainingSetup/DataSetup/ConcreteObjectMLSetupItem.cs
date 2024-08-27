@@ -1,8 +1,8 @@
-﻿using MLTrainer.PredictionTesterUI;
-using MLTrainer.PredictionTesterUI.ConcreteObjectPredictionTest;
-using MLTrainer.Predictor.ConcreteObjectPredictor;
-using MLTrainer.Trainer;
-using MLTrainer.Trainer.ConcreteObjectTrainer;
+﻿using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictionTest;
+using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor;
+using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer;
+using MLTrainer.DataSetup;
+using MLTrainer.PredictionTesterUI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,14 +10,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace MLTrainer.DataSetup.ConcreteObjectSetup
+namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
 {
     /// <summary>
     /// Abstract class for functionality-specific machine learning set-up item, which has concrete objects defined
     /// </summary>
     /// <typeparam name="ModelInput">Model input generic type</typeparam>
     /// <typeparam name="ModelOutput">Model output generic type</typeparam>
-    public abstract class ConcreteObjectMLSetupItem<ModelInput, ModelOutput> : FunctionalitySpecificMLSetupItem 
+    public abstract class ConcreteObjectMLSetupItem<ModelInput, ModelOutput> : FunctionalitySpecificMLSetupItem
         where ModelInput : class
         where ModelOutput : class, new()
     {

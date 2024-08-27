@@ -1,8 +1,8 @@
 ﻿using MLTrainer.Forms;
 using MLTrainer.PredictionTesterUI;
-using MLTrainer.PredictionTesterUI.DynamicObjectPredictionTest;
-using MLTrainer.Predictor.DynamicObjectPredictor;
-using MLTrainer.Trainer.DynamicObjectTrainer;
+using MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictionTest;
+using MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictor;
+using MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -11,7 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace MLTrainer.DataSetup.DynamicObjectSetup
+namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 {
     internal class JsonObjectMLSetupItem : DynamicObjectMLSetupItem
     {
@@ -98,10 +98,10 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             // Storing actions to be called on the data schema builder instace, once properties are in place.
             List<Action<MLDataSchemaBuilder>> addDataInputActions = new List<Action<MLDataSchemaBuilder>>();
 
-            foreach(Dictionary<string, object> pair in data.Select(d => d.ToObject<Dictionary<string, object>>()))
+            foreach (Dictionary<string, object> pair in data.Select(d => d.ToObject<Dictionary<string, object>>()))
             {
                 addDataInputActions.Add(b => b.AddSingularData(pair.Select(kv => (kv.Key, Convert.ChangeType(kv.Value, preferredPropertyTypes[kv.Key])))));
-                foreach(string key in pair.Keys)
+                foreach (string key in pair.Keys)
                 {
                     object value = pair[key];
                     Type optimisedType = GetOptimisedType(value);
@@ -112,13 +112,13 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
                     }
                     Type originalType = preferredPropertyTypes[key];
 
-                    preferredPropertyTypes[key] = 
+                    preferredPropertyTypes[key] =
                         optimalTypesDescreasingPriority[Math.Min(optimalTypesDescreasingPriority.IndexOf(originalType), optimalTypesDescreasingPriority.IndexOf(optimisedType))];
                 }
             }
 
             // Go through each key-value pair and add to properties
-            foreach(KeyValuePair<string, Type> pair in preferredPropertyTypes)
+            foreach (KeyValuePair<string, Type> pair in preferredPropertyTypes)
             {
                 builder.AddProperty(pair.Key, pair.Value);
             }
@@ -140,7 +140,7 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             // For now, do not do anything until the implementation was complete
         }
 
-        public override List<string> GetAllDataInputColumns() => 
+        public override List<string> GetAllDataInputColumns() =>
             inputDataSchemaBuilder.TryGetColumnNames(label => true, out List<string> columnNames) ? columnNames : new List<string>();
 
         public override List<List<string>> GetAllDataInputsAsStrings()

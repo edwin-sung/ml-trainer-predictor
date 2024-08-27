@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Globalization;
 
-namespace MLTrainer.DataSetup.DynamicObjectSetup
+namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 {
     /// <summary>
     /// Ambitious machine-learning data schema builder, which will be used for data input and output
@@ -107,9 +107,9 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 
             internal bool SetPropertyValues(IEnumerable<(string, object)> propertyNameValuePairs)
             {
-                foreach((string name, object value) in propertyNameValuePairs)
+                foreach ((string name, object value) in propertyNameValuePairs)
                 {
-                    if (properties.SingleOrDefault(property => property.Name == name) is PropertyItem match && 
+                    if (properties.SingleOrDefault(property => property.Name == name) is PropertyItem match &&
                         match.ColumnNameAttribute.ColumnType == value.GetType())
                     {
                         propertyNameValuePair[name] = value;
@@ -130,7 +130,7 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
                 }
 
                 validInstance = Activator.CreateInstance(schema);
-                foreach(PropertyInfo propertyInfo in schema.GetProperties())
+                foreach (PropertyInfo propertyInfo in schema.GetProperties())
                 {
                     if (propertyNameValuePair.TryGetValue(propertyInfo.Name, out object validValue))
                     {
@@ -150,7 +150,7 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
                     return false;
                 }
 
-                foreach(PropertyInfo propertyInfo in schema.GetProperties())
+                foreach (PropertyInfo propertyInfo in schema.GetProperties())
                 {
                     validDataAsStrings.Add(
                         propertyNameValuePair.TryGetValue(propertyInfo.Name, out object value) ? value.ToString() : string.Empty);
@@ -274,7 +274,7 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
             void AddAction(object newObject)
             {
                 MethodInfo addMethod = dynamicListType.GetMethod("Add");
-                addMethod.Invoke(inputData, new[] { newObject} );
+                addMethod.Invoke(inputData, new[] { newObject });
             }
             foreach (SingularDataItem data in propertyValues)
             {
@@ -288,7 +288,7 @@ namespace MLTrainer.DataSetup.DynamicObjectSetup
 
         internal IEnumerable<List<string>> GetInputDataAsStrings()
         {
-            foreach(SingularDataItem data in propertyValues)
+            foreach (SingularDataItem data in propertyValues)
             {
                 if (data.TryGetDataAsStrings(out List<string> validDataAsStrings))
                 {

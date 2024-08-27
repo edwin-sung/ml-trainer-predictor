@@ -4,16 +4,17 @@ using System.Reflection;
 using System;
 using Microsoft.ML;
 using System.Linq;
+using MLTrainer.Trainer;
 
-namespace MLTrainer.Trainer.ConcreteObjectTrainer
+namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
 {
     /// <summary>
     /// ML.NET trainer for concrete objects, with model input and model output
     /// </summary>
     /// <typeparam name="ModelInput">Model input type</typeparam>
     /// <typeparam name="ModelOutput">Model output type</typeparam>
-    internal class ConcreteObjectModelTrainer<ModelInput, ModelOutput> : ModelTrainer 
-        where ModelInput : class 
+    internal class ConcreteObjectModelTrainer<ModelInput, ModelOutput> : ModelTrainer
+        where ModelInput : class
         where ModelOutput : class, new()
     {
 

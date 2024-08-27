@@ -1,13 +1,14 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Data;
-using MLTrainer.DataSetup.DynamicObjectSetup;
+using MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup;
+using MLTrainer.Trainer;
 using MLTrainer.TrainingAlgorithms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace MLTrainer.Trainer.DynamicObjectTrainer
+namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
 {
 
     /// <summary>
@@ -31,14 +32,14 @@ namespace MLTrainer.Trainer.DynamicObjectTrainer
                 is MethodInfo loadMethodGeneric)
             {
                 MethodInfo loadMethod = loadMethodGeneric.MakeGenericMethod(inputDataBuilder.SchemaType);
-                return TryTrainModel(mlContext, BuildPipeline(mlContext, inputDataBuilder, outputDataBuilder), loadMethod.Invoke(mlContext.Data, new [] { inputDataBuilder.GetInputData(), schema }) as IDataView, trainedModelFilePath);
+                return TryTrainModel(mlContext, BuildPipeline(mlContext, inputDataBuilder, outputDataBuilder), loadMethod.Invoke(mlContext.Data, new[] { inputDataBuilder.GetInputData(), schema }) as IDataView, trainedModelFilePath);
             }
 
             return false;
 
         }
 
-        private IEstimator<ITransformer> BuildPipeline(MLContext mlContext, MLDataSchemaBuilder inputDataSchemaBuilder, 
+        private IEstimator<ITransformer> BuildPipeline(MLContext mlContext, MLDataSchemaBuilder inputDataSchemaBuilder,
             MLDataSchemaBuilder outputDataSchemaBuilder)
         {
             // Make sure we have one or more non-label inputs, only one label input, and only one label output

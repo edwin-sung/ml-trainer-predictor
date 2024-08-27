@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MLTrainer.DataSetup.DynamicObjectSetup
+namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 {
     /// <summary>
     /// Dynamic object schema setup instance, that allows any extensions to be read and configured properly

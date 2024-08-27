@@ -1,7 +1,6 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
-using MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm;
 using System.Collections.Generic;
 
 namespace MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm

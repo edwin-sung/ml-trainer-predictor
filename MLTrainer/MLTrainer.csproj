@@ -220,10 +220,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColumnNameStorageAttribute.cs" />
-    <Compile Include="DataSetup\ConcreteObjectSetup\ConcreteObjectMLSetupItem.cs" />
-    <Compile Include="DataSetup\DynamicObjectSetup\DynamicObjectMLSetupItem.cs" />
-    <Compile Include="DataSetup\DynamicObjectSetup\DynamicObjectSchemaSetup.cs" />
-    <Compile Include="DataSetup\DynamicObjectSetup\JsonObjectMLSetupItem.cs" />
+    <Compile Include="CompileTimeTrainingSetup\DataSetup\ConcreteObjectMLSetupItem.cs" />
+    <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectMLSetupItem.cs" />
+    <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectSchemaSetup.cs" />
+    <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\JsonObjectMLSetupItem.cs" />
     <Compile Include="DataSetup\FunctionalitySpecificMLSetupItem.cs" />
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupFactory.cs" />
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupItem.cs" />
@@ -243,17 +243,18 @@
     <Compile Include="Forms\MLTrainingSetupForm.Designer.cs">
       <DependentUpon>MLTrainingSetupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSetup\DynamicObjectSetup\MLDataSchemaBuilder.cs" />
-    <Compile Include="PredictionTesterUI\DynamicObjectPredictionTest\DynamicObjectPredictionTester.cs" />
-    <Compile Include="Predictor\ConcreteObjectPredictor\ConcreteObjectModelPredictor.cs" />
-    <Compile Include="Predictor\DynamicObjectPredictor\DynamicObjectModelPredictor.cs" />
-    <Compile Include="Trainer\ConcreteObjectTrainer\ConcreteObjectModelTrainer.cs" />
-    <Compile Include="Trainer\DynamicObjectTrainer\DynamicObjectModelTrainer.cs" />
+    <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\MLDataSchemaBuilder.cs" />
+    <Compile Include="ITypeSpecificSetupFactory.cs" />
+    <Compile Include="RuntimeTrainingSetup\DynamicObjectPredictionTest\DynamicObjectPredictionTester.cs" />
+    <Compile Include="CompileTimeTrainingSetup\ConcreteObjectPredictor\ConcreteObjectModelPredictor.cs" />
+    <Compile Include="RuntimeTrainingSetup\DynamicObjectPredictor\DynamicObjectModelPredictor.cs" />
+    <Compile Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\ConcreteObjectModelTrainer.cs" />
+    <Compile Include="RuntimeTrainingSetup\DynamicObjectTrainer\DynamicObjectModelTrainer.cs" />
     <Compile Include="Trainer\ModelTrainer.cs" />
     <Compile Include="PredictionTesterUI\DataInputItemType\PredictionTesterDataInputFloat.cs" />
     <Compile Include="PredictionTesterUI\DataInputItemType\PredictionTesterDataInputString.cs" />
     <Compile Include="PredictionTesterUI\IPredictionTesterDataInputItem.cs" />
-    <Compile Include="PredictionTesterUI\ConcreteObjectPredictionTest\ConcreteObjectPredictionTester.cs" />
+    <Compile Include="CompileTimeTrainingSetup\ConcreteObjectPredictionTest\ConcreteObjectPredictionTester.cs" />
     <Compile Include="PredictionTesterUI\PredictionTesterDataInputItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

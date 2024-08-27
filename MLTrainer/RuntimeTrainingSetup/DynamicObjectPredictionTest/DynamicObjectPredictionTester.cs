@@ -1,12 +1,13 @@
-﻿using MLTrainer.DataSetup.DynamicObjectSetup;
+﻿using MLTrainer.PredictionTesterUI;
 using MLTrainer.PredictionTesterUI.DataInputItemType;
-using MLTrainer.Predictor.DynamicObjectPredictor;
+using MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictor;
+using MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace MLTrainer.PredictionTesterUI.DynamicObjectPredictionTest
+namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictionTest
 {
     internal class DynamicObjectPredictionTester
     {

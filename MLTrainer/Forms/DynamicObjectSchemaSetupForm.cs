@@ -1,4 +1,4 @@
-﻿using MLTrainer.DataSetup.DynamicObjectSetup;
+﻿using MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

@@ -1,7 +1,6 @@
 ﻿using MLTrainer.PredictionTesterUI;
 using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
