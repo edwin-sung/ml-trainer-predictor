@@ -1,5 +1,8 @@
 ﻿using Microsoft.ML;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor
 {
@@ -29,6 +32,26 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor
             MLContext mlContextInstance = new MLContext();
             ITransformer mlModel = mlContextInstance.Model.Load(trainedModelFilePath, out DataViewSchema _);
             return mlContextInstance.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
+        }
+
+        internal bool TryGetMultiplePredictions(IEnumerable<ModelInput> inputs, out IEnumerable<ModelOutput> outputs)
+        {
+            MLContext mlContextInstance = new MLContext();
+
+            //IDataView transformedInputs = mlContextInstance.Data.LoadFromEnumerable(inputs);
+
+            // Load trained model
+            ITransformer predictionPipeline = mlContextInstance.Model.Load(trainedModelFilePath, out DataViewSchema _);
+
+            //IDataView predictions = predictionPipeline.Transform(transformedInputs);
+            //outputs = mlContextInstance.Data.CreateEnumerable<ModelOutput>(predictions, false);
+            outputs = new List<ModelOutput>();
+            foreach(ModelInput input in inputs)
+            {
+                outputs = outputs.Append(PredictionEngine.Value.Predict(input));
+            }
+
+            return outputs.Any();
         }
 
         /// <summary>

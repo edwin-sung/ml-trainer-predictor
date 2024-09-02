@@ -18,7 +18,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
     /// <typeparam name="ModelInput">Model input generic type</typeparam>
     /// <typeparam name="ModelOutput">Model output generic type</typeparam>
     public abstract class ConcreteObjectMLSetupItem<ModelInput, ModelOutput> : FunctionalitySpecificMLSetupItem
-        where ModelInput : class
+        where ModelInput : class, new()
         where ModelOutput : class, new()
     {
         private List<ModelInput> modelInputs = new List<ModelInput>();

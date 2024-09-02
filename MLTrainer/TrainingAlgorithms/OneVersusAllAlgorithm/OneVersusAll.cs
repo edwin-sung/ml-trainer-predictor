@@ -36,6 +36,7 @@ namespace MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm
                 FeatureColumnName = featuresName,
                 
             };
+
             return mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(options), labelledInputColumnName);
         }
     }

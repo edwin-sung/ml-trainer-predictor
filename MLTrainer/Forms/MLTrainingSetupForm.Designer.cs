@@ -50,10 +50,14 @@
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.algorithmComboBox = new System.Windows.Forms.ComboBox();
             this.selectAlgorithmLabel = new System.Windows.Forms.Label();
+            this.testSplitPercentageTrackBar = new System.Windows.Forms.TrackBar();
+            this.specifyTrainSplitRatioLabel = new System.Windows.Forms.Label();
+            this.trainSplitRatioLabel = new System.Windows.Forms.Label();
             this.testPredictionGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testPredictionDataGridView)).BeginInit();
             this.trainingAlgorithmGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.algorithmParametersListView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testSplitPercentageTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // selectFunctionalityLabel
@@ -74,10 +78,10 @@
             this.functionalityComboBox.TabIndex = 1;
             this.functionalityComboBox.SelectedIndexChanged += new System.EventHandler(this.functionalityComboBox_SelectedIndexChanged);
             // 
-            // importCSVButton
+            // importFileButton
             // 
             this.importFileButton.Location = new System.Drawing.Point(16, 45);
-            this.importFileButton.Name = "importCSVButton";
+            this.importFileButton.Name = "importFileButton";
             this.importFileButton.Size = new System.Drawing.Size(75, 23);
             this.importFileButton.TabIndex = 2;
             this.importFileButton.Text = "Import";
@@ -106,7 +110,7 @@
             // 
             // trainModelButton
             // 
-            this.trainModelButton.Location = new System.Drawing.Point(10, 162);
+            this.trainModelButton.Location = new System.Drawing.Point(10, 190);
             this.trainModelButton.Name = "trainModelButton";
             this.trainModelButton.Size = new System.Drawing.Size(75, 23);
             this.trainModelButton.TabIndex = 5;
@@ -159,14 +163,14 @@
             this.testPredictionGroupBox.Controls.Add(this.testPredictionDataGridView);
             this.testPredictionGroupBox.Location = new System.Drawing.Point(416, 75);
             this.testPredictionGroupBox.Name = "testPredictionGroupBox";
-            this.testPredictionGroupBox.Size = new System.Drawing.Size(372, 300);
+            this.testPredictionGroupBox.Size = new System.Drawing.Size(372, 327);
             this.testPredictionGroupBox.TabIndex = 10;
             this.testPredictionGroupBox.TabStop = false;
             this.testPredictionGroupBox.Text = "Prediction Test";
             // 
             // runTestPredictionButton
             // 
-            this.runTestPredictionButton.Location = new System.Drawing.Point(6, 264);
+            this.runTestPredictionButton.Location = new System.Drawing.Point(6, 287);
             this.runTestPredictionButton.Name = "runTestPredictionButton";
             this.runTestPredictionButton.Size = new System.Drawing.Size(54, 23);
             this.runTestPredictionButton.TabIndex = 6;
@@ -210,13 +214,16 @@
             // 
             // trainingAlgorithmGroupBox
             // 
+            this.trainingAlgorithmGroupBox.Controls.Add(this.trainSplitRatioLabel);
+            this.trainingAlgorithmGroupBox.Controls.Add(this.specifyTrainSplitRatioLabel);
+            this.trainingAlgorithmGroupBox.Controls.Add(this.testSplitPercentageTrackBar);
             this.trainingAlgorithmGroupBox.Controls.Add(this.algorithmParametersListView);
             this.trainingAlgorithmGroupBox.Controls.Add(this.algorithmComboBox);
             this.trainingAlgorithmGroupBox.Controls.Add(this.selectAlgorithmLabel);
             this.trainingAlgorithmGroupBox.Controls.Add(this.trainModelButton);
             this.trainingAlgorithmGroupBox.Location = new System.Drawing.Point(15, 172);
             this.trainingAlgorithmGroupBox.Name = "trainingAlgorithmGroupBox";
-            this.trainingAlgorithmGroupBox.Size = new System.Drawing.Size(376, 202);
+            this.trainingAlgorithmGroupBox.Size = new System.Drawing.Size(376, 229);
             this.trainingAlgorithmGroupBox.TabIndex = 11;
             this.trainingAlgorithmGroupBox.TabStop = false;
             this.trainingAlgorithmGroupBox.Text = "Training Algorithm";
@@ -263,6 +270,35 @@
             this.selectAlgorithmLabel.TabIndex = 0;
             this.selectAlgorithmLabel.Text = "Select Algorithm";
             // 
+            // testSplitPercentageTrackBar
+            // 
+            this.testSplitPercentageTrackBar.Location = new System.Drawing.Point(136, 162);
+            this.testSplitPercentageTrackBar.Maximum = 20;
+            this.testSplitPercentageTrackBar.Name = "testSplitPercentageTrackBar";
+            this.testSplitPercentageTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.testSplitPercentageTrackBar.TabIndex = 6;
+            this.testSplitPercentageTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.testSplitPercentageTrackBar.Value = 16;
+            this.testSplitPercentageTrackBar.Scroll += new System.EventHandler(this.testSplitPercentageTrackBar_Scroll);
+            // 
+            // specifyTrainSplitRatioLabel
+            // 
+            this.specifyTrainSplitRatioLabel.AutoSize = true;
+            this.specifyTrainSplitRatioLabel.Location = new System.Drawing.Point(7, 167);
+            this.specifyTrainSplitRatioLabel.Name = "specifyTrainSplitRatioLabel";
+            this.specifyTrainSplitRatioLabel.Size = new System.Drawing.Size(123, 13);
+            this.specifyTrainSplitRatioLabel.TabIndex = 7;
+            this.specifyTrainSplitRatioLabel.Text = "Specify training split ratio";
+            // 
+            // trainSplitRatioLabel
+            // 
+            this.trainSplitRatioLabel.AutoSize = true;
+            this.trainSplitRatioLabel.Location = new System.Drawing.Point(133, 194);
+            this.trainSplitRatioLabel.Name = "trainSplitRatioLabel";
+            this.trainSplitRatioLabel.Size = new System.Drawing.Size(127, 13);
+            this.trainSplitRatioLabel.TabIndex = 8;
+            this.trainSplitRatioLabel.Text = "80% training : 20% testing";
+            // 
             // MLTrainingSetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +323,7 @@
             this.trainingAlgorithmGroupBox.ResumeLayout(false);
             this.trainingAlgorithmGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.algorithmParametersListView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testSplitPercentageTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,5 +353,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.Label testPredictionResultsLabel;
         private System.Windows.Forms.Button runTestPredictionButton;
+        private System.Windows.Forms.Label specifyTrainSplitRatioLabel;
+        private System.Windows.Forms.TrackBar testSplitPercentageTrackBar;
+        private System.Windows.Forms.Label trainSplitRatioLabel;
     }
 }

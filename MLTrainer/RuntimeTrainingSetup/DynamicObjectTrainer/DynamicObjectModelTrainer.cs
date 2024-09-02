@@ -32,7 +32,17 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
                 is MethodInfo loadMethodGeneric)
             {
                 MethodInfo loadMethod = loadMethodGeneric.MakeGenericMethod(inputDataBuilder.SchemaType);
-                return TryTrainModel(mlContext, BuildPipeline(mlContext, inputDataBuilder, outputDataBuilder), loadMethod.Invoke(mlContext.Data, new[] { inputDataBuilder.GetInputData(), schema }) as IDataView, trainedModelFilePath);
+
+                IEstimator<ITransformer> predictorPipeline = BuildPipeline(mlContext, inputDataBuilder, outputDataBuilder);
+                
+
+                if (!(loadMethod.Invoke(mlContext.Data, new[] { inputDataBuilder.GetInputData(), schema }) is IDataView dataView) ||
+                    !(GetTrainedModel(predictorPipeline, dataView) is ITransformer trainedModel))
+                {
+                    return false;
+                }
+
+                SaveTrainedModel(mlContext, trainedModel, dataView.Schema, trainedModelFilePath);
             }
 
             return false;

@@ -293,5 +293,11 @@ namespace MLTrainer.Forms
         {
             selectedSetup.CleanupTemporaryFiles();
         }
+
+        private void testSplitPercentageTrackBar_Scroll(object sender, EventArgs e)
+        {
+            int trainingPercentage = (int)((double)(100 / testSplitPercentageTrackBar.Maximum) * testSplitPercentageTrackBar.Value);
+            trainSplitRatioLabel.Text = $"{trainingPercentage}% training : {100 - trainingPercentage}% testing";
+        }
     }
 }

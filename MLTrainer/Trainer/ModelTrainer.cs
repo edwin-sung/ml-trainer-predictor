@@ -1,6 +1,7 @@
 ﻿using Microsoft.ML;
 using MLTrainer.TrainingAlgorithms;
 using System.Collections.Generic;
+using System.Data;
 
 namespace MLTrainer.Trainer
 {
@@ -23,23 +24,40 @@ namespace MLTrainer.Trainer
         /// <summary>
         /// Trains a given model as a IDataView instance, and save it to the given trained model file path
         /// </summary>
-        /// <param name="mlContextInstance">Machine learning context instance</param>
         /// <param name="estimatorChain">Estimator chain, which forms a build pipeline for training to take place</param>
         /// <param name="dataView">Data view instance</param>
-        /// <param name="trainedModelFilePath">Trained model file path</param>
-        /// <returns>True if the model training was successful</returns>
-        protected bool TryTrainModel(MLContext mlContextInstance, IEstimator<ITransformer> estimatorChain, IDataView dataView, string trainedModelFilePath)
+        /// <returns>ITransformer instance, if the training was successful</returns>
+        protected ITransformer GetTrainedModel(IEstimator<ITransformer> estimatorChain, IDataView dataView)
         {
-            ITransformer trainedModel = estimatorChain?.Fit(dataView);
+            return estimatorChain?.Fit(dataView);
+        }
 
-            if (trainedModel == null)
-            {
-                return false;
-            }
+        /// <summary>
+        /// Saves the trained model to a given file path
+        /// </summary>
+        /// <param name="mlContext">Machine learning context instance</param>
+        /// <param name="schema">Data view schema for the trained model</param>
+        /// <param name="trainedModelFilePath">Trained model file path</param>
+        protected void SaveTrainedModel(MLContext mlContext, ITransformer trainedModel, DataViewSchema schema, string trainedModelFilePath)
+        {
+            mlContext.Model.Save(trainedModel, schema, trainedModelFilePath);
+        }
 
-            mlContextInstance.Model.Save(trainedModel, dataView.Schema, trainedModelFilePath);
-
-            return true;
+        /// <summary>
+        /// Splits the input data (IDataView) with a given ratio to training and testing sets
+        /// </summary>
+        /// <param name="mlContext">Machine learning context instance</param>
+        /// <param name="testFraction">Ratio in which are for testing</param>
+        /// <param name="data">Data</param>
+        /// <param name="seed">Seed value to be fed to the splitting</param>
+        /// <param name="trainSet">[Output] Train set</param>
+        /// <param name="testSet">[Output] Test set</param>
+        protected void SplitTrainingTestingData(MLContext mlContext, double testFraction, IDataView data, int? seed, 
+            out IDataView trainSet, out IDataView testSet)
+        {
+            var split = mlContext.Data.TrainTestSplit(data, testFraction, seed: seed);
+            trainSet = split.TrainSet;
+            testSet = split.TestSet;
         }
 
         /// <summary>

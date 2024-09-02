@@ -5,6 +5,7 @@ using System;
 using Microsoft.ML;
 using System.Linq;
 using MLTrainer.Trainer;
+using Microsoft.ML.Data;
 
 namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
 {
@@ -14,7 +15,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
     /// <typeparam name="ModelInput">Model input type</typeparam>
     /// <typeparam name="ModelOutput">Model output type</typeparam>
     internal class ConcreteObjectModelTrainer<ModelInput, ModelOutput> : ModelTrainer
-        where ModelInput : class
+        where ModelInput : class, new()
         where ModelOutput : class, new()
     {
 
@@ -59,7 +60,25 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
             MLContext mlContextInstance = new MLContext();
             IDataView trainData = mlContextInstance.Data.LoadFromEnumerable(inputs);
 
-            return TryTrainModel(mlContextInstance, BuildPipeline(mlContextInstance), trainData, trainedModelFilePath);
+            double testFraction = 0.2;
+            int? seed = 56;
+
+            SplitTrainingTestingData(mlContextInstance, testFraction, trainData, seed, out IDataView trainSet, out IDataView testSet);
+
+            IEstimator<ITransformer> predictionModelPipeline = BuildPipeline(mlContextInstance);
+            if (!(GetTrainedModel(predictionModelPipeline, trainSet) is ITransformer trainedModel))
+            {
+                return false;
+            }
+
+            SaveTrainedModel(mlContextInstance, trainedModel, trainSet.Schema, trainedModelFilePath);
+
+            // Training model was successful, make use of the test set to determine the accuracy of the trained model
+            ConcreteObjectTrainingAccuracyResult<ModelInput, ModelOutput> accuracyResult =
+                new ConcreteObjectTrainingAccuracyResult<ModelInput, ModelOutput>(mlContextInstance,
+                    mlContextInstance.Data.CreateEnumerable<ModelInput>(testSet, false), testSet, trainedModelFilePath);
+
+            return true;
         }
 
         /// <inheritdoc/>
@@ -79,17 +98,16 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
             List<IEstimator<ITransformer>> estimatorChainActions = new List<IEstimator<ITransformer>>();
 
             List<InputOutputColumnPair> hotEncodingColumnPairs = new List<InputOutputColumnPair>();
-            if (TryGetColumnNamesFor<ModelInput>(att => att.ColumnType == typeof(string) && !att.IsLabel, out List<string> stringColumns))
+            if (TryGetColumnNamesFor<ModelInput>(att => att.ColumnType == typeof(string), out List<string> stringColumns))
             {
                 stringColumns.ForEach(c => hotEncodingColumnPairs.Add(new InputOutputColumnPair(@c, @c)));
                 estimatorChainActions.Add(mlContext.Transforms.Categorical.OneHotEncoding(hotEncodingColumnPairs.ToArray()));
             }
 
             List<InputOutputColumnPair> missingValuesColumnPairs = new List<InputOutputColumnPair>();
-            if (TryGetColumnNamesFor<ModelInput>(att => att.ColumnType == typeof(float) && !att.IsLabel, out List<string> floatColumns))
+            if (TryGetColumnNamesFor<ModelInput>(att => att.ColumnType == typeof(float), out List<string> floatColumns))
             {
                 floatColumns.ForEach(c => missingValuesColumnPairs.Add(new InputOutputColumnPair(@c, @c)));
-
                 estimatorChainActions.Add(mlContext.Transforms.ReplaceMissingValues(missingValuesColumnPairs.ToArray()));
             }
 
@@ -97,6 +115,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
             estimatorChainActions.Add(mlContext.Transforms.Conversion.MapValueToKey(@labelledInput, @labelledInput));
             estimatorChainActions.Add(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"));
             estimatorChainActions.Add(trainingAlgorithm.GetTrainingAlgorithm(mlContext, labelledInput, @"Features"));
+
             estimatorChainActions.Add(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput));
             return CreateEstimatorChain(estimatorChainActions);
         }

@@ -8,6 +8,6 @@ namespace MLTrainer.TrainingAlgorithms
         ONE_VERSUS_ALL = 0,
 
         [Description("LBFGS Maximum Entropy")]
-        LBFGS_MAX_ENTROPY = 1
+        LBFGS_MAX_ENTROPY = 1,
     }
 }
