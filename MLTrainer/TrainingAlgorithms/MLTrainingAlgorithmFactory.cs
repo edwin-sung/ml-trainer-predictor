@@ -1,8 +1,5 @@
-﻿using MLTrainer.TrainingAlgorithms.FastTreeAlgorithm;
-using MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm;
+﻿using MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm;
 using MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm;
-using System.Windows.Forms;
-
 namespace MLTrainer.TrainingAlgorithms
 {
     internal static class MLTrainingAlgorithmFactory
