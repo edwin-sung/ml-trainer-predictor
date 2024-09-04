@@ -9,5 +9,8 @@ namespace MLTrainer.TrainingAlgorithms
 
         [Description("LBFGS Maximum Entropy")]
         LBFGS_MAX_ENTROPY = 1,
+
+        [Description("Online Gradient Descent Regression")]
+        ONLINE_GRADIENT_DESCENT = 2
     }
 }

@@ -13,10 +13,10 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
         [ColumnNameStorage("PredictedLabel", typeof(string), true)]
         public float Prediction { get; set; }
 
-        /*/// <summary>
+        /// <summary>
         /// Score
         /// </summary>
-        public float[] Score { get; set; }*/
+        public float[] Score { get; set; }
 
     }
 }

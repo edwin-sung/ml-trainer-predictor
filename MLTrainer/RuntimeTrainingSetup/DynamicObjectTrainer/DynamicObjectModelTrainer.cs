@@ -4,7 +4,6 @@ using MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup;
 using MLTrainer.Trainer;
 using MLTrainer.TrainingAlgorithms;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -33,7 +32,8 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
             {
                 MethodInfo loadMethod = loadMethodGeneric.MakeGenericMethod(inputDataBuilder.SchemaType);
 
-                IEstimator<ITransformer> predictorPipeline = BuildPipeline(mlContext, inputDataBuilder, outputDataBuilder);
+                IEstimator<ITransformer> predictorPipeline = trainingAlgorithm.BuildTrainingAlgorithmPipeline(
+                    mlContext, inputDataBuilder.GetSchemaProperties(), outputDataBuilder.GetSchemaProperties());
                 
 
                 if (!(loadMethod.Invoke(mlContext.Data, new[] { inputDataBuilder.GetInputData(), schema }) is IDataView dataView) ||
@@ -49,7 +49,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
 
         }
 
-        private IEstimator<ITransformer> BuildPipeline(MLContext mlContext, MLDataSchemaBuilder inputDataSchemaBuilder,
+        /*private IEstimator<ITransformer> BuildPipeline(MLContext mlContext, MLDataSchemaBuilder inputDataSchemaBuilder,
             MLDataSchemaBuilder outputDataSchemaBuilder)
         {
             // Make sure we have one or more non-label inputs, only one label input, and only one label output
@@ -86,6 +86,6 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
             estimatorChainActions.Add(trainingAlgorithm.GetTrainingAlgorithm(mlContext, labelledInput, @"Features"));
             estimatorChainActions.Add(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput));
             return CreateEstimatorChain(estimatorChainActions);
-        }
+        }*/
     }
 }

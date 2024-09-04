@@ -19,8 +19,15 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
         where ModelOutput : class, new()
     {
 
+
         internal ConcreteObjectModelTrainer(IMLTrainingAlgorithm trainingAlgorithm) : base(trainingAlgorithm)
         {
+        }
+
+        private IEnumerable<ColumnNameStorageAttribute> GetColumnNameAttributesFor<T>()
+        {
+            return typeof(T).GetProperties().Select(
+                prop => prop.GetCustomAttribute<ColumnNameStorageAttribute>()).Where(att => att != null);
         }
 
         /// <summary>
@@ -65,7 +72,11 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
 
             SplitTrainingTestingData(mlContextInstance, testFraction, trainData, seed, out IDataView trainSet, out IDataView testSet);
 
-            IEstimator<ITransformer> predictionModelPipeline = BuildPipeline(mlContextInstance);
+            //IEstimator<ITransformer> predictionModelPipeline = BuildPipeline(mlContextInstance);
+            IEstimator<ITransformer> predictionModelPipeline =
+                trainingAlgorithm.BuildTrainingAlgorithmPipeline(mlContextInstance, 
+                GetColumnNameAttributesFor<ModelInput>(), GetColumnNameAttributesFor<ModelOutput>());
+
             if (!(GetTrainedModel(predictionModelPipeline, trainSet) is ITransformer trainedModel))
             {
                 return false;
@@ -81,7 +92,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
             return true;
         }
 
-        /// <inheritdoc/>
+        /*/// <inheritdoc/>
         private IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Make sure we have one or more non-label inputs, only one label input, and only one label output
@@ -118,7 +129,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
 
             estimatorChainActions.Add(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput));
             return CreateEstimatorChain(estimatorChainActions);
-        }
+        }*/
 
     }
 }

@@ -273,8 +273,14 @@
     <Compile Include="TrainingAlgorithms\LbfgsMaximumEntropyAlgorithm\L1RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\LbfgsMaximumEntropyAlgorithm\L2RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\LbfgsMaximumEntropyAlgorithm\LbfgsMaxEntropy.cs" />
+    <Compile Include="TrainingAlgorithms\MLTrainingPipelineBuilder.cs" />
     <Compile Include="TrainingAlgorithms\MLTrainingAlgorithmFactory.cs" />
     <Compile Include="TrainingAlgorithms\MLTrainingAlgorithmType.cs" />
+    <Compile Include="TrainingAlgorithms\OnlineGradientDescentAlgorithm\NumberOfIterationsOption.cs" />
+    <Compile Include="TrainingAlgorithms\OnlineGradientDescentAlgorithm\DecreaseLearningRateToggle.cs" />
+    <Compile Include="TrainingAlgorithms\OnlineGradientDescentAlgorithm\LearningRateOption.cs" />
+    <Compile Include="TrainingAlgorithms\OnlineGradientDescentAlgorithm\L2RegularisationOption.cs" />
+    <Compile Include="TrainingAlgorithms\OnlineGradientDescentAlgorithm\OnlineGradientDescent.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\HistorySizeOption.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\L1RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\L2RegularisationOption.cs" />

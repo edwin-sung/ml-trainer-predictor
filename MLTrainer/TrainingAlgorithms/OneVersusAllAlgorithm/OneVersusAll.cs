@@ -2,6 +2,7 @@
 using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm
 {
@@ -34,10 +35,40 @@ namespace MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm
                 L2Regularization = l2RegularisationOption.Value,
                 LabelColumnName = labelledInputColumnName,
                 FeatureColumnName = featuresName,
-                
             };
 
             return mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(options), labelledInputColumnName);
+        }
+
+        /// <inheritdoc />
+        public IEstimator<ITransformer> BuildTrainingAlgorithmPipeline(MLContext mlContext, IEnumerable<ColumnNameStorageAttribute> inputDataColumnAttributes, IEnumerable<ColumnNameStorageAttribute> outputDataColumnAttributes)
+        {
+            string labelledInputColumnName = inputDataColumnAttributes.SingleOrDefault(att => att.IsLabel)?.Name;
+
+            MLTrainingPipelineBuilder trainingBuilder = new MLTrainingPipelineBuilder(mlContext, inputDataColumnAttributes, outputDataColumnAttributes);
+            string features = MLTrainingPipelineBuilder.FeaturesString;
+
+            LbfgsLogisticRegressionBinaryTrainer.Options options = new LbfgsLogisticRegressionBinaryTrainer.Options
+            {
+                HistorySize = historySizeOption.Value,
+                L1Regularization = l1RegularisationOption.Value,
+                L2Regularization = l2RegularisationOption.Value,
+                LabelColumnName = labelledInputColumnName,
+                FeatureColumnName = features,
+            };
+
+
+            trainingBuilder.SetupOneHotEncodingForStrings();
+            trainingBuilder.SetupMissingValuesReplacementForFloats();
+            trainingBuilder.SetupFeaturesConcatenation();
+            trainingBuilder.SetupMappingValueToKey();
+            trainingBuilder.SetupFeatureMinMaxNormalisation();
+
+            trainingBuilder.SetupTrainingStrategy(mlContext.MulticlassClassification.Trainers.OneVersusAll(
+                binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(options), @labelledInputColumnName));
+            trainingBuilder.SetupMappingKeyToValue();
+
+            return trainingBuilder.TryCreatePipeline(out IEstimator<ITransformer> pipeline, out string errorMessage) ? pipeline : null;
         }
     }
 }

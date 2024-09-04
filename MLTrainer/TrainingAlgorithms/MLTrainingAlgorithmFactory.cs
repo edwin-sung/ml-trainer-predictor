@@ -1,5 +1,6 @@
 ﻿using MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm;
 using MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm;
+using MLTrainer.TrainingAlgorithms.OnlineGradientDescentAlgorithm;
 namespace MLTrainer.TrainingAlgorithms
 {
     internal static class MLTrainingAlgorithmFactory
@@ -11,6 +12,7 @@ namespace MLTrainer.TrainingAlgorithms
             {
                 case MLTrainingAlgorithmType.ONE_VERSUS_ALL: return new OneVersusAll();
                 case MLTrainingAlgorithmType.LBFGS_MAX_ENTROPY: return new LbfgsMaxEntropy();
+                case MLTrainingAlgorithmType.ONLINE_GRADIENT_DESCENT: return new OnlineGradientDescent();
                 default: return null;
             }
         }

@@ -2,6 +2,7 @@
 using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm
 {
@@ -34,8 +35,16 @@ namespace MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm
             yield return enforceNonNegOption;
         }
 
-        public IEstimator<ITransformer> GetTrainingAlgorithm(MLContext mlContext, string labelledInputColumnName, string featuresName)
+        /// <inheritdoc />
+        public IEstimator<ITransformer> BuildTrainingAlgorithmPipeline(MLContext mlContext, 
+            IEnumerable<ColumnNameStorageAttribute> inputDataColumnAttributes,
+            IEnumerable<ColumnNameStorageAttribute> outputDataColumnAttributes)
         {
+            string labelledInputColumnName = inputDataColumnAttributes.SingleOrDefault(att => att.IsLabel)?.Name;
+
+            MLTrainingPipelineBuilder trainingBuilder = new MLTrainingPipelineBuilder(mlContext, inputDataColumnAttributes, outputDataColumnAttributes);
+            string features = MLTrainingPipelineBuilder.FeaturesString;
+
             LbfgsMaximumEntropyMulticlassTrainer.Options options = new LbfgsMaximumEntropyMulticlassTrainer.Options
             {
                 HistorySize = historySizeOption.Value,
@@ -45,10 +54,22 @@ namespace MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm
                 OptimizationTolerance = optimisationTolOption.Value,
                 EnforceNonNegativity = enforceNonNegOption.Value,
                 LabelColumnName = labelledInputColumnName,
-                FeatureColumnName = featuresName
+                FeatureColumnName = features
             };
 
-            return mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(options);
+            trainingBuilder.SetupOneHotEncodingForStrings();
+            trainingBuilder.SetupMissingValuesReplacementForFloats();
+            trainingBuilder.SetupFeaturesConcatenation();
+            trainingBuilder.SetupMappingValueToKey();
+            trainingBuilder.SetupFeatureMinMaxNormalisation();
+
+
+            trainingBuilder.SetupTrainingStrategy(
+                mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(options));
+
+            trainingBuilder.SetupMappingKeyToValue();
+
+            return trainingBuilder.TryCreatePipeline(out IEstimator<ITransformer> pipeline, out string errorMessage) ? pipeline : null;
         }
     }
 }
