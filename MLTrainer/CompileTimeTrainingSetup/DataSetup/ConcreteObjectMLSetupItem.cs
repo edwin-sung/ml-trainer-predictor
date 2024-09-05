@@ -146,7 +146,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
         }
 
         /// <inheritdoc />
-        public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath)
+        public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
             SaveOriginalTrainedFilePathAsTemp();
 
@@ -154,7 +154,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
 
             ConcreteObjectModelTrainer<ModelInput, ModelOutput> trainer = new ConcreteObjectModelTrainer<ModelInput, ModelOutput>(trainingAlgorithm);
 
-            if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath))
+            if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed))
             {
                 testingTrainedModelFilePath = TrainedModelFilePath;
                 predictionTester = new ConcreteObjectPredictionTester<ModelInput, ModelOutput>();

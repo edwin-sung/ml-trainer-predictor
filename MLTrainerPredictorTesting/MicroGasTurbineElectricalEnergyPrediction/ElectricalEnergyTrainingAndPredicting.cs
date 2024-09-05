@@ -24,7 +24,7 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
         [Test]
         public void Test_Training_And_Predicting()
         {
-            bool tryCreateTrainedModel = setupItem.TryCreateTrainedModelForTesting(out string filePath);
+            bool tryCreateTrainedModel = setupItem.TryCreateTrainedModelForTesting(out string filePath, out double? rSquared);
 
             ConcreteObjectModelPredictor<ElectricalTestInput, ElectricalTestOutput> predictor = new ConcreteObjectModelPredictor<ElectricalTestInput, ElectricalTestOutput>(filePath);
 

@@ -154,8 +154,9 @@ namespace MLTrainer.Forms
 
         private void trainModelButton_Click(object sender, EventArgs e)
         {
-            trainingResultsLabel.Text = selectedSetup.TryCreateTrainedModelForTesting(out string filePath)
-                ? $"Trained model now created ({filePath}) for testing purposes"
+
+            trainingResultsLabel.Text = selectedSetup.TryCreateTrainedModelForTesting(out string filePath, out double? rSquared, DataTrainTestPercentage, 0)
+                ? $"Trained model now created ({filePath}) for testing purposes, R^2 = {rSquared}"
                 : "Trained model cannot be created.";
 
             SetupPredictionTestDataInputGridView();
@@ -296,8 +297,10 @@ namespace MLTrainer.Forms
 
         private void testSplitPercentageTrackBar_Scroll(object sender, EventArgs e)
         {
-            int trainingPercentage = (int)((double)(100 / testSplitPercentageTrackBar.Maximum) * testSplitPercentageTrackBar.Value);
+            int trainingPercentage = (int)(100 * DataTrainTestPercentage);
             trainSplitRatioLabel.Text = $"{trainingPercentage}% training : {100 - trainingPercentage}% testing";
         }
+
+        private double DataTrainTestPercentage => (double) testSplitPercentageTrackBar.Value / testSplitPercentageTrackBar.Maximum;
     }
 }

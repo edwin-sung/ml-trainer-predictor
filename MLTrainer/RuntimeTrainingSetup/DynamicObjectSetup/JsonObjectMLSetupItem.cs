@@ -191,10 +191,12 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             SaveJSONFile(TrainingModelFilePath);
         }
 
-        public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath)
+        public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath, 
+            out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
             SaveOriginalTrainedFilePathAsTemp();
             testingTrainedModelFilePath = string.Empty;
+            rSquared = null;
             if (!inputDataSchemaBuilder.TryCreateOutputDataSchemaBuilder(out outputDataSchemaBuilder))
             {
                 return false;
@@ -202,7 +204,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 
             DynamicObjectModelTrainer trainer = new DynamicObjectModelTrainer(inputDataSchemaBuilder.SchemaType, outputDataSchemaBuilder.SchemaType, trainingAlgorithm);
 
-            if (trainer.TryTrainModel(inputDataSchemaBuilder, outputDataSchemaBuilder, TrainedModelFilePath))
+            if (trainer.TryTrainModel(inputDataSchemaBuilder, outputDataSchemaBuilder, TrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed))
             {
                 testingTrainedModelFilePath = TrainedModelFilePath;
                 predictionTester = new DynamicObjectPredictionTester(inputDataSchemaBuilder);

@@ -19,8 +19,10 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
         {
         }
 
-        internal bool TryTrainModel(MLDataSchemaBuilder inputDataBuilder, MLDataSchemaBuilder outputDataBuilder, string trainedModelFilePath)
+        internal bool TryTrainModel(MLDataSchemaBuilder inputDataBuilder, MLDataSchemaBuilder outputDataBuilder, string trainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
+            rSquared = null;
+
             // Create schema definition from schema type
             SchemaDefinition schema = SchemaDefinition.Create(inputDataBuilder.SchemaType);
 
@@ -31,61 +33,28 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
                 is MethodInfo loadMethodGeneric)
             {
                 MethodInfo loadMethod = loadMethodGeneric.MakeGenericMethod(inputDataBuilder.SchemaType);
-
-                IEstimator<ITransformer> predictorPipeline = trainingAlgorithm.BuildTrainingAlgorithmPipeline(
-                    mlContext, inputDataBuilder.GetSchemaProperties(), outputDataBuilder.GetSchemaProperties());
-                
-
-                if (!(loadMethod.Invoke(mlContext.Data, new[] { inputDataBuilder.GetInputData(), schema }) is IDataView dataView) ||
-                    !(GetTrainedModel(predictorPipeline, dataView) is ITransformer trainedModel))
+                if (!(loadMethod.Invoke(mlContext.Data, new[] { inputDataBuilder.GetInputData(), schema }) is IDataView dataView))
                 {
                     return false;
                 }
 
-                SaveTrainedModel(mlContext, trainedModel, dataView.Schema, trainedModelFilePath);
+
+                SplitTrainingTestingData(mlContext, dataSplitTestPercentage, dataView, seed, out IDataView trainSet, out IDataView testSet);
+
+                IEstimator<ITransformer> predictorPipeline = trainingAlgorithm.BuildTrainingAlgorithmPipeline(
+                    mlContext, inputDataBuilder.GetSchemaProperties(), outputDataBuilder.GetSchemaProperties());
+
+                if (!(GetTrainedModel(predictorPipeline, trainSet) is ITransformer trainedModel))
+                {
+                    return false;
+                }
+
+                SaveTrainedModel(mlContext, trainedModel, trainSet.Schema, trainedModelFilePath);
+
+                // Training model was successful, make use of the test set to determine the accuracy of the trained model.
             }
 
             return false;
-
         }
-
-        /*private IEstimator<ITransformer> BuildPipeline(MLContext mlContext, MLDataSchemaBuilder inputDataSchemaBuilder,
-            MLDataSchemaBuilder outputDataSchemaBuilder)
-        {
-            // Make sure we have one or more non-label inputs, only one label input, and only one label output
-            if (!inputDataSchemaBuilder.TryGetColumnNames(att => !att.IsLabel, out List<string> nonLabelInputs) ||
-                !inputDataSchemaBuilder.TryGetColumnNames(att => att.IsLabel, out List<string> labelledInputs) ||
-                !(labelledInputs.SingleOrDefault() is string labelledInput) ||
-                !outputDataSchemaBuilder.TryGetColumnNames(att => att.IsLabel, out List<string> labelledOutputs) ||
-                !(labelledOutputs.SingleOrDefault() is string labelledOutput))
-            {
-                return null;
-            }
-
-            string[] features = nonLabelInputs.Select(c => @c).ToArray();
-            List<IEstimator<ITransformer>> estimatorChainActions = new List<IEstimator<ITransformer>>();
-
-            List<InputOutputColumnPair> hotEncodingColumnPairs = new List<InputOutputColumnPair>();
-            if (inputDataSchemaBuilder.TryGetColumnNames(att => att.ColumnType == typeof(string) && !att.IsLabel, out List<string> stringColumns))
-            {
-                stringColumns.ForEach(c => hotEncodingColumnPairs.Add(new InputOutputColumnPair(@c, @c)));
-                estimatorChainActions.Add(mlContext.Transforms.Categorical.OneHotEncoding(hotEncodingColumnPairs.ToArray()));
-            }
-
-            List<InputOutputColumnPair> missingValuesColumnPairs = new List<InputOutputColumnPair>();
-            if (inputDataSchemaBuilder.TryGetColumnNames(att => att.ColumnType == typeof(float) && !att.IsLabel, out List<string> floatColumns))
-            {
-                floatColumns.ForEach(c => hotEncodingColumnPairs.Add(new InputOutputColumnPair(@c, @c)));
-
-                estimatorChainActions.Add(mlContext.Transforms.ReplaceMissingValues(missingValuesColumnPairs.ToArray()));
-            }
-
-            estimatorChainActions.Add(mlContext.Transforms.Concatenate(@"Features", features));
-            estimatorChainActions.Add(mlContext.Transforms.Conversion.MapValueToKey(@labelledInput, @labelledInput));
-            estimatorChainActions.Add(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"));
-            estimatorChainActions.Add(trainingAlgorithm.GetTrainingAlgorithm(mlContext, labelledInput, @"Features"));
-            estimatorChainActions.Add(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput));
-            return CreateEstimatorChain(estimatorChainActions);
-        }*/
     }
 }

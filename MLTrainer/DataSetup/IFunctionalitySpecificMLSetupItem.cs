@@ -97,9 +97,12 @@ namespace MLTrainer.DataSetup
         /// Create a temporary trained model based on the set of model inputs added
         /// to this instance
         /// </summary>
+        /// <param name="dataSplitTestPercentage">Data split test percentage</param>
+        /// <param name="rSquared">[Output] R-squared value</param>
+        /// <param name="seed">Seed value for the training algorithm to use</param>
         /// <param name="testingTrainedModelFilePath">[Output] Testing trained model file path</param>
         /// <returns>True if the training is successful</returns>
-        bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath);
+        bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null);
 
         /// <summary>
         /// Gets all test prediction data input items for the form

@@ -104,7 +104,8 @@ namespace MLTrainer.DataSetup
         public abstract void SaveModelInputAsDataExtension();
 
         /// <inheritdoc />
-        public abstract bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath);
+        public abstract bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath,
+            out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null);
 
         /// <summary>
         /// Save the original trained file path as temporary, so that the test prediction can hijack the original file path
