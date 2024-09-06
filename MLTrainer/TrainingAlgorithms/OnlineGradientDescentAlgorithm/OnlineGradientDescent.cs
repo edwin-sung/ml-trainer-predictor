@@ -68,13 +68,13 @@ namespace MLTrainer.TrainingAlgorithms.OnlineGradientDescentAlgorithm
             trainingBuilder.SetupOneHotEncodingForStrings();
             trainingBuilder.SetupMissingValuesReplacementForFloats();
             trainingBuilder.SetupFeaturesConcatenation();
-            //trainingBuilder.SetupMappingValueToKey();
+            trainingBuilder.SetupMappingValueToKey();
             trainingBuilder.SetupFeatureMinMaxNormalisation();
 
 
             trainingBuilder.SetupTrainingStrategy(mlContext.Regression.Trainers.OnlineGradientDescent(options));
 
-            //trainingBuilder.SetupMappingKeyToValue();
+            trainingBuilder.SetupMappingKeyToValue();
 
             return trainingBuilder.TryCreatePipeline(out IEstimator<ITransformer> pipeline, out string errorMessage) ? pipeline : null;
         }

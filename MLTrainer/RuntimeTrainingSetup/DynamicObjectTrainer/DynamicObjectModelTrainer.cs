@@ -52,6 +52,15 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
                 SaveTrainedModel(mlContext, trainedModel, trainSet.Schema, trainedModelFilePath);
 
                 // Training model was successful, make use of the test set to determine the accuracy of the trained model.
+                if (!inputDataBuilder.TryCloneSchemaWithNewData(mlContext, testSet,
+                    out MLDataSchemaBuilder newTestSchemaBuilder))
+                {
+                    return false;
+                }
+
+                DynamicObjectTrainingAccuracyResult accuracyResult = new DynamicObjectTrainingAccuracyResult(mlContext, newTestSchemaBuilder, outputDataBuilder, trainedModelFilePath);
+                rSquared = accuracyResult.CalculateAccuracy();
+                return rSquared != null;
             }
 
             return false;

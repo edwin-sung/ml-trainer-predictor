@@ -1,11 +1,9 @@
 ﻿using MLTrainer.TrainingAlgorithms;
 using System.Collections.Generic;
 using System.Reflection;
-using System;
 using Microsoft.ML;
 using System.Linq;
 using MLTrainer.Trainer;
-using Microsoft.ML.Data;
 
 namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
 {

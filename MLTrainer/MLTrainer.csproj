@@ -228,6 +228,7 @@
     <Compile Include="CompileTimeTrainingSetup\DataSetup\ConcreteObjectMLSetupItem.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectMLSetupItem.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectSchemaSetup.cs" />
+    <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectTrainingAccuracyResult.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\JsonObjectMLSetupItem.cs" />
     <Compile Include="DataSetup\FunctionalitySpecificMLSetupItem.cs" />
     <Compile Include="DataSetup\IFunctionalitySpecificMLSetupFactory.cs" />

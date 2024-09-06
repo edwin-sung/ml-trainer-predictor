@@ -8,6 +8,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Globalization;
+using Microsoft.ML;
+using Microsoft.ML.Data;
+using System.Data;
+using System.Runtime.Remoting.Messaging;
 
 namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 {
@@ -16,12 +20,12 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
     /// </summary>
     internal class MLDataSchemaBuilder
     {
-        private List<PropertyItem> properties = new List<PropertyItem>();
-        private List<SingularDataItem> propertyValues = new List<SingularDataItem>();
+        private readonly List<PropertyItem> properties = new List<PropertyItem>();
+        private readonly List<SingularDataItem> propertyValues = new List<SingularDataItem>();
 
         private string DataSchemaName = string.Empty;
 
-        internal Type SchemaType { get; private set; }
+        internal Type SchemaType { get; private set; } = null;
 
         internal MLDataSchemaBuilder(string dataSchemaName)
         {
@@ -103,7 +107,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
         {
             internal List<PropertyItem> properties = new List<PropertyItem>();
             internal Type schema = null;
-            private Dictionary<string, object> propertyNameValuePair = new Dictionary<string, object>();
+            internal Dictionary<string, object> propertyNameValuePair = new Dictionary<string, object>();
 
             internal bool SetPropertyValues(IEnumerable<(string, object)> propertyNameValuePairs)
             {
@@ -185,6 +189,28 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
         }
 
         /// <summary>
+        /// Attempts to add a singular data by converting a given object instance, given that the schema of the 
+        /// object is the same as the schema defined in this builder.
+        /// </summary>
+        /// <param name="objectInstance">Object instance to be converted and added as singular data</param>
+        /// <returns>True if the object instance can be added as a singular data instance</returns>
+        internal bool AddSingularData(object objectInstance)
+        {
+            if (SchemaType == null || objectInstance.GetType() != SchemaType)
+            {
+                return false;
+            }
+
+            List<(string, object)> dataValues = new List<(string, object)>();
+            foreach(PropertyInfo objectProperty in SchemaType.GetProperties())
+            {
+                dataValues.Add((objectProperty.Name, objectProperty.GetValue(objectInstance)));
+            }
+
+            return AddSingularData(dataValues);
+        }
+
+        /// <summary>
         /// Creates a type based on the property/type values specified in the properties
         /// </summary>
         /// <param name="properties">Property items as part of the class schema</param>
@@ -261,6 +287,11 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 
         internal void InitialiseSchemaType()
         {
+            // Ensure that schema type is not yet set.
+            if (SchemaType != null)
+            {
+                return;
+            }
             SchemaType = CreateDynamicType();
             // Go through all the data and set the schemas for data type conversions later
             propertyValues.ForEach(p => p.SetSchemaType(SchemaType));
@@ -314,6 +345,93 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             outputDataSchemaBuilder.InitialiseSchemaType();
 
             return true;
+        }
+
+        /// <summary>
+        /// Creates a new data schema builder instance from a given IDataView instance
+        /// A reverse-engineering attempt to convert IDataView instance back to singular data and schema
+        /// </summary>
+        /// <param name="mlContext">Machine learning context instance, that is used to break down IDataView instance</param>
+        /// <param name="dataView">IDataView instance to be converted back to the schema builder instance</param>
+        /// <returns>True if a valid new data schema builder instance could be built</returns>
+        internal bool TryCloneSchemaWithNewData(MLContext mlContext, IDataView dataView, out MLDataSchemaBuilder newBuilderInstance)
+        {
+            newBuilderInstance = new MLDataSchemaBuilder(DataSchemaName);
+
+            if (SchemaType == null) 
+            {
+                return false;
+            }
+
+            // Copying the schema properties and type from this instance.
+            newBuilderInstance.properties.AddRange(properties);
+            newBuilderInstance.SchemaType = SchemaType;
+
+            // Use MLContext instance to break down IDataView instance.
+            Type dataType = mlContext.Data.GetType();
+            if (!(dataType.GetMethods().FirstOrDefault(m => m.Name == "CreateEnumerable" && m.IsGenericMethod) is MethodInfo loadMethodGeneric))
+            {
+                return false;
+            }
+
+            // Ensure that the conversion ends up with an object, of type generic type
+            MethodInfo createEnumerableMethod = loadMethodGeneric.MakeGenericMethod(SchemaType);
+
+            SchemaDefinition schema = SchemaDefinition.Create(SchemaType);
+
+            if (!(createEnumerableMethod.Invoke(mlContext.Data, new object[] {dataView, false, false, null}) is IEnumerable<object> validEnumerable))
+            {
+                return false;
+            }
+
+            foreach(object value in validEnumerable)
+            {
+                newBuilderInstance.AddSingularData(value);
+            }
+
+            return newBuilderInstance.propertyValues.Any();
+        }
+
+        /// <summary>
+        /// Gets the R-squared value between this instance and the other instance
+        /// </summary>
+        /// <param name="other">Other data schema builder instance</param>
+        /// <returns>R-squared value</returns>
+        internal double? GetRSquared(MLDataSchemaBuilder other)
+        {
+            if (propertyValues.Count != other.propertyValues.Count)
+            {
+                return null;
+            }
+
+            List<double> actualValues = new List<double>();
+            List<double> residualSquared = new List<double>();
+
+            for(int i = 0; i < propertyValues.Count; i++)
+            {
+                SingularDataItem item = propertyValues[i];
+                SingularDataItem otherItem = other.propertyValues[i];
+
+                // Get their labels and their corresponding float values
+                string label = item.properties.SingleOrDefault(prop => prop.ColumnNameAttribute.IsLabel)?.Name;
+                string otherLabel = otherItem.properties.SingleOrDefault(prop => prop.ColumnNameAttribute.IsLabel)?.Name;
+                if (!item.propertyNameValuePair.TryGetValue(label, out object labelValue) ||
+                    !otherItem.propertyNameValuePair.TryGetValue(otherLabel, out object otherLabelValue) ||
+                    !double.TryParse(labelValue.ToString(), out double labelDouble) ||
+                    !double.TryParse(otherLabelValue.ToString(), out double otherLabelDouble))
+                {
+                    continue;
+                }
+
+                actualValues.Add(labelDouble);
+                residualSquared.Add(Math.Pow(labelDouble - otherLabelDouble, 2));
+            }
+
+            double sumSquaredRegression = residualSquared.Sum();
+            double mean = actualValues.Sum() / actualValues.Count;
+            double sumOfSquares = actualValues.Select(value => Math.Pow(value - mean, 2)).Sum();
+
+            return 1 - sumSquaredRegression / sumOfSquares;
         }
     }
 }
