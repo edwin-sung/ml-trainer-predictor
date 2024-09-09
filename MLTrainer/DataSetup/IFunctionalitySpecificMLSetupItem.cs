@@ -41,6 +41,12 @@ namespace MLTrainer.DataSetup
         void OpenDataSchemaSetupForm(FormClosedEventHandler schemaSetupFormClosureAction);
 
         /// <summary>
+        /// Opens up an auto-select training algorithm form, passing the action to call upon closure of the form
+        /// </summary>
+        /// <param name="formClosureAction">Auto-select training algorithm closure action</param>
+        void OpenAutoSelectTrainingAlgorithmForm(FormClosedEventHandler formClosureAction);
+
+        /// <summary>
         /// Gets all available training algorithms for end-user to select
         /// </summary>
         /// <returns>All available training algorithms to choose from </returns>

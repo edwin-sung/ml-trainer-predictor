@@ -53,6 +53,7 @@
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.algorithmComboBox = new System.Windows.Forms.ComboBox();
             this.selectAlgorithmLabel = new System.Windows.Forms.Label();
+            this.autoAlgorithmButton = new System.Windows.Forms.Button();
             this.testPredictionGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testPredictionDataGridView)).BeginInit();
             this.trainingAlgorithmGroupBox.SuspendLayout();
@@ -214,6 +215,7 @@
             // 
             // trainingAlgorithmGroupBox
             // 
+            this.trainingAlgorithmGroupBox.Controls.Add(this.autoAlgorithmButton);
             this.trainingAlgorithmGroupBox.Controls.Add(this.trainSplitRatioLabel);
             this.trainingAlgorithmGroupBox.Controls.Add(this.specifyTrainSplitRatioLabel);
             this.trainingAlgorithmGroupBox.Controls.Add(this.testSplitPercentageTrackBar);
@@ -286,7 +288,7 @@
             this.algorithmComboBox.FormattingEnabled = true;
             this.algorithmComboBox.Location = new System.Drawing.Point(95, 17);
             this.algorithmComboBox.Name = "algorithmComboBox";
-            this.algorithmComboBox.Size = new System.Drawing.Size(222, 21);
+            this.algorithmComboBox.Size = new System.Drawing.Size(192, 21);
             this.algorithmComboBox.TabIndex = 1;
             this.algorithmComboBox.SelectedIndexChanged += new System.EventHandler(this.algorithmComboBox_SelectedIndexChanged);
             // 
@@ -298,6 +300,16 @@
             this.selectAlgorithmLabel.Size = new System.Drawing.Size(83, 13);
             this.selectAlgorithmLabel.TabIndex = 0;
             this.selectAlgorithmLabel.Text = "Select Algorithm";
+            // 
+            // autoAlgorithmButton
+            // 
+            this.autoAlgorithmButton.Location = new System.Drawing.Point(293, 15);
+            this.autoAlgorithmButton.Name = "autoAlgorithmButton";
+            this.autoAlgorithmButton.Size = new System.Drawing.Size(75, 23);
+            this.autoAlgorithmButton.TabIndex = 9;
+            this.autoAlgorithmButton.Text = "Auto-Select";
+            this.autoAlgorithmButton.UseVisualStyleBackColor = true;
+            this.autoAlgorithmButton.Click += new System.EventHandler(this.autoAlgorithmButton_Click);
             // 
             // MLTrainingSetupForm
             // 
@@ -356,5 +368,6 @@
         private System.Windows.Forms.Label specifyTrainSplitRatioLabel;
         private System.Windows.Forms.TrackBar testSplitPercentageTrackBar;
         private System.Windows.Forms.Label trainSplitRatioLabel;
+        private System.Windows.Forms.Button autoAlgorithmButton;
     }
 }

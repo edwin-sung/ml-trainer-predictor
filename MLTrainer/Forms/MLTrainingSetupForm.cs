@@ -302,5 +302,18 @@ namespace MLTrainer.Forms
         }
 
         private double DataTrainTestPercentage => (double) testSplitPercentageTrackBar.Value / testSplitPercentageTrackBar.Maximum;
+
+        private void autoAlgorithmButton_Click(object sender, EventArgs e)
+        {
+            selectedSetup.OpenAutoSelectTrainingAlgorithmForm(autoSelectTrainingAlgorithmFormClosedAction);
+        }
+
+        private void autoSelectTrainingAlgorithmFormClosedAction(object sender, FormClosedEventArgs e)
+        {
+            SetupAlgorithmList();
+            SetupPredictionTestDataInputGridView();
+        }
     }
+
+
 }

@@ -1,4 +1,5 @@
-﻿using MLTrainer.PredictionTesterUI;
+﻿using MLTrainer.Forms;
+using MLTrainer.PredictionTesterUI;
 using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System;
@@ -66,6 +67,13 @@ namespace MLTrainer.DataSetup
 
         public virtual void OpenDataSchemaSetupForm(FormClosedEventHandler schemaSetupFormClosureAction)
         {
+        }
+
+        public void OpenAutoSelectTrainingAlgorithmForm(FormClosedEventHandler formClosureAction)
+        {
+            AutoSelectTrainingAlgorithmForm autoSelectForm  = new AutoSelectTrainingAlgorithmForm();
+            autoSelectForm.FormClosed += formClosureAction;
+            autoSelectForm.Show();
         }
 
         public IEnumerable<MLTrainingAlgorithmType> GetAllTrainingAlgorithms()

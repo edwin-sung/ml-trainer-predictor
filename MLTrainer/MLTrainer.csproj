@@ -227,6 +227,12 @@
     <Compile Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\ConcreteObjectTrainingAccuracyResult.cs" />
     <Compile Include="CompileTimeTrainingSetup\DataSetup\ConcreteObjectMLSetupItem.cs" />
     <Compile Include="DataSetup\IMLTrainingAlgorithmSpecificSetupItem.cs" />
+    <Compile Include="Forms\AutoSelectTrainingAlgorithmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AutoSelectTrainingAlgorithmForm.Designer.cs">
+      <DependentUpon>AutoSelectTrainingAlgorithmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectMLSetupItem.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectSchemaSetup.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectTrainingAccuracyResult.cs" />
@@ -290,6 +296,9 @@
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\L1RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\L2RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\OneVersusAllAlgorithm\OneVersusAll.cs" />
+    <EmbeddedResource Include="Forms\AutoSelectTrainingAlgorithmForm.resx">
+      <DependentUpon>AutoSelectTrainingAlgorithmForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DynamicObjectSchemaSetupForm.resx">
       <DependentUpon>DynamicObjectSchemaSetupForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -182,27 +182,6 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
             testingTrainedModelFilePath = string.Empty;
             rSquared = null;
             return CreateTrainedModelForTestingFunction?.Invoke(out testingTrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed) ?? false;
-
-            /*SaveOriginalTrainedFilePathAsTemp();
-
-            testingTrainedModelFilePath = string.Empty;
-
-            ConcreteObjectModelTrainer<ModelInput, ModelOutput> trainer = new ConcreteObjectModelTrainer<ModelInput, ModelOutput>(trainingAlgorithm);
-
-            if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed))
-            {
-                testingTrainedModelFilePath = TrainedModelFilePath;
-                ConcreteObjectPredictionTester<ModelInput, ModelOutput> predictionTester = 
-                    new ConcreteObjectPredictionTester<ModelInput, ModelOutput>();
-                PredictionTesterDataInputItems = predictionTester.DataInputItems;
-                RunTestPredictionFunction = () =>
-                {
-                    return predictionTester.RunPrediction(new ConcreteObjectModelPredictor<ModelInput, ModelOutput>(TrainedModelFilePath),
-                        out string predictedValueAsString) ? predictedValueAsString : string.Empty;
-                };
-                return true;
-            }
-            return false;*/
         }
 
         /// <inhertidoc />
