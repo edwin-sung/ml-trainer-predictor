@@ -226,6 +226,7 @@
     <Compile Include="ColumnNameStorageAttribute.cs" />
     <Compile Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\ConcreteObjectTrainingAccuracyResult.cs" />
     <Compile Include="CompileTimeTrainingSetup\DataSetup\ConcreteObjectMLSetupItem.cs" />
+    <Compile Include="DataSetup\IMLTrainingAlgorithmSpecificSetupItem.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectMLSetupItem.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectSchemaSetup.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectSetup\DynamicObjectTrainingAccuracyResult.cs" />
@@ -274,6 +275,9 @@
     <Compile Include="TrainingAlgorithms\LbfgsMaximumEntropyAlgorithm\L1RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\LbfgsMaximumEntropyAlgorithm\L2RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\LbfgsMaximumEntropyAlgorithm\LbfgsMaxEntropy.cs" />
+    <Compile Include="TrainingAlgorithms\LbfgsPoissonAlgorithm\L1RegularisationOption.cs" />
+    <Compile Include="TrainingAlgorithms\LbfgsPoissonAlgorithm\L2RegularisationOption.cs" />
+    <Compile Include="TrainingAlgorithms\LbfgsPoissonAlgorithm\LbfgsPoisson.cs" />
     <Compile Include="TrainingAlgorithms\MLTrainingPipelineBuilder.cs" />
     <Compile Include="TrainingAlgorithms\MLTrainingAlgorithmFactory.cs" />
     <Compile Include="TrainingAlgorithms\MLTrainingAlgorithmType.cs" />

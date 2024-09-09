@@ -77,7 +77,14 @@ namespace MLTrainer.DataSetup
         public void SetTrainingAlgorithm(MLTrainingAlgorithmType algorithmType)
         {
             trainingAlgorithm = MLTrainingAlgorithmFactory.CreateInstance(algorithmType);
+            SetTrainingAlgorithmDependencies(algorithmType);
         }
+
+        /// <summary>
+        /// Allows training-algorithm-dependent logic to be set according to the algorithm type chosen
+        /// </summary>
+        /// <param name="algorithmType">New algorithm type</param>
+        protected abstract void SetTrainingAlgorithmDependencies(MLTrainingAlgorithmType algorithmType);
 
         /// <inheritdoc />
         public List<ITrainingAlgorithmOption> GetTrainingAlgorithmOptions()

@@ -3,6 +3,7 @@ using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace MLTrainer.TrainingAlgorithms.OnlineGradientDescentAlgorithm
@@ -58,8 +59,9 @@ namespace MLTrainer.TrainingAlgorithms.OnlineGradientDescentAlgorithm
             OnlineGradientDescentTrainer.Options options = new OnlineGradientDescentTrainer.Options
             {
                 L2Regularization = l2RegularisationOption.Value,
-                LabelColumnName = labelledInputColumnName,
-                FeatureColumnName = features,
+                
+                LabelColumnName = @labelledInputColumnName,
+                FeatureColumnName = @features,
                 DecreaseLearningRate = decreaseLearningRateToggle.Value,
                 LearningRate = learningRateOption.Value,
                 NumberOfIterations = numberOfIterationsOption.Value
@@ -68,13 +70,9 @@ namespace MLTrainer.TrainingAlgorithms.OnlineGradientDescentAlgorithm
             trainingBuilder.SetupOneHotEncodingForStrings();
             trainingBuilder.SetupMissingValuesReplacementForFloats();
             trainingBuilder.SetupFeaturesConcatenation();
-            trainingBuilder.SetupMappingValueToKey();
             trainingBuilder.SetupFeatureMinMaxNormalisation();
 
-
             trainingBuilder.SetupTrainingStrategy(mlContext.Regression.Trainers.OnlineGradientDescent(options));
-
-            trainingBuilder.SetupMappingKeyToValue();
 
             return trainingBuilder.TryCreatePipeline(out IEstimator<ITransformer> pipeline, out string errorMessage) ? pipeline : null;
         }

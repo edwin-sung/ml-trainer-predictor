@@ -3,6 +3,7 @@ using MLTrainer.PredictionTesterUI;
 using MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictionTest;
 using MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictor;
 using MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer;
+using MLTrainer.TrainingAlgorithms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -212,6 +213,10 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             }
 
             return false;
+        }
+
+        protected override void SetTrainingAlgorithmDependencies(MLTrainingAlgorithmType algorithmType)
+        {
         }
     }
 }

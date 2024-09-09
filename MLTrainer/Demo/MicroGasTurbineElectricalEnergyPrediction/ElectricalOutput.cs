@@ -3,20 +3,17 @@ using MLTrainer;
 
 namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
-    public class ElectricalOutput
+    public class ElectricalOutputForClassification
     {
+        [ColumnName(@"PredictedLabel")]
+        [ColumnNameStorage(@"PredictedLabel", typeof(float), true)]
+        public float PredictedLabel { get; set; }
+    }
 
-        /// <summary>
-        /// Predicted label
-        /// </summary>
-        [ColumnName("PredictedLabel")]
-        [ColumnNameStorage("PredictedLabel", typeof(float), true)]
-        public float Prediction { get; set; }
-
-        /*/// <summary>
-        /// Score
-        /// </summary>
-        public float[] Score { get; set; }*/
-
+    public class ElectricalOutputForRegression
+    {
+        [ColumnName(@"Score")]
+        [ColumnNameStorage(@"Score", typeof(float), true)]
+        public float Score { get; set; }
     }
 }

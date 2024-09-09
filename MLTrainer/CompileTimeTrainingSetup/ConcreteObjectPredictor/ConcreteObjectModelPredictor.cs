@@ -1,4 +1,5 @@
 ﻿using Microsoft.ML;
+using Microsoft.ML.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +35,8 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor
 
             // Load trained model
             ITransformer predictionPipeline = mlContextInstance.Model.Load(trainedModelFilePath, out DataViewSchema _);
+
+            SchemaDefinition schema = SchemaDefinition.Create(typeof(ModelOutput));
 
             IDataView predictions = predictionPipeline.Transform(transformedInputs);
             outputs = mlContextInstance.Data.CreateEnumerable<ModelOutput>(predictions, false);

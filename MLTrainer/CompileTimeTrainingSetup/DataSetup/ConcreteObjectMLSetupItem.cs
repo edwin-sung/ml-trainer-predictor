@@ -16,13 +16,12 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
     /// Abstract class for functionality-specific machine learning set-up item, which has concrete objects defined
     /// </summary>
     /// <typeparam name="ModelInput">Model input generic type</typeparam>
-    /// <typeparam name="ModelOutput">Model output generic type</typeparam>
-    public abstract class ConcreteObjectMLSetupItem<ModelInput, ModelOutput> : FunctionalitySpecificMLSetupItem
+    public abstract class ConcreteObjectMLSetupItem<ModelInput> : FunctionalitySpecificMLSetupItem
         where ModelInput : class, new()
-        where ModelOutput : class, new()
     {
         private List<ModelInput> modelInputs = new List<ModelInput>();
-        private ConcreteObjectPredictionTester<ModelInput, ModelOutput> predictionTester = null;
+        private List<IPredictionTesterDataInputItem> PredictionTesterDataInputItems { get; set; } = new List<IPredictionTesterDataInputItem>();
+        private Func<string> RunTestPredictionFunction = null;
 
         public override string DataExtension => "csv";
 
@@ -145,10 +144,46 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
             return columnNames.Any();
         }
 
+        protected void SetOutputDependentTrainModelCreation<T>() where T : class, new()
+        {
+            CreateTrainedModelForTestingFunction = TryCreateTrainedModelForTesting<T>;
+        }
+        private delegate bool CreateTrainedModelForTestingDelegate(out string testingTrainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null);
+        private CreateTrainedModelForTestingDelegate CreateTrainedModelForTestingFunction = null;
+
+
+        private bool TryCreateTrainedModelForTesting<T>(out string testingTrainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null) where T : class, new()
+        {
+            SaveOriginalTrainedFilePathAsTemp();
+
+            testingTrainedModelFilePath = string.Empty;
+
+            ConcreteObjectModelTrainer<ModelInput, T> trainer = new ConcreteObjectModelTrainer<ModelInput, T>(trainingAlgorithm);
+
+            if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed))
+            {
+                testingTrainedModelFilePath = TrainedModelFilePath;
+                ConcreteObjectPredictionTester<ModelInput, T> predictionTester =
+                    new ConcreteObjectPredictionTester<ModelInput, T>();
+                PredictionTesterDataInputItems = predictionTester.DataInputItems;
+                RunTestPredictionFunction = () =>
+                {
+                    return predictionTester.RunPrediction(new ConcreteObjectModelPredictor<ModelInput, T>(TrainedModelFilePath),
+                        out string predictedValueAsString) ? predictedValueAsString : string.Empty;
+                };
+                return true;
+            }
+            return false;
+        }
+             
         /// <inheritdoc />
         public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
-            SaveOriginalTrainedFilePathAsTemp();
+            testingTrainedModelFilePath = string.Empty;
+            rSquared = null;
+            return CreateTrainedModelForTestingFunction?.Invoke(out testingTrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed) ?? false;
+
+            /*SaveOriginalTrainedFilePathAsTemp();
 
             testingTrainedModelFilePath = string.Empty;
 
@@ -157,25 +192,25 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
             if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed))
             {
                 testingTrainedModelFilePath = TrainedModelFilePath;
-                predictionTester = new ConcreteObjectPredictionTester<ModelInput, ModelOutput>();
+                ConcreteObjectPredictionTester<ModelInput, ModelOutput> predictionTester = 
+                    new ConcreteObjectPredictionTester<ModelInput, ModelOutput>();
+                PredictionTesterDataInputItems = predictionTester.DataInputItems;
+                RunTestPredictionFunction = () =>
+                {
+                    return predictionTester.RunPrediction(new ConcreteObjectModelPredictor<ModelInput, ModelOutput>(TrainedModelFilePath),
+                        out string predictedValueAsString) ? predictedValueAsString : string.Empty;
+                };
                 return true;
             }
-            return false;
+            return false;*/
         }
-
 
         /// <inhertidoc />
-        public override IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems()
-        {
-            return predictionTester?.DataInputItems ?? new List<IPredictionTesterDataInputItem>();
-        }
+        public override IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems() => PredictionTesterDataInputItems;
 
         /// <inheritdoc />
-        public override void RunTestPrediction(out string predictedValueAsString)
-        {
-            predictedValueAsString = string.Empty;
-            predictionTester?.RunPrediction(new ConcreteObjectModelPredictor<ModelInput, ModelOutput>(TrainedModelFilePath), out predictedValueAsString);
-        }
+        public override void RunTestPrediction(out string predictedValueAsString) =>
+            predictedValueAsString = RunTestPredictionFunction?.Invoke() ?? string.Empty;
 
 
         /// <inheritdoc />

@@ -1,0 +1,243 @@
+﻿{
+  "Scenario": "Regression",
+  "DataSource": {
+    "Version": 3,
+    "EscapeCharacter": "\"",
+    "ReadMultiLines": false,
+    "KeepDiacritics": false,
+    "KeepPunctuations": false,
+    "AllowQuoting": false,
+    "Type": "TabularFile",
+    "FilePath": "D:\\github\\ml-trainer-predictor\\MLTrainer\\Demo\\MicroGasTurbineElectricalEnergyPrediction\\example.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "time",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "input_voltage",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "el_power",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsPoissonRegressionRegression",
+        "Score": -0.010284037818119107,
+        "RuntimeInSeconds": 0.066,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "L1Regularization": 1.90755332,
+            "L2Regularization": 0.4765247,
+            "LabelColumnName": "el_power",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsPoissonRegressionRegression",
+        "Score": -0.010531206249665881,
+        "RuntimeInSeconds": 0.076,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "L1Regularization": 0.528826952,
+            "L2Regularization": 1.66924751,
+            "LabelColumnName": "el_power",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsPoissonRegressionRegression",
+        "Score": -0.010616873285820883,
+        "RuntimeInSeconds": 0.064,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "L1Regularization": 0.5954607,
+            "L2Regularization": 5.01816034,
+            "LabelColumnName": "el_power",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsPoissonRegressionRegression",
+        "Score": -0.010621508622444908,
+        "RuntimeInSeconds": 0.072,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "L1Regularization": 0.5784862,
+            "L2Regularization": 4.911226,
+            "LabelColumnName": "el_power",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsPoissonRegressionRegression",
+        "Score": -0.010630096527245581,
+        "RuntimeInSeconds": 0.083,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "time",
+              "input_voltage"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "L1Regularization": 1.06547344,
+            "L2Regularization": 0.9757714,
+            "LabelColumnName": "el_power",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ReplaceMissingValues",
+      "e1": "Concatenate",
+      "e2": "FastTreeRegression",
+      "e3": "FastForestRegression",
+      "e4": "LightGbmRegression",
+      "e5": "LbfgsPoissonRegressionRegression",
+      "e6": "SdcaRegression"
+    },
+    "Schema": "e0 * e1 * (e2 + e3 + e4 + e5 + e6)",
+    "MetricName": "RSquared",
+    "ModelFilePath": "D:\\github\\ml-trainer-predictor\\WindowsFormsApp1\\MLModel1.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 2,
+    "Subsampling": false,
+    "Type": "RegressionTrainingOption",
+    "TrainingTime": 120,
+    "LabelColumn": "el_power",
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}

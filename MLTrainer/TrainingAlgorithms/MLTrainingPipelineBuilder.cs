@@ -44,8 +44,6 @@ namespace MLTrainer.TrainingAlgorithms
             {
                 wellOrderedSetups.Add(mlContext.Transforms.ReplaceMissingValues(hotEncodingColumnPairs));
             }
-
-            
         }
 
         internal void SetupFeaturesConcatenation()
@@ -81,7 +79,8 @@ namespace MLTrainer.TrainingAlgorithms
             {
                 return;
             }
-            wellOrderedSetups.Add(mlContext.Transforms.Conversion.MapKeyToValue(@labelledOutput, @labelledOutput));
+
+            wellOrderedSetups.Add(mlContext.Transforms.Conversion.MapKeyToValue(new[] {new InputOutputColumnPair(@labelledOutput, "PredictedLabel") }));
         }
 
         /// <summary>

@@ -1,8 +1,9 @@
 ﻿using MLTrainer.CompileTimeTrainingSetup.DataSetup;
+using MLTrainer.TrainingAlgorithms;
 
 namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
-    internal class ElectricalEnergySetupItem : ConcreteObjectMLSetupItem<ElectricalTestInput, ElectricalTestOutput>
+    internal class ElectricalEnergySetupItem : ConcreteObjectMLSetupItem<ElectricalTestInput>
     {
         public ElectricalEnergySetupItem() : base("ElectricalEnergyTrainingModel")
         {
@@ -14,6 +15,11 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
         public override string TrainingModelDirectory { get; set; } = "C:\\Temp";
 
         public override string TrainingModelName { get; set; } = string.Empty;
+
+        protected override void SetTrainingAlgorithmDependencies(MLTrainingAlgorithmType algorithmType)
+        {
+            SetOutputDependentTrainModelCreation<ElectricalTestOutput>();
+        }
 
         protected override bool TryConvertToCSVString(ElectricalTestInput input, out string csvRow)
         {
