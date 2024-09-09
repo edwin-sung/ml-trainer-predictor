@@ -176,11 +176,6 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             properties.Add(PropertyItem.CreateInstance(name, type, columnName, isLabel));
         }
 
-        internal void AddOutputScoreProperty()
-        {
-            properties.Add(PropertyItem.CreateInstance("Score", typeof(float[])));
-        }
-
         internal bool AddSingularData(IEnumerable<(string, object)> dataValues)
         {
             SingularDataItem data = new SingularDataItem { properties = properties, schema = SchemaType };
@@ -328,20 +323,19 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 
         /// <summary>
         /// Attempts to create an output data schema builder instance based on the current instance
-        /// This should only involve the property which is a label, and a Score property.
+        /// This should only involve the property which is either PredictedLabel or Score property, depending on the training algorithm type
         /// </summary>
+        /// <param name="outputColumnLabelName">Output column label name, depending on the training algorithm type</param>
         /// <param name="outputDataSchemaBuilder">[Output] Data schema builder as output</param>
         /// <returns></returns>
-        internal bool TryCreateOutputDataSchemaBuilder(out MLDataSchemaBuilder outputDataSchemaBuilder)
+        internal bool TryCreateOutputDataSchemaBuilder(string outputColumnLabelName, out MLDataSchemaBuilder outputDataSchemaBuilder)
         {
             outputDataSchemaBuilder = new MLDataSchemaBuilder(DataSchemaName + "Output");
             if (!(properties.SingleOrDefault(p => p.ColumnNameAttribute.IsLabel) is PropertyItem labelProperty))
             {
                 return false;
             }
-            outputDataSchemaBuilder.AddProperty("PredictedLabel", labelProperty.ColumnNameAttribute.ColumnType, isLabel: true);
-            outputDataSchemaBuilder.AddOutputScoreProperty();
-
+            outputDataSchemaBuilder.AddProperty(outputColumnLabelName, labelProperty.ColumnNameAttribute.ColumnType, isLabel: true);
             outputDataSchemaBuilder.InitialiseSchemaType();
 
             return true;

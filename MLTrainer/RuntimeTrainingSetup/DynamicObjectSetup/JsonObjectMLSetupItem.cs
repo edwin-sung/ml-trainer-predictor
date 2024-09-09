@@ -19,6 +19,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
         private List<Type> optimalTypesDescreasingPriority = new List<Type> { typeof(bool), typeof(float), typeof(string) };
         private MLDataSchemaBuilder inputDataSchemaBuilder = null, outputDataSchemaBuilder = null;
         private DynamicObjectPredictionTester predictionTester = null;
+        private string outputColumnLabelName = string.Empty;
 
         internal JsonObjectMLSetupItem() : base("JsonObjectTrainingModel")
         {
@@ -198,7 +199,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             SaveOriginalTrainedFilePathAsTemp();
             testingTrainedModelFilePath = string.Empty;
             rSquared = null;
-            if (!inputDataSchemaBuilder.TryCreateOutputDataSchemaBuilder(out outputDataSchemaBuilder))
+            if (!inputDataSchemaBuilder.TryCreateOutputDataSchemaBuilder(outputColumnLabelName, out outputDataSchemaBuilder))
             {
                 return false;
             }
@@ -217,6 +218,24 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 
         protected override void SetTrainingAlgorithmDependencies(MLTrainingAlgorithmType algorithmType)
         {
+
+            switch(algorithmType)
+            {
+                case MLTrainingAlgorithmType.ONE_VERSUS_ALL:
+                case MLTrainingAlgorithmType.LBFGS_MAX_ENTROPY:
+                {
+                    outputColumnLabelName = "PredictedLabel";
+                    break;
+                }
+
+                case MLTrainingAlgorithmType.ONLINE_GRADIENT_DESCENT:
+                case MLTrainingAlgorithmType.LBFGS_POISSON_REGRESSION:
+                {
+                    outputColumnLabelName = "Score";
+                    break;
+                }
+            }
+
         }
     }
 }
