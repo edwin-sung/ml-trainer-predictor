@@ -1,7 +1,5 @@
 ﻿using Microsoft.ML;
-using MLTrainer.TrainingAlgorithms;
 using System.Collections.Generic;
-using System.Data;
 
 namespace MLTrainer.Trainer
 {

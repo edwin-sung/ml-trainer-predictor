@@ -1,9 +1,7 @@
 ﻿using Microsoft.ML;
-using Microsoft.ML.Data;
 using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor;
 using MLTrainer.Trainer;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;

@@ -1,5 +1,4 @@
 ﻿using Microsoft.ML;
-using MLTrainer.TrainingAlgorithms;
 
 namespace MLTrainer.Trainer
 {

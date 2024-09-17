@@ -1,9 +1,7 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
-using MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace MLTrainer.TrainingAlgorithms.OnlineGradientDescentAlgorithm
