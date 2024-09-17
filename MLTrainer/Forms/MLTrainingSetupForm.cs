@@ -27,6 +27,8 @@ namespace MLTrainer.Forms
             SetupFunctionalityList();
             SetupAlgorithmList();
             SetupPredictionTestDataInputGridView();
+
+            SetupDependentActionHandlers();
         }
 
 
@@ -43,6 +45,20 @@ namespace MLTrainer.Forms
             functionalityComboBox.SelectedIndex = 0;
 
             functionalityComboBox.EndUpdate();
+        }
+
+        private void SetupDependentActionHandlers()
+        {
+            foreach(IFunctionalitySpecificMLSetupItem setupItem in setupItems)
+            {
+                setupItem.OnTrainingAlgorithmChange += newAlgorithmType =>
+                {
+                    algorithmComboBox.SelectedIndex = Enum.GetValues(typeof(MLTrainingAlgorithmType)).Cast<Enum>().ToList().IndexOf(newAlgorithmType);
+                    SetupAlgorithmParametersDataGridView();
+                    SetupPredictionTestDataInputGridView();
+                    trainingResultsLabel.Text = "Trained model now created for testing purposes";
+                };
+            }
         }
 
         private void SetupAlgorithmList()
@@ -311,8 +327,6 @@ namespace MLTrainer.Forms
 
         private void autoSelectTrainingAlgorithmFormClosedAction(object sender, FormClosedEventArgs e)
         {
-            SetupAlgorithmList();
-            SetupPredictionTestDataInputGridView();
         }
     }
 

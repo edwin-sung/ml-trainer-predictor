@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.setupGroupBox = new System.Windows.Forms.GroupBox();
+            this.optimisableObjectiveLabel = new System.Windows.Forms.Label();
+            this.optimisableObjectiveComboBox = new System.Windows.Forms.ComboBox();
             this.startTrainingButton = new System.Windows.Forms.Button();
             this.trainingTimeTextBox = new System.Windows.Forms.TextBox();
             this.trainingTimeLabel = new System.Windows.Forms.Label();
             this.resultsGroupBox = new System.Windows.Forms.GroupBox();
-            this.optimisableObjectiveComboBox = new System.Windows.Forms.ComboBox();
-            this.optimisableObjectiveLabel = new System.Windows.Forms.Label();
             this.setupGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,23 @@
             this.setupGroupBox.TabStop = false;
             this.setupGroupBox.Text = "Auto-Select Training Algorithm Setup";
             // 
+            // optimisableObjectiveLabel
+            // 
+            this.optimisableObjectiveLabel.AutoSize = true;
+            this.optimisableObjectiveLabel.Location = new System.Drawing.Point(10, 40);
+            this.optimisableObjectiveLabel.Name = "optimisableObjectiveLabel";
+            this.optimisableObjectiveLabel.Size = new System.Drawing.Size(109, 13);
+            this.optimisableObjectiveLabel.TabIndex = 6;
+            this.optimisableObjectiveLabel.Text = "Optimisable Objective";
+            // 
+            // optimisableObjectiveComboBox
+            // 
+            this.optimisableObjectiveComboBox.FormattingEnabled = true;
+            this.optimisableObjectiveComboBox.Location = new System.Drawing.Point(123, 36);
+            this.optimisableObjectiveComboBox.Name = "optimisableObjectiveComboBox";
+            this.optimisableObjectiveComboBox.Size = new System.Drawing.Size(239, 21);
+            this.optimisableObjectiveComboBox.TabIndex = 5;
+            // 
             // startTrainingButton
             // 
             this.startTrainingButton.Location = new System.Drawing.Point(13, 300);
@@ -60,6 +77,7 @@
             this.startTrainingButton.TabIndex = 4;
             this.startTrainingButton.Text = "Start";
             this.startTrainingButton.UseVisualStyleBackColor = true;
+            this.startTrainingButton.Click += new System.EventHandler(this.startTrainingButton_Click);
             // 
             // trainingTimeTextBox
             // 
@@ -86,23 +104,6 @@
             this.resultsGroupBox.TabIndex = 1;
             this.resultsGroupBox.TabStop = false;
             this.resultsGroupBox.Text = "Auto-Selection Results";
-            // 
-            // optimisableObjectiveComboBox
-            // 
-            this.optimisableObjectiveComboBox.FormattingEnabled = true;
-            this.optimisableObjectiveComboBox.Location = new System.Drawing.Point(123, 36);
-            this.optimisableObjectiveComboBox.Name = "optimisableObjectiveComboBox";
-            this.optimisableObjectiveComboBox.Size = new System.Drawing.Size(239, 21);
-            this.optimisableObjectiveComboBox.TabIndex = 5;
-            // 
-            // optimisableObjectiveLabel
-            // 
-            this.optimisableObjectiveLabel.AutoSize = true;
-            this.optimisableObjectiveLabel.Location = new System.Drawing.Point(10, 40);
-            this.optimisableObjectiveLabel.Name = "optimisableObjectiveLabel";
-            this.optimisableObjectiveLabel.Size = new System.Drawing.Size(109, 13);
-            this.optimisableObjectiveLabel.TabIndex = 6;
-            this.optimisableObjectiveLabel.Text = "Optimisable Objective";
             // 
             // AutoSelectTrainingAlgorithmForm
             // 

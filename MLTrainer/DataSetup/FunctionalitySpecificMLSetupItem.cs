@@ -50,6 +50,8 @@ namespace MLTrainer.DataSetup
 
         protected IMLTrainingAlgorithm trainingAlgorithm = null;
 
+        public event Action<MLTrainingAlgorithmType> OnTrainingAlgorithmChange;
+
         /// <summary>
         /// Constructor for the machine learning set-up item
         /// </summary>
@@ -72,7 +74,7 @@ namespace MLTrainer.DataSetup
 
         public void OpenAutoSelectTrainingAlgorithmForm(FormClosedEventHandler formClosureAction)
         {
-            AutoSelectTrainingAlgorithmForm autoSelectForm  = new AutoSelectTrainingAlgorithmForm();
+            AutoSelectTrainingAlgorithmForm autoSelectForm  = new AutoSelectTrainingAlgorithmForm(this);
             autoSelectForm.FormClosed += formClosureAction;
             autoSelectForm.Show();
         }
@@ -87,6 +89,7 @@ namespace MLTrainer.DataSetup
         {
             trainingAlgorithm = MLTrainingAlgorithmFactory.CreateInstance(algorithmType);
             SetTrainingAlgorithmDependencies(algorithmType);
+            OnTrainingAlgorithmChange?.Invoke(algorithmType);
         }
 
         /// <summary>
