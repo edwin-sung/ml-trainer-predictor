@@ -12,12 +12,7 @@ namespace MLTrainer.Trainer
     /// <typeparam name="ModelOutput">Model output type</typeparam>
     internal abstract class ModelTrainer
     {
-        protected IMLTrainingAlgorithm trainingAlgorithm;
-
-        protected ModelTrainer(IMLTrainingAlgorithm trainingAlgorithm)
-        {
-            this.trainingAlgorithm = trainingAlgorithm;
-        }
+        protected TrainerAccuracyCalculator trainedModelAccuracyCalculator = null;
 
         #region Model training
 
@@ -81,6 +76,8 @@ namespace MLTrainer.Trainer
             }
             return pipeline;
         }
+
+        internal TrainerAccuracyCalculator GetTrainedModelAccuracyCalculator() => trainedModelAccuracyCalculator;
 
         #endregion
 

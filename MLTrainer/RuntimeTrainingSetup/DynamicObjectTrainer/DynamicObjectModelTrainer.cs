@@ -15,13 +15,13 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
     /// </summary>
     internal class DynamicObjectModelTrainer : ModelTrainer
     {
-        internal DynamicObjectModelTrainer(Type inputType, Type outputType, IMLTrainingAlgorithm trainingAlgorithm) : base(trainingAlgorithm)
+        internal DynamicObjectModelTrainer(Type inputType, Type outputType)
         {
         }
 
-        internal bool TryTrainModel(MLDataSchemaBuilder inputDataBuilder, MLDataSchemaBuilder outputDataBuilder, string trainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null)
+        internal bool TryTrainModel(IMLTrainingAlgorithm trainingAlgorithm, MLDataSchemaBuilder inputDataBuilder, MLDataSchemaBuilder outputDataBuilder, string trainedModelFilePath, out TrainerAccuracyCalculator accuracyResult, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
-            rSquared = null;
+            accuracyResult = null;
 
             // Create schema definition from schema type
             SchemaDefinition schema = SchemaDefinition.Create(inputDataBuilder.SchemaType);
@@ -58,9 +58,8 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer
                     return false;
                 }
 
-                DynamicObjectTrainingAccuracyResult accuracyResult = new DynamicObjectTrainingAccuracyResult(mlContext, newTestSchemaBuilder, outputDataBuilder, trainedModelFilePath);
-                rSquared = accuracyResult.CalculateAccuracy();
-                return rSquared != null;
+                accuracyResult = new DynamicObjectTrainingAccuracyResult(mlContext, newTestSchemaBuilder, outputDataBuilder, trainedModelFilePath);
+                return accuracyResult != null;
             }
 
             return false;

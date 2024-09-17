@@ -3,6 +3,7 @@ using MLTrainer.PredictionTesterUI;
 using MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictionTest;
 using MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictor;
 using MLTrainer.RuntimeTrainingSetup.DynamicObjectTrainer;
+using MLTrainer.Trainer;
 using MLTrainer.TrainingAlgorithms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -194,19 +195,19 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
         }
 
         public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath, 
-            out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null)
+            out TrainerAccuracyCalculator accuracyResult, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
             SaveOriginalTrainedFilePathAsTemp();
             testingTrainedModelFilePath = string.Empty;
-            rSquared = null;
+            accuracyResult = null;
             if (!inputDataSchemaBuilder.TryCreateOutputDataSchemaBuilder(outputColumnLabelName, out outputDataSchemaBuilder))
             {
                 return false;
             }
 
-            DynamicObjectModelTrainer trainer = new DynamicObjectModelTrainer(inputDataSchemaBuilder.SchemaType, outputDataSchemaBuilder.SchemaType, trainingAlgorithm);
+            DynamicObjectModelTrainer trainer = new DynamicObjectModelTrainer(inputDataSchemaBuilder.SchemaType, outputDataSchemaBuilder.SchemaType);
 
-            if (trainer.TryTrainModel(inputDataSchemaBuilder, outputDataSchemaBuilder, TrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed))
+            if (trainer.TryTrainModel(trainingAlgorithm, inputDataSchemaBuilder, outputDataSchemaBuilder, TrainedModelFilePath, out accuracyResult, dataSplitTestPercentage, seed))
             {
                 testingTrainedModelFilePath = TrainedModelFilePath;
                 predictionTester = new DynamicObjectPredictionTester(inputDataSchemaBuilder);

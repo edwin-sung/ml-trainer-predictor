@@ -1,5 +1,6 @@
 ﻿using MLTrainer.Forms;
 using MLTrainer.PredictionTesterUI;
+using MLTrainer.Trainer;
 using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System;
@@ -120,7 +121,7 @@ namespace MLTrainer.DataSetup
 
         /// <inheritdoc />
         public abstract bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath,
-            out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null);
+            out TrainerAccuracyCalculator trainedModelAccuracy, double dataSplitTestPercentage = 0.2, int? seed = null);
 
         /// <summary>
         /// Save the original trained file path as temporary, so that the test prediction can hijack the original file path

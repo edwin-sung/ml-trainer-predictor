@@ -3,6 +3,7 @@ using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor;
 using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer;
 using MLTrainer.DataSetup;
 using MLTrainer.PredictionTesterUI;
+using MLTrainer.Trainer;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -148,19 +149,20 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
         {
             CreateTrainedModelForTestingFunction = TryCreateTrainedModelForTesting<T>;
         }
-        private delegate bool CreateTrainedModelForTestingDelegate(out string testingTrainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null);
+        private delegate bool CreateTrainedModelForTestingDelegate(out string testingTrainedModelFilePath, 
+            out TrainerAccuracyCalculator trainedModelAccuracy, double dataSplitTestPercentage = 0.2, int? seed = null);
         private CreateTrainedModelForTestingDelegate CreateTrainedModelForTestingFunction = null;
 
 
-        private bool TryCreateTrainedModelForTesting<T>(out string testingTrainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null) where T : class, new()
+        private bool TryCreateTrainedModelForTesting<T>(out string testingTrainedModelFilePath, out TrainerAccuracyCalculator accuracyResult, double dataSplitTestPercentage = 0.2, int? seed = null) where T : class, new()
         {
             SaveOriginalTrainedFilePathAsTemp();
 
             testingTrainedModelFilePath = string.Empty;
 
-            ConcreteObjectModelTrainer<ModelInput, T> trainer = new ConcreteObjectModelTrainer<ModelInput, T>(trainingAlgorithm);
+            ConcreteObjectModelTrainer<ModelInput, T> trainer = new ConcreteObjectModelTrainer<ModelInput, T>();
 
-            if (trainer.TryTrainModel(modelInputs, TrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed))
+            if (trainer.TryTrainModel(trainingAlgorithm, modelInputs, TrainedModelFilePath, out accuracyResult, dataSplitTestPercentage, seed))
             {
                 testingTrainedModelFilePath = TrainedModelFilePath;
                 ConcreteObjectPredictionTester<ModelInput, T> predictionTester =
@@ -177,11 +179,11 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
         }
              
         /// <inheritdoc />
-        public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null)
+        public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath, out TrainerAccuracyCalculator accuracyResult, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
             testingTrainedModelFilePath = string.Empty;
-            rSquared = null;
-            return CreateTrainedModelForTestingFunction?.Invoke(out testingTrainedModelFilePath, out rSquared, dataSplitTestPercentage, seed) ?? false;
+            accuracyResult = null;
+            return CreateTrainedModelForTestingFunction?.Invoke(out testingTrainedModelFilePath, out accuracyResult, dataSplitTestPercentage, seed) ?? false;
         }
 
         /// <inhertidoc />

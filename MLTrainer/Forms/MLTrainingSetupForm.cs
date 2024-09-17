@@ -1,5 +1,6 @@
 ﻿using MLTrainer.DataSetup;
 using MLTrainer.PredictionTesterUI;
+using MLTrainer.Trainer;
 using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
 using System;
@@ -155,8 +156,8 @@ namespace MLTrainer.Forms
         private void trainModelButton_Click(object sender, EventArgs e)
         {
 
-            trainingResultsLabel.Text = selectedSetup.TryCreateTrainedModelForTesting(out string filePath, out double? rSquared, DataTrainTestPercentage, 0)
-                ? $"Trained model now created ({filePath}) for testing purposes, R^2 = {rSquared}"
+            trainingResultsLabel.Text = selectedSetup.TryCreateTrainedModelForTesting(out string filePath, out TrainerAccuracyCalculator trainerAccuracy, DataTrainTestPercentage, 0)
+                ? $"Trained model now created ({filePath}) for testing purposes, R^2 = {trainerAccuracy.GetAccuracy()}"
                 : "Trained model cannot be created.";
 
             SetupPredictionTestDataInputGridView();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Data;
 using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor;
+using MLTrainer.Trainer;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
     /// <typeparamref name="ModelInput">Model input generic class</typeparamref>
     /// <typeparamref name="ModelOutput">Model output generic class</typeparamref>
     /// </summary>
-    internal class ConcreteObjectTrainingAccuracyResult<ModelInput, ModelOutput> 
+    internal class ConcreteObjectTrainerAccuracyCalculator<ModelInput, ModelOutput> : TrainerAccuracyCalculator
         where ModelInput : class, new()
         where ModelOutput : class, new()
     {
@@ -25,7 +26,7 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
         private readonly ConcreteObjectModelPredictor<ModelInput, ModelOutput> testSetPredictor;
         
 
-        internal ConcreteObjectTrainingAccuracyResult(MLContext mlContext, IEnumerable<ModelInput> testSet, IDataView transformedTestSet, string trainedModelFilePath)
+        internal ConcreteObjectTrainerAccuracyCalculator(MLContext mlContext, IEnumerable<ModelInput> testSet, IDataView transformedTestSet, string trainedModelFilePath) : base(mlContext)
         {
             this.mlContext = mlContext;
             this.testSet = testSet;
@@ -44,12 +45,13 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
             /*RegressionMetrics trainedModelMetrics = mlContext.Regression.Evaluate(trainedModelTransformer.Transform(transformedTestSet), inputAtt.Name, outputAtt.Name);*/
             //double rSquared = trainedModelMetrics.RSquared;
 
-            double rSquaredComparison = CalculateAccuracy();
+            double rSquaredComparison = GetAccuracy() ?? 0;
 
             //double difference = Math.Abs(rSquared - rSquaredComparison);
         }
 
-        internal double CalculateAccuracy()
+
+        internal override double? GetAccuracy()
         {
             // R-squared is calculated as 1 - sumSquaredRegression/sumOfSquares, where
             // sumSquaredRegression = sum (actual - predicted)^2

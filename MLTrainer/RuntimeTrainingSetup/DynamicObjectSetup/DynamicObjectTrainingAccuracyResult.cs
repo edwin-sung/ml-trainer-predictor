@@ -1,5 +1,6 @@
 ﻿using Microsoft.ML;
 using MLTrainer.RuntimeTrainingSetup.DynamicObjectPredictor;
+using MLTrainer.Trainer;
 
 namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 {
@@ -7,7 +8,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
     /// Dynamic object training accuracy result instance, which gets the test data and the trained model to 
     /// compare predicted results and actual results
     /// </summary>
-    internal class DynamicObjectTrainingAccuracyResult
+    internal class DynamicObjectTrainingAccuracyResult : TrainerAccuracyCalculator
     {
 
         private MLContext mlContext;
@@ -17,7 +18,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
 
 
         internal DynamicObjectTrainingAccuracyResult(MLContext context, MLDataSchemaBuilder inputDataSchemaBuilder,
-            MLDataSchemaBuilder outputDataSchemaBuilder, string trainedModelFilePath)
+            MLDataSchemaBuilder outputDataSchemaBuilder, string trainedModelFilePath) : base(context)
         {
             mlContext = context;
             this.inputDataSchemaBuilder = inputDataSchemaBuilder;
@@ -27,7 +28,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
                 inputDataSchemaBuilder.GetType(), outputDataSchemaBuilder.GetType());
         }
 
-        internal double CalculateAccuracy()
+        internal override double? GetAccuracy()
         {
             if (testSetPredictor.TryGetMultiplePredictions(inputDataSchemaBuilder, outputDataSchemaBuilder,
                 out MLDataSchemaBuilder predictedOutputs))

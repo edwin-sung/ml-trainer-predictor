@@ -29,22 +29,20 @@
         private void InitializeComponent()
         {
             this.setupGroupBox = new System.Windows.Forms.GroupBox();
-            this.resultsGroupBox = new System.Windows.Forms.GroupBox();
-            this.trainingTimeLabel = new System.Windows.Forms.Label();
-            this.trainingTimeTextBox = new System.Windows.Forms.TextBox();
-            this.optimisableObjectiveGroupBox = new System.Windows.Forms.GroupBox();
-            this.rSquaredErrorRadioButton = new System.Windows.Forms.RadioButton();
-            this.rootMeanSquaredRadioButton = new System.Windows.Forms.RadioButton();
-            this.meanSquaredErrorRadioButton = new System.Windows.Forms.RadioButton();
             this.startTrainingButton = new System.Windows.Forms.Button();
+            this.trainingTimeTextBox = new System.Windows.Forms.TextBox();
+            this.trainingTimeLabel = new System.Windows.Forms.Label();
+            this.resultsGroupBox = new System.Windows.Forms.GroupBox();
+            this.optimisableObjectiveComboBox = new System.Windows.Forms.ComboBox();
+            this.optimisableObjectiveLabel = new System.Windows.Forms.Label();
             this.setupGroupBox.SuspendLayout();
-            this.optimisableObjectiveGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // setupGroupBox
             // 
+            this.setupGroupBox.Controls.Add(this.optimisableObjectiveLabel);
+            this.setupGroupBox.Controls.Add(this.optimisableObjectiveComboBox);
             this.setupGroupBox.Controls.Add(this.startTrainingButton);
-            this.setupGroupBox.Controls.Add(this.optimisableObjectiveGroupBox);
             this.setupGroupBox.Controls.Add(this.trainingTimeTextBox);
             this.setupGroupBox.Controls.Add(this.trainingTimeLabel);
             this.setupGroupBox.Location = new System.Drawing.Point(13, 13);
@@ -54,14 +52,22 @@
             this.setupGroupBox.TabStop = false;
             this.setupGroupBox.Text = "Auto-Select Training Algorithm Setup";
             // 
-            // resultsGroupBox
+            // startTrainingButton
             // 
-            this.resultsGroupBox.Location = new System.Drawing.Point(405, 13);
-            this.resultsGroupBox.Name = "resultsGroupBox";
-            this.resultsGroupBox.Size = new System.Drawing.Size(386, 336);
-            this.resultsGroupBox.TabIndex = 1;
-            this.resultsGroupBox.TabStop = false;
-            this.resultsGroupBox.Text = "Auto-Selection Results";
+            this.startTrainingButton.Location = new System.Drawing.Point(13, 300);
+            this.startTrainingButton.Name = "startTrainingButton";
+            this.startTrainingButton.Size = new System.Drawing.Size(75, 23);
+            this.startTrainingButton.TabIndex = 4;
+            this.startTrainingButton.Text = "Start";
+            this.startTrainingButton.UseVisualStyleBackColor = true;
+            // 
+            // trainingTimeTextBox
+            // 
+            this.trainingTimeTextBox.Location = new System.Drawing.Point(108, 17);
+            this.trainingTimeTextBox.Name = "trainingTimeTextBox";
+            this.trainingTimeTextBox.Size = new System.Drawing.Size(76, 20);
+            this.trainingTimeTextBox.TabIndex = 1;
+            this.trainingTimeTextBox.Text = "60";
             // 
             // trainingTimeLabel
             // 
@@ -72,67 +78,31 @@
             this.trainingTimeLabel.TabIndex = 0;
             this.trainingTimeLabel.Text = "Training Time (sec.)";
             // 
-            // trainingTimeTextBox
+            // resultsGroupBox
             // 
-            this.trainingTimeTextBox.Location = new System.Drawing.Point(108, 17);
-            this.trainingTimeTextBox.Name = "trainingTimeTextBox";
-            this.trainingTimeTextBox.Size = new System.Drawing.Size(76, 20);
-            this.trainingTimeTextBox.TabIndex = 1;
-            this.trainingTimeTextBox.Text = "60";
+            this.resultsGroupBox.Location = new System.Drawing.Point(405, 13);
+            this.resultsGroupBox.Name = "resultsGroupBox";
+            this.resultsGroupBox.Size = new System.Drawing.Size(386, 336);
+            this.resultsGroupBox.TabIndex = 1;
+            this.resultsGroupBox.TabStop = false;
+            this.resultsGroupBox.Text = "Auto-Selection Results";
             // 
-            // optimisableObjectiveGroupBox
+            // optimisableObjectiveComboBox
             // 
-            this.optimisableObjectiveGroupBox.Controls.Add(this.meanSquaredErrorRadioButton);
-            this.optimisableObjectiveGroupBox.Controls.Add(this.rootMeanSquaredRadioButton);
-            this.optimisableObjectiveGroupBox.Controls.Add(this.rSquaredErrorRadioButton);
-            this.optimisableObjectiveGroupBox.Location = new System.Drawing.Point(6, 43);
-            this.optimisableObjectiveGroupBox.Name = "optimisableObjectiveGroupBox";
-            this.optimisableObjectiveGroupBox.Size = new System.Drawing.Size(374, 110);
-            this.optimisableObjectiveGroupBox.TabIndex = 3;
-            this.optimisableObjectiveGroupBox.TabStop = false;
-            this.optimisableObjectiveGroupBox.Text = "Optimisation Objective";
+            this.optimisableObjectiveComboBox.FormattingEnabled = true;
+            this.optimisableObjectiveComboBox.Location = new System.Drawing.Point(123, 36);
+            this.optimisableObjectiveComboBox.Name = "optimisableObjectiveComboBox";
+            this.optimisableObjectiveComboBox.Size = new System.Drawing.Size(239, 21);
+            this.optimisableObjectiveComboBox.TabIndex = 5;
             // 
-            // rSquaredErrorRadioButton
+            // optimisableObjectiveLabel
             // 
-            this.rSquaredErrorRadioButton.AutoSize = true;
-            this.rSquaredErrorRadioButton.Location = new System.Drawing.Point(7, 29);
-            this.rSquaredErrorRadioButton.Name = "rSquaredErrorRadioButton";
-            this.rSquaredErrorRadioButton.Size = new System.Drawing.Size(101, 17);
-            this.rSquaredErrorRadioButton.TabIndex = 0;
-            this.rSquaredErrorRadioButton.TabStop = true;
-            this.rSquaredErrorRadioButton.Text = "R-Squared Error";
-            this.rSquaredErrorRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // rootMeanSquaredRadioButton
-            // 
-            this.rootMeanSquaredRadioButton.AutoSize = true;
-            this.rootMeanSquaredRadioButton.Location = new System.Drawing.Point(7, 52);
-            this.rootMeanSquaredRadioButton.Name = "rootMeanSquaredRadioButton";
-            this.rootMeanSquaredRadioButton.Size = new System.Drawing.Size(146, 17);
-            this.rootMeanSquaredRadioButton.TabIndex = 1;
-            this.rootMeanSquaredRadioButton.TabStop = true;
-            this.rootMeanSquaredRadioButton.Text = "Root-Mean-Squared Error";
-            this.rootMeanSquaredRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // meanSquaredErrorRadioButton
-            // 
-            this.meanSquaredErrorRadioButton.AutoSize = true;
-            this.meanSquaredErrorRadioButton.Location = new System.Drawing.Point(7, 75);
-            this.meanSquaredErrorRadioButton.Name = "meanSquaredErrorRadioButton";
-            this.meanSquaredErrorRadioButton.Size = new System.Drawing.Size(120, 17);
-            this.meanSquaredErrorRadioButton.TabIndex = 2;
-            this.meanSquaredErrorRadioButton.TabStop = true;
-            this.meanSquaredErrorRadioButton.Text = "Mean-Squared Error";
-            this.meanSquaredErrorRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // startTrainingButton
-            // 
-            this.startTrainingButton.Location = new System.Drawing.Point(13, 300);
-            this.startTrainingButton.Name = "startTrainingButton";
-            this.startTrainingButton.Size = new System.Drawing.Size(75, 23);
-            this.startTrainingButton.TabIndex = 4;
-            this.startTrainingButton.Text = "Start";
-            this.startTrainingButton.UseVisualStyleBackColor = true;
+            this.optimisableObjectiveLabel.AutoSize = true;
+            this.optimisableObjectiveLabel.Location = new System.Drawing.Point(10, 40);
+            this.optimisableObjectiveLabel.Name = "optimisableObjectiveLabel";
+            this.optimisableObjectiveLabel.Size = new System.Drawing.Size(109, 13);
+            this.optimisableObjectiveLabel.TabIndex = 6;
+            this.optimisableObjectiveLabel.Text = "Optimisable Objective";
             // 
             // AutoSelectTrainingAlgorithmForm
             // 
@@ -145,8 +115,6 @@
             this.Text = "Auto-Select Training AlgorithmForm ";
             this.setupGroupBox.ResumeLayout(false);
             this.setupGroupBox.PerformLayout();
-            this.optimisableObjectiveGroupBox.ResumeLayout(false);
-            this.optimisableObjectiveGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -157,10 +125,8 @@
         private System.Windows.Forms.GroupBox resultsGroupBox;
         private System.Windows.Forms.TextBox trainingTimeTextBox;
         private System.Windows.Forms.Label trainingTimeLabel;
-        private System.Windows.Forms.GroupBox optimisableObjectiveGroupBox;
-        private System.Windows.Forms.RadioButton meanSquaredErrorRadioButton;
-        private System.Windows.Forms.RadioButton rootMeanSquaredRadioButton;
-        private System.Windows.Forms.RadioButton rSquaredErrorRadioButton;
         private System.Windows.Forms.Button startTrainingButton;
+        private System.Windows.Forms.Label optimisableObjectiveLabel;
+        private System.Windows.Forms.ComboBox optimisableObjectiveComboBox;
     }
 }

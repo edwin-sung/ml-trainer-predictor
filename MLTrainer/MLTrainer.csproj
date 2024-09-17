@@ -223,8 +223,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColumnNameStorageAttribute.cs" />
-    <Compile Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\ConcreteObjectTrainingAccuracyResult.cs" />
+    <Compile Include="ColumnNameStorageAttribute.cs" /> 
+    <Compile Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\ConcreteObjectTrainerAccuracyCalculator.cs" />
     <Compile Include="CompileTimeTrainingSetup\DataSetup\ConcreteObjectMLSetupItem.cs" />
     <Compile Include="DataSetup\IMLTrainingAlgorithmSpecificSetupItem.cs" />
     <Compile Include="Forms\AutoSelectTrainingAlgorithmForm.cs">
@@ -271,6 +271,8 @@
     <Compile Include="PredictionTesterUI\PredictionTesterDataInputItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trainer\TrainerAccuracyCalculator.cs" />
+    <Compile Include="TrainingAlgorithms\AutoSelection\OptimisableObjective.cs" />
     <Compile Include="TrainingAlgorithms\LbfgsMaximumEntropyAlgorithm\HistorySizeOption.cs" />
     <Compile Include="TrainingAlgorithms\CustomisableOption\ITrainingAlgorithmOption.cs" />
     <Compile Include="TrainingAlgorithms\LbfgsMaximumEntropyAlgorithm\NumberOfThreadsOption.cs" />

@@ -17,11 +17,6 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
         where ModelOutput : class, new()
     {
 
-
-        internal ConcreteObjectModelTrainer(IMLTrainingAlgorithm trainingAlgorithm) : base(trainingAlgorithm)
-        {
-        }
-
         private IEnumerable<ColumnNameStorageAttribute> GetColumnNameAttributesFor<T>()
         {
             return typeof(T).GetProperties().Select(
@@ -31,9 +26,9 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
         /// <summary>
         /// Train the model
         /// </summary>
-        internal bool TryTrainModel(IEnumerable<ModelInput> inputs, string trainedModelFilePath, out double? rSquared, double dataSplitTestPercentage = 0.2, int? seed = null)
+        internal bool TryTrainModel(IMLTrainingAlgorithm trainingAlgorithm, IEnumerable<ModelInput> inputs, string trainedModelFilePath, out TrainerAccuracyCalculator trainedModelAccuracy, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
-            rSquared = null;
+            trainedModelAccuracy = null;
             MLContext mlContextInstance = new MLContext();
             IDataView trainData = mlContextInstance.Data.LoadFromEnumerable(inputs);
 
@@ -52,11 +47,9 @@ namespace MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer
             SaveTrainedModel(mlContextInstance, trainedModel, trainSet.Schema, trainedModelFilePath);
 
             // Training model was successful, make use of the test set to determine the accuracy of the trained model
-            ConcreteObjectTrainingAccuracyResult<ModelInput, ModelOutput> accuracyResult =
-                new ConcreteObjectTrainingAccuracyResult<ModelInput, ModelOutput>(mlContextInstance,
+            trainedModelAccuracy =
+                new ConcreteObjectTrainerAccuracyCalculator<ModelInput, ModelOutput>(mlContextInstance,
                     mlContextInstance.Data.CreateEnumerable<ModelInput>(testSet, false), testSet, trainedModelFilePath);
-
-            rSquared = accuracyResult.CalculateAccuracy();
 
             return true;
         }
