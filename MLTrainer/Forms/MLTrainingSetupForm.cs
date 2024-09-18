@@ -56,7 +56,6 @@ namespace MLTrainer.Forms
                     algorithmComboBox.SelectedIndex = Enum.GetValues(typeof(MLTrainingAlgorithmType)).Cast<Enum>().ToList().IndexOf(newAlgorithmType);
                     SetupAlgorithmParametersDataGridView();
                     SetupPredictionTestDataInputGridView();
-                    trainingResultsLabel.Text = "Trained model now created for testing purposes";
                 };
             }
         }

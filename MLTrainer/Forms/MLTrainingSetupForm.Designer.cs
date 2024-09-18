@@ -329,6 +329,7 @@
             this.Controls.Add(this.selectFunctionalityLabel);
             this.Name = "MLTrainingSetupForm";
             this.Text = "Machine Learning Training";
+            this.FormClosed += MLTrainingSetupForm_FormClosed;
             this.testPredictionGroupBox.ResumeLayout(false);
             this.testPredictionGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testPredictionDataGridView)).EndInit();
