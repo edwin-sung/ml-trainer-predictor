@@ -14,7 +14,6 @@ namespace MLTrainer.DataSetup
     /// </summary>
     public interface IFunctionalitySpecificMLSetupItem
     {
-        event Action<MLTrainingAlgorithmType> OnTrainingAlgorithmChange;
 
         /// <summary>
         /// Name to be shown on the form
@@ -51,16 +50,16 @@ namespace MLTrainer.DataSetup
         void OpenAutoSelectTrainingAlgorithmForm(FormClosedEventHandler formClosureAction);
 
         /// <summary>
-        /// Gets all available training algorithms for end-user to select
+        /// Gets all training algorithms that are relevant to the dataset schema
         /// </summary>
-        /// <returns>All available training algorithms to choose from </returns>
-        IEnumerable<MLTrainingAlgorithmType> GetAllTrainingAlgorithms();
+        /// <returns>All eligible algorithms to choose from</returns>
+        IEnumerable<IMLTrainingAlgorithm> GetAllEligibleAlgorithms();
 
         /// <summary>
         /// Sets the training algorithm
         /// </summary>
-        /// <param name="algorithmType">Training algroithm type</param>
-        void SetTrainingAlgorithm(MLTrainingAlgorithmType algorithmType);
+        /// <param name="trainingAlgorithm">Training algorithm</param>
+        void SetTrainingAlgorithm(IMLTrainingAlgorithm trainingAlgorithm);
 
         /// <summary>
         /// Gets the collection of training algorithm options that are customisable

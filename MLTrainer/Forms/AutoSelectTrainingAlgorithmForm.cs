@@ -43,10 +43,10 @@ namespace MLTrainer.Forms
             double testFraction = 0.2;
 
             double highestAccuracy = double.MinValue;
-            MLTrainingAlgorithmType bestAlgorithmToUse = default;
+            IMLTrainingAlgorithm bestAlgorithm = null;
 
             // Use the set-up item to set algorithm and kick off the train modules
-            foreach(MLTrainingAlgorithmType algorithm in selectedSetupItem.GetAllTrainingAlgorithms())
+            foreach(IMLTrainingAlgorithm algorithm in selectedSetupItem.GetAllEligibleAlgorithms())
             {
                 selectedSetupItem.SetTrainingAlgorithm(algorithm);
                 if (selectedSetupItem.TryCreateTrainedModelForTesting(out string testTrainedModelFilePath, out TrainerAccuracyCalculator trainedModelAccuracy, testFraction, seed))
@@ -54,12 +54,15 @@ namespace MLTrainer.Forms
                     if (trainedModelAccuracy.GetAccuracy() is double validAccuracy && validAccuracy > highestAccuracy)
                     {
                         highestAccuracy = validAccuracy;
-                        bestAlgorithmToUse = algorithm;
+                        bestAlgorithm = algorithm;
                     }
                 }
             }
 
-            selectedSetupItem.SetTrainingAlgorithm(bestAlgorithmToUse);
+            if (bestAlgorithm != null)
+            {
+                selectedSetupItem.SetTrainingAlgorithm(bestAlgorithm);
+            }
             Close();
         }
     }

@@ -4,12 +4,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLTrainer", "MLTrainer.csproj", "{016A2202-6ACF-401A-BD2F-3831F45A904E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2308395B-3F58-4EEF-9225-FA2EA48E77D7} = {2308395B-3F58-4EEF-9225-FA2EA48E77D7}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLTrainerPredictorTesting", "..\MLTrainerPredictorTesting\MLTrainerPredictorTesting.csproj", "{67E49425-5657-4466-B0FC-CBD9740B2FE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "..\WindowsFormsApp1\WindowsFormsApp1.csproj", "{AD42F4E2-F877-41D1-8CB6-2BDE71A0D258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "..\ConsoleApp1\ConsoleApp1.csproj", "{332F87D2-6687-44B0-80CE-1557BEF00B14}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLModel1_ConsoleApp1", "..\MLModel1_ConsoleApp1\MLModel1_ConsoleApp1.csproj", "{EB10C1FA-FAF0-4C8C-ADAB-13E399A3DDB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLModel2_ConsoleApp1", "..\MLModel2_ConsoleApp1\MLModel2_ConsoleApp1.csproj", "{41654F3E-E0F1-48A1-BE55-B5EAD0CB1A38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLModel3_ConsoleApp1", "..\MLModel3_ConsoleApp1\MLModel3_ConsoleApp1.csproj", "{AD0C1866-F5DD-46CA-A307-09DB8EBFD682}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLTensorflowNet", "..\MLTensorflowNet\MLTensorflowNet.csproj", "{2308395B-3F58-4EEF-9225-FA2EA48E77D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,12 +32,22 @@ Global
 		{67E49425-5657-4466-B0FC-CBD9740B2FE9}.Debug|x64.Build.0 = Debug|x64
 		{67E49425-5657-4466-B0FC-CBD9740B2FE9}.Release|x64.ActiveCfg = Release|x64
 		{67E49425-5657-4466-B0FC-CBD9740B2FE9}.Release|x64.Build.0 = Release|x64
-		{AD42F4E2-F877-41D1-8CB6-2BDE71A0D258}.Debug|x64.ActiveCfg = Debug|x64
-		{AD42F4E2-F877-41D1-8CB6-2BDE71A0D258}.Debug|x64.Build.0 = Debug|x64
-		{AD42F4E2-F877-41D1-8CB6-2BDE71A0D258}.Release|x64.ActiveCfg = Release|x64
-		{EB10C1FA-FAF0-4C8C-ADAB-13E399A3DDB5}.Debug|x64.ActiveCfg = Debug|x64
-		{EB10C1FA-FAF0-4C8C-ADAB-13E399A3DDB5}.Debug|x64.Build.0 = Debug|x64
-		{EB10C1FA-FAF0-4C8C-ADAB-13E399A3DDB5}.Release|x64.ActiveCfg = Release|x64
+		{332F87D2-6687-44B0-80CE-1557BEF00B14}.Debug|x64.ActiveCfg = Debug|x64
+		{332F87D2-6687-44B0-80CE-1557BEF00B14}.Debug|x64.Build.0 = Debug|x64
+		{332F87D2-6687-44B0-80CE-1557BEF00B14}.Release|x64.ActiveCfg = Release|x64
+		{332F87D2-6687-44B0-80CE-1557BEF00B14}.Release|x64.Build.0 = Release|x64
+		{41654F3E-E0F1-48A1-BE55-B5EAD0CB1A38}.Debug|x64.ActiveCfg = Debug|x64
+		{41654F3E-E0F1-48A1-BE55-B5EAD0CB1A38}.Debug|x64.Build.0 = Debug|x64
+		{41654F3E-E0F1-48A1-BE55-B5EAD0CB1A38}.Release|x64.ActiveCfg = Release|x64
+		{41654F3E-E0F1-48A1-BE55-B5EAD0CB1A38}.Release|x64.Build.0 = Release|x64
+		{AD0C1866-F5DD-46CA-A307-09DB8EBFD682}.Debug|x64.ActiveCfg = Debug|x64
+		{AD0C1866-F5DD-46CA-A307-09DB8EBFD682}.Debug|x64.Build.0 = Debug|x64
+		{AD0C1866-F5DD-46CA-A307-09DB8EBFD682}.Release|x64.ActiveCfg = Release|x64
+		{AD0C1866-F5DD-46CA-A307-09DB8EBFD682}.Release|x64.Build.0 = Release|x64
+		{2308395B-3F58-4EEF-9225-FA2EA48E77D7}.Debug|x64.ActiveCfg = Debug|x64
+		{2308395B-3F58-4EEF-9225-FA2EA48E77D7}.Debug|x64.Build.0 = Debug|x64
+		{2308395B-3F58-4EEF-9225-FA2EA48E77D7}.Release|x64.ActiveCfg = Release|x64
+		{2308395B-3F58-4EEF-9225-FA2EA48E77D7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

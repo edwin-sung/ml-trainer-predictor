@@ -217,7 +217,7 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
             return false;
         }
 
-        protected override void SetTrainingAlgorithmDependencies(MLTrainingAlgorithmType algorithmType)
+        /*protected override void SetTrainingAlgorithmDependencies(MLTrainingAlgorithmType algorithmType)
         {
 
             switch(algorithmType)
@@ -237,6 +237,11 @@ namespace MLTrainer.RuntimeTrainingSetup.DynamicObjectSetup
                 }
             }
 
+        }*/
+
+        protected override bool FilterAlgorithm(IMLTrainingAlgorithm trainingAlgorithm)
+        {
+            return false;
         }
     }
 }

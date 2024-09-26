@@ -1,5 +1,6 @@
 ﻿using MLTrainer.DataSetup;
 using MLTrainer.PredictionTesterUI;
+using MLTrainer.TensorflowTrainingAlgorithms;
 using MLTrainer.Trainer;
 using MLTrainer.TrainingAlgorithms;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
@@ -26,9 +27,8 @@ namespace MLTrainer.Forms
 
             SetupFunctionalityList();
             SetupAlgorithmList();
-            SetupPredictionTestDataInputGridView();
 
-            SetupDependentActionHandlers();
+            SequentialTrainer trainer = new SequentialTrainer();
         }
 
 
@@ -51,22 +51,22 @@ namespace MLTrainer.Forms
         {
             foreach(IFunctionalitySpecificMLSetupItem setupItem in setupItems)
             {
-                setupItem.OnTrainingAlgorithmChange += newAlgorithmType =>
+                /*setupItem.OnTrainingAlgorithmChange += newAlgorithmType =>
                 {
                     algorithmComboBox.SelectedIndex = Enum.GetValues(typeof(MLTrainingAlgorithmType)).Cast<Enum>().ToList().IndexOf(newAlgorithmType);
                     SetupAlgorithmParametersDataGridView();
                     SetupPredictionTestDataInputGridView();
-                };
+                };*/
             }
         }
 
         private void SetupAlgorithmList()
         {
-            algorithmComboBox.DisplayMember = "Description";
-            algorithmComboBox.ValueMember = "Value";
-            algorithmComboBox.DataSource = Enum.GetValues(typeof(MLTrainingAlgorithmType)).Cast<Enum>().Select(
-                value => (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), 
-                typeof(DescriptionAttribute)) as DescriptionAttribute).Description).ToList();
+            // Set the tag of the combo box to store the eligible algorithms
+            List<IMLTrainingAlgorithm> allAlgorithms = selectedSetup.GetAllEligibleAlgorithms().ToList();
+            algorithmComboBox.Items.Clear();
+            algorithmComboBox.Tag = allAlgorithms;
+            algorithmComboBox.Items.AddRange(allAlgorithms.Select(algo => algo.Name).ToArray());
             algorithmComboBox.Update();
 
             algorithmComboBox.SelectedIndex = 0;
@@ -220,8 +220,12 @@ namespace MLTrainer.Forms
         {
             try
             {
-                selectedSetup.SetTrainingAlgorithm((MLTrainingAlgorithmType)algorithmComboBox.SelectedIndex);
-                SetupAlgorithmParametersDataGridView();
+                if (algorithmComboBox.Tag is List<IMLTrainingAlgorithm> algorithmList)
+                {
+                    selectedSetup.SetTrainingAlgorithm(algorithmList[algorithmComboBox.SelectedIndex]);
+                    SetupAlgorithmParametersDataGridView();
+                }
+
             } 
             catch
             {
@@ -286,6 +290,7 @@ namespace MLTrainer.Forms
             selectedSetup.CleanupTemporaryFiles();
             selectedSetup = setupItems.SingleOrDefault(item => item.Name == functionalityComboBox.SelectedItem.ToString());
             selectedSetup.OpenDataSchemaSetupForm(datachemaSetupFormClosedAction);
+            SetupAlgorithmList();
             SetupAlgorithmParametersDataGridView();
             saveFileButton.Text = $"Save {selectedSetup.DataExtension.ToUpper()}";
         }

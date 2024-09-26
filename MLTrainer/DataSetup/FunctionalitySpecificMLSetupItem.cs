@@ -50,8 +50,6 @@ namespace MLTrainer.DataSetup
 
         protected IMLTrainingAlgorithm trainingAlgorithm = null;
 
-        public event Action<MLTrainingAlgorithmType> OnTrainingAlgorithmChange;
-
         /// <summary>
         /// Constructor for the machine learning set-up item
         /// </summary>
@@ -65,7 +63,6 @@ namespace MLTrainer.DataSetup
                 AddDataInputsBySourceFilePath(TrainingModelFilePath);
             }
 
-            SetTrainingAlgorithm(GetAllTrainingAlgorithms().FirstOrDefault());
         }
 
         public virtual void OpenDataSchemaSetupForm(FormClosedEventHandler schemaSetupFormClosureAction)
@@ -79,24 +76,24 @@ namespace MLTrainer.DataSetup
             autoSelectForm.Show();
         }
 
-        public IEnumerable<MLTrainingAlgorithmType> GetAllTrainingAlgorithms()
-        {
-            return Enum.GetValues(typeof(MLTrainingAlgorithmType)).OfType<MLTrainingAlgorithmType>();
-        }
-
         /// <inheritdoc />
-        public void SetTrainingAlgorithm(MLTrainingAlgorithmType algorithmType)
+        public IEnumerable<IMLTrainingAlgorithm> GetAllEligibleAlgorithms()
         {
-            trainingAlgorithm = MLTrainingAlgorithmFactory.CreateInstance(algorithmType);
-            SetTrainingAlgorithmDependencies(algorithmType);
-            OnTrainingAlgorithmChange?.Invoke(algorithmType);
+            return MLTrainingAlgorithmFactory.GetAllAlgorithms().Where(FilterAlgorithm);
         }
 
         /// <summary>
-        /// Allows training-algorithm-dependent logic to be set according to the algorithm type chosen
+        /// Filters algorithm based on the nature of the setup item (dataset schema checks)
         /// </summary>
-        /// <param name="algorithmType">New algorithm type</param>
-        protected abstract void SetTrainingAlgorithmDependencies(MLTrainingAlgorithmType algorithmType);
+        /// <param name="trainingAlgorithm">Training algorithm in question</param>
+        /// <returns>True if the algorithm is compatible with the dataset schema</returns>
+        protected abstract bool FilterAlgorithm(IMLTrainingAlgorithm trainingAlgorithm);
+
+        /// <inheritdoc />
+        public void SetTrainingAlgorithm(IMLTrainingAlgorithm trainingAlgorithm)
+        {
+            this.trainingAlgorithm = trainingAlgorithm;
+        }
 
         /// <inheritdoc />
         public List<ITrainingAlgorithmOption> GetTrainingAlgorithmOptions()

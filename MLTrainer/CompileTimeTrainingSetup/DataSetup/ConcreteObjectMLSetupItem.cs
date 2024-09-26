@@ -4,6 +4,7 @@ using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectTrainer;
 using MLTrainer.DataSetup;
 using MLTrainer.PredictionTesterUI;
 using MLTrainer.Trainer;
+using MLTrainer.TrainingAlgorithms;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,12 +18,14 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
     /// Abstract class for functionality-specific machine learning set-up item, which has concrete objects defined
     /// </summary>
     /// <typeparam name="ModelInput">Model input generic type</typeparam>
-    public abstract class ConcreteObjectMLSetupItem<ModelInput> : FunctionalitySpecificMLSetupItem
+    /// <typeparam name="ModelOutput">Model output generic type</typeparam>
+    public abstract class ConcreteObjectMLSetupItem<ModelInput, ModelOutput> : FunctionalitySpecificMLSetupItem
         where ModelInput : class, new()
+        where ModelOutput: class, new()
     {
         private List<ModelInput> modelInputs = new List<ModelInput>();
         private List<IPredictionTesterDataInputItem> PredictionTesterDataInputItems { get; set; } = new List<IPredictionTesterDataInputItem>();
-        private Func<string> RunTestPredictionFunction = null;
+        //private Func<string> RunTestPredictionFunction = null;
 
         public override string DataExtension => "csv";
 
@@ -125,74 +128,88 @@ namespace MLTrainer.CompileTimeTrainingSetup.DataSetup
         private bool TryGetColumnNamesFor<T>(Predicate<bool> labelPredicate, out List<string> columnNames)
         {
             columnNames = new List<string>();
-            foreach (var property in typeof(T).GetProperties())
+            List<string> validColumnNames = new List<string>();
+
+            ForEachColumnNameStorageAttributeOf<T>(col =>
+            {
+                if (!string.IsNullOrEmpty(col.Name) && labelPredicate(col.IsLabel))
+                {
+                    validColumnNames.Add(col.Name);
+                }
+            });
+
+
+            // If we are looking for label, make sure there is only one column, otherwise simply check whether there are any.
+            columnNames = validColumnNames;
+            return columnNames.Any();
+        }
+
+        private void ForEachColumnNameStorageAttributeOf<T>(Action<ColumnNameStorageAttribute> action)
+        {
+            foreach(var property in typeof(T).GetProperties())
             {
                 try
                 {
                     ColumnNameStorageAttribute att = property.GetCustomAttribute<ColumnNameStorageAttribute>();
-                    if (!string.IsNullOrEmpty(att.Name) && labelPredicate(att.IsLabel))
+                    if (att == null)
                     {
-                        columnNames.Add(att.Name);
+                        continue;
                     }
+                    action?.Invoke(att);
                 }
                 catch
                 {
                     continue;
                 }
             }
-
-            // If we are looking for label, make sure there is only one column, otherwise simply check whether there are any.
-            return columnNames.Any();
         }
 
-        protected void SetOutputDependentTrainModelCreation<T>() where T : class, new()
+        protected override bool FilterAlgorithm(IMLTrainingAlgorithm trainingAlgorithm)
         {
-            CreateTrainedModelForTestingFunction = TryCreateTrainedModelForTesting<T>;
-        }
-        private delegate bool CreateTrainedModelForTestingDelegate(out string testingTrainedModelFilePath, 
-            out TrainerAccuracyCalculator trainedModelAccuracy, double dataSplitTestPercentage = 0.2, int? seed = null);
-        private CreateTrainedModelForTestingDelegate CreateTrainedModelForTestingFunction = null;
-
-
-        private bool TryCreateTrainedModelForTesting<T>(out string testingTrainedModelFilePath, out TrainerAccuracyCalculator accuracyResult, double dataSplitTestPercentage = 0.2, int? seed = null) where T : class, new()
-        {
-            SaveOriginalTrainedFilePathAsTemp();
-
-            testingTrainedModelFilePath = string.Empty;
-
-            ConcreteObjectModelTrainer<ModelInput, T> trainer = new ConcreteObjectModelTrainer<ModelInput, T>();
-
-            if (trainer.TryTrainModel(trainingAlgorithm, modelInputs, TrainedModelFilePath, out accuracyResult, dataSplitTestPercentage, seed))
+            bool filter = false;
+            ForEachColumnNameStorageAttributeOf<ModelInput>(col =>
             {
-                testingTrainedModelFilePath = TrainedModelFilePath;
-                ConcreteObjectPredictionTester<ModelInput, T> predictionTester =
-                    new ConcreteObjectPredictionTester<ModelInput, T>();
-                PredictionTesterDataInputItems = predictionTester.DataInputItems;
-                RunTestPredictionFunction = () =>
+                if (filter || string.IsNullOrEmpty(col.Name) || !col.IsLabel)
                 {
-                    return predictionTester.RunPrediction(new ConcreteObjectModelPredictor<ModelInput, T>(TrainedModelFilePath),
-                        out string predictedValueAsString) ? predictedValueAsString : string.Empty;
-                };
-                return true;
-            }
-            return false;
+                    return;
+                }
+
+                filter |= trainingAlgorithm.IsValidPredictedValueColumnType(col.ColumnType);
+            });
+            return filter;
         }
+
              
         /// <inheritdoc />
         public override bool TryCreateTrainedModelForTesting(out string testingTrainedModelFilePath, out TrainerAccuracyCalculator accuracyResult, double dataSplitTestPercentage = 0.2, int? seed = null)
         {
+            SaveOriginalTrainedFilePathAsTemp();
+
             testingTrainedModelFilePath = string.Empty;
             accuracyResult = null;
-            return CreateTrainedModelForTestingFunction?.Invoke(out testingTrainedModelFilePath, out accuracyResult, dataSplitTestPercentage, seed) ?? false;
+
+            ConcreteObjectModelTrainer<ModelInput, ModelOutput> trainer = new ConcreteObjectModelTrainer<ModelInput, ModelOutput>();
+            if (trainer.TryTrainModel(trainingAlgorithm, modelInputs, TrainedModelFilePath, out accuracyResult, dataSplitTestPercentage, seed))
+            {
+                testingTrainedModelFilePath = TrainedModelFilePath;
+                ConcreteObjectPredictionTester<ModelInput, ModelOutput> predictionTester =
+                    new ConcreteObjectPredictionTester<ModelInput, ModelOutput>();
+                PredictionTesterDataInputItems = predictionTester.DataInputItems;
+                return true;
+            }
+
+            return false;
         }
 
         /// <inhertidoc />
         public override IEnumerable<IPredictionTesterDataInputItem> GetAllPredictionTesterDataInputItems() => PredictionTesterDataInputItems;
 
         /// <inheritdoc />
-        public override void RunTestPrediction(out string predictedValueAsString) =>
-            predictedValueAsString = RunTestPredictionFunction?.Invoke() ?? string.Empty;
-
+        public override void RunTestPrediction(out string predictedValueAsString)
+        {
+            ConcreteObjectPredictionTester<ModelInput, ModelOutput> predictionTester = new ConcreteObjectPredictionTester<ModelInput, ModelOutput>();
+            predictionTester.RunPrediction(new ConcreteObjectModelPredictor<ModelInput, ModelOutput>(TrainedModelFilePath), out predictedValueAsString);
+        }
 
         /// <inheritdoc />
         public override void SaveModelInputAsDataExtension()
