@@ -1,5 +1,6 @@
 using MLTrainer.CompileTimeTrainingSetup.ConcreteObjectPredictor;
 using MLTrainer.DataSetup;
+using MLTrainer.Trainer;
 
 namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
 {
@@ -24,7 +25,7 @@ namespace MLTrainerTests.MicroGasTurbineElectricalEnergyPrediction
         [Test]
         public void Test_Training_And_Predicting()
         {
-            bool tryCreateTrainedModel = setupItem.TryCreateTrainedModelForTesting(out string filePath, out double? rSquared);
+            bool tryCreateTrainedModel = setupItem.TryCreateTrainedModelForTesting(out string filePath, out TrainerAccuracyCalculator trainedModelAccuracy);
 
             ConcreteObjectModelPredictor<ElectricalTestInput, ElectricalTestOutput> predictor = new ConcreteObjectModelPredictor<ElectricalTestInput, ElectricalTestOutput>(filePath);
 
