@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\LG.SciSharp.TensorFlow.Redist-Windows-GPU.2.6.0\build\netstandard2.0\LG.SciSharp.TensorFlow.Redist-Windows-GPU.props" Condition="Exists('packages\LG.SciSharp.TensorFlow.Redist-Windows-GPU.2.6.0\build\netstandard2.0\LG.SciSharp.TensorFlow.Redist-Windows-GPU.props')" />
   <Import Project="packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props" Condition="Exists('packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props')" />
   <Import Project="packages\LightGBM.4.5.0\build\LightGBM.props" Condition="Exists('packages\LightGBM.4.5.0\build\LightGBM.props')" />
   <Import Project="packages\Microsoft.ML.FastTree.3.0.1\build\netstandard2.0\Microsoft.ML.FastTree.props" Condition="Exists('packages\Microsoft.ML.FastTree.3.0.1\build\netstandard2.0\Microsoft.ML.FastTree.props')" />
@@ -402,7 +401,6 @@
     </Compile>
     <None Include="TensorflowTrainingAlgorithms\MLTensorflowTrainer.pyproj" />
     <None Include="TensorflowTrainingAlgorithms\my_model.keras" />
-    <None Include="TensorflowTrainingAlgorithms\numpy-1.26.4-cp39-cp39-win_amd64.whl" />
     <Content Include="TensorflowTrainingAlgorithms\demo_sequential_trainer_predictor.py" />
     <Content Include="TensorflowTrainingAlgorithms\MLTensorflowGenericTrainer.py" />
     <Content Include="TensorflowTrainingAlgorithms\MLTrainerNetCommunicator.py" />
@@ -440,7 +438,6 @@
     <Error Condition="!Exists('packages\LightGBM.4.5.0\build\LightGBM.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\LightGBM.4.5.0\build\LightGBM.targets'))" />
     <Error Condition="!Exists('packages\Fody.6.8.2\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.6.8.2\build\Fody.targets'))" />
     <Error Condition="!Exists('packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props'))" />
-    <Error Condition="!Exists('packages\LG.SciSharp.TensorFlow.Redist-Windows-GPU.2.6.0\build\netstandard2.0\LG.SciSharp.TensorFlow.Redist-Windows-GPU.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\LG.SciSharp.TensorFlow.Redist-Windows-GPU.2.6.0\build\netstandard2.0\LG.SciSharp.TensorFlow.Redist-Windows-GPU.props'))" />
   </Target>
   <Import Project="packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.targets" Condition="Exists('packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.targets')" />
   <Import Project="packages\LightGBM.4.5.0\build\LightGBM.targets" Condition="Exists('packages\LightGBM.4.5.0\build\LightGBM.targets')" />

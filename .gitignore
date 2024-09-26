@@ -17,3 +17,5 @@
 /MLModel1_ConsoleApp1/obj
 /WindowsFormsApp1/obj
 /WindowsFormsApp1/.vs
+/ConsoleApp1/bin
+/MLTrainer/TensorflowTrainingAlgorithms

@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\SciSharp.TensorFlow.Redist.2.16.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props" Condition="Exists('packages\SciSharp.TensorFlow.Redist.2.16.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props')" />
+  <Import Project="packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props" Condition="Exists('packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props')" />
+  <Import Project="packages\LightGBM.4.5.0\build\LightGBM.props" Condition="Exists('packages\LightGBM.4.5.0\build\LightGBM.props')" />
   <Import Project="packages\Microsoft.ML.FastTree.3.0.1\build\netstandard2.0\Microsoft.ML.FastTree.props" Condition="Exists('packages\Microsoft.ML.FastTree.3.0.1\build\netstandard2.0\Microsoft.ML.FastTree.props')" />
   <Import Project="packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.props" Condition="Exists('packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.props')" />
   <Import Project="packages\Microsoft.ML.CpuMath.3.0.1\build\netstandard2.0\Microsoft.ML.CpuMath.props" Condition="Exists('packages\Microsoft.ML.CpuMath.3.0.1\build\netstandard2.0\Microsoft.ML.CpuMath.props')" />
@@ -39,6 +42,12 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Protobuf, Version=3.28.2.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.28.2\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MethodBoundaryAspect, Version=2.0.149.0, Culture=neutral, PublicKeyToken=296379d5065c9d61, processorArchitecture=MSIL">
+      <HintPath>packages\MethodBoundaryAspect.Fody.2.0.149\lib\net462\MethodBoundaryAspect.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeAnalysis.Common.1.3.2\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
     </Reference>
@@ -66,6 +75,9 @@
     <Reference Include="Microsoft.ML.KMeansClustering, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ML.3.0.1\lib\netstandard2.0\Microsoft.ML.KMeansClustering.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ML.LightGbm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ML.LightGbm.3.0.1\lib\netstandard2.0\Microsoft.ML.LightGbm.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ML.PCA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ML.3.0.1\lib\netstandard2.0\Microsoft.ML.PCA.dll</HintPath>
     </Reference>
@@ -75,9 +87,23 @@
     <Reference Include="Microsoft.ML.Transforms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ML.3.0.1\lib\netstandard2.0\Microsoft.ML.Transforms.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.1.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OneOf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\OneOf.3.0.271\lib\net45\OneOf.dll</HintPath>
+    </Reference>
+    <Reference Include="Protobuf.Text, Version=0.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Protobuf.Text.0.7.2\lib\netstandard2.0\Protobuf.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="Razorvine.Pickle, Version=1.5.0.0, Culture=neutral, PublicKeyToken=35192c03a6ef2e20, processorArchitecture=MSIL">
+      <HintPath>packages\Razorvine.Pickle.1.5.0\lib\netstandard2.0\Razorvine.Pickle.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>packages\Serilog.4.0.1\lib\net471\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=6.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>packages\Serilog.Sinks.Console.6.0.0\lib\net471\Serilog.Sinks.Console.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -95,6 +121,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Diagnostics.FileVersionInfo, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.FileVersionInfo.4.3.0\lib\net46\System.Diagnostics.FileVersionInfo.dll</HintPath>
       <Private>True</Private>
@@ -114,6 +143,9 @@
       <HintPath>packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
@@ -161,6 +193,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\System.Runtime.Loader.4.3.0\ref\netstandard1.5\System.Runtime.Loader.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
       <Private>True</Private>
@@ -181,8 +216,14 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Text.Encoding.CodePages, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.Encoding.CodePages.7.0.0\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Channels.8.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Dataflow, Version=8.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Dataflow.8.0.1\lib\net462\System.Threading.Tasks.Dataflow.dll</HintPath>
@@ -221,12 +262,18 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MLTensorflowNet">
+      <HintPath>..\MLTensorflowNet\$(OutputPath)\netstandard2.0\MLTensorflowNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColumnNameStorageAttribute.cs" /> 
-    <Compile Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\ConcreteObjectTrainingAccuracyCalculator.cs" />
+    <Compile Include="ColumnNameStorageAttribute.cs" />
+    <Compile Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\ConcreteObjectTrainerAccuracyCalculator.cs" />
     <Compile Include="CompileTimeTrainingSetup\DataSetup\ConcreteObjectMLSetupItem.cs" />
     <Compile Include="DataSetup\IMLTrainingAlgorithmSpecificSetupItem.cs" />
+    <Compile Include="Demo\IrisPrediction\IrisClassificationOutput.cs" />
+    <Compile Include="Demo\IrisPrediction\IrisClassificationSetupItem.cs" />
+    <Compile Include="Demo\IrisPrediction\IrisInput.cs" />
     <Compile Include="Forms\AutoSelectTrainingAlgorithmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +310,8 @@
     <Compile Include="RuntimeTrainingSetup\DynamicObjectPredictor\DynamicObjectModelPredictor.cs" />
     <Compile Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\ConcreteObjectModelTrainer.cs" />
     <Compile Include="RuntimeTrainingSetup\DynamicObjectTrainer\DynamicObjectModelTrainer.cs" />
+    <Compile Include="TensorflowTrainingAlgorithms\TensorflowNetAlgorithm\TensorflowNetAlgorithm.cs" />
+    <Compile Include="TensorflowTrainingAlgorithms\TensorflowTrainingAlgorithmBase.cs" />
     <Compile Include="Trainer\ModelTrainer.cs" />
     <Compile Include="PredictionTesterUI\DataInputItemType\PredictionTesterDataInputFloat.cs" />
     <Compile Include="PredictionTesterUI\DataInputItemType\PredictionTesterDataInputString.cs" />
@@ -286,9 +335,9 @@
     <Compile Include="TrainingAlgorithms\LbfgsPoissonAlgorithm\L1RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\LbfgsPoissonAlgorithm\L2RegularisationOption.cs" />
     <Compile Include="TrainingAlgorithms\LbfgsPoissonAlgorithm\LbfgsPoisson.cs" />
+    <Compile Include="TrainingAlgorithms\LightGbmAlgorithm\LightGbm.cs" />
     <Compile Include="TrainingAlgorithms\MLTrainingPipelineBuilder.cs" />
     <Compile Include="TrainingAlgorithms\MLTrainingAlgorithmFactory.cs" />
-    <Compile Include="TrainingAlgorithms\MLTrainingAlgorithmType.cs" />
     <Compile Include="TrainingAlgorithms\OnlineGradientDescentAlgorithm\NumberOfIterationsOption.cs" />
     <Compile Include="TrainingAlgorithms\OnlineGradientDescentAlgorithm\DecreaseLearningRateToggle.cs" />
     <Compile Include="TrainingAlgorithms\OnlineGradientDescentAlgorithm\LearningRateOption.cs" />
@@ -317,6 +366,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Demo\IrisPrediction\iris.csv" />
     <None Include="Demo\MicroGasTurbineElectricalEnergyPredictionJson\electrical-energy-prediction-json.json" />
     <None Include="Demo\MicroGasTurbineElectricalEnergyPrediction\example.csv" />
     <None Include="packages.config" />
@@ -329,6 +379,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TensorflowTrainingAlgorithms\MLTensorflowTrainer.pyproj" />
+    <None Include="TensorflowTrainingAlgorithms\my_model.keras" />
+    <None Include="TensorflowTrainingAlgorithms\numpy-1.26.4-cp39-cp39-win_amd64.whl" />
+    <Content Include="TensorflowTrainingAlgorithms\TensorflowTrainingAlgorithmTest.py" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -345,6 +399,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CompileTimeTrainingSetup\ConcreteObjectTrainer\trainer-output-object-guide.png" />
+    <Content Include="TensorflowTrainingAlgorithms\MLTensorflowTrainer.py" />
+    <Content Include="TensorflowTrainingAlgorithms\six.py" />
+    <Content Include="TensorflowTrainingAlgorithms\typing_extensions.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -355,6 +412,13 @@
     <Error Condition="!Exists('packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.props'))" />
     <Error Condition="!Exists('packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.targets'))" />
     <Error Condition="!Exists('packages\Microsoft.ML.FastTree.3.0.1\build\netstandard2.0\Microsoft.ML.FastTree.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.ML.FastTree.3.0.1\build\netstandard2.0\Microsoft.ML.FastTree.props'))" />
+    <Error Condition="!Exists('packages\LightGBM.4.5.0\build\LightGBM.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\LightGBM.4.5.0\build\LightGBM.props'))" />
+    <Error Condition="!Exists('packages\LightGBM.4.5.0\build\LightGBM.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\LightGBM.4.5.0\build\LightGBM.targets'))" />
+    <Error Condition="!Exists('packages\Fody.6.8.2\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.6.8.2\build\Fody.targets'))" />
+    <Error Condition="!Exists('packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props'))" />
+    <Error Condition="!Exists('packages\SciSharp.TensorFlow.Redist.2.16.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SciSharp.TensorFlow.Redist.2.16.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props'))" />
   </Target>
   <Import Project="packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.targets" Condition="Exists('packages\Microsoft.ML.3.0.1\build\netstandard2.0\Microsoft.ML.targets')" />
+  <Import Project="packages\LightGBM.4.5.0\build\LightGBM.targets" Condition="Exists('packages\LightGBM.4.5.0\build\LightGBM.targets')" />
+  <Import Project="packages\Fody.6.8.2\build\Fody.targets" Condition="Exists('packages\Fody.6.8.2\build\Fody.targets')" />
 </Project>
