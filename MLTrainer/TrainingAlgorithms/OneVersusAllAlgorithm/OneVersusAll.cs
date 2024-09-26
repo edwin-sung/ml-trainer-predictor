@@ -1,6 +1,7 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,6 +12,18 @@ namespace MLTrainer.TrainingAlgorithms.OneVersusAllAlgorithm
         private HistorySizeOption historySizeOption;
         private L1RegularisationOption l1RegularisationOption;
         private L2RegularisationOption l2RegularisationOption;
+
+        /// <inheritdoc />
+        public string Name => "One Versus All";
+
+        /// <inheritdoc />
+        public string PredictedValueColumnKeyword => "PredictedLabel";
+
+        /// <inheritdoc />
+        public bool IsValidPredictedValueColumnType(Type predictedValueType)
+        {
+            return predictedValueType == typeof(string);
+        }
 
         internal OneVersusAll()
         {

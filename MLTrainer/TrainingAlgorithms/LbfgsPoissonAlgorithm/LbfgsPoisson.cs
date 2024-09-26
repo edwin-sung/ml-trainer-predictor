@@ -1,7 +1,9 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace MLTrainer.TrainingAlgorithms.LbfgsPoissonAlgorithm
@@ -10,6 +12,18 @@ namespace MLTrainer.TrainingAlgorithms.LbfgsPoissonAlgorithm
     {
         private L1RegularisationOption l1RegularisationOption;
         private L2RegularisationOption l2RegularisationOption;
+
+        /// <inheritdoc />
+        public string Name => "LBFGS Poisson Regression";
+
+        /// <inheritdoc />
+        public string PredictedValueColumnKeyword => "Score";
+
+        /// <inheritdoc />
+        public bool IsValidPredictedValueColumnType(Type predictedValueType)
+        {
+            return predictedValueType == typeof(float);
+        }
 
         internal LbfgsPoisson()
         {

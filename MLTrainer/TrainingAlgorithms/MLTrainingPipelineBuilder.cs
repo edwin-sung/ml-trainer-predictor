@@ -26,7 +26,7 @@ namespace MLTrainer.TrainingAlgorithms
 
         internal void SetupOneHotEncodingForStrings()
         {
-            InputOutputColumnPair[] hotEncodingColumnPairs = inputColumnAttributes.Where(att => att.ColumnType == typeof(string))
+            InputOutputColumnPair[] hotEncodingColumnPairs = inputColumnAttributes.Where(att => !att.IsLabel && att.ColumnType == typeof(string))
                 .Select(att => new InputOutputColumnPair(@att.Name, @att.Name)).ToArray();
 
             if (hotEncodingColumnPairs.Length > 0)
@@ -37,7 +37,7 @@ namespace MLTrainer.TrainingAlgorithms
 
         internal void SetupMissingValuesReplacementForFloats()
         {
-            InputOutputColumnPair[] hotEncodingColumnPairs = inputColumnAttributes.Where(att => att.ColumnType == typeof(float))
+            InputOutputColumnPair[] hotEncodingColumnPairs = inputColumnAttributes.Where(att => !att.IsLabel && att.ColumnType == typeof(float))
                 .Select(att => new InputOutputColumnPair(@att.Name, @att.Name)).ToArray();
 
             if (hotEncodingColumnPairs.Length > 0)
@@ -80,7 +80,7 @@ namespace MLTrainer.TrainingAlgorithms
                 return;
             }
 
-            wellOrderedSetups.Add(mlContext.Transforms.Conversion.MapKeyToValue(new[] {new InputOutputColumnPair(@labelledOutput, "PredictedLabel") }));
+            wellOrderedSetups.Add(mlContext.Transforms.Conversion.MapKeyToValue(new[] {new InputOutputColumnPair(@labelledOutput, @labelledOutput) }));
         }
 
         /// <summary>

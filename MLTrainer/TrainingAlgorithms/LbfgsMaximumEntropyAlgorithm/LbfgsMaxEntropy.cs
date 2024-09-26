@@ -1,6 +1,7 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +15,18 @@ namespace MLTrainer.TrainingAlgorithms.LbfgsMaximumEntropyAlgorithm
         private L2RegularisationOption l2RegularisationOption;
         private OptimisationTolOption optimisationTolOption;
         private EnforceNonNegativityOption enforceNonNegOption;
+
+        /// <inheritdoc />
+        public string Name => "LBFGS Maximum Entropy";
+
+        /// <inheritdoc />
+        public string PredictedValueColumnKeyword => "PredictedLabel";
+
+        /// <inheritdoc />
+        public bool IsValidPredictedValueColumnType(Type predictedValueType)
+        {
+            return predictedValueType == typeof(string);
+        }
 
         internal LbfgsMaxEntropy()
         {

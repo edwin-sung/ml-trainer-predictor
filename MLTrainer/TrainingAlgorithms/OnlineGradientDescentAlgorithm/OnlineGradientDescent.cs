@@ -1,7 +1,9 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using MLTrainer.TrainingAlgorithms.CustomisableOption;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace MLTrainer.TrainingAlgorithms.OnlineGradientDescentAlgorithm
@@ -12,6 +14,18 @@ namespace MLTrainer.TrainingAlgorithms.OnlineGradientDescentAlgorithm
         private DecreaseLearningRateToggle decreaseLearningRateToggle;
         private LearningRateOption learningRateOption;
         private NumberOfIterationsOption numberOfIterationsOption;
+
+        /// <inheritdoc />
+        public string Name => "Online Gradient Descent Regression";
+
+        /// <inheritdoc />
+        public string PredictedValueColumnKeyword => "Score";
+
+        /// <inheritdoc />
+        public bool IsValidPredictedValueColumnType(Type predictedValueType)
+        {
+            return predictedValueType == typeof(float);
+        }
 
         internal OnlineGradientDescent()
         {
